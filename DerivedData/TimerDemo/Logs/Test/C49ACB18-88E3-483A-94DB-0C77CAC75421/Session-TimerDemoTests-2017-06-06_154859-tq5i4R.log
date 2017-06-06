@@ -1,0 +1,22 @@
+15:48:59.396 Xcode[43154:7237454] Beginning test session TimerDemoTests-2C5D4561-7665-41E0-AF7B-2AD8FEE2022B at 2017-06-06 15:48:59.396 with Xcode 8E2002 on target <DVTiPhoneSimulator: 0x7f879a08ff80> {
+		SimDevice: SimDevice : iPhone 7 Plus (F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2) : state={ Booted } deviceType={ SimDeviceType : com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus } runtime={ SimRuntime : 10.3 (14E269) - com.apple.CoreSimulator.SimRuntime.iOS-10-3 }
+} (10.3 (14E269))
+15:48:59.396 Xcode[43154:7237454] Launching with Xcode.DebuggerFoundation.Launcher.LLDB
+15:48:59.396 Xcode[43154:7855441] Sim iPhone 7 Plus: Unregistering for sim device notification with token 64
+15:48:59.396 Xcode[43154:7855441] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+15:48:59.397 Xcode[43154:7855441] Sim iPhone 7 Plus has testmanagerd socket at /private/tmp/com.apple.launchd.HW15oMBA9K/com.apple.testmanagerd.unix-domain.socket
+15:48:59.397 Xcode[43154:7855441] Validating test connection socket path (/private/tmp/com.apple.launchd.HW15oMBA9K/com.apple.testmanagerd.unix-domain.socket)
+15:48:59.397 Xcode[43154:7855441] Constructing transport for test connection socket
+15:48:59.397 Xcode[43154:7855441] Connected socket 65 to testmanagerd for Sim iPhone 7 Plus
+15:48:59.397 Xcode[43154:7844131] Received connection for test runner session
+15:48:59.397 Xcode[43154:7844131] Listening for proxy connection request from the test bundle
+15:48:59.397 Xcode[43154:7844131] Initiating session with identifier: 2C5D4561-7665-41E0-AF7B-2AD8FEE2022B
+15:48:59.411 Xcode[43154:7237454] Received Ready from iOSSimulator
+15:48:59.411 Xcode[43154:7237454] Sending notification: NSConcreteNotification 0x7f877e723f40 {name = com.apple.iphonesimulator.startSession; userInfo = {
+    deviceUDID = "F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2";
+}}
+15:48:59.412 Xcode[43154:7237454] Test runner session acquired connection.
+15:48:59.412 Xcode[43154:7237454] Waiting for test process to launch.
+15:48:59.885 Xcode[43154:7854899] Got reply to session initiation request with identifier 2C5D4561-7665-41E0-AF7B-2AD8FEE2022B (result:error): 22: (null)
+15:49:00.041 Xcode[43154:7237454] Test operation failure: Test operation was canceled.
+15:49:00.041 Xcode[43154:7237454] _finishWithError:Error Domain=IDETestOperationsObserverErrorDomain Code=4 "Test operation was canceled." UserInfo={NSLocalizedDescription=Test operation was canceled.} didCancel: 1

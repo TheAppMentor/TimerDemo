@@ -1,0 +1,337 @@
+23:02:01.527 Xcode[43154:7237454] Beginning test session TimerDemoTests-4A09900C-1847-4AD0-A08D-6D143589ECBA at 2017-06-06 23:02:01.526 with Xcode 8E2002 on target <DVTiPhoneSimulator: 0x7f879a08ff80> {
+		SimDevice: SimDevice : iPhone 7 Plus (F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2) : state={ Booted } deviceType={ SimDeviceType : com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus } runtime={ SimRuntime : 10.3 (14E269) - com.apple.CoreSimulator.SimRuntime.iOS-10-3 }
+} (10.3 (14E269))
+23:02:01.527 Xcode[43154:7237454] Launching with Xcode.DebuggerFoundation.Launcher.LLDB
+23:02:01.527 Xcode[43154:8173465] Sim iPhone 7 Plus: Unregistering for sim device notification with token 112
+23:02:01.527 Xcode[43154:8173465] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+23:02:01.527 Xcode[43154:8173465] Sim iPhone 7 Plus has testmanagerd socket at /private/tmp/com.apple.launchd.mluSrwloUC/com.apple.testmanagerd.unix-domain.socket
+23:02:01.527 Xcode[43154:8173465] Validating test connection socket path (/private/tmp/com.apple.launchd.mluSrwloUC/com.apple.testmanagerd.unix-domain.socket)
+23:02:01.527 Xcode[43154:8173465] Constructing transport for test connection socket
+23:02:01.527 Xcode[43154:8173465] Connected socket 63 to testmanagerd for Sim iPhone 7 Plus
+23:02:01.528 Xcode[43154:8151236] Received connection for test runner session
+23:02:01.528 Xcode[43154:8151236] Listening for proxy connection request from the test bundle
+23:02:01.528 Xcode[43154:8151236] Initiating session with identifier: 4A09900C-1847-4AD0-A08D-6D143589ECBA
+23:02:01.557 Xcode[43154:7237454] Received Ready from iOSSimulator
+23:02:01.557 Xcode[43154:7237454] Sending notification: NSConcreteNotification 0x7f878966ec30 {name = com.apple.iphonesimulator.startSession; userInfo = {
+    deviceUDID = "F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2";
+}}
+23:02:01.721 Xcode[43154:7237454] Test runner session acquired connection.
+23:02:01.721 Xcode[43154:7237454] Waiting for test process to launch.
+23:02:01.893 Xcode[43154:8179909] Got reply to session initiation request with identifier 4A09900C-1847-4AD0-A08D-6D143589ECBA (result:error): 22: (null)
+23:02:03.650 Xcode[43154:7237454] Launch session started.
+23:02:03.732 Xcode[43154:7237454] Received Ready from iOSSimulator
+23:02:03.732 Xcode[43154:7237454] Sending notification: NSConcreteNotification 0x7f8766d651d0 {name = com.apple.iphonesimulator.startSession; userInfo = {
+    deviceUDID = "F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2";
+}}
+23:02:03.733 Xcode[43154:7237454] Adding console adaptor <IDEConsoleAdaptor: 0x7f877fbd94b0 'target'> for test session 4A09900C-1847-4AD0-A08D-6D143589ECBA.
+23:02:03.736 Xcode[43154:8180025] F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2: Registered for sim device notification, got token 113
+23:02:03.736 Xcode[43154:8180087] F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2: Unregistering for sim device notification with token 113
+23:02:03.737 Xcode[43154:8151236] F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2: Installing app at path: /Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator/TimerDemo.app and options: {
+    CFBundleIdentifier = "com.prash.TimerDemo";
+}
+23:02:03.822 Xcode[43154:7237454] Received Ready from iOSSimulator
+23:02:03.823 Xcode[43154:7237454] Sending notification: NSConcreteNotification 0x7f878b52ce10 {name = com.apple.iphonesimulator.startSession; userInfo = {
+    deviceUDID = "F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2";
+}}
+23:02:08.365 Xcode[43154:8151236] F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2: Installed app at path: /Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator/TimerDemo.app and options: {
+    CFBundleIdentifier = "com.prash.TimerDemo";
+}
+23:02:08.366 Xcode[43154:8151236] F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2: Launching app with identifier: com.prash.TimerDemo and options: {
+    arguments =     (
+        "-NSTreatUnknownArgumentsAsOpen",
+        NO,
+        "-ApplePersistenceIgnoreState",
+        YES
+    );
+    environment =     {
+        "DYLD_FRAMEWORK_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/Developer/Library/PrivateFrameworks";
+        "DYLD_INSERT_LIBRARIES" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator10.3.sdk/Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection";
+        "DYLD_LIBRARY_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/Developer/Library/PrivateFrameworks";
+        NSUnbufferedIO = YES;
+        "OS_ACTIVITY_DT_MODE" = YES;
+        XCInjectBundleInto = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator/TimerDemo.app/TimerDemo";
+        "XCODE_DBG_XPC_EXCLUSIONS" = "com.apple.dt.xctestSymbolicator";
+        XCTestConfigurationFilePath = "/var/folders/nx/kph8mg9j50b9td1l9y9jq2pwqp_t12/T/com.apple.dt.XCTest/4A09900C-1847-4AD0-A08D-6D143589ECBA/remote-container/tmp/TimerDemoTests-4A09900C-1847-4AD0-A08D-6D143589ECBA.xctestconfiguration";
+        "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator";
+        "__XPC_DYLD_FRAMEWORK_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator";
+        "__XPC_DYLD_LIBRARY_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator";
+    };
+    stderr = "/dev/ttys002";
+    stdout = "/dev/ttys002";
+    "wait_for_debugger" = 1;
+}
+23:02:08.395 Xcode[43154:8179932] F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2: Launched app with identifier: com.prash.TimerDemo (pid = 91806)
+23:02:08.395 Xcode[43154:8179932] Tracking pid 91806 for simulator <DVTiPhoneSimulator: 0x7f879a08ff80> {
+		SimDevice: SimDevice : iPhone 7 Plus (F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2) : state={ Booted } deviceType={ SimDeviceType : com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus } runtime={ SimRuntime : 10.3 (14E269) - com.apple.CoreSimulator.SimRuntime.iOS-10-3 }
+}
+23:02:08.395 Xcode[43154:8179932] Checking to see if pid 91806 is valid: kill(pid, 0) = 0 (YES, it's still running)
+23:02:08.395 Xcode[43154:8179932] Setting up DVTTaskNotifyOnProcDeath for pid 91806
+23:02:08.396 Xcode[43154:7237454] Test process runnable PID is 91806.
+23:02:10.068 Xcode[43154:7237454] Waiting for test process to check in..., will wait up to 120s
+23:02:10.312 Xcode[43154:8179954] Handling proxy channel request from test runner
+23:02:10.312 Xcode[43154:8179954] Test runner is ready, running protocol 22, requires at least version 8. Control framework is running 22 and requires at least 8
+23:02:10.372 Xcode[43154:7237454] Test runner session successfully initiated.
+23:02:10.372 Xcode[43154:7237454] Creating the daemon control session.
+23:02:10.372 Xcode[43154:7237454] Whitelisting test process ID 91806
+23:02:10.372 Xcode[43154:7237454] Got authorization request for pid 91806
+23:02:10.373 Xcode[43154:8180095] Requesting authorization for pid 91806
+23:02:10.383 Xcode[43154:8179932] Got reply to authorization request for pid 91806 (result:error): 22: (null)
+23:02:10.383 Xcode[43154:7237454] Got whitelisting response from test daemon. Success: 1
+23:02:01.887 testmanagerd[91743:8179886] Launched testmanagerd from /Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/libexec/testmanagerd, modified on Saturday, March 25, 2017 at 1:17:30 AM India Standard Time
+23:02:01.889 testmanagerd[91743:8179940] IDE connected over socket 5 (-[XCTestManagerIDEServer listenForControlConnectionsOverNamedSocket]_block_invoke)
+23:02:01.889 testmanagerd[91743:8179886] Setting availability state.
+23:02:01.889 testmanagerd[91743:8179940] Created session with socket 5
+23:02:10.384 testmanagerd[91743:8179886] Received request to collect crash reports in directories '/Users/i328244/Library/Logs/DiagnosticReports', '/Library/Logs/DiagnosticReports' for processes with names 'XCTRunner', 'TimerDemo', 'xctest'
+23:02:01.889 testmanagerd[91743:8179886] Posting availability to test bundles...
+23:02:01.892 testmanagerd[91743:8179952] Handled a proxy request from the IDE with session <XCIDESession: 0x7fb5f1202e90> created Tuesday, June 6, 2017 at 11:02:01 PM India Standard Time proxy <_DTXProxy: 0x7fb5f13000a0>
+23:02:01.893 testmanagerd[91743:8179886] -[XCIDESession _IDE_initiateSessionWithIdentifier:forClient:atPath:protocolVersion:]_block_invoke 4A09900C-1847-4AD0-A08D-6D143589ECBA 1 5 from client 8D0F620A-5271-4926-B2C7-69102C8A68FA-43154-0000B4530CB1C200 (/Applications/XCode 8.3.2/Xcode.app)
+23:02:10.386 testmanagerd[91743:8179886] Initializing crash report observer for /Users/i328244/Library/Logs/DiagnosticReports
+23:02:01.893 testmanagerd[91743:8179952] -[XCTDaemon setIDESession:forIdentifier:]_block_invoke <XCIDESession: 0x7fb5f1202e90> created Tuesday, June 6, 2017 at 11:02:01 PM India Standard Time for client 8D0F620A-5271-4926-B2C7-69102C8A68FA-43154-0000B4530CB1C200 waiting to pair with test session 4A09900C-1847-4AD0-A08D-6D143589ECBA -> 4A09900C-1847-4AD0-A08D-6D143589ECBA
+23:02:01.893 testmanagerd[91743:8179952] -[XCTDaemon _queue_handleRequestForSessionWithIdentifier:]
+23:02:10.387 testmanagerd[91743:8179886] Getting files in /Users/i328244/Library/Logs/DiagnosticReports
+23:02:06.987 testmanagerd[91743:8179952] Considering exiting:
+23:02:06.987 testmanagerd[91743:8179952] Session summary: 0 test sessions, 1 sessions with identifiers, 0 unidentified sessions, does not have control session
+23:02:06.988 testmanagerd[91743:8179952] Unpaired test sessions: {
+    "4A09900C-1847-4AD0-A08D-6D143589ECBA" = "<XCIDESession: 0x7fb5f1202e90> created Tuesday, June 6, 2017 at 11:02:01 PM India Standard Time for client 8D0F620A-5271-4926-B2C7-69102C8A68FA-43154-0000B4530CB1C200 waiting to pair with test session 4A09900C-1847-4AD0-A08D-6D143589ECBA";
+}
+23:02:10.202 testmanagerd[91743:8179952] Received new test session connection from process with PID 91806
+23:02:10.205 testmanagerd[91743:8179886] Initial orientation 0
+23:02:10.207 testmanagerd[91743:8181121] Test session 4A09900C-1847-4AD0-A08D-6D143589ECBA requested socket (-[XCTestSession _XCT_requestSocketForSessionIdentifier:reply:])
+23:02:10.207 testmanagerd[91743:8179952] Test session 4A09900C-1847-4AD0-A08D-6D143589ECBA requested socket (-[XCTDaemon requestSocketForSessionIdentifier:reply:]_block_invoke)
+23:02:10.207 testmanagerd[91743:8179952] -[XCTDaemon _queue_handleRequestForSessionWithIdentifier:]
+23:02:10.207 testmanagerd[91743:8179952] Closing IDE connection before sending socket 7 to test host.
+23:02:10.208 testmanagerd[91743:8179952] -[XCIDESession closeIDEConnection:] sending barrier
+23:02:10.208 testmanagerd[91743:8179886] barrier flushed, closing DTXConnection to IDE, socket will not be closed
+23:02:10.208 testmanagerd[91743:8181121] DTXSocketTransport disconnected, owner is <XCIDESession: 0x7fb5f1202e90> created Tuesday, June 6, 2017 at 11:02:01 PM India Standard Time for client 8D0F620A-5271-4926-B2C7-69102C8A68FA-43154-0000B4530CB1C200 waiting to pair with test session 4A09900C-1847-4AD0-A08D-6D143589ECBA
+23:02:10.209 testmanagerd[91743:8181121] -[XCTDaemon closeIDESession:]_block_invoke <XCIDESession: 0x7fb5f1202e90> created Tuesday, June 6, 2017 at 11:02:01 PM India Standard Time for client 8D0F620A-5271-4926-B2C7-69102C8A68FA-43154-0000B4530CB1C200 waiting to pair with test session 4A09900C-1847-4AD0-A08D-6D143589ECBA
+23:02:10.390 testmanagerd[91743:8179886] Found 81 files in /Users/i328244/Library/Logs/DiagnosticReports
+23:02:10.209 testmanagerd[91743:8181121] Considering exiting:
+23:02:10.391 testmanagerd[91743:8179886] Started monitoring /Users/i328244/Library/Logs/DiagnosticReports
+23:02:10.209 testmanagerd[91743:8181121] Session summary: 1 test sessions, 0 sessions with identifiers, 0 unidentified sessions, does not have control session
+23:02:10.209 testmanagerd[91743:8181124] app info {
+    BKSApplicationStateAppIsFrontmost = 1;
+    BKSApplicationStateExtensionKey = 0;
+    SBApplicationStateDisplayIDKey = "com.prash.TimerDemo";
+    SBApplicationStateKey = 8;
+    SBApplicationStateProcessIDKey = 91806;
+    SBMostElevatedStateForProcessID = 8;
+}
+23:02:10.392 testmanagerd[91743:8179886] Initializing crash report observer for /Library/Logs/DiagnosticReports
+23:02:10.211 testmanagerd[91743:8181124] Got request for process assertion for pid 91806.
+23:02:10.393 testmanagerd[91743:8179886] Getting files in /Library/Logs/DiagnosticReports
+23:02:10.212 testmanagerd[91743:8181124] Created process assertion for pid 91806: <BKSProcessAssertion: 0x7fb5ef409d60>, waiting for response from assertiond.
+23:02:10.213 testmanagerd[91743:8179952] Got reply for process assertion request, success: YES
+23:02:10.212 testmanagerd[91743:8181124] Starting to monitor com.prash.TimerDemo
+23:02:10.215 testmanagerd[91743:8179950] Got application state update: com.prash.TimerDemo (91806) -> 8
+23:02:10.310 testmanagerd[91743:8179886] Sending socket 7 to test host
+23:02:10.310 testmanagerd[91743:8179950] -[XCTDaemon closeIDESession:]_block_invoke <XCIDESession: 0x7fb5f1202e90> created Tuesday, June 6, 2017 at 11:02:01 PM India Standard Time for client 8D0F620A-5271-4926-B2C7-69102C8A68FA-43154-0000B4530CB1C200 waiting to pair with test session 4A09900C-1847-4AD0-A08D-6D143589ECBA
+23:02:10.311 testmanagerd[91743:8179950] Considering exiting:
+23:02:10.311 testmanagerd[91743:8179950] Session summary: 1 test sessions, 0 sessions with identifiers, 0 unidentified sessions, does not have control session
+23:02:10.379 testmanagerd[91743:8179950] IDE connected over socket 6 (-[XCTestManagerIDEServer listenForControlConnectionsOverNamedSocket]_block_invoke)
+23:02:10.380 testmanagerd[91743:8179950] Created session with socket 6
+23:02:10.381 testmanagerd[91743:8179951] Handled a proxy request from the IDE with session <XCIDESession: 0x7fb5f110b4f0> created Tuesday, June 6, 2017 at 11:02:10 PM India Standard Time proxy <_DTXProxy: 0x7fb5f13000a0>
+23:02:10.382 testmanagerd[91743:8179951] -[XCIDESession _IDE_initiateControlSessionForTestProcessID:protocolVersion:] 91806 22
+23:02:10.382 testmanagerd[91743:8179886] Set control session <XCIDESession: 0x7fb5f110b4f0> created Tuesday, June 6, 2017 at 11:02:10 PM India Standard Time with proto 22 and proxy <_DTXProxy: 0x7fb5f13000a0>
+23:02:10.431 testmanagerd[91743:8179886] Found 98 files in /Library/Logs/DiagnosticReports
+23:02:10.432 testmanagerd[91743:8179886] Started monitoring /Library/Logs/DiagnosticReports
+23:02:10.194 TimerDemo[91806:8180860] Linked XCTest.framework from /Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/XCTest, built with Xcode 0832(), modified on Thursday, April 13, 2017 at 12:19:43 AM India Standard Time
+23:02:10.194 TimerDemo[91806:8180860] XCTest.framework bundle version: 12124
+23:02:10.196 TimerDemo[91806:8180860] System uptime: 2d 10:31:41
+23:02:10.196 TimerDemo[91806:8180860] Process arguments: (
+    "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Containers/Bundle/Application/DFC2012C-A453-45C5-9509-2BD7A887B45C/TimerDemo.app/TimerDemo",
+    "-NSTreatUnknownArgumentsAsOpen",
+    NO,
+    "-ApplePersistenceIgnoreState",
+    YES
+)
+23:02:10.197 TimerDemo[91806:8180860] Process environment: {
+    "CFFIXED_USER_HOME" = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Containers/Data/Application/1496374B-D0A3-415F-875B-69DB92558FE6";
+    CLASSIC = 0;
+    "CUPS_SERVER" = "/private/tmp/com.apple.launchd.wckkZCE4Gu/Listeners";
+    "DYLD_FALLBACK_FRAMEWORK_PATH" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks";
+    "DYLD_FALLBACK_LIBRARY_PATH" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib";
+    "DYLD_FRAMEWORK_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/Developer/Library/PrivateFrameworks";
+    "DYLD_INSERT_LIBRARIES" = "";
+    "DYLD_LIBRARY_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/Developer/Library/PrivateFrameworks";
+    "DYLD_ROOT_PATH" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk";
+    "DYLD_SHARED_REGION" = avoid;
+    HOME = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Containers/Data/Application/1496374B-D0A3-415F-875B-69DB92558FE6";
+    "IOS_SIMULATOR_SYSLOG_SOCKET" = "/private/tmp/com.apple.CoreSimulator.SimDevice.F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2.launchd_sim/syslogsock";
+    "IPHONE_SHARED_RESOURCES_DIRECTORY" = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data";
+    "IPHONE_SIMULATOR_CLASS" = D11;
+    "IPHONE_SIMULATOR_ROOT" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk";
+    "IPHONE_TVOUT_EXTENDED_PROPERTIES" = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Library/Application Support/Simulator/extended_display.plist";
+    NSUnbufferedIO = YES;
+    "OS_ACTIVITY_DT_MODE" = YES;
+    PATH = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/bin:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/bin:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/sbin:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/sbin:/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/local/bin";
+    "SIMULATOR_CAPABILITIES" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/CoreSimulator/Profiles/DeviceTypes/iPhone 7 Plus.simdevicetype/Contents/Resources/capabilities.plist";
+    "SIMULATOR_DEVICE_NAME" = "iPhone 7 Plus";
+    "SIMULATOR_EXTENDED_DISPLAY_PROPERTIES" = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Library/Application Support/Simulator/extended_display.plist";
+    "SIMULATOR_HID_SYSTEM_MANAGER" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/Resources/Platforms/iphoneos/SimulatorHID.framework";
+    "SIMULATOR_HOST_HOME" = "/Users/i328244";
+    "SIMULATOR_LEGACY_ASSET_SUFFIX" = iphone;
+    "SIMULATOR_LOG_ROOT" = "/Users/i328244/Library/Logs/CoreSimulator/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2";
+    "SIMULATOR_MAINSCREEN_HEIGHT" = 2208;
+    "SIMULATOR_MAINSCREEN_PITCH" = "461.000000";
+    "SIMULATOR_MAINSCREEN_SCALE" = "3.000000";
+    "SIMULATOR_MAINSCREEN_WIDTH" = 1242;
+    "SIMULATOR_MEMORY_WARNINGS" = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/var/run/memory_warning_simulation";
+    "SIMULATOR_MODEL_IDENTIFIER" = "iPhone9,2";
+    "SIMULATOR_PLATFORM_RUNTIME_OVERLAY_ROOT" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/CoreSimulator/RuntimeOverlay";
+    "SIMULATOR_PRODUCT_CLASS" = D11;
+    "SIMULATOR_ROOT" = "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk";
+    "SIMULATOR_RUNTIME_BUILD_VERSION" = 14E269;
+    "SIMULATOR_RUNTIME_VERSION" = "10.3";
+    "SIMULATOR_SHARED_RESOURCES_DIRECTORY" = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data";
+    "SIMULATOR_UDID" = "F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2";
+    "SIMULATOR_VERSION_INFO" = "CoreSimulator 375.21 - Device: iPhone 7 Plus - Runtime: iOS 10.3 (14E269) - DeviceType: iPhone 7 Plus";
+    "TESTMANAGERD_SIM_SOCK" = "/private/tmp/com.apple.launchd.mluSrwloUC/com.apple.testmanagerd.unix-domain.socket";
+    TMPDIR = "/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Containers/Data/Application/1496374B-D0A3-415F-875B-69DB92558FE6/tmp";
+    XCInjectBundleInto = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator/TimerDemo.app/TimerDemo";
+    "XCODE_DBG_XPC_EXCLUSIONS" = "com.apple.dt.xctestSymbolicator";
+    XCTestConfigurationFilePath = "/var/folders/nx/kph8mg9j50b9td1l9y9jq2pwqp_t12/T/com.apple.dt.XCTest/4A09900C-1847-4AD0-A08D-6D143589ECBA/remote-container/tmp/TimerDemoTests-4A09900C-1847-4AD0-A08D-6D143589ECBA.xctestconfiguration";
+    "XPC_FLAGS" = 0x0;
+    "XPC_SERVICE_NAME" = "UIKitApplication:com.prash.TimerDemo[0x2401][73906]";
+    "XPC_SIMULATOR_LAUNCHD_NAME" = "com.apple.CoreSimulator.SimDevice.F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2.launchd_sim";
+    "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator";
+    "__XPC_DYLD_FRAMEWORK_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator";
+    "__XPC_DYLD_LIBRARY_PATH" = "/Users/i328244/Desktop/XCode Projects/TimerDemo/DerivedData/TimerDemo/Build/Products/Debug-iphonesimulator";
+}
+23:02:10.198 TimerDemo[91806:8180860] <XCTWaiter: 0x6100000176f0> entering wait loop for 5.00s
+23:02:10.206 TimerDemo[91806:8181089] Got daemon protocol version 12
+23:02:10.206 TimerDemo[91806:8181108] <XCTWaiter: 0x6100000176f0>: cancelWaiting
+23:02:10.206 TimerDemo[91806:8180860] <XCTWaiter: 0x6100000176f0> done waiting
+23:02:10.206 TimerDemo[91806:8180860] <XCTWaiter: 0x6100000176f0> cleaning up Exchange protocol versions with daemon
+23:02:10.207 TimerDemo[91806:8180860] Requesting socket
+23:02:10.207 TimerDemo[91806:8180860] <XCTWaiter: 0x608000017260> entering wait loop for 30.00s
+23:02:10.310 TimerDemo[91806:8181089] <XCTWaiter: 0x608000017260>: cancelWaiting
+23:02:10.310 TimerDemo[91806:8180860] <XCTWaiter: 0x608000017260> done waiting
+23:02:10.311 TimerDemo[91806:8180860] <XCTWaiter: 0x608000017260> cleaning up Socket for IDE session acquired
+23:02:10.311 TimerDemo[91806:8180860] Creating transport with socket 7
+23:02:10.311 TimerDemo[91806:8180860] Creating connection with transport <DTXSocketTransport: 0x618000103330>
+23:02:10.311 TimerDemo[91806:8180860] Creating the proxy channel with connection <DTXConnection 0x6180001ef100 : x1>
+23:02:10.312 TimerDemo[91806:8180860] Messaging IDE proxy - _XCT_testBundleReadyWithProtocolVersion:22 minimumVersion:8
+23:02:10.312 TimerDemo[91806:8180860] <XCTWaiter: 0x618000017480> entering wait loop for 30.00s
+23:02:10.312 TimerDemo[91806:8181089] _XCT_testBundleReadyWithProtocolVersion:minimumVersion: reply received
+23:02:10.453 TimerDemo[91806:8181089] _IDE_startExecutingTestPlanWithProtocolVersion:22
+23:02:10.453 TimerDemo[91806:8181109] <XCTWaiter: 0x618000017480>: cancelWaiting
+23:02:10.453 TimerDemo[91806:8180860] <XCTWaiter: 0x618000017480> done waiting
+23:02:10.453 TimerDemo[91806:8180860] <XCTWaiter: 0x618000017480> cleaning up IDE session ready for test plan
+23:02:10.456 Xcode[43154:7237454] Starting test plan, clearing initialization timeout timer.
+23:02:10.456 TimerDemo[91806:8180860] Loading test suite...
+23:02:10.507 TimerDemo[91806:8180860] Finished loading test suite, took 0.051s
+23:02:10.507 TimerDemo[91806:8180860] -[XCTRunnerIDESession testBundleWillStart:]
+23:02:10.507 TimerDemo[91806:8180860] Running suite...
+23:02:10.507 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteWillStart:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testSuite:All tests didStartAt:2017-06-06 17:32:10 +0000
+23:02:10.523 Xcode[43154:8180089] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.523 Xcode[43154:8180089] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.523 Xcode[43154:8180089] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.523 Xcode[43154:8180023] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.523 Xcode[43154:8180023] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.523 Xcode[43154:8180087] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.524 Xcode[43154:8180087] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.648 Xcode[43154:8180023] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.649 Xcode[43154:8180095] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.649 Xcode[43154:8180095] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.849 Xcode[43154:8180024] (LOG ARBITER) Dumping buffered message data; 0 messages.
+23:02:10.523 Xcode[43154:7237454] _XCT_testSuite:TimerDemoTests.xctest didStartAt:2017-06-06 17:32:10 +0000
+23:02:10.508 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteWillStart:]
+23:02:10.508 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteWillStart:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testSuite:SettingsHandlerTests didStartAt:2017-06-06 17:32:10 +0000
+23:02:10.508 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testCopyBundleToDocumentsDirectory
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testCopyBundleToDocumentsDirectory
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testCopyBundleToDocumentsDirectory withStatus:passed duration:0.004081010818481445
+23:02:10.512 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testlongBreakDurationMinutes
+23:02:10.512 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testlongBreakDurationMinutes
+23:02:10.513 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testlongBreakDurationMinutes withStatus:passed duration:0.0009260177612304688
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testLongBreakDurationUpdate
+23:02:10.513 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testLongBreakDurationUpdate
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testLongBreakDurationUpdate withStatus:passed duration:0.001570999622344971
+23:02:10.518 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.518 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testShortBreakDurationRead
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakDurationRead
+23:02:10.518 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakDurationRead withStatus:passed duration:0.0005400180816650391
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakDurationUpdate
+23:02:10.519 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testShortBreakDurationUpdate
+23:02:10.520 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakDurationUpdate withStatus:passed duration:0.001257002353668213
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakInterval
+23:02:10.520 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testShortBreakInterval
+23:02:10.521 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakInterval withStatus:passed duration:0.0008110404014587402
+23:02:10.523 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakshortBreakIntervalUpdate
+23:02:10.521 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testShortBreakshortBreakIntervalUpdate
+Test Suite 'All tests' started at 2017-06-06 23:02:10.507
+Test Suite 'TimerDemoTests.xctest' started at 2017-06-06 23:02:10.507
+Test Suite 'SettingsHandlerTests' started at 2017-06-06 23:02:10.508
+Test Case '-[TimerDemoTests.SettingsHandlerTests testCopyBundleToDocumentsDirectory]' started.
+/Users/i328244/Library/Developer/CoreSimulator/Devices/F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2/data/Containers/Data/Application/1496374B-D0A3-415F-875B-69DB92558FE6/Documents/Settings.plist
+Test Case '-[TimerDemoTests.SettingsHandlerTests testCopyBundleToDocumentsDirectory]' passed (0.004 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testlongBreakDurationMinutes]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testlongBreakDurationMinutes]' passed (0.001 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testLongBreakDurationUpdate]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testLongBreakDurationUpdate]' passed (0.002 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakDurationRead]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakDurationRead]' passed (0.001 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakDurationUpdate]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakDurationUpdate]' passed (0.001 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakInterval]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakInterval]' passed (0.001 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakshortBreakIntervalUpdate]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testShortBreakshortBreakIntervalUpdate]' passed (0.001 seconds).
+23:02:10.522 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.524 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testShortBreakshortBreakIntervalUpdate withStatus:passed duration:0.001461982727050781
+23:02:10.537 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testTaskDurationFetch
+23:02:10.524 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testTaskDurationFetch
+Test Case '-[TimerDemoTests.SettingsHandlerTests testTaskDurationFetch]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testTaskDurationFetch]' passed (0.001 seconds).
+Test Case '-[TimerDemoTests.SettingsHandlerTests testTaskDurationUpdate]' started.
+Test Case '-[TimerDemoTests.SettingsHandlerTests testTaskDurationUpdate]' passed (0.002 seconds).
+Test Suite 'SettingsHandlerTests' passed at 2017-06-06 23:02:10.526.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.014 (0.019) seconds
+Test Suite 'TimerDemoTests' started at 2017-06-06 23:02:10.527
+Test Case '-[TimerDemoTests.TimerDemoTests testExample]' started.
+Test Case '-[TimerDemoTests.TimerDemoTests testExample]' passed (0.001 seconds).
+23:02:10.648 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testTaskDurationFetch withStatus:passed duration:0.001335024833679199
+23:02:10.524 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.524 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.SettingsHandlerTests testTaskDurationUpdate
+23:02:10.648 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.SettingsHandlerTests method:testTaskDurationUpdate
+23:02:10.648 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.SettingsHandlerTests method:testTaskDurationUpdate withStatus:passed duration:0.001932978630065918
+23:02:10.526 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.526 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteDidFinish:]
+23:02:10.649 Xcode[43154:7237454] _XCT_testSuite:SettingsHandlerTests didFinishAt:2017-06-06 17:32:10 +0000 runCount:9 withFailures:0 unexpected:0 testDuration:0.01391607522964478 totalDuration:0.01865500211715698
+23:02:10.527 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteWillStart:]
+23:02:10.649 Xcode[43154:7237454] _XCT_testSuite:TimerDemoTests didStartAt:2017-06-06 17:32:10 +0000
+23:02:10.649 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.TimerDemoTests method:testExample
+23:02:10.527 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.TimerDemoTests testExample
+23:02:10.528 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.649 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.TimerDemoTests method:testExample withStatus:passed duration:0.0006860494613647461
+23:02:10.528 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseWillStart:] TimerDemoTests.TimerDemoTests testPerformanceExample
+23:02:10.649 Xcode[43154:7237454] _XCT_testCaseDidStartForTestClass:TimerDemoTests.TimerDemoTests method:testPerformanceExample
+Test Case '-[TimerDemoTests.TimerDemoTests testPerformanceExample]' started.
+23:02:10.841 TimerDemo[91806:8180860] -[XCTRunnerIDESession _testCase:didMeasureValues:forPerformanceMetricID:name:unitsOfMeasurement:baselineName:baselineAverage:maxPercentRegression:maxPercentRelativeStandardDeviation:maxRegression:maxStandardDeviation:file:line:]
+23:02:10.849 Xcode[43154:7237454] -[XCTTestRunnerSession _XCT_testMethod:ofClass:didMeasureMetric:file:line:]_block_invoke
+23:02:10.841 TimerDemo[91806:8180860] -[XCTRunnerIDESession testCaseDidFinish:]
+23:02:10.849 Xcode[43154:7237454] _XCT_testCaseDidFinishForTestClass:TimerDemoTests.TimerDemoTests method:testPerformanceExample withStatus:passed duration:0.3134559988975525
+23:02:10.842 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteDidFinish:]
+23:02:10.849 Xcode[43154:7237454] _XCT_testSuite:TimerDemoTests didFinishAt:2017-06-06 17:32:10 +0000 runCount:2 withFailures:0 unexpected:0 testDuration:0.3141420483589172 totalDuration:0.3148499727249146
+23:02:10.842 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteDidFinish:]
+23:02:10.849 Xcode[43154:7237454] _XCT_testSuite:TimerDemoTests.xctest didFinishAt:2017-06-06 17:32:10 +0000 runCount:11 withFailures:0 unexpected:0 testDuration:0.328058123588562 totalDuration:0.3343719840049744
+23:02:10.842 TimerDemo[91806:8180860] -[XCTRunnerIDESession testSuiteDidFinish:]
+23:02:10.850 Xcode[43154:7237454] _XCT_testSuite:All tests didFinishAt:2017-06-06 17:32:10 +0000 runCount:11 withFailures:0 unexpected:0 testDuration:0.328058123588562 totalDuration:0.3353310227394104
+23:02:10.843 TimerDemo[91806:8180860] Finished running suite.
+23:02:10.850 Xcode[43154:7237454] -[XCTTestRunnerSession _XCT_didFinishExecutingTestPlan]_block_invoke
+23:02:10.843 TimerDemo[91806:8180860] -[XCTRunnerIDESession testBundleDidFinish:], Flushing connection to IDE...
+23:02:10.843 TimerDemo[91806:8180860] Calling completion.
+23:02:10.843 TimerDemo[91806:8180860] <XCTWaiter: 0x618000018370> entering wait loop for 15.00s
+/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemoTests/TimerDemoTests.swift:32: Test Case '-[TimerDemoTests.TimerDemoTests testPerformanceExample]' measured [Time, seconds] average: 0.000, relative standard deviation: 169.081%, values: [0.000003, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[TimerDemoTests.TimerDemoTests testPerformanceExample]' passed (0.313 seconds).
+Test Suite 'TimerDemoTests' passed at 2017-06-06 23:02:10.842.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.314 (0.315) seconds
+Test Suite 'TimerDemoTests.xctest' passed at 2017-06-06 23:02:10.842.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.328 (0.334) seconds
+23:02:10.850 Xcode[43154:7237454] _finishWithError:(null) didCancel: 0

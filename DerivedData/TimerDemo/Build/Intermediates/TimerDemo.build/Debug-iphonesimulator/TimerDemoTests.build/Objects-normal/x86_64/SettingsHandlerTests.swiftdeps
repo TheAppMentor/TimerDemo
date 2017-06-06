@@ -1,0 +1,482 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SettingsHandlerTests"
+provides-nominal:
+- "C14TimerDemoTests20SettingsHandlerTests"
+provides-member:
+- ["C14TimerDemoTests20SettingsHandlerTests", ""]
+provides-dynamic-lookup:
+- "setUp"
+- "settingsDict"
+- "testCopyBundleToDocumentsDirectory"
+- "testDailyGoal"
+- "testDailyGoalUpdate"
+- "testLongBreakDurationUpdate"
+- "testShortBreakDurationRead"
+- "testShortBreakDurationUpdate"
+- "testShortBreakInterval"
+- "testShortBreakshortBreakIntervalUpdate"
+- "testTaskDurationFetch"
+- "testTaskDurationUpdate"
+- "testVibrateON"
+- "testVibrateUpdate"
+- "testlongBreakDurationMinutes"
+depends-top-level:
+- !private "+"
+- !private "=="
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "Bundle"
+- !private "FileManager"
+- "NSMutableDictionary"
+- !private "NSSearchPathForDirectoriesInDomains"
+- "SettingsHandler"
+- "SettingsHandlerTests"
+- "StringLiteralType"
+- "TernaryPrecedence"
+- !private "XCTAssert"
+- "XCTestCase"
+- !private "print"
+depends-member:
+- ["Ps9AnyObject", "Bundle"]
+- !private ["Ps9AnyObject", "FileManager"]
+- ["Ps9AnyObject", "NSMutableDictionary"]
+- !private ["Ps9AnyObject", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps9AnyObject", "SettingsHandler"]
+- !private ["Ps9AnyObject", "XCTAssert"]
+- !private ["Ps9AnyObject", "default"]
+- !private ["Ps9AnyObject", "fileExists"]
+- ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", "main"]
+- ["Ps9AnyObject", "path"]
+- !private ["Ps9AnyObject", "print"]
+- !private ["Ps9AnyObject", "setUp"]
+- !private ["Ps9AnyObject", "settingsHandler"]
+- ["Ps9AnyObject", ""]
+- !private ["Sa", "first"]
+- !private ["Ps23BidirectionalCollection", "first"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- ["CSo6Bundle", "main"]
+- ["CSo6Bundle", "path"]
+- ["Ps7CVarArg", "Bundle"]
+- !private ["Ps7CVarArg", "FileManager"]
+- ["Ps7CVarArg", "NSMutableDictionary"]
+- !private ["Ps7CVarArg", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps7CVarArg", "SettingsHandler"]
+- !private ["Ps7CVarArg", "XCTAssert"]
+- !private ["Ps7CVarArg", "default"]
+- !private ["Ps7CVarArg", "fileExists"]
+- !private ["Ps7CVarArg", "first"]
+- ["Ps7CVarArg", "init"]
+- ["Ps7CVarArg", "main"]
+- ["Ps7CVarArg", "path"]
+- !private ["Ps7CVarArg", "print"]
+- !private ["Ps7CVarArg", "setUp"]
+- !private ["Ps7CVarArg", "settingsHandler"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Collection", "first"]
+- ["Ps10Comparable", "init"]
+- ["Ps28CustomDebugStringConvertible", "Bundle"]
+- !private ["Ps28CustomDebugStringConvertible", "FileManager"]
+- ["Ps28CustomDebugStringConvertible", "NSMutableDictionary"]
+- !private ["Ps28CustomDebugStringConvertible", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps28CustomDebugStringConvertible", "SettingsHandler"]
+- !private ["Ps28CustomDebugStringConvertible", "XCTAssert"]
+- !private ["Ps28CustomDebugStringConvertible", "default"]
+- !private ["Ps28CustomDebugStringConvertible", "fileExists"]
+- !private ["Ps28CustomDebugStringConvertible", "first"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", "main"]
+- ["Ps28CustomDebugStringConvertible", "path"]
+- !private ["Ps28CustomDebugStringConvertible", "print"]
+- !private ["Ps28CustomDebugStringConvertible", "setUp"]
+- !private ["Ps28CustomDebugStringConvertible", "settingsHandler"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "first"]
+- ["Ps17CustomReflectable", "init"]
+- ["Ps23CustomStringConvertible", "Bundle"]
+- !private ["Ps23CustomStringConvertible", "FileManager"]
+- ["Ps23CustomStringConvertible", "NSMutableDictionary"]
+- !private ["Ps23CustomStringConvertible", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps23CustomStringConvertible", "SettingsHandler"]
+- !private ["Ps23CustomStringConvertible", "XCTAssert"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "default"]
+- !private ["Ps23CustomStringConvertible", "fileExists"]
+- !private ["Ps23CustomStringConvertible", "first"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "main"]
+- ["Ps23CustomStringConvertible", "path"]
+- !private ["Ps23CustomStringConvertible", "print"]
+- !private ["Ps23CustomStringConvertible", "setUp"]
+- !private ["Ps23CustomStringConvertible", "settingsHandler"]
+- ["Ps23CustomStringConvertible", ""]
+- ["Ps9Equatable", "Bundle"]
+- !private ["Ps9Equatable", "FileManager"]
+- ["Ps9Equatable", "NSMutableDictionary"]
+- !private ["Ps9Equatable", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps9Equatable", "SettingsHandler"]
+- !private ["Ps9Equatable", "XCTAssert"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "default"]
+- !private ["Ps9Equatable", "documentDirectory"]
+- !private ["Ps9Equatable", "fileExists"]
+- ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "main"]
+- ["Ps9Equatable", "path"]
+- !private ["Ps9Equatable", "print"]
+- !private ["Ps9Equatable", "setUp"]
+- !private ["Ps9Equatable", "settingsHandler"]
+- !private ["Ps9Equatable", "userDomainMask"]
+- ["Ps9Equatable", ""]
+- !private ["Ps25ExpressibleByArrayLiteral", "first"]
+- !private ["Ps25ExpressibleByArrayLiteral", "userDomainMask"]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps30ExpressibleByDictionaryLiteral", "init"]
+- ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- ["Ps26ExpressibleByStringLiteral", "init"]
+- ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["CSo11FileManager", "default"]
+- !private ["CSo11FileManager", "fileExists"]
+- ["Ps8Hashable", "Bundle"]
+- !private ["Ps8Hashable", "FileManager"]
+- ["Ps8Hashable", "NSMutableDictionary"]
+- !private ["Ps8Hashable", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps8Hashable", "SettingsHandler"]
+- !private ["Ps8Hashable", "XCTAssert"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "default"]
+- !private ["Ps8Hashable", "documentDirectory"]
+- !private ["Ps8Hashable", "fileExists"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "main"]
+- ["Ps8Hashable", "path"]
+- !private ["Ps8Hashable", "print"]
+- !private ["Ps8Hashable", "setUp"]
+- !private ["Ps8Hashable", "settingsHandler"]
+- ["Ps8Hashable", ""]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps25LosslessStringConvertible", "init"]
+- ["Ps10MirrorPath", "init"]
+- !private ["Ps17MutableCollection", "first"]
+- ["PSo8NSCoding", "init"]
+- ["PSo9NSCopying", "init"]
+- ["CSo12NSDictionary", "init"]
+- ["PSo17NSFastEnumeration", "init"]
+- ["PSo16NSMutableCopying", "init"]
+- ["CSo19NSMutableDictionary", "init"]
+- ["CSo8NSObject", "Bundle"]
+- !private ["CSo8NSObject", "FileManager"]
+- ["CSo8NSObject", "NSMutableDictionary"]
+- !private ["CSo8NSObject", "NSSearchPathForDirectoriesInDomains"]
+- ["CSo8NSObject", "SettingsHandler"]
+- !private ["CSo8NSObject", "XCTAssert"]
+- !private ["CSo8NSObject", "default"]
+- !private ["CSo8NSObject", "fileExists"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "main"]
+- ["CSo8NSObject", "path"]
+- !private ["CSo8NSObject", "print"]
+- ["CSo8NSObject", "setUp"]
+- ["CSo8NSObject", "settingsDict"]
+- ["CSo8NSObject", "settingsHandler"]
+- ["CSo8NSObject", "testCopyBundleToDocumentsDirectory"]
+- ["CSo8NSObject", "testDailyGoal"]
+- ["CSo8NSObject", "testDailyGoalUpdate"]
+- ["CSo8NSObject", "testLongBreakDurationUpdate"]
+- ["CSo8NSObject", "testShortBreakDurationRead"]
+- ["CSo8NSObject", "testShortBreakDurationUpdate"]
+- ["CSo8NSObject", "testShortBreakInterval"]
+- ["CSo8NSObject", "testShortBreakshortBreakIntervalUpdate"]
+- ["CSo8NSObject", "testTaskDurationFetch"]
+- ["CSo8NSObject", "testTaskDurationUpdate"]
+- ["CSo8NSObject", "testVibrateON"]
+- ["CSo8NSObject", "testVibrateUpdate"]
+- ["CSo8NSObject", "testlongBreakDurationMinutes"]
+- ["PSo16NSObjectProtocol", "Bundle"]
+- !private ["PSo16NSObjectProtocol", "FileManager"]
+- ["PSo16NSObjectProtocol", "NSMutableDictionary"]
+- !private ["PSo16NSObjectProtocol", "NSSearchPathForDirectoriesInDomains"]
+- ["PSo16NSObjectProtocol", "SettingsHandler"]
+- !private ["PSo16NSObjectProtocol", "XCTAssert"]
+- !private ["PSo16NSObjectProtocol", "default"]
+- !private ["PSo16NSObjectProtocol", "fileExists"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "main"]
+- ["PSo16NSObjectProtocol", "path"]
+- !private ["PSo16NSObjectProtocol", "print"]
+- !private ["PSo16NSObjectProtocol", "setUp"]
+- !private ["PSo16NSObjectProtocol", "settingsHandler"]
+- ["PSo16NSObjectProtocol", ""]
+- ["PSo14NSSecureCoding", "init"]
+- ["CSo8NSString", "init"]
+- !private ["Ps9OptionSet", "userDomainMask"]
+- !private ["Ps22RandomAccessCollection", "first"]
+- !private ["Ps26RangeReplaceableCollection", "first"]
+- !private ["Ps16RawRepresentable", "documentDirectory"]
+- !private ["Ps16RawRepresentable", "userDomainMask"]
+- !private ["OCSo11FileManager19SearchPathDirectory", "documentDirectory"]
+- !private ["VCSo11FileManager20SearchPathDomainMask", "userDomainMask"]
+- !private ["Ps8Sequence", "first"]
+- ["Ps8Sequence", "init"]
+- !private ["Ps10SetAlgebra", "userDomainMask"]
+- !private ["V14TimerDemoTests15SettingsHandler", "copySettingsFileFromBundle"]
+- !private ["V14TimerDemoTests15SettingsHandler", "dailyGoal"]
+- !private ["V14TimerDemoTests15SettingsHandler", "isVibrateOn"]
+- !private ["V14TimerDemoTests15SettingsHandler", "longBreakDurationMinutes"]
+- ["V14TimerDemoTests15SettingsHandler", "shared"]
+- !private ["V14TimerDemoTests15SettingsHandler", "shortBreakDurationMinutes"]
+- !private ["V14TimerDemoTests15SettingsHandler", "shortBreakInterval"]
+- !private ["V14TimerDemoTests15SettingsHandler", "taskDurationMinutes"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "Bundle"]
+- !private ["C14TimerDemoTests20SettingsHandlerTests", "FileManager"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "NSMutableDictionary"]
+- !private ["C14TimerDemoTests20SettingsHandlerTests", "NSSearchPathForDirectoriesInDomains"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "SettingsHandler"]
+- !private ["C14TimerDemoTests20SettingsHandlerTests", "XCTAssert"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "deinit"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "init"]
+- !private ["C14TimerDemoTests20SettingsHandlerTests", "print"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "setUp"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "settingsDict"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "settingsHandler"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testCopyBundleToDocumentsDirectory"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testDailyGoal"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testDailyGoalUpdate"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testLongBreakDurationUpdate"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testShortBreakDurationRead"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testShortBreakDurationUpdate"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testShortBreakInterval"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testShortBreakshortBreakIntervalUpdate"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testTaskDurationFetch"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testTaskDurationUpdate"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testVibrateON"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testVibrateUpdate"]
+- ["C14TimerDemoTests20SettingsHandlerTests", "testlongBreakDurationMinutes"]
+- !private ["Vs12StaticString", "init"]
+- ["SS", "init"]
+- ["Ps16TextOutputStream", "init"]
+- ["Ps20TextOutputStreamable", "init"]
+- ["PSo17XCTWaiterDelegate", "Bundle"]
+- !private ["PSo17XCTWaiterDelegate", "FileManager"]
+- ["PSo17XCTWaiterDelegate", "NSMutableDictionary"]
+- !private ["PSo17XCTWaiterDelegate", "NSSearchPathForDirectoriesInDomains"]
+- ["PSo17XCTWaiterDelegate", "SettingsHandler"]
+- !private ["PSo17XCTWaiterDelegate", "XCTAssert"]
+- !private ["PSo17XCTWaiterDelegate", "init"]
+- !private ["PSo17XCTWaiterDelegate", "print"]
+- !private ["PSo17XCTWaiterDelegate", "setUp"]
+- !private ["PSo17XCTWaiterDelegate", "settingsHandler"]
+- ["PSo17XCTWaiterDelegate", ""]
+- ["CSo6XCTest", "Bundle"]
+- !private ["CSo6XCTest", "FileManager"]
+- ["CSo6XCTest", "NSMutableDictionary"]
+- !private ["CSo6XCTest", "NSSearchPathForDirectoriesInDomains"]
+- ["CSo6XCTest", "SettingsHandler"]
+- !private ["CSo6XCTest", "XCTAssert"]
+- ["CSo6XCTest", "init"]
+- !private ["CSo6XCTest", "print"]
+- ["CSo6XCTest", "setUp"]
+- ["CSo6XCTest", "settingsDict"]
+- ["CSo6XCTest", "settingsHandler"]
+- ["CSo6XCTest", "testCopyBundleToDocumentsDirectory"]
+- ["CSo6XCTest", "testDailyGoal"]
+- ["CSo6XCTest", "testDailyGoalUpdate"]
+- ["CSo6XCTest", "testLongBreakDurationUpdate"]
+- ["CSo6XCTest", "testShortBreakDurationRead"]
+- ["CSo6XCTest", "testShortBreakDurationUpdate"]
+- ["CSo6XCTest", "testShortBreakInterval"]
+- ["CSo6XCTest", "testShortBreakshortBreakIntervalUpdate"]
+- ["CSo6XCTest", "testTaskDurationFetch"]
+- ["CSo6XCTest", "testTaskDurationUpdate"]
+- ["CSo6XCTest", "testVibrateON"]
+- ["CSo6XCTest", "testVibrateUpdate"]
+- ["CSo6XCTest", "testlongBreakDurationMinutes"]
+- ["CSo10XCTestCase", "Bundle"]
+- !private ["CSo10XCTestCase", "FileManager"]
+- ["CSo10XCTestCase", "NSMutableDictionary"]
+- !private ["CSo10XCTestCase", "NSSearchPathForDirectoriesInDomains"]
+- ["CSo10XCTestCase", "SettingsHandler"]
+- !private ["CSo10XCTestCase", "XCTAssert"]
+- ["CSo10XCTestCase", "init"]
+- !private ["CSo10XCTestCase", "print"]
+- ["CSo10XCTestCase", "setUp"]
+- ["CSo10XCTestCase", "settingsDict"]
+- ["CSo10XCTestCase", "settingsHandler"]
+- ["CSo10XCTestCase", "testCopyBundleToDocumentsDirectory"]
+- ["CSo10XCTestCase", "testDailyGoal"]
+- ["CSo10XCTestCase", "testDailyGoalUpdate"]
+- ["CSo10XCTestCase", "testLongBreakDurationUpdate"]
+- ["CSo10XCTestCase", "testShortBreakDurationRead"]
+- ["CSo10XCTestCase", "testShortBreakDurationUpdate"]
+- ["CSo10XCTestCase", "testShortBreakInterval"]
+- ["CSo10XCTestCase", "testShortBreakshortBreakIntervalUpdate"]
+- ["CSo10XCTestCase", "testTaskDurationFetch"]
+- ["CSo10XCTestCase", "testTaskDurationUpdate"]
+- ["CSo10XCTestCase", "testVibrateON"]
+- ["CSo10XCTestCase", "testVibrateUpdate"]
+- ["CSo10XCTestCase", "testlongBreakDurationMinutes"]
+- ["CSo10XCTestCase", ""]
+- !private ["Ps14_ArrayProtocol", "first"]
+- !private ["Ps23_BidirectionalIndexable", "first"]
+- !private ["Ps24_DestructorSafeContainer", "first"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- ["Ps33_ExpressibleByStringInterpolation", "init"]
+- ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- ["Ps9_Hashable", "Bundle"]
+- !private ["Ps9_Hashable", "FileManager"]
+- ["Ps9_Hashable", "NSMutableDictionary"]
+- !private ["Ps9_Hashable", "NSSearchPathForDirectoriesInDomains"]
+- ["Ps9_Hashable", "SettingsHandler"]
+- !private ["Ps9_Hashable", "XCTAssert"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps9_Hashable", "default"]
+- !private ["Ps9_Hashable", "documentDirectory"]
+- !private ["Ps9_Hashable", "fileExists"]
+- ["Ps9_Hashable", "init"]
+- ["Ps9_Hashable", "main"]
+- ["Ps9_Hashable", "path"]
+- !private ["Ps9_Hashable", "print"]
+- !private ["Ps9_Hashable", "setUp"]
+- !private ["Ps9_Hashable", "settingsHandler"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps10_Indexable", "first"]
+- !private ["Ps14_IndexableBase", "first"]
+- !private ["Ps17_MutableIndexable", "first"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "first"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps22_RandomAccessIndexable", "first"]
+- !private ["Ps26_RangeReplaceableIndexable", "first"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Sa"
+- !private "Ps23BidirectionalCollection"
+- !private "Sb"
+- "CSo6Bundle"
+- "Ps7CVarArg"
+- !private "Ps10Collection"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps25ExpressibleByArrayLiteral"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- "Ps30ExpressibleByDictionaryLiteral"
+- "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- "Ps26ExpressibleByStringLiteral"
+- "Ps33ExpressibleByUnicodeScalarLiteral"
+- !private "CSo11FileManager"
+- "Ps8Hashable"
+- "Ps25LosslessStringConvertible"
+- "Ps10MirrorPath"
+- !private "Ps17MutableCollection"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "CSo12NSDictionary"
+- "PSo17NSFastEnumeration"
+- "PSo16NSMutableCopying"
+- "CSo19NSMutableDictionary"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "CSo8NSString"
+- !private "Ps9OptionSet"
+- !private "Ps22RandomAccessCollection"
+- !private "Ps26RangeReplaceableCollection"
+- !private "Ps16RawRepresentable"
+- !private "OCSo11FileManager19SearchPathDirectory"
+- !private "VCSo11FileManager20SearchPathDomainMask"
+- "Ps8Sequence"
+- !private "Ps10SetAlgebra"
+- "V14TimerDemoTests15SettingsHandler"
+- "C14TimerDemoTests20SettingsHandlerTests"
+- !private "Vs12StaticString"
+- "SS"
+- "Ps16TextOutputStream"
+- "Ps20TextOutputStreamable"
+- "PSo17XCTWaiterDelegate"
+- "CSo6XCTest"
+- "CSo10XCTestCase"
+- !private "Ps14_ArrayProtocol"
+- !private "Ps23_BidirectionalIndexable"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- "Ps34_ExpressibleByBuiltinStringLiteral"
+- "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- "Ps33_ExpressibleByStringInterpolation"
+- "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps10_Indexable"
+- !private "Ps14_IndexableBase"
+- !private "Ps17_MutableIndexable"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Ps22_RandomAccessIndexable"
+- !private "Ps26_RangeReplaceableIndexable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/XCTest.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/XCTest.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestProbe.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIDevice.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUISiriService.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCase.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUICoordinate.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuite.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIRemote.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCase+AsynchronousTesting.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestLog.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertionsImpl.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIApplication.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTKVOExpectation.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTNSPredicateExpectation.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTNSNotificationExpectation.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTDarwinNotificationExpectation.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestExpectation.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestObservation.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestCaseRun.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestSuiteRun.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestRun.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementTypeQueryProvider.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTWaiter.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestObservationCenter.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestObserver.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestDefines.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementTypes.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementAttributes.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestErrors.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIKeyboardKeys.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElement.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTest.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
+interface-hash: "04cb932376f45044f1ecd225c2b41e11"

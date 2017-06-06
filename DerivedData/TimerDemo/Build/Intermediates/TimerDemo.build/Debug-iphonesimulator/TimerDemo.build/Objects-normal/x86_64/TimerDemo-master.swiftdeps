@@ -1,0 +1,13 @@
+version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
+options: "18b6fc6bf8caa6bddd7aab41cc62e7e0"
+build_time: [550059561, 590489000]
+inputs:
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TaskList.swift": [549990721, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/Task.swift": [550041025, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TaskStatus.swift": [549991372, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/SettingsHandler.swift": [550059561, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/ViewController.swift": [549786015, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TimerBoy.swift": [550041025, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TaskType.swift": [549990949, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TaskCollection.swift": [549990722, 0]
+  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/AppDelegate.swift": [549785815, 0]

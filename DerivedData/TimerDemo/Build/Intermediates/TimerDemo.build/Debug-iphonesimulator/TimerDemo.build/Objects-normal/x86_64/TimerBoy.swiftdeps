@@ -1,0 +1,130 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TimerBoy"
+provides-nominal:
+- "V9TimerDemo8TimerBoy"
+provides-member:
+- ["V9TimerDemo8TimerBoy", ""]
+- ["V9TimerDemo8TimerBoy", "convertTimeIntervalToDisplayFormat"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "*"
+- !private "-"
+- "AssignmentPrecedence"
+- "CFTimeInterval"
+- "Date"
+- "FloatLiteralType"
+- "String"
+- !private "StringLiteralType"
+- "TimerBoy"
+depends-member:
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps10Comparable", "timeIntervalSinceNow"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "timeIntervalSinceNow"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "timeIntervalSinceNow"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "timeIntervalSinceNow"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "timeIntervalSinceNow"]
+- !private ["V10Foundation4Date", "init"]
+- !private ["V10Foundation4Date", "timeIntervalSinceNow"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "timeIntervalSinceNow"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "timeIntervalSinceNow"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo16NSMutableCopying", "init"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "init"]
+- !private ["P10Foundation20ReferenceConvertible", "init"]
+- !private ["P10Foundation20ReferenceConvertible", "timeIntervalSinceNow"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- ["V9TimerDemo8TimerBoy", "CFTimeInterval"]
+- ["V9TimerDemo8TimerBoy", "Date"]
+- ["V9TimerDemo8TimerBoy", "String"]
+- ["V9TimerDemo8TimerBoy", "convertTimeIntervalToDisplayFormat"]
+- ["V9TimerDemo8TimerBoy", "displayValue"]
+- !private ["V9TimerDemo8TimerBoy", "duration"]
+- ["V9TimerDemo8TimerBoy", "init"]
+- ["V9TimerDemo8TimerBoy", "pauseTimer"]
+- ["V9TimerDemo8TimerBoy", "resetTimer"]
+- !private ["V9TimerDemo8TimerBoy", "startTime"]
+- ["V9TimerDemo8TimerBoy", "startTimer"]
+- !private ["V9TimerDemo8TimerBoy", "timeRemaining"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "timeIntervalSinceNow"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "timeIntervalSinceNow"]
+depends-nominal:
+- !private "Ps9AnyObject"
+- !private "Ps7CVarArg"
+- !private "Ps10Comparable"
+- !private "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- !private "Ps23CustomStringConvertible"
+- !private "V10Foundation4Date"
+- !private "Ps9Equatable"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- !private "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "PSo16NSMutableCopying"
+- !private "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "P10Foundation20ReferenceConvertible"
+- !private "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- "V9TimerDemo8TimerBoy"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps33_ExpressibleByStringInterpolation"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- !private "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "7ef29001478c249731b3ac80356e4ddf"

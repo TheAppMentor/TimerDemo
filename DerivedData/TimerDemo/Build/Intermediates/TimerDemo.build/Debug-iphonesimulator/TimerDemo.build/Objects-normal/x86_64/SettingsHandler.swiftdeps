@@ -1,0 +1,311 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SettingsHandler"
+provides-nominal:
+- "V9TimerDemo15SettingsHandler"
+provides-member:
+- ["V9TimerDemo15SettingsHandler", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "+"
+- !private "=="
+- !private "??"
+- "AnyObject"
+- "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- !private "Bundle"
+- "CastingPrecedence"
+- "Double"
+- !private "FileManager"
+- "Int"
+- !private "NSMutableDictionary"
+- "NSSearchPathForDirectoriesInDomains"
+- "SettingsHandler"
+- "String"
+- "StringLiteralType"
+- !private "URL"
+depends-member:
+- !private ["Ps9AnyObject", "copyItem"]
+- !private ["Ps9AnyObject", "default"]
+- !private ["Ps9AnyObject", "fileExists"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "main"]
+- !private ["Ps9AnyObject", "path"]
+- !private ["Ps9AnyObject", "write"]
+- ["Sa", "first"]
+- ["Ps23BidirectionalCollection", "first"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["CSo6Bundle", "main"]
+- !private ["CSo6Bundle", "path"]
+- !private ["Ps7CVarArg", "copyItem"]
+- !private ["Ps7CVarArg", "default"]
+- !private ["Ps7CVarArg", "fileExists"]
+- ["Ps7CVarArg", "first"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "main"]
+- !private ["Ps7CVarArg", "path"]
+- !private ["Ps7CVarArg", "subscript"]
+- !private ["Ps7CVarArg", "write"]
+- ["Ps10Collection", "first"]
+- !private ["Ps10Collection", "subscript"]
+- ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "copyItem"]
+- !private ["Ps28CustomDebugStringConvertible", "default"]
+- !private ["Ps28CustomDebugStringConvertible", "fileExists"]
+- ["Ps28CustomDebugStringConvertible", "first"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "main"]
+- !private ["Ps28CustomDebugStringConvertible", "path"]
+- !private ["Ps28CustomDebugStringConvertible", "subscript"]
+- !private ["Ps28CustomDebugStringConvertible", "write"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- ["Ps17CustomReflectable", "first"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "subscript"]
+- !private ["Ps17CustomReflectable", "write"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "copyItem"]
+- !private ["Ps23CustomStringConvertible", "default"]
+- !private ["Ps23CustomStringConvertible", "fileExists"]
+- ["Ps23CustomStringConvertible", "first"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "main"]
+- !private ["Ps23CustomStringConvertible", "path"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "write"]
+- !private ["Vs10Dictionary", "subscript"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "copyItem"]
+- !private ["Ps9Equatable", "default"]
+- ["Ps9Equatable", "documentDirectory"]
+- !private ["Ps9Equatable", "fileExists"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "main"]
+- !private ["Ps9Equatable", "path"]
+- ["Ps9Equatable", "userDomainMask"]
+- !private ["Ps9Equatable", "write"]
+- ["Ps25ExpressibleByArrayLiteral", "first"]
+- ["Ps25ExpressibleByArrayLiteral", "userDomainMask"]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps30ExpressibleByDictionaryLiteral", "init"]
+- !private ["Ps30ExpressibleByDictionaryLiteral", "subscript"]
+- !private ["Ps30ExpressibleByDictionaryLiteral", "write"]
+- ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- ["Ps26ExpressibleByStringLiteral", "init"]
+- ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["CSo11FileManager", "copyItem"]
+- !private ["CSo11FileManager", "default"]
+- !private ["CSo11FileManager", "fileExists"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "copyItem"]
+- !private ["Ps8Hashable", "default"]
+- ["Ps8Hashable", "documentDirectory"]
+- !private ["Ps8Hashable", "fileExists"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "main"]
+- !private ["Ps8Hashable", "path"]
+- !private ["Ps8Hashable", "write"]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps25LosslessStringConvertible", "init"]
+- ["Ps10MirrorPath", "init"]
+- ["Ps17MutableCollection", "first"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "write"]
+- ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "write"]
+- !private ["CSo12NSDictionary", "init"]
+- !private ["CSo12NSDictionary", "write"]
+- !private ["PSo17NSFastEnumeration", "init"]
+- !private ["PSo17NSFastEnumeration", "write"]
+- ["PSo16NSMutableCopying", "init"]
+- !private ["PSo16NSMutableCopying", "write"]
+- !private ["CSo19NSMutableDictionary", "init"]
+- !private ["CSo19NSMutableDictionary", "write"]
+- !private ["CSo8NSObject", "copyItem"]
+- !private ["CSo8NSObject", "default"]
+- !private ["CSo8NSObject", "fileExists"]
+- !private ["CSo8NSObject", "main"]
+- !private ["CSo8NSObject", "path"]
+- !private ["CSo8NSObject", "write"]
+- !private ["PSo16NSObjectProtocol", "copyItem"]
+- !private ["PSo16NSObjectProtocol", "default"]
+- !private ["PSo16NSObjectProtocol", "fileExists"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "main"]
+- !private ["PSo16NSObjectProtocol", "path"]
+- !private ["PSo16NSObjectProtocol", "write"]
+- ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "write"]
+- ["CSo8NSString", "init"]
+- ["Ps9OptionSet", "userDomainMask"]
+- ["Ps22RandomAccessCollection", "first"]
+- ["Ps26RangeReplaceableCollection", "first"]
+- ["Ps16RawRepresentable", "documentDirectory"]
+- ["Ps16RawRepresentable", "userDomainMask"]
+- !private ["P10Foundation20ReferenceConvertible", "init"]
+- ["OCSo11FileManager19SearchPathDirectory", "documentDirectory"]
+- ["VCSo11FileManager20SearchPathDomainMask", "userDomainMask"]
+- ["Ps8Sequence", "first"]
+- !private ["Ps8Sequence", "init"]
+- !private ["Ps8Sequence", "subscript"]
+- !private ["Ps8Sequence", "write"]
+- ["Ps10SetAlgebra", "userDomainMask"]
+- ["V9TimerDemo15SettingsHandler", "AnyObject"]
+- ["V9TimerDemo15SettingsHandler", "Bool"]
+- !private ["V9TimerDemo15SettingsHandler", "Bundle"]
+- ["V9TimerDemo15SettingsHandler", "Double"]
+- !private ["V9TimerDemo15SettingsHandler", "FileManager"]
+- ["V9TimerDemo15SettingsHandler", "Int"]
+- !private ["V9TimerDemo15SettingsHandler", "NSMutableDictionary"]
+- ["V9TimerDemo15SettingsHandler", "NSSearchPathForDirectoriesInDomains"]
+- ["V9TimerDemo15SettingsHandler", "SettingsHandler"]
+- ["V9TimerDemo15SettingsHandler", "String"]
+- !private ["V9TimerDemo15SettingsHandler", "URL"]
+- !private ["V9TimerDemo15SettingsHandler", "_settingsDict"]
+- !private ["V9TimerDemo15SettingsHandler", "checkValueForKey"]
+- ["V9TimerDemo15SettingsHandler", "copySettingsFileFromBundle"]
+- ["V9TimerDemo15SettingsHandler", "dailyGoal"]
+- !private ["V9TimerDemo15SettingsHandler", "documentsDir"]
+- ["V9TimerDemo15SettingsHandler", "init"]
+- ["V9TimerDemo15SettingsHandler", "isVibrateOn"]
+- ["V9TimerDemo15SettingsHandler", "loadSettingsToMemory"]
+- ["V9TimerDemo15SettingsHandler", "longBreakCompletedSound"]
+- ["V9TimerDemo15SettingsHandler", "longBreakDurationMinutes"]
+- ["V9TimerDemo15SettingsHandler", "longBreakInterval"]
+- !private ["V9TimerDemo15SettingsHandler", "settingsDict"]
+- !private ["V9TimerDemo15SettingsHandler", "settingsFileName"]
+- !private ["V9TimerDemo15SettingsHandler", "settingsFilePath"]
+- ["V9TimerDemo15SettingsHandler", "shared"]
+- ["V9TimerDemo15SettingsHandler", "shortBreakCompletedSound"]
+- ["V9TimerDemo15SettingsHandler", "shortBreakDurationMinutes"]
+- ["V9TimerDemo15SettingsHandler", "shortBreakInterval"]
+- ["V9TimerDemo15SettingsHandler", "taskCompletedSound"]
+- ["V9TimerDemo15SettingsHandler", "taskDurationMinutes"]
+- !private ["V9TimerDemo15SettingsHandler", "updateValueForKey"]
+- ["V9TimerDemo15SettingsHandler", "writeSettingsToFile"]
+- ["SS", "init"]
+- ["Ps16TextOutputStream", "init"]
+- ["Ps20TextOutputStreamable", "init"]
+- !private ["V10Foundation3URL", "init"]
+- ["Ps14_ArrayProtocol", "first"]
+- ["Ps23_BidirectionalIndexable", "first"]
+- ["Ps24_DestructorSafeContainer", "first"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps34_ExpressibleByFileReferenceLiteral", "init"]
+- ["Ps33_ExpressibleByStringInterpolation", "init"]
+- ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps9_Hashable", "copyItem"]
+- !private ["Ps9_Hashable", "default"]
+- ["Ps9_Hashable", "documentDirectory"]
+- !private ["Ps9_Hashable", "fileExists"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "main"]
+- !private ["Ps9_Hashable", "path"]
+- !private ["Ps9_Hashable", "write"]
+- ["Ps10_Indexable", "first"]
+- !private ["Ps10_Indexable", "subscript"]
+- ["Ps14_IndexableBase", "first"]
+- !private ["Ps14_IndexableBase", "subscript"]
+- ["Ps17_MutableIndexable", "first"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- ["Ps21_ObjectiveCBridgeable", "first"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "subscript"]
+- ["Ps22_RandomAccessIndexable", "first"]
+- ["Ps26_RangeReplaceableIndexable", "first"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Sa"
+- "Ps23BidirectionalCollection"
+- !private "Sb"
+- !private "CSo6Bundle"
+- "Ps7CVarArg"
+- "Ps10Collection"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- !private "Vs10Dictionary"
+- "Ps9Equatable"
+- "Ps25ExpressibleByArrayLiteral"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- !private "Ps30ExpressibleByDictionaryLiteral"
+- "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- "Ps26ExpressibleByStringLiteral"
+- "Ps33ExpressibleByUnicodeScalarLiteral"
+- !private "CSo11FileManager"
+- "Ps8Hashable"
+- "Ps25LosslessStringConvertible"
+- "Ps10MirrorPath"
+- "Ps17MutableCollection"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- !private "CSo12NSDictionary"
+- !private "PSo17NSFastEnumeration"
+- "PSo16NSMutableCopying"
+- !private "CSo19NSMutableDictionary"
+- !private "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "CSo8NSString"
+- "Ps9OptionSet"
+- "Ps22RandomAccessCollection"
+- "Ps26RangeReplaceableCollection"
+- "Ps16RawRepresentable"
+- !private "P10Foundation20ReferenceConvertible"
+- "OCSo11FileManager19SearchPathDirectory"
+- "VCSo11FileManager20SearchPathDomainMask"
+- "Ps8Sequence"
+- "Ps10SetAlgebra"
+- "V9TimerDemo15SettingsHandler"
+- "SS"
+- "Ps16TextOutputStream"
+- "Ps20TextOutputStreamable"
+- !private "V10Foundation3URL"
+- "Ps14_ArrayProtocol"
+- "Ps23_BidirectionalIndexable"
+- "Ps24_DestructorSafeContainer"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- "Ps34_ExpressibleByBuiltinStringLiteral"
+- "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps34_ExpressibleByFileReferenceLiteral"
+- "Ps33_ExpressibleByStringInterpolation"
+- "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- "Ps10_Indexable"
+- "Ps14_IndexableBase"
+- "Ps17_MutableIndexable"
+- "Ps21_ObjectiveCBridgeable"
+- "Ps22_RandomAccessIndexable"
+- "Ps26_RangeReplaceableIndexable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/XCode 8.3.2/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "2b3ec5c8aad1d1ee32ff9f88c83e61c7"

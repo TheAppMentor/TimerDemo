@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FormatVersion</key>
+	<string>1.2</string>
+	<key>RunDestination</key>
+	<dict>
+		<key>LocalComputer</key>
+		<dict>
+			<key>BusSpeedInMHz</key>
+			<integer>100</integer>
+			<key>CPUCount</key>
+			<integer>1</integer>
+			<key>CPUKind</key>
+			<string>Intel Core i7</string>
+			<key>CPUSpeedInMHz</key>
+			<integer>2500</integer>
+			<key>Identifier</key>
+			<string>E6AAFB06-0F41-5F7E-B162-792C47841E5F</string>
+			<key>IsConcreteDevice</key>
+			<true/>
+			<key>LogicalCPUCoresPerPackage</key>
+			<integer>8</integer>
+			<key>ModelCode</key>
+			<string>MacBookPro11,5</string>
+			<key>ModelName</key>
+			<string>MacBook Pro</string>
+			<key>ModelUTI</key>
+			<string>com.apple.macbookpro-15-retina-display</string>
+			<key>Name</key>
+			<string>My Mac</string>
+			<key>NativeArchitecture</key>
+			<string>x86_64h</string>
+			<key>OperatingSystemVersion</key>
+			<string>10.12.4</string>
+			<key>OperatingSystemVersionWithBuildNumber</key>
+			<string>10.12.4 (16E195)</string>
+			<key>PhysicalCPUCoresPerPackage</key>
+			<integer>4</integer>
+			<key>Platform</key>
+			<dict>
+				<key>Identifier</key>
+				<string>com.apple.platform.macosx</string>
+				<key>Name</key>
+				<string>macOS</string>
+			</dict>
+			<key>RAMSizeInMegabytes</key>
+			<integer>16384</integer>
+		</dict>
+		<key>Name</key>
+		<string>iPhone 7 Plus</string>
+		<key>TargetArchitecture</key>
+		<string>x86_64</string>
+		<key>TargetDevice</key>
+		<dict>
+			<key>Identifier</key>
+			<string>F59F4780-FA5F-4547-AFC6-F5CD7FC5F6F2</string>
+			<key>IsConcreteDevice</key>
+			<true/>
+			<key>ModelCode</key>
+			<string>iPhone9,2</string>
+			<key>ModelName</key>
+			<string>iPhone 7 Plus</string>
+			<key>ModelUTI</key>
+			<string>com.apple.iphone-7-plus-1</string>
+			<key>Name</key>
+			<string>iPhone 7 Plus</string>
+			<key>NativeArchitecture</key>
+			<string>x86_64</string>
+			<key>OperatingSystemVersion</key>
+			<string>10.3</string>
+			<key>OperatingSystemVersionWithBuildNumber</key>
+			<string>10.3 (14E269)</string>
+			<key>Platform</key>
+			<dict>
+				<key>Identifier</key>
+				<string>com.apple.platform.iphonesimulator</string>
+				<key>Name</key>
+				<string>iOS Simulator</string>
+			</dict>
+		</dict>
+		<key>TargetSDK</key>
+		<dict>
+			<key>Identifier</key>
+			<string>iphonesimulator10.3</string>
+			<key>IsInternal</key>
+			<false/>
+			<key>Name</key>
+			<string>Simulator - iOS 10.3</string>
+			<key>OperatingSystemVersion</key>
+			<string>10.3</string>
+		</dict>
+	</dict>
+	<key>TestableSummaries</key>
+	<array>
+		<dict>
+			<key>ProjectPath</key>
+			<string>TimerDemo.xcodeproj</string>
+			<key>TargetName</key>
+			<string>TimerDemoTests</string>
+			<key>TestName</key>
+			<string>TimerDemoTests</string>
+			<key>TestObjectClass</key>
+			<string>IDESchemeActionTestableSummary</string>
+			<key>Tests</key>
+			<array>
+				<dict>
+					<key>Duration</key>
+					<real>0.0069919824600219727</real>
+					<key>Subtests</key>
+					<array>
+						<dict>
+							<key>Duration</key>
+							<real>0.0060749650001525879</real>
+							<key>Subtests</key>
+							<array>
+								<dict>
+									<key>Duration</key>
+									<real>0.0056170225143432617</real>
+									<key>Subtests</key>
+									<array>
+										<dict>
+											<key>Duration</key>
+											<real>0.0051770210266113281</real>
+											<key>TestIdentifier</key>
+											<string>SettingsHandlerTests/testTaskDurationUpdate()</string>
+											<key>TestName</key>
+											<string>testTaskDurationUpdate()</string>
+											<key>TestObjectClass</key>
+											<string>IDESchemeActionTestSummary</string>
+											<key>TestStatus</key>
+											<string>Success</string>
+											<key>TestSummaryGUID</key>
+											<string>926B0C4B-FC1A-4E2B-A964-D8DB66EB0966</string>
+										</dict>
+									</array>
+									<key>TestIdentifier</key>
+									<string>SettingsHandlerTests</string>
+									<key>TestName</key>
+									<string>SettingsHandlerTests</string>
+									<key>TestObjectClass</key>
+									<string>IDESchemeActionTestSummaryGroup</string>
+								</dict>
+							</array>
+							<key>TestIdentifier</key>
+							<string>TimerDemoTests.xctest</string>
+							<key>TestName</key>
+							<string>TimerDemoTests.xctest</string>
+							<key>TestObjectClass</key>
+							<string>IDESchemeActionTestSummaryGroup</string>
+						</dict>
+					</array>
+					<key>TestIdentifier</key>
+					<string>Selected tests</string>
+					<key>TestName</key>
+					<string>Selected tests</string>
+					<key>TestObjectClass</key>
+					<string>IDESchemeActionTestSummaryGroup</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
