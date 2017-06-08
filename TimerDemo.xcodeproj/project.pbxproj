@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F136D1F1EE8741500E710FA /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F136D1E1EE8741500E710FA /* SettingsTVC.swift */; };
+		2F136D211EE875FF00E710FA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F136D201EE875FF00E710FA /* Utilities.swift */; };
+		2F136D231EE8FEA300E710FA /* UITableViewSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F136D221EE8FEA300E710FA /* UITableViewSettingsCell.swift */; };
 		2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B591EE28BD7005BB176 /* AppDelegate.swift */; };
 		2F446B5C1EE28BD7005BB176 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B5B1EE28BD7005BB176 /* ViewController.swift */; };
 		2F446B5F1EE28BD7005BB176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B5D1EE28BD7005BB176 /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F136D1E1EE8741500E710FA /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
+		2F136D201EE875FF00E710FA /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		2F136D221EE8FEA300E710FA /* UITableViewSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewSettingsCell.swift; sourceTree = "<group>"; };
 		2F446B561EE28BD7005BB176 /* TimerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F446B591EE28BD7005BB176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F446B5B1EE28BD7005BB176 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F136D1D1EE85FC500E710FA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2F446B771EE67723005BB176 /* Settings.plist */,
+				2F92079F1EE67A6A00DB3C35 /* SettingsHandler.swift */,
+				2F136D1E1EE8741500E710FA /* SettingsTVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		2F446B4D1EE28BD7005BB176 = {
 			isa = PBXGroup;
 			children = (
@@ -102,13 +118,14 @@
 				2F446B5B1EE28BD7005BB176 /* ViewController.swift */,
 				2F446B6B1EE28C9E005BB176 /* TimerBoy.swift */,
 				2F446B6D1EE3324C005BB176 /* Task.swift */,
-				2F446B771EE67723005BB176 /* Settings.plist */,
-				2F92079F1EE67A6A00DB3C35 /* SettingsHandler.swift */,
+				2F136D1D1EE85FC500E710FA /* Settings */,
 				2F446B751EE5AD32005BB176 /* TaskStatus.swift */,
 				2F446B731EE5ACFE005BB176 /* TaskType.swift */,
 				2F446B6F1EE51FB0005BB176 /* TaskCollection.swift */,
 				2F446B711EE5AC41005BB176 /* TaskList.swift */,
 				2F446B5D1EE28BD7005BB176 /* Main.storyboard */,
+				2F136D221EE8FEA300E710FA /* UITableViewSettingsCell.swift */,
+				2F136D201EE875FF00E710FA /* Utilities.swift */,
 				2F446B601EE28BD7005BB176 /* Assets.xcassets */,
 				2F446B621EE28BD7005BB176 /* LaunchScreen.storyboard */,
 				2F446B651EE28BD7005BB176 /* Info.plist */,
@@ -236,12 +253,15 @@
 			files = (
 				2F446B721EE5AC41005BB176 /* TaskList.swift in Sources */,
 				2F446B6E1EE3324C005BB176 /* Task.swift in Sources */,
+				2F136D211EE875FF00E710FA /* Utilities.swift in Sources */,
 				2F446B761EE5AD32005BB176 /* TaskStatus.swift in Sources */,
 				2F9207A01EE67A6A00DB3C35 /* SettingsHandler.swift in Sources */,
 				2F446B5C1EE28BD7005BB176 /* ViewController.swift in Sources */,
 				2F446B6C1EE28C9E005BB176 /* TimerBoy.swift in Sources */,
 				2F446B741EE5ACFE005BB176 /* TaskType.swift in Sources */,
 				2F446B701EE51FB0005BB176 /* TaskCollection.swift in Sources */,
+				2F136D1F1EE8741500E710FA /* SettingsTVC.swift in Sources */,
+				2F136D231EE8FEA300E710FA /* UITableViewSettingsCell.swift in Sources */,
 				2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +481,7 @@
 				2F9207B01EE6A96400DB3C35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
