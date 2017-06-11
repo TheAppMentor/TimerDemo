@@ -10,18 +10,18 @@ import Foundation
 
 struct Task {
 
-    private var taskID : UUID
-    private var timer : TimerBoy = TimerBoy()
-    private var taskName : String
-    private var taskType : TaskType
+    private var taskID: UUID
+    private var timer: TimerBoy = TimerBoy()
+    private var taskName: String
+    private var taskType: TaskType
     
-    var taskStatus : TaskStatus = .notStarted
-    var isPerfectTask : Bool{
+    var taskStatus: TaskStatus = .notStarted
+    var isPerfectTask: Bool{
         return false
     }
     
     
-    init(name : String, type : TaskType) {
+    init(name: String, type: TaskType) {
         taskID = UUID()
         taskName = name
         taskType = type
@@ -44,11 +44,11 @@ struct Task {
         
     }
     
-    func edit(){
+    func edit() {
         
     }
     
-    func delete(){
+    func delete() {
         
     }
     

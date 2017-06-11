@@ -29,92 +29,120 @@ class SettingsHandlerTests: XCTestCase {
     
     
     func testTaskDurationFetch() {
-        XCTAssert(settingsHandler.taskDurationMinutes == 25.0, "task Duration does not match ==> Fail")
+        XCTAssert(Double((settingsHandler.taskDurationMinutes.currentValue))! == 25.0, "task Duration does not match ==> Fail")
     }
     
     
     func testTaskDurationUpdate() {
         
-        settingsHandler.taskDurationMinutes = 30.0
+        let currSetting = settingsHandler.taskDurationMinutes
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "30.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.taskDurationMinutes = newSetting
         
-        let result = settingsHandler.taskDurationMinutes == 30.0 ? true : false
+        let result = Double((settingsHandler.taskDurationMinutes.currentValue))! == 30.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.taskDurationMinutes.currentValue))!)  ==> Fail")
         
-        XCTAssert(result, "task Duration Updated Failed ==> Fail")
-        
-        if result == true{
-            settingsHandler.taskDurationMinutes = 25.0
-        }
+        if result == true {settingsHandler.taskDurationMinutes = currSetting}
     }
     
     func testShortBreakDurationRead() {
-        XCTAssert(settingsHandler.shortBreakDurationMinutes == 5.0, "testShortBreakDurationRead does not match ==> Fail")
+        XCTAssert(Double((settingsHandler.shortBreakDurationMinutes.currentValue))! == 5.0, "task Duration does not match ==> Fail")
     }
-
+    
     func testShortBreakDurationUpdate() {
-        settingsHandler.taskDurationMinutes = 15.0
-        XCTAssert(settingsHandler.taskDurationMinutes == 15.0, "testShortBreakDurationUpdate  Updated Failed ==> Fail")
+        
+        let currSetting = settingsHandler.shortBreakDurationMinutes
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "15.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.shortBreakDurationMinutes = newSetting
+        
+        let result = Double((settingsHandler.shortBreakDurationMinutes.currentValue))! == 15.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.shortBreakDurationMinutes.currentValue))!)  ==> Fail")
+        
+        if result == true {settingsHandler.shortBreakDurationMinutes = currSetting}
         
     }
     
-    
-    func testlongBreakDurationMinutes() {
-        XCTAssert(settingsHandler.longBreakDurationMinutes == 25.0, "testlongBreakDurationMinutes => Failed")
+    func testLongBreakDurationRead() {
+        XCTAssert(Double((settingsHandler.longBreakDurationMinutes.currentValue))! == 5.0, "task Duration does not match ==> Fail")
     }
     
     func testLongBreakDurationUpdate() {
-        let result = settingsHandler.longBreakDurationMinutes == 25.0 ? true : false
         
-        XCTAssert(result, "longBreakDurationMinutes Updated Failed ==> Fail")
+        let currSetting = settingsHandler.longBreakDurationMinutes
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "15.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.longBreakDurationMinutes = newSetting
         
-        if result == true{
-            settingsHandler.longBreakDurationMinutes = 25.0
-        }
+        let result = Double((settingsHandler.longBreakDurationMinutes.currentValue))! == 15.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.longBreakDurationMinutes.currentValue))!)  ==> Fail")
+        
+        if result == true {settingsHandler.longBreakDurationMinutes = currSetting}
+        
     }
     
-    func testShortBreakInterval() {
-        XCTAssert(settingsHandler.shortBreakInterval == 1, "testShortBreakInterval => Read Failed.")
+    func testLongBreakIntervalRead() {
+        XCTAssert(Double((settingsHandler.longBreakInterval.currentValue))! == 5.0, "task Duration does not match ==> Fail")
     }
     
-    
-    func testShortBreakshortBreakIntervalUpdate() {
-        settingsHandler.shortBreakInterval = 5
-        let result = settingsHandler.shortBreakInterval == 5 ? true : false
+    func testLongBreakIntervalUpdate() {
         
-        XCTAssert(result, "testShortBreakshortBreakIntervalUpdate Updated Failed ==> Fail")
+        let currSetting = settingsHandler.longBreakInterval
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "33.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.longBreakInterval = newSetting
         
-        if result == true{
-            settingsHandler.shortBreakInterval = 1
-        }
+        let result = Double((settingsHandler.longBreakInterval.currentValue))! == 33.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.longBreakInterval.currentValue))!)  ==> Fail")
+        
+        if result == true {settingsHandler.longBreakInterval = currSetting}
     }
+    
+    func testShortBreakIntervalRead() {
+        XCTAssert(Double((settingsHandler.shortBreakInterval.currentValue))! == 5.0, "task Duration does not match ==> Fail")
+    }
+    
+    func testShortBreakIntervalUpdate() {
+        
+        let currSetting = settingsHandler.shortBreakInterval
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "43.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.shortBreakInterval = newSetting
+        
+        let result = Double((settingsHandler.shortBreakInterval.currentValue))! == 43.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.shortBreakInterval.currentValue))!)  ==> Fail")
+        
+        if result == true {settingsHandler.shortBreakInterval = currSetting}
+    }
+    
     
     func testDailyGoal() {
-        XCTAssert(settingsHandler.dailyGoal == 2, "Daily Goal Test Failed")
+        XCTAssert(Double((settingsHandler.dailyGoal.currentValue))! == 5.0, "task Duration does not match ==> Fail")
     }
     
     
     func testDailyGoalUpdate() {
-        settingsHandler.dailyGoal = 5
-        let result = settingsHandler.dailyGoal == 5 ? true : false
+        let currSetting = settingsHandler.dailyGoal
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "43.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.dailyGoal = newSetting
         
-        XCTAssert(result, "testDailyGoalUpdate Updated Failed ==> Fail")
+        let result = Double((settingsHandler.dailyGoal.currentValue))! == 43.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.dailyGoal.currentValue))!)  ==> Fail")
         
-        if result == true{
-            settingsHandler.dailyGoal = 2
-        }
-        
+        if result == true {settingsHandler.dailyGoal = currSetting}
     }
     
     func testVibrateON() {
-        XCTAssert(settingsHandler.isVibrateOn == false, "Vibrate Check Failed")
+        XCTAssert(Double((settingsHandler.isVibrateOn.currentValue))! == 0.0, "Vibrate Check Failed")
     }
     
-
-    func testVibrateUpdate() {
-        settingsHandler.isVibrateOn = true
-        
-        XCTAssert(settingsHandler.isVibrateOn == true, "Vibrate Update Failed.")
     
-        settingsHandler.isVibrateOn = false
+    func testVibrateUpdate() {
+        let currSetting = settingsHandler.isVibrateOn
+        let newSetting = Setting(displayName: (currSetting.displayName), currentValue: "1.0", listOfValues: currSetting.listOfValues)
+        settingsHandler.isVibrateOn = newSetting
+        
+        let result = Double((settingsHandler.isVibrateOn.currentValue))! == 1.0 ? true : false
+        XCTAssert(result, "task Duration Updated Failed \((settingsHandler.isVibrateOn.currentValue))!)  ==> Fail")
+        
+        if result == true {settingsHandler.isVibrateOn = currSetting}
+        
     }
     
 }

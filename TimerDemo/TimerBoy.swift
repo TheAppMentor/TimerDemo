@@ -10,21 +10,21 @@ import Foundation
 
 struct TimerBoy {
     
-    private var startTime : Date?
-    private var duration : CFTimeInterval = 25.0 // Get his value from the settings Plist
+    private var startTime: Date?
+    private var duration: CFTimeInterval = 25.0 // Get his value from the settings Plist
     
-    private var timeRemaining : CFTimeInterval? {
-        if let theStartTime = startTime{
+    private var timeRemaining: CFTimeInterval? {
+        if let theStartTime = startTime {
             return (duration - theStartTime.timeIntervalSinceNow)
         }
         return nil
     }
     
-    var displayValue : String{
+    var displayValue: String{
         return convertTimeIntervalToDisplayFormat()
     }
 
-    mutating func startTimer(withDuration : CFTimeInterval = 25 * 60){
+    mutating func startTimer(withDuration: CFTimeInterval = 25 * 60) {
         startTime = Date()
         duration = withDuration
     }
@@ -41,7 +41,7 @@ struct TimerBoy {
 
 extension TimerBoy{
     // Helper Methods
-    internal func convertTimeIntervalToDisplayFormat() -> String{
+    internal func convertTimeIntervalToDisplayFormat() -> String {
         return "Timer"
     }
     

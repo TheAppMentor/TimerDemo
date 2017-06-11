@@ -8,108 +8,85 @@
 
 import UIKit
 
-class SettingsTVC: UITableViewController,UIPickerViewDelegate,UIPickerViewDataSource {
-
+class SettingsTVC: UITableViewController, PickerSelectionDelegate {
+    
+    var bluvaryer = CALayer()
+    var settingsPickerView : SettingsPickerView?
+    
+    var selectedSetting : Setting?
+    var selectedIndexPath : IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.white,
+             NSFontAttributeName: Utilities.shared.regularFontSize]
+        
+        tableView.tableFooterView = UIView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if let selectedRow = tableView.indexPathForSelectedRow{
+            tableView.deselectRow(at:selectedRow , animated: true)
+        }
+    }
     
     @IBAction func dismissSettingsScreen(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+        //self.navigationController?.popViewController(animated: true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return SettingsHandler.shared.numberOfSections()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return SettingsHandler.shared.numberOfRowsForSection(section: section)
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: tableView.frame.height * 0.75, width: tableView.frame.width, height: tableView.frame.height * 0.25))
-        pickerView.backgroundColor = Utilities.shared.lightRedColor
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-        visualEffectView.frame = tableView.bounds
-        tableView.addSubview(visualEffectView)
-        
-        tableView.addSubview(pickerView)
+        // Selected Setting
+        selectedSetting = SettingsHandler.shared.fetchSettingForIndex(section: indexPath.section, row: indexPath.row)
+        selectedIndexPath = indexPath
+        performSegue(withIdentifier: "showPickerView", sender: self)
     }
     
     
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.shared.tableViewCellHeight
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.shared.sectionHeaderHeight
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "25 Minutes"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("someRow Was selected")
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let theString = "25 Minutes"
-        
-        let attributedString = NSMutableAttributedString(string:theString)
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white , range: (theString as NSString).range(of: theString))
-        
-        return attributedString
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cellIdentifier = SettingsHandler.shared.cellTypeForIndexPath(section: indexPath.section, row: indexPath.row)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
         // Configure the cell...
-
+        if let titleLabel = cell.viewWithTag(11) as? UILabel{
+            titleLabel.text = SettingsHandler.shared.rowNameForIndex(section: indexPath.section, row: indexPath.row)
+        }
+        
+        if let titleLabel = cell.viewWithTag(22) as? UILabel{
+            titleLabel.text = SettingsHandler.shared.detailLabelForIndex(section: indexPath.section, row: indexPath.row)
+        }
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -145,15 +122,40 @@ class SettingsTVC: UITableViewController,UIPickerViewDelegate,UIPickerViewDataSo
         return true
     }
     */
+    
+    
+    func userSelectedValue(index: Int) {
+        
+        guard let _ = selectedSetting else { return }
+        guard let _ = selectedIndexPath else { return }
+        
+        let updatedSetting = Setting(displayName: selectedSetting!.displayName, currentValue: selectedSetting!.listOfValues![index], listOfValues: selectedSetting!.listOfValues)
+        SettingsHandler.shared.updateSettingForIndex(section: selectedIndexPath!.section, row: selectedIndexPath!.row, newSetting: updatedSetting)
+        tableView.reloadData()
+    }
+    
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if let thePickerVC = segue.destination as? PickerVC{
+            
+            let currentValue = selectedSetting?.currentValue ?? ""
+            let displayName = selectedSetting?.displayName ?? ""
+            let listOfValueInPicker = selectedSetting?.listOfValues ?? []
+            let indexOfCurrentSelectedValue = selectedSetting?.listOfValues?.index(of: currentValue) ?? 0
+            
+            thePickerVC.pickerViewData = SettingsPickerViewDataProvider(pickerViewIndexOfSelectedItem: indexOfCurrentSelectedValue,
+                                                                        pickerViewItems: listOfValueInPicker,
+                                                                        pickerViewTitle: displayName)
+            
+            thePickerVC.pickerSelectionDelegate = self
+        }
+        
     }
-    */
-
+    
 }

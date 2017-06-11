@@ -13,7 +13,7 @@ struct Utilities {
     static let shared = Utilities()
     
     // Colors
-    let lightRedColor = UIColor(red: CGFloat(237.0/255.0), green: CGFloat(85.0/255.0), blue: CGFloat(101.0/255.0), alpha: 1.0)
+    let lightRedColor = UIColor(red: CGFloat(237.0 / 255.0), green: CGFloat(85.0 / 255.0), blue: CGFloat(101.0 / 255.0), alpha: 1.0)
     //var darkRedColor = UIColor(red: CGFloat(237.0/255.0), green: CGFloat(85.0/255.0), blue: CGFloat(101.0/255.0), alpha: 1.0)
     
     
