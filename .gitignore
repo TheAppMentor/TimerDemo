@@ -1,19 +1,8 @@
 
-*.xcactivitylog
-
-*.xcactivitylog
-
-*.pcm
-
 DerivedData
-DerivedData/*
-DerivedData/
-
-
-*.xcuserstate
-
-*.idx
-
-*.log
-
+DerivedData/ModuleCache/
+*.xcactivitylog
 *.pcm
+*.xcuserstate
+*.idx
+*.log
