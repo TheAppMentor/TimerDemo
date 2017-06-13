@@ -15,6 +15,8 @@ class VizCanvasView: UIView {
     
     var chartData : ChartData? = ChartDataConformer() as ChartData
     
+    var metaData : ChartMetaData!
+    
     let axisLabelHeight : CGFloat = 20.0
     let dataLabelHeight : CGFloat = 20.0
     
@@ -23,30 +25,6 @@ class VizCanvasView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
-        
-//        let barContainerLayer = CALayer()
-//        barContainerLayer.frame = CGRect(x: 0, y: 0, width: bounds.width/numberOfDataPoints, height: bounds.height)
-//        
-//        let theColumnLayer = imageForDataPoint(dataPoint: ChartDataPoint(dimension: "Mon", measure: 20))
-//        
-//        theColumnLayer.frame = CGRect(x: barContainerLayer.bounds.width/2 - 5.0,
-//                                      y: barContainerLayer.frame.height - theColumnLayer.bounds.height - axisLabelHeight * 1.25,  // Maintian a distance of atleast quarter the label height
-//                                      width: theColumnLayer.bounds.width,
-//                                      height: theColumnLayer.bounds.height)
-//        
-//        
-//        barContainerLayer.addSublayer(theColumnLayer)
-//        
-//        let labelFrame = CGRect(x: barContainerLayer.frame.origin.x,
-//                                y: barContainerLayer.bounds.height - axisLabelHeight,
-//                                width: barContainerLayer.bounds.width,
-//                                height: axisLabelHeight)
-//        
-//        
-//        barContainerLayer.addSublayer(textLayerWith(textString: "Mon", frame: labelFrame))
-
-        
-//        layer.addSublayer(barContainerLayer)
         processChartData(chartData: chartData!)
     }
     
@@ -78,7 +56,7 @@ class VizCanvasView: UIView {
     // Chart Data Processing :
     
     func processChartData(chartData : ChartData) {
-        let metaData = getMetaData(chartData: chartData)
+        metaData = getMetaData(chartData: chartData)
         
         let maxColHeight = bounds.height - axisLabelHeight - dataLabelHeight
         let numberOfColumns = metaData?.numberOfDataPoints
@@ -90,7 +68,7 @@ class VizCanvasView: UIView {
             let height = (maxColHeight/(metaData?.maxDataPoint.measure)!) * eachDataPoint.measure
             
             let eachColContainer = buildColumnContainer(dataPoint: eachDataPoint, colContainerFrame: colContainerFrame, colWidth: 10.0, colHeight: height)
-            eachColContainer.backgroundColor = UIColor.yellow.cgColor
+            //eachColContainer.backgroundColor = UIColor.yellow.cgColor
             layer.addSublayer(eachColContainer)
         }
     }
@@ -108,30 +86,27 @@ class VizCanvasView: UIView {
     
     
     
-    
-    
-    
-    
     func buildColumnContainer(dataPoint : ChartDataPoint, colContainerFrame : CGRect, colWidth : CGFloat, colHeight : CGFloat ) -> CALayer {
         
         let columnContainerLayer = CALayer()
         //barContainerLayer.frame = CGRect(x: 0, y: 0, width: bounds.width/numberOfDataPoints, height: bounds.height)
         columnContainerLayer.frame = colContainerFrame
         
-//        let theColumnLayer = imageForDataPoint(dataPoint: ChartDataPoint(dimension: dataPoint.dimension, measure: dataPoint.measure))
-        let theColumnLayer = columnImageWith(size: CGSize(width: colWidth, height: colHeight))
+        
+        let theColorGradient = dataPoint == metaData.maxDataPoint ? (Utilities.shared.lightRedColor.cgColor, Utilities.shared.darkRedColor.cgColor) : (Utilities.shared.lightGrayColor.cgColor, Utilities.shared.darkGrayColor.cgColor)
+        
+        let theColumnLayer = columnImageWith(size: CGSize(width: colWidth, height: colHeight), withColorGradient: theColorGradient)
         
         theColumnLayer.frame = CGRect(x: columnContainerLayer.bounds.width/2 - colWidth/2.0,
-                                      y: columnContainerLayer.frame.height - theColumnLayer.bounds.height - axisLabelHeight * 1.25,  // Maintian a distance of atleast quarter the label height
+                                      y: columnContainerLayer.frame.height - colHeight - axisLabelHeight * 1.25,  // Maintian a distance of atleast quarter the label height
             width: theColumnLayer.bounds.width,
             height: theColumnLayer.bounds.height)
         
-        
         columnContainerLayer.addSublayer(theColumnLayer)
         
-        let labelFrame = CGRect(x: columnContainerLayer.frame.origin.x,
+        let labelFrame = CGRect(x: 0,
                                 y: columnContainerLayer.bounds.height - axisLabelHeight,
-                                width: columnContainerLayer.bounds.width,
+                                width: colContainerFrame.width,
                                 height: axisLabelHeight)
         
         
@@ -143,7 +118,8 @@ class VizCanvasView: UIView {
     
     
     
-    func columnImageWith(size : CGSize) -> CALayer {
+    
+    func columnImageWith(size : CGSize, withColorGradient : (lightColor : CGColor, darkColor : CGColor)? = (Utilities.shared.lightGrayColor.cgColor, Utilities.shared.darkGrayColor.cgColor) ) -> CALayer {
         
         let theColumn = CAShapeLayer()
         let thePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size.width, height: size.height), cornerRadius: 3.0).cgPath
@@ -154,8 +130,10 @@ class VizCanvasView: UIView {
         let gradient = CAGradientLayer()
         gradient.frame = frame
         
-        gradient.colors = [Utilities.shared.lightGrayColor.cgColor,
-                           Utilities.shared.darkGrayColor.cgColor]
+        gradient.colors = [withColorGradient?.lightColor, withColorGradient?.darkColor]
+        
+//        gradient.colors = [Utilities.shared.lightGrayColor.cgColor,
+//                           Utilities.shared.darkGrayColor.cgColor]
         
 //        gradient.colors = [Utilities.shared.lightRedColor.cgColor,
 //                           Utilities.shared.darkRedColor.cgColor]

@@ -13,12 +13,11 @@ struct Utilities {
     static let shared = Utilities()
     
     // Colors
-    let lightRedColor = UIColor(red: CGFloat(234.0 / 255.0), green: CGFloat(82.0 / 255.0), blue: CGFloat(98.0 / 255.0), alpha: 1.0)
-    let darkRedColor = UIColor(red: CGFloat(203.0/255.0), green: CGFloat(53.0/255.0), blue: CGFloat(107.0/255.0), alpha: 1.0)
+    let lightRedColor = UIColor(red: CGFloat(237.0 / 255.0), green: CGFloat(85.0 / 255.0), blue: CGFloat(101.0 / 255.0), alpha: 1.0)
+    let darkRedColor = UIColor(red: CGFloat(218.0/255.0), green: CGFloat(68.0/255.0), blue: CGFloat(83.0/255.0), alpha: 1.0)
     
     let lightGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.25)
-    let darkGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)
-    
+    let darkGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)    
     
     // Fonts
     let verySmallFontSize   = UIFont(name: "HelveticaNeue-Light", size: 12.0)

@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-struct ChartDataPoint {
+func ==(lhs : ChartDataPoint, rhs : ChartDataPoint) -> Bool {
+    return (lhs.dimension == rhs.dimension && lhs.measure == rhs.measure)
+}
+
+struct ChartDataPoint : Equatable {
     var dimension : String
     var measure : CGFloat
 }
@@ -22,13 +26,13 @@ protocol ChartData {
 struct ChartDataConformer : ChartData {
     var chartTitle : String = "Title Boy"
     var chartDataPoints = [
-        ChartDataPoint(dimension: "Mon", measure: 10.0),
-        ChartDataPoint(dimension: "Tue", measure: 20.0),
-        ChartDataPoint(dimension: "Wed", measure: 30.0),
-        ChartDataPoint(dimension: "Thu", measure: 40.0),
-        ChartDataPoint(dimension: "Fri", measure: 50.0),
-        ChartDataPoint(dimension: "Sat", measure: 60.0),
-        ChartDataPoint(dimension: "Sat", measure: 70.0)
+        ChartDataPoint(dimension: "Sun", measure: 20.0),
+        ChartDataPoint(dimension: "Mon", measure: 30.0),
+        ChartDataPoint(dimension: "Tue", measure: 40.0),
+        ChartDataPoint(dimension: "Wed", measure: 50.0),
+        ChartDataPoint(dimension: "Thu", measure: 60.0),
+        ChartDataPoint(dimension: "Fri", measure: 70.0),
+        ChartDataPoint(dimension: "Sat", measure: 80.0)
     ]
     
 }

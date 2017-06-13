@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Deep Focus-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TimerDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,11 +33,18 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="co4-QV-cym">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="3Ne-PR-Tgf">
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="gkv-Vm-qny"/>
+                                    <barButtonItem image="Analyze" id="DUA-7W-gKs">
+                                        <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vLN-4E-3Ud"/>
+                                    <barButtonItem image="Settings" style="plain" id="3Ne-PR-Tgf">
+                                        <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="mgj-U6-Pd2" kind="presentation" id="kbh-mS-P4Q"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="6NH-hV-BFV"/>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAQ-AF-JJf" customClass="VizChartView" customModule="TimerDemo" customModuleProvider="target">
@@ -50,19 +57,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dt8-Sg-mJU" customClass="TimerContainerView" customModule="TimerDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-B8-Ld6" customClass="TimerView" customModule="TimerDemo" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="17" width="359" height="375"/>
+                                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Zp7-B8-Ld6" firstAttribute="leading" secondItem="Dt8-Sg-mJU" secondAttribute="leading" constant="8" id="7Xn-F1-HdB"/>
+                                    <constraint firstItem="Zp7-B8-Ld6" firstAttribute="centerX" secondItem="Dt8-Sg-mJU" secondAttribute="centerX" id="8yy-h7-2Vv"/>
+                                    <constraint firstItem="Zp7-B8-Ld6" firstAttribute="top" secondItem="Dt8-Sg-mJU" secondAttribute="top" constant="17" id="CPy-Dp-otI"/>
+                                    <constraint firstItem="Zp7-B8-Ld6" firstAttribute="centerY" secondItem="Dt8-Sg-mJU" secondAttribute="centerY" id="DkO-B3-kBc"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dt8-Sg-mJU" secondAttribute="trailing" id="2SR-RW-Qqp"/>
+                            <constraint firstItem="Dt8-Sg-mJU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3nW-A0-77m"/>
                             <constraint firstItem="LAQ-AF-JJf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4rn-xf-fIr"/>
                             <constraint firstItem="co4-QV-cym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="B9R-au-u0d"/>
                             <constraint firstItem="LAQ-AF-JJf" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="ChE-eB-f5X"/>
+                            <constraint firstItem="Dt8-Sg-mJU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="RX8-l7-D70"/>
+                            <constraint firstItem="Dt8-Sg-mJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WH9-5o-uJ7"/>
                             <constraint firstAttribute="trailing" secondItem="co4-QV-cym" secondAttribute="trailing" id="gL7-f1-giQ"/>
                             <constraint firstItem="LAQ-AF-JJf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="iDY-qF-NOA"/>
                             <constraint firstItem="co4-QV-cym" firstAttribute="top" secondItem="LAQ-AF-JJf" secondAttribute="bottom" constant="18" id="ral-2A-OUc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="co4-QV-cym" secondAttribute="bottom" id="s2h-ns-Hc3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tpe-bc-y8G">
+                    <navigationItem key="navigationItem" title="Deep Focus" id="tpe-bc-y8G">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Pze-55-Lg7">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -874,5 +901,38 @@
             </objects>
             <point key="canvasLocation" x="3437.5999999999999" y="361.16941529235385"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="gpI-eK-HxD">
+            <objects>
+                <viewController id="tbA-WR-IVT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yc3-9i-pc5"/>
+                        <viewControllerLayoutGuide type="bottom" id="twa-Gk-TKi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D1U-fD-gGd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcb-Lc-7K0" customClass="TimerContainerView" customModule="TimerDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qcb-Lc-7K0" firstAttribute="leading" secondItem="D1U-fD-gGd" secondAttribute="leading" id="09o-Dt-Vk2"/>
+                            <constraint firstItem="qcb-Lc-7K0" firstAttribute="top" secondItem="D1U-fD-gGd" secondAttribute="top" id="iuL-8H-AnZ"/>
+                            <constraint firstAttribute="trailing" secondItem="qcb-Lc-7K0" secondAttribute="trailing" id="yrs-QE-iml"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQ9-T0-XUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4490.3999999999996" y="422.33883058470769"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Analyze" width="25" height="25"/>
+        <image name="Settings" width="25" height="25"/>
+    </resources>
 </document>
