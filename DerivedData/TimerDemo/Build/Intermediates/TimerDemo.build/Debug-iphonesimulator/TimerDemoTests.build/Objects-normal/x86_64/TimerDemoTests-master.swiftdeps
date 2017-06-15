@@ -1,7 +1,0 @@
-version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
-options: "8b13d7d6f0ea38b23fcd90ed39e84dda"
-build_time: [550085787, 304281000]
-inputs:
-  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/SettingsHandler.swift": [550059561, 0]
-  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemoTests/TimerDemoTests.swift": [550057318, 0]
-  "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemoTests/SettingsHandlerTests.swift": [550085773, 0]

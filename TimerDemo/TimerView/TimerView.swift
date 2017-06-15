@@ -20,6 +20,7 @@ class TimerView: UIView {
         // Drawing code
     }
     */
+    @IBOutlet weak var theArcProgressView: ArcProgressView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

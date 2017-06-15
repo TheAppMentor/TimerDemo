@@ -9,7 +9,7 @@
 import Foundation
 
 enum TaskType {
-    case pomodorro
+    case deepFocus
     case shortBreak
     case longBreak
 }

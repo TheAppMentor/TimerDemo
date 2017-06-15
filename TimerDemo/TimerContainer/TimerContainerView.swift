@@ -24,7 +24,7 @@ class TimerContainerView: UIView {
         theCurvedPath.addLine(to: CGPoint(x: 0, y: 0))
         theCurvedPath.addLine(to: CGPoint(x: bounds.width, y: 0))
         theCurvedPath.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
-        theCurvedPath.addQuadCurve(to: CGPoint(x: 0, y: bounds.height), controlPoint: CGPoint(x: bounds.width/2, y: bounds.height/1.4))
+        theCurvedPath.addQuadCurve(to: CGPoint(x: 0, y: bounds.height), controlPoint: CGPoint(x: bounds.width/2, y: bounds.height/1.3))
         
         
         let timerContainer = CAShapeLayer()

@@ -8,42 +8,86 @@
 
 import Foundation
 
-struct TimerBoy {
+protocol TimerEventHandler {
+    func timerValueChanged(seconds : CFTimeInterval)
+    func timerPaused()
+    func timerHasResumed()
+    func timerAbandoned()
+    func timerCompleted()
+}
+
+
+class TimerBoy {
+    
+    var delegate : TimerEventHandler?
     
     private var startTime: Date?
-    private var duration: CFTimeInterval = 25.0 // Get his value from the settings Plist
+    private var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
+    
+    var duration: CFTimeInterval = 25.0 // Get his value from the settings Plist
+    private var currentTimerValue : CFTimeInterval!
+    
+    var taskTimer: Timer!
     
     private var timeRemaining: CFTimeInterval? {
-        if let theStartTime = startTime {
-            return (duration - theStartTime.timeIntervalSinceNow)
-        }
-        return nil
-    }
-    
-    var displayValue: String{
-        return convertTimeIntervalToDisplayFormat()
+        return currentTimerValue
     }
 
-    mutating func startTimer(withDuration: CFTimeInterval = 25 * 60) {
+    func startTimer() {
         startTime = Date()
-        duration = withDuration
+        currentTimerValue = duration
+        createTaskTimer()
+        taskTimer.fire()
     }
     
     func pauseTimer() {
+        taskTimer.invalidate()
+        //taskTimer = nil
+        delegate?.timerPaused()
     }
     
-    mutating func resetTimer() {
+    func resumeTimer() {
+        createTaskTimer()
+        taskTimer.fire()
+        delegate?.timerHasResumed()
+    }
+    
+    func resetTimer() {
         startTime = nil
     }
-
+    
+    
+    func createTaskTimer() {
+        taskTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (theTimer) in
+            if self.currentTimerValue <= 0{
+                self.taskTimer.invalidate()
+                self.delegate?.timerCompleted()
+            }
+            
+            self.currentTimerValue = self.currentTimerValue - 1.0
+            self.delegate?.timerValueChanged(seconds: self.currentTimerValue)
+            //timerLabel.text = "\(currentTimerValue)"
+        }
+    }
+    
 }
 
 
 extension TimerBoy{
+    
     // Helper Methods
-    internal func convertTimeIntervalToDisplayFormat() -> String {
-        return "Timer"
+    internal func convertTimeIntervalToDisplayFormat(seconds : CFTimeInterval) -> String {
+        return hmsFrom(seconds: Int(seconds))
     }
+    
+    internal func hmsFrom(seconds: Int) -> String {
+        return ("Hours : \(seconds / 3600)  Minutes : \((seconds % 3600) / 60)  Seconds : \((seconds % 3600) % 60)")
+    }
+    
+    internal func getStringFrom(seconds: Int) -> String {
+        return seconds < 10 ? "0\(seconds)" : "\(seconds)"
+    }
+    
     
 }
 

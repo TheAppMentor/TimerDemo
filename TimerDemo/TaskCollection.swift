@@ -9,13 +9,12 @@
 import Foundation
 
 struct TaskCollection {
-    var taskName: String = ""
+    var taskCollectionName: String = ""
     
     private var taskCollection: [Task] = []
 
     func totalDuration() -> CFTimeInterval {
         return 0.0
     }
-    
     
 }

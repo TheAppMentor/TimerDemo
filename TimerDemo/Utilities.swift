@@ -26,6 +26,33 @@ struct Utilities {
     let largeFontSize       = UIFont(name: "HelveticaNeue-Light", size: 24.0)
     
     
+    // Helper Methods
+    internal func convertTimeIntervalToDisplayFormat(seconds : CFTimeInterval) -> String {
+        return hmsFrom(seconds: Int(seconds))
+    }
+    
+    internal func hmsFrom(seconds: Int) -> String {
+        let mins = seconds/60
+        let secs = seconds % 60
+        
+        let minsDisplay = mins < 10 ? "0\(mins)" : "\(mins)"
+        let secsDisplay  = secs < 10 ? "0\(secs)" : "\(secs)"
+        
+        
+        return minsDisplay + ":" + secsDisplay
+        //return ("Hours : \(seconds / 3600)  Minutes : \((seconds % 3600) / 60)  Seconds : \((seconds % 3600) % 60)")
+    }
+    
+    func hmsFrom(seconds: Int, completion: @escaping (_ hours: Int, _ minutes: Int, _ seconds: Int)->()) {
+        
+        completion(seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+        
+    }
+    
+    func getStringFrom(seconds: Int) -> String {
+        return seconds < 10 ? "0\(seconds)" : "\(seconds)"
+    }
+    
 }
 
 
