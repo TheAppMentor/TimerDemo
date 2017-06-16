@@ -31,6 +31,10 @@ class Task : TimerEventHandler {
 //    var taskDuration : CFTimeInterval = SettingsHandler.shared.taskDurationMinutes.currentValue
     var taskDuration : CFTimeInterval = 60  // Make it 25 * 60 later
     
+    var timeRemaining : CFTimeInterval{
+        return timer.timeRemaining!
+    }
+    
     var isPerfectTask: Bool{
         return pauseList.isEmpty
     }

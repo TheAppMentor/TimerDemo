@@ -27,9 +27,10 @@ class TimerBoy {
     var duration: CFTimeInterval = 25.0 // Get his value from the settings Plist
     private var currentTimerValue : CFTimeInterval!
     
+    
     var taskTimer: Timer!
     
-    private var timeRemaining: CFTimeInterval? {
+    var timeRemaining: CFTimeInterval? {
         return currentTimerValue
     }
 

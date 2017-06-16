@@ -102,7 +102,7 @@ class ArcProgressView: UIView {
         
         var anim = CABasicAnimation(keyPath: "strokeEnd")
         anim = CABasicAnimation(keyPath: "strokeEnd")
-        anim.duration = timerDuration - 1.0 // 1 is to sync the end of arc and timer label
+        anim.duration = timerDuration
         anim.fromValue = 0
         anim.toValue = 1
         anim.speed = 1.0

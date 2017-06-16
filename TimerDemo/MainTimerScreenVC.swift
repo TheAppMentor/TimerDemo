@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AudioToolbox
+import RSPlayPauseButton
 
 class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
     
@@ -37,10 +38,14 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
         }
         taskBoy.delegate = self
         
+        //Show Play Pause Button
+        timerControlButton.setPaused(false, animated: false)
+        
         cancelButton.isEnabled = false
         cancelButton.bounds = CGRect(x: 0, y: 0, width: 0, height: 0)
         
         timerDisplayView.theArcProgressView.timerDuration = (taskBoy.currentTask?.taskDuration)!
+        
     }
     
     func showCancelButton() {
@@ -72,10 +77,17 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
             taskBoy.startCurrentTask()
             showCancelButton()
             timerDisplayView.theArcProgressView.animateProgressBar()
+            timerControlButton.setPaused(false, animated: true)
             cancelButton.isEnabled = true
             
-        case .running   :  taskBoy.pauseCurrentTask()
-        case .paused    :   taskBoy.resumeCurrentTask()
+        case .running   :
+            taskBoy.pauseCurrentTask()
+            timerControlButton.setPaused(true, animated: true)
+            
+        case .paused    :
+            taskBoy.resumeCurrentTask()
+            timerControlButton.setPaused(false, animated: true)
+            
         default         :    print("Task Status Unknown.")
         }
     }
@@ -109,6 +121,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
     
     func currentTaskPaused() {
         timerDisplayView.theArcProgressView.pauseAnimation()
+        timerControlButton.setPaused(true, animated: false)
     }
     
     func currentTaskResumed(){
