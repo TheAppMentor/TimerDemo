@@ -7,11 +7,13 @@ target 'TimerDemo' do
 
   # Pods for TimerDemo
   pod 'RSPlayPauseButton', '~> 1.0'
+  pod 'SCLAlertView', '~> 0.7'
 
   target 'TimerDemoTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'RSPlayPauseButton', '~> 1.0'
+    pod 'SCLAlertView', '~> 0.7'
   end
 
 end

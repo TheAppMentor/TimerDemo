@@ -1,12 +1,15 @@
 PODS:
   - RSPlayPauseButton (1.0.1)
+  - SCLAlertView (0.7.0)
 
 DEPENDENCIES:
   - RSPlayPauseButton (~> 1.0)
+  - SCLAlertView (~> 0.7)
 
 SPEC CHECKSUMS:
   RSPlayPauseButton: 9def027a1259ded3a6ecfeb0e57df1775ff22fb0
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
 
-PODFILE CHECKSUM: 8dc9fe17a6f40d141fde6b225af5b162c52a76d6
+PODFILE CHECKSUM: 3e91cfc3c60fb244071d502f9a918a427eb34723
 
 COCOAPODS: 1.2.1.beta.1

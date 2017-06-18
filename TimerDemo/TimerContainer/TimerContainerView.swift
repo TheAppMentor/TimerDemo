@@ -11,6 +11,24 @@ import UIKit
 @IBDesignable
 
 class TimerContainerView: UIView {
+    
+    var timerMode : TaskType = .deepFocus{
+        didSet{
+            // When the Task Type changes, set the background to a color matching the type.
+            setNeedsDisplay()
+        }
+    }
+    
+    private var gradientColors : [CGColor]{
+        
+        switch timerMode {
+            case .deepFocus   :   return [Utilities.shared.lightRedColor.cgColor,Utilities.shared.darkRedColor.cgColor]
+            case .longBreak  :   return [Utilities.shared.lightGreenColor.cgColor,Utilities.shared.darkGreenColor.cgColor]
+            case .shortBreak :   return [Utilities.shared.lightBlueColor.cgColor,Utilities.shared.darkBlueColor.cgColor]
+            default          :   return [Utilities.shared.lightRedColor.cgColor,Utilities.shared.darkRedColor.cgColor]
+        }
+    }
+    
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -35,7 +53,7 @@ class TimerContainerView: UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.mask = timerContainer
-        gradientLayer.colors = [Utilities.shared.lightRedColor.cgColor,Utilities.shared.darkRedColor.cgColor]
+        gradientLayer.colors = gradientColors
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         

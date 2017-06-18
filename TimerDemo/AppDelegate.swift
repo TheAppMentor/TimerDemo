@@ -13,6 +13,8 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var dateCurrentRunningTaskEnds : Date?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey:Any]?) -> Bool {
@@ -24,6 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        // Figure out How much time is remaining. in Seconds.
+        // Pause the timer.
+        // Create an Date , when the timer should fire.
+        // Schedule a local notification.
+        //
+        
+        let notification = UILocalNotification()
+        //notification.fireDate = NSDate(timeIntervalSinceNow: currTask.timer) as Date
+        notification.fireDate = NSDate(timeIntervalSinceNow: 5) as Date
+        notification.alertBody = "Hey you! Yeah you! Swipe to unlock!"
+        notification.alertAction = "be awesome!"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.shared.scheduleLocalNotification(notification)
+
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -31,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         if let currTask = TaskHandler.shared.currentTask{
             if currTask.taskStatus == .running{
+                currTask.pause()
+                dateCurrentRunningTaskEnds = Date(timeInterval: currTask.timeRemaining, since: Date())
+                print("Now : \(Date())   timeCurrentRunningTaskEnds : \(dateCurrentRunningTaskEnds!)")
+                currTask.taskStatus = .pausedBecauseAppResignedActive
 //                if #available(iOS 10.0, *) {
 //                    let center = UNUserNotificationCenter.current()
 //                    let content = UNMutableNotificationContent()
@@ -52,25 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                     // ios 9
                 
-                DispatchQueue.main.async {
-                    
-                    let notification = UILocalNotification()
-                    notification.fireDate = NSDate(timeIntervalSinceNow: currTask.timeRemaining) as Date
-                    notification.alertBody = "Hey you! Yeah you! Swipe to unlock!"
-                    notification.alertAction = "be awesome!"
-                    notification.soundName = UILocalNotificationDefaultSoundName
-                    UIApplication.shared.scheduleLocalNotification(notification)
-                    
-                    let notification1 = UILocalNotification()
-                    notification1.fireDate = NSDate(timeIntervalSinceNow: currTask.timeRemaining) as Date
-                    notification1.alertBody = "Hey you! Yeah you! Swipe to unlock!"
-                    notification1.alertAction = "be awesome!"
-                    notification1.soundName = UILocalNotificationDefaultSoundName
-                    
-                    UIApplication.shared.scheduleLocalNotification(notification1)
-                }
-
-                //}
             }
         }
         
@@ -82,6 +85,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if let currTask = TaskHandler.shared.currentTask{
+            if currTask.taskStatus == .pausedBecauseAppResignedActive{
+                if let dateTaskEnds = dateCurrentRunningTaskEnds{
+                    if dateTaskEnds.timeIntervalSince(Date()) > 0{
+                        print("Timer Active Again : Remaining Time  : \(dateTaskEnds.timeIntervalSince(Date()))")
+                        currTask.timeRemaining = dateTaskEnds.timeIntervalSince(Date())
+                        currTask.resume()
+                    }else{
+                        print("Timer has expired when we were paused")
+                    }
+                }
+            }
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

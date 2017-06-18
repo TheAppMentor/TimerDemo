@@ -7,94 +7,130 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37773B9355EEB7579ADBE37D6B61CE36 /* Pods-TimerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3636EAB19E50E91798187B8398EB7A4 /* Pods-TimerDemo-dummy.m */; };
-		4D44462FAD2869E4DCC9F3E57B0CA86E /* Pods-TimerDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B984ADEC7345EB1EA1E219B682CA0A6 /* Pods-TimerDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		793AC7C2FC4D0002FEC146918A597B5B /* RSPlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B517D41BF393844E2FEFD5EE470EC72 /* RSPlayPauseButton.m */; };
-		B8905B3CD9445BF95C736BFC5DFFFC1D /* RSPlayPauseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C67154AAC14678E15F01E0DE7CD8DB3B /* RSPlayPauseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C5C2EE2279247F989F85DC718E14D2F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D40CC923B4458B4995CE00D5B6912867 /* Pods-TimerDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD99569E1FB5A7BBC131339CCA421F6B /* Pods-TimerDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D632086ECC7DC430945F0CD2E88D4645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D63FFEC7219340C609C282F77333F8A4 /* RSPlayPauseButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60CF2A178F0984E2AE07A783092F1656 /* RSPlayPauseButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D950DFD6E1269DF353042C6B877A9186 /* Pods-TimerDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980547B5E6862E575D0B689819860CD /* Pods-TimerDemoTests-dummy.m */; };
-		E24DC8E636204FF6828376F5B36F124D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		F9FABDB68D3430D8D84C81E9C6E8DAB4 /* RSPlayPauseButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBF585529B94F74910CB34130F19F1E /* RSPlayPauseButton-dummy.m */; };
+		1AA964C76651358AA645AA63E9CEFC4C /* RSPlayPauseButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB567AE0C4DC756C19915B0F5C099776 /* RSPlayPauseButton-dummy.m */; };
+		202F1180DB0E7D03B872906D2C9C0726 /* RSPlayPauseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 138EB797B12B29B5F6B7BF744C2691F5 /* RSPlayPauseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3626767F3491DB5B47A840DC94F2FDF5 /* SCLAlertView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE678087AA6903A2200DBB79AD529D89 /* SCLAlertView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B86E984FAD849E4148F4E4E53BD5805 /* Pods-TimerDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B984ADEC7345EB1EA1E219B682CA0A6 /* Pods-TimerDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B3A81C54DC68ADDA5A07E870DE4A8C9 /* RSPlayPauseButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF13FAD36693800AB54E47272AB2D15 /* RSPlayPauseButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CAA4F8D979419C8D37F117ED75EC581 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFF373B771E10A43083A3241E6E9DA1 /* SCLAlertView.swift */; };
+		70132898BA6985DCC50F3681D11C0A88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		75A7C1493AF3ED2B1E469D6ED78392FF /* Pods-TimerDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980547B5E6862E575D0B689819860CD /* Pods-TimerDemoTests-dummy.m */; };
+		8759DFAB37CB17C9A56153148163E430 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544B2AB9108FAB722FD1A00C340334D /* SCLExtensions.swift */; };
+		90A09CEE9A2A7F2736CC0622EC506C2C /* RSPlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CC75E3B2CEC942A96E57FC6A894DE /* RSPlayPauseButton.m */; };
+		AF79F0F4758C5849C0C8D5DE362D5611 /* SCLAlertView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7C44B7C1D1F875B8F621F395DD7EF8 /* SCLAlertView-dummy.m */; };
+		BACB5A404F753B50B5DC2405A8463336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		C0A963E4A6709D4EFF7E61297DCE022E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		D3CD58204036A489D7AD225D695A095F /* Pods-TimerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3636EAB19E50E91798187B8398EB7A4 /* Pods-TimerDemo-dummy.m */; };
+		DA2C619F227E7390A318135F64352C59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		FF0FBCE23498DA202A5C892074F9FCFB /* Pods-TimerDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD99569E1FB5A7BBC131339CCA421F6B /* Pods-TimerDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		259E6C1A9F95AEC59032415667FBF62F /* PBXContainerItemProxy */ = {
+		07BA00DE0A4F9F0B2B88B0ECD6EE25FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C889E9D5D9F4C6CEE037B8B2E719BCAB;
+			remoteGlobalIDString = 82F27E38B2DAF6EB7674C0689A5EBC8A;
 			remoteInfo = RSPlayPauseButton;
 		};
-		B4A013E87A2E4DEC8D78CCCD906BFDC7 /* PBXContainerItemProxy */ = {
+		93D8CB29D4EA51BDED38876F39D34E08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C889E9D5D9F4C6CEE037B8B2E719BCAB;
+			remoteGlobalIDString = E5A54F138200BD9DA5D126FA5272C062;
+			remoteInfo = SCLAlertView;
+		};
+		D758E293B002E1ABDB5FF4F7C00D5EAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82F27E38B2DAF6EB7674C0689A5EBC8A;
 			remoteInfo = RSPlayPauseButton;
+		};
+		E2BBCB20F0E842F51B66EF1D3D1AA663 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5A54F138200BD9DA5D126FA5272C062;
+			remoteInfo = SCLAlertView;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043D5CBDB7FC0B7385F9A538E55636B9 /* Pods_TimerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimerDemoTests.framework; path = "Pods-TimerDemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0544B2AB9108FAB722FD1A00C340334D /* SCLExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
+		07CE690DD64081DAC4D60F39E6EE43EC /* RSPlayPauseButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RSPlayPauseButton.framework; path = RSPlayPauseButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		138EB797B12B29B5F6B7BF744C2691F5 /* RSPlayPauseButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSPlayPauseButton.h; path = RSPlayPauseButtonDemo/RSPlayPauseButton/RSPlayPauseButton.h; sourceTree = "<group>"; };
+		16905007D6049DA31D45D89AD7F8134F /* RSPlayPauseButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RSPlayPauseButton.modulemap; sourceTree = "<group>"; };
 		1B507443788140E40A1BACD30FB611CB /* Pods-TimerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F9338CDCDFCDC7B0E3E877F531F98FC /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimerDemo.framework; path = "Pods-TimerDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32ECF01B557518CA3110D86C9004DAB9 /* Pods-TimerDemoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimerDemoTests-frameworks.sh"; sourceTree = "<group>"; };
 		3980547B5E6862E575D0B689819860CD /* Pods-TimerDemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TimerDemoTests-dummy.m"; sourceTree = "<group>"; };
 		3B984ADEC7345EB1EA1E219B682CA0A6 /* Pods-TimerDemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TimerDemoTests-umbrella.h"; sourceTree = "<group>"; };
 		3E11800CBDCCE80DD638DA8D29703C44 /* Pods-TimerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimerDemo.release.xcconfig"; sourceTree = "<group>"; };
-		496C9008648A086FEC54CF621156D982 /* RSPlayPauseButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RSPlayPauseButton.framework; path = RSPlayPauseButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FCD485CC49024552BC663E3DAFDC277 /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimerDemo.framework; path = "Pods-TimerDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B517D41BF393844E2FEFD5EE470EC72 /* RSPlayPauseButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSPlayPauseButton.m; path = RSPlayPauseButtonDemo/RSPlayPauseButton/RSPlayPauseButton.m; sourceTree = "<group>"; };
-		60CF2A178F0984E2AE07A783092F1656 /* RSPlayPauseButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSPlayPauseButton-umbrella.h"; sourceTree = "<group>"; };
 		6373902EB552E6B0B1F08C3E3527AC46 /* Pods-TimerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		69103BAFF251AF0E8105BD69B072F9C4 /* Pods-TimerDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TimerDemo.modulemap"; sourceTree = "<group>"; };
 		6AD2628E7957E40949EEA64574E7384A /* Pods-TimerDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimerDemo-frameworks.sh"; sourceTree = "<group>"; };
 		71B888DB7C16FE771B19A80FC5D6A277 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		745CCA5150AD0E8CED8E5FB367573C7F /* SCLAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SCLAlertView.framework; path = SCLAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7576C3F1AD22C463A81E18A5F8F39622 /* SCLAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SCLAlertView.modulemap; sourceTree = "<group>"; };
 		84C20B74FD6D22410D68DD6081AB20DA /* Pods-TimerDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TimerDemoTests.modulemap"; sourceTree = "<group>"; };
 		8CB691F8258380442BA7D6AE12D482E9 /* Pods-TimerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AA480364CB289265E7D1842D3D06302C /* RSPlayPauseButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSPlayPauseButton-prefix.pch"; sourceTree = "<group>"; };
+		9AE2903DBEC106B2EC42D6915365E0EB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EF13FAD36693800AB54E47272AB2D15 /* RSPlayPauseButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSPlayPauseButton-umbrella.h"; sourceTree = "<group>"; };
+		A045143FD9B0DAF5ACDA7719F70EE918 /* SCLAlertView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCLAlertView.xcconfig; sourceTree = "<group>"; };
+		A3989037FDF1F1921AC20B27B8CE1473 /* RSPlayPauseButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSPlayPauseButton.xcconfig; sourceTree = "<group>"; };
+		B913FA72E40F2390A58B0404F64C0A28 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB602E086BC7AB915152048F02075919 /* Pods-TimerDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimerDemo-resources.sh"; sourceTree = "<group>"; };
 		BD99569E1FB5A7BBC131339CCA421F6B /* Pods-TimerDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TimerDemo-umbrella.h"; sourceTree = "<group>"; };
 		C07397AC64AB0D2126B6D47135FCC536 /* Pods-TimerDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TimerDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		C3636EAB19E50E91798187B8398EB7A4 /* Pods-TimerDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TimerDemo-dummy.m"; sourceTree = "<group>"; };
-		C67154AAC14678E15F01E0DE7CD8DB3B /* RSPlayPauseButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSPlayPauseButton.h; path = RSPlayPauseButtonDemo/RSPlayPauseButton/RSPlayPauseButton.h; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CDBF585529B94F74910CB34130F19F1E /* RSPlayPauseButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSPlayPauseButton-dummy.m"; sourceTree = "<group>"; };
-		D66FB137CB159052B22203C40AE46FCE /* Pods_TimerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimerDemoTests.framework; path = "Pods-TimerDemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF3CC75E3B2CEC942A96E57FC6A894DE /* RSPlayPauseButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSPlayPauseButton.m; path = RSPlayPauseButtonDemo/RSPlayPauseButton/RSPlayPauseButton.m; sourceTree = "<group>"; };
+		D511D6687C81265C86F27841B0F7A78F /* SCLAlertView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-prefix.pch"; sourceTree = "<group>"; };
 		D697328957BE6CC13626662D983D6A92 /* Pods-TimerDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TimerDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E08A783077FEBF797C17FE09E12312B7 /* RSPlayPauseButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RSPlayPauseButton.modulemap; sourceTree = "<group>"; };
+		DEFF373B771E10A43083A3241E6E9DA1 /* SCLAlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
 		E9C1EEC1EF4F7C68771F62CC8C3B5E71 /* Pods-TimerDemoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimerDemoTests-resources.sh"; sourceTree = "<group>"; };
+		EA7C44B7C1D1F875B8F621F395DD7EF8 /* SCLAlertView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCLAlertView-dummy.m"; sourceTree = "<group>"; };
+		EB567AE0C4DC756C19915B0F5C099776 /* RSPlayPauseButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSPlayPauseButton-dummy.m"; sourceTree = "<group>"; };
+		ED8EADB09F62C88FA056D943752206B3 /* RSPlayPauseButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSPlayPauseButton-prefix.pch"; sourceTree = "<group>"; };
+		EE678087AA6903A2200DBB79AD529D89 /* SCLAlertView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-umbrella.h"; sourceTree = "<group>"; };
 		F50C8430E7541296BA351CBB30DFA9F8 /* Pods-TimerDemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TimerDemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F67B81970778A22D1A175E726A4D2A32 /* RSPlayPauseButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSPlayPauseButton.xcconfig; sourceTree = "<group>"; };
 		FA5582FA70AFCAC136300CF919468C72 /* Pods-TimerDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TimerDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		FA8DF2B299A2907DE358AE8273DECCCE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB24F49497E46E56DA80A97423E2E41C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0988DF7176F61E700E4B6C5610E1E01E /* Frameworks */ = {
+		63BCCBB4E63FC55DE6929B7CA0162ACB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D632086ECC7DC430945F0CD2E88D4645 /* Foundation.framework in Frameworks */,
+				C0A963E4A6709D4EFF7E61297DCE022E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		176FE0818737D1AF18336324D4C64004 /* Frameworks */ = {
+		711CB3BA5010112BEB0FD6BDED54BB16 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5C2EE2279247F989F85DC718E14D2F2 /* Foundation.framework in Frameworks */,
+				70132898BA6985DCC50F3681D11C0A88 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A52C6013B455642202C430336A414785 /* Frameworks */ = {
+		91D084FE6A3D9B8F178786C57705CB7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E24DC8E636204FF6828376F5B36F124D /* Foundation.framework in Frameworks */,
+				BACB5A404F753B50B5DC2405A8463336 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9627EC2EB02102D4C6323FED5526FC39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA2C619F227E7390A318135F64352C59 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,12 +146,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		16093175DED6890C1ABD5B44ACED2E4B /* Pods */ = {
+		39B3E07C7297BA84166D65E2F7A1DB55 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BCEE41256C11404A29BF39789D5C8452 /* RSPlayPauseButton */,
+				B913FA72E40F2390A58B0404F64C0A28 /* Info.plist */,
+				7576C3F1AD22C463A81E18A5F8F39622 /* SCLAlertView.modulemap */,
+				A045143FD9B0DAF5ACDA7719F70EE918 /* SCLAlertView.xcconfig */,
+				EA7C44B7C1D1F875B8F621F395DD7EF8 /* SCLAlertView-dummy.m */,
+				D511D6687C81265C86F27841B0F7A78F /* SCLAlertView-prefix.pch */,
+				EE678087AA6903A2200DBB79AD529D89 /* SCLAlertView-umbrella.h */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SCLAlertView";
+			sourceTree = "<group>";
+		};
+		4790B7AEC7373D54E74FEDB82F76B31F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F9338CDCDFCDC7B0E3E877F531F98FC /* Pods_TimerDemo.framework */,
+				043D5CBDB7FC0B7385F9A538E55636B9 /* Pods_TimerDemoTests.framework */,
+				07CE690DD64081DAC4D60F39E6EE43EC /* RSPlayPauseButton.framework */,
+				745CCA5150AD0E8CED8E5FB367573C7F /* SCLAlertView.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4CA3C45C6F0D10369BC7E0859192ABF7 /* Pods-TimerDemo */ = {
@@ -136,6 +189,28 @@
 			path = "Target Support Files/Pods-TimerDemo";
 			sourceTree = "<group>";
 		};
+		592FED873AD454A2F03A5C9A41C53A78 /* SCLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				DEFF373B771E10A43083A3241E6E9DA1 /* SCLAlertView.swift */,
+				0544B2AB9108FAB722FD1A00C340334D /* SCLExtensions.swift */,
+				39B3E07C7297BA84166D65E2F7A1DB55 /* Support Files */,
+			);
+			name = SCLAlertView;
+			path = SCLAlertView;
+			sourceTree = "<group>";
+		};
+		6E2556983F24ED07C91741CB4D84C2EC /* RSPlayPauseButton */ = {
+			isa = PBXGroup;
+			children = (
+				138EB797B12B29B5F6B7BF744C2691F5 /* RSPlayPauseButton.h */,
+				CF3CC75E3B2CEC942A96E57FC6A894DE /* RSPlayPauseButton.m */,
+				7F52114D228D17057B6CF0EEC1DF488A /* Support Files */,
+			);
+			name = RSPlayPauseButton;
+			path = RSPlayPauseButton;
+			sourceTree = "<group>";
+		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,20 +224,33 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				16093175DED6890C1ABD5B44ACED2E4B /* Pods */,
-				7F8AC940A5F4EDE35BD97A6D2CB1D3E4 /* Products */,
+				8E8038D6B6EA01AEC0E8DEFEC430787A /* Pods */,
+				4790B7AEC7373D54E74FEDB82F76B31F /* Products */,
 				060F6B58B99F38C19FD6DB30A305A5A0 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7F8AC940A5F4EDE35BD97A6D2CB1D3E4 /* Products */ = {
+		7F52114D228D17057B6CF0EEC1DF488A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4FCD485CC49024552BC663E3DAFDC277 /* Pods_TimerDemo.framework */,
-				D66FB137CB159052B22203C40AE46FCE /* Pods_TimerDemoTests.framework */,
-				496C9008648A086FEC54CF621156D982 /* RSPlayPauseButton.framework */,
+				9AE2903DBEC106B2EC42D6915365E0EB /* Info.plist */,
+				16905007D6049DA31D45D89AD7F8134F /* RSPlayPauseButton.modulemap */,
+				A3989037FDF1F1921AC20B27B8CE1473 /* RSPlayPauseButton.xcconfig */,
+				EB567AE0C4DC756C19915B0F5C099776 /* RSPlayPauseButton-dummy.m */,
+				ED8EADB09F62C88FA056D943752206B3 /* RSPlayPauseButton-prefix.pch */,
+				9EF13FAD36693800AB54E47272AB2D15 /* RSPlayPauseButton-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/RSPlayPauseButton";
+			sourceTree = "<group>";
+		};
+		8E8038D6B6EA01AEC0E8DEFEC430787A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E2556983F24ED07C91741CB4D84C2EC /* RSPlayPauseButton */,
+				592FED873AD454A2F03A5C9A41C53A78 /* SCLAlertView */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		90019531A50D56E768C2D00B2369EE0B /* Pods-TimerDemoTests */ = {
@@ -191,105 +279,71 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BCEE41256C11404A29BF39789D5C8452 /* RSPlayPauseButton */ = {
-			isa = PBXGroup;
-			children = (
-				C67154AAC14678E15F01E0DE7CD8DB3B /* RSPlayPauseButton.h */,
-				5B517D41BF393844E2FEFD5EE470EC72 /* RSPlayPauseButton.m */,
-				BDFDBEB1F2B13BE66569D3FFC70A29E4 /* Support Files */,
-			);
-			name = RSPlayPauseButton;
-			path = RSPlayPauseButton;
-			sourceTree = "<group>";
-		};
-		BDFDBEB1F2B13BE66569D3FFC70A29E4 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				FA8DF2B299A2907DE358AE8273DECCCE /* Info.plist */,
-				E08A783077FEBF797C17FE09E12312B7 /* RSPlayPauseButton.modulemap */,
-				F67B81970778A22D1A175E726A4D2A32 /* RSPlayPauseButton.xcconfig */,
-				CDBF585529B94F74910CB34130F19F1E /* RSPlayPauseButton-dummy.m */,
-				AA480364CB289265E7D1842D3D06302C /* RSPlayPauseButton-prefix.pch */,
-				60CF2A178F0984E2AE07A783092F1656 /* RSPlayPauseButton-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/RSPlayPauseButton";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1F79AD745B85A4E4C50B7AFA99334889 /* Headers */ = {
+		8D7A4E431880DC68FD06AC17255EB5A0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D63FFEC7219340C609C282F77333F8A4 /* RSPlayPauseButton-umbrella.h in Headers */,
-				B8905B3CD9445BF95C736BFC5DFFFC1D /* RSPlayPauseButton.h in Headers */,
+				3626767F3491DB5B47A840DC94F2FDF5 /* SCLAlertView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9B9A11A5300D30F42BAE5BC165C3E5F /* Headers */ = {
+		9F3EC65474D1D9F9ABC3C4D341BE42F1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D44462FAD2869E4DCC9F3E57B0CA86E /* Pods-TimerDemoTests-umbrella.h in Headers */,
+				FF0FBCE23498DA202A5C892074F9FCFB /* Pods-TimerDemo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9E07BCF0647C9B98BF2C9B009204DF7 /* Headers */ = {
+		AA2E40B96DF26D4D097517E7317FE58C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D40CC923B4458B4995CE00D5B6912867 /* Pods-TimerDemo-umbrella.h in Headers */,
+				3B86E984FAD849E4148F4E4E53BD5805 /* Pods-TimerDemoTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8FD001AC13C37DF57B926567A3C2C7C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B3A81C54DC68ADDA5A07E870DE4A8C9 /* RSPlayPauseButton-umbrella.h in Headers */,
+				202F1180DB0E7D03B872906D2C9C0726 /* RSPlayPauseButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0683E029D979CC98B8CFC2FBDB3B7B79 /* Pods-TimerDemo */ = {
+		130C117251A20A1BAFBCB52F0D2B74DF /* Pods-TimerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FBE16E4AD3B81678D175E42E09BBA58C /* Build configuration list for PBXNativeTarget "Pods-TimerDemo" */;
+			buildConfigurationList = F36FB20E3B4CD7B13D955DC637E9CF3B /* Build configuration list for PBXNativeTarget "Pods-TimerDemo" */;
 			buildPhases = (
-				8D8B12C4D33657E2E2CEB764E4BF4186 /* Sources */,
-				176FE0818737D1AF18336324D4C64004 /* Frameworks */,
-				D9E07BCF0647C9B98BF2C9B009204DF7 /* Headers */,
+				87C0CB8FFA8656AC4293851993679052 /* Sources */,
+				711CB3BA5010112BEB0FD6BDED54BB16 /* Frameworks */,
+				9F3EC65474D1D9F9ABC3C4D341BE42F1 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4B5B9211B7B252B354A9D5F55D3A13CF /* PBXTargetDependency */,
+				4EC92C1B243CDD2E326B0A4CCEFF5769 /* PBXTargetDependency */,
+				0C20FCE87743B4EAA28A7799CFC6EA47 /* PBXTargetDependency */,
 			);
 			name = "Pods-TimerDemo";
 			productName = "Pods-TimerDemo";
-			productReference = 4FCD485CC49024552BC663E3DAFDC277 /* Pods_TimerDemo.framework */;
+			productReference = 2F9338CDCDFCDC7B0E3E877F531F98FC /* Pods_TimerDemo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		15A401EC70440443EFD6A11266CDDAF0 /* Pods-TimerDemoTests */ = {
+		82F27E38B2DAF6EB7674C0689A5EBC8A /* RSPlayPauseButton */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E2E6D16D58961FB52C9A793BBC013B95 /* Build configuration list for PBXNativeTarget "Pods-TimerDemoTests" */;
+			buildConfigurationList = 875A83463DF374FDF5DA546D80095333 /* Build configuration list for PBXNativeTarget "RSPlayPauseButton" */;
 			buildPhases = (
-				D63618FEF495D46C155317F6FB7F751E /* Sources */,
-				A52C6013B455642202C430336A414785 /* Frameworks */,
-				A9B9A11A5300D30F42BAE5BC165C3E5F /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A5C0F530C0BB08536B1BC4BE91DFF149 /* PBXTargetDependency */,
-			);
-			name = "Pods-TimerDemoTests";
-			productName = "Pods-TimerDemoTests";
-			productReference = D66FB137CB159052B22203C40AE46FCE /* Pods_TimerDemoTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C889E9D5D9F4C6CEE037B8B2E719BCAB /* RSPlayPauseButton */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5F933B4941DD416D7219634D983CB059 /* Build configuration list for PBXNativeTarget "RSPlayPauseButton" */;
-			buildPhases = (
-				654EB65C2677F5C2ACB47272F73F3462 /* Sources */,
-				0988DF7176F61E700E4B6C5610E1E01E /* Frameworks */,
-				1F79AD745B85A4E4C50B7AFA99334889 /* Headers */,
+				660C38C8E9038F66CA66DD9D9FCD9E71 /* Sources */,
+				9627EC2EB02102D4C6323FED5526FC39 /* Frameworks */,
+				E8FD001AC13C37DF57B926567A3C2C7C /* Headers */,
 			);
 			buildRules = (
 			);
@@ -297,7 +351,43 @@
 			);
 			name = RSPlayPauseButton;
 			productName = RSPlayPauseButton;
-			productReference = 496C9008648A086FEC54CF621156D982 /* RSPlayPauseButton.framework */;
+			productReference = 07CE690DD64081DAC4D60F39E6EE43EC /* RSPlayPauseButton.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D61C3742D4C8F1E86679CCCB709DCBCE /* Pods-TimerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F053D5EEEB184901848C2D139609D56 /* Build configuration list for PBXNativeTarget "Pods-TimerDemoTests" */;
+			buildPhases = (
+				B036D85D4D33235D1D2B6D4A0F93BF9E /* Sources */,
+				91D084FE6A3D9B8F178786C57705CB7C /* Frameworks */,
+				AA2E40B96DF26D4D097517E7317FE58C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E0400A68EE7192BA165AE747FC44F1A /* PBXTargetDependency */,
+				32C286BF15F4A789E817234FDA445D99 /* PBXTargetDependency */,
+			);
+			name = "Pods-TimerDemoTests";
+			productName = "Pods-TimerDemoTests";
+			productReference = 043D5CBDB7FC0B7385F9A538E55636B9 /* Pods_TimerDemoTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E5A54F138200BD9DA5D126FA5272C062 /* SCLAlertView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18FF41461F043203C79B3F4799A68A15 /* Build configuration list for PBXNativeTarget "SCLAlertView" */;
+			buildPhases = (
+				6E367E23BC404E062DDF8D01EDC7F8E1 /* Sources */,
+				63BCCBB4E63FC55DE6929B7CA0162ACB /* Frameworks */,
+				8D7A4E431880DC68FD06AC17255EB5A0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SCLAlertView;
+			productName = SCLAlertView;
+			productReference = 745CCA5150AD0E8CED8E5FB367573C7F /* SCLAlertView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -317,57 +407,80 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 7F8AC940A5F4EDE35BD97A6D2CB1D3E4 /* Products */;
+			productRefGroup = 4790B7AEC7373D54E74FEDB82F76B31F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0683E029D979CC98B8CFC2FBDB3B7B79 /* Pods-TimerDemo */,
-				15A401EC70440443EFD6A11266CDDAF0 /* Pods-TimerDemoTests */,
-				C889E9D5D9F4C6CEE037B8B2E719BCAB /* RSPlayPauseButton */,
+				130C117251A20A1BAFBCB52F0D2B74DF /* Pods-TimerDemo */,
+				D61C3742D4C8F1E86679CCCB709DCBCE /* Pods-TimerDemoTests */,
+				82F27E38B2DAF6EB7674C0689A5EBC8A /* RSPlayPauseButton */,
+				E5A54F138200BD9DA5D126FA5272C062 /* SCLAlertView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		654EB65C2677F5C2ACB47272F73F3462 /* Sources */ = {
+		660C38C8E9038F66CA66DD9D9FCD9E71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9FABDB68D3430D8D84C81E9C6E8DAB4 /* RSPlayPauseButton-dummy.m in Sources */,
-				793AC7C2FC4D0002FEC146918A597B5B /* RSPlayPauseButton.m in Sources */,
+				1AA964C76651358AA645AA63E9CEFC4C /* RSPlayPauseButton-dummy.m in Sources */,
+				90A09CEE9A2A7F2736CC0622EC506C2C /* RSPlayPauseButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D8B12C4D33657E2E2CEB764E4BF4186 /* Sources */ = {
+		6E367E23BC404E062DDF8D01EDC7F8E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37773B9355EEB7579ADBE37D6B61CE36 /* Pods-TimerDemo-dummy.m in Sources */,
+				AF79F0F4758C5849C0C8D5DE362D5611 /* SCLAlertView-dummy.m in Sources */,
+				4CAA4F8D979419C8D37F117ED75EC581 /* SCLAlertView.swift in Sources */,
+				8759DFAB37CB17C9A56153148163E430 /* SCLExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D63618FEF495D46C155317F6FB7F751E /* Sources */ = {
+		87C0CB8FFA8656AC4293851993679052 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D950DFD6E1269DF353042C6B877A9186 /* Pods-TimerDemoTests-dummy.m in Sources */,
+				D3CD58204036A489D7AD225D695A095F /* Pods-TimerDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B036D85D4D33235D1D2B6D4A0F93BF9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75A7C1493AF3ED2B1E469D6ED78392FF /* Pods-TimerDemoTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4B5B9211B7B252B354A9D5F55D3A13CF /* PBXTargetDependency */ = {
+		0C20FCE87743B4EAA28A7799CFC6EA47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = RSPlayPauseButton;
-			target = C889E9D5D9F4C6CEE037B8B2E719BCAB /* RSPlayPauseButton */;
-			targetProxy = B4A013E87A2E4DEC8D78CCCD906BFDC7 /* PBXContainerItemProxy */;
+			name = SCLAlertView;
+			target = E5A54F138200BD9DA5D126FA5272C062 /* SCLAlertView */;
+			targetProxy = 93D8CB29D4EA51BDED38876F39D34E08 /* PBXContainerItemProxy */;
 		};
-		A5C0F530C0BB08536B1BC4BE91DFF149 /* PBXTargetDependency */ = {
+		1E0400A68EE7192BA165AE747FC44F1A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RSPlayPauseButton;
-			target = C889E9D5D9F4C6CEE037B8B2E719BCAB /* RSPlayPauseButton */;
-			targetProxy = 259E6C1A9F95AEC59032415667FBF62F /* PBXContainerItemProxy */;
+			target = 82F27E38B2DAF6EB7674C0689A5EBC8A /* RSPlayPauseButton */;
+			targetProxy = D758E293B002E1ABDB5FF4F7C00D5EAA /* PBXContainerItemProxy */;
+		};
+		32C286BF15F4A789E817234FDA445D99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SCLAlertView;
+			target = E5A54F138200BD9DA5D126FA5272C062 /* SCLAlertView */;
+			targetProxy = E2BBCB20F0E842F51B66EF1D3D1AA663 /* PBXContainerItemProxy */;
+		};
+		4EC92C1B243CDD2E326B0A4CCEFF5769 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSPlayPauseButton;
+			target = 82F27E38B2DAF6EB7674C0689A5EBC8A /* RSPlayPauseButton */;
+			targetProxy = 07BA00DE0A4F9F0B2B88B0ECD6EE25FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -412,42 +525,71 @@
 			};
 			name = Release;
 		};
-		18B96F48AB294AE647908B903E3E9D45 /* Debug */ = {
+		1B8E1E31B47C867957AA83022121A4D2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CB691F8258380442BA7D6AE12D482E9 /* Pods-TimerDemo.debug.xcconfig */;
+			baseConfigurationReference = A045143FD9B0DAF5ACDA7719F70EE918 /* SCLAlertView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TimerDemo/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SCLAlertView/SCLAlertView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCLAlertView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TimerDemo/Pods-TimerDemo.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TimerDemo;
+				MODULEMAP_FILE = "Target Support Files/SCLAlertView/SCLAlertView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SCLAlertView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		84456486B4A18CA8063ADDF2396B8BF0 /* Release */ = {
+		6F65CB063F10267BCA08B12F077AA1D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3989037FDF1F1921AC20B27B8CE1473 /* RSPlayPauseButton.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RSPlayPauseButton/RSPlayPauseButton-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSPlayPauseButton/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RSPlayPauseButton/RSPlayPauseButton.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RSPlayPauseButton;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8AC500CFD6D85E538A6EC33C6B81FE3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6373902EB552E6B0B1F08C3E3527AC46 /* Pods-TimerDemoTests.release.xcconfig */;
 			buildSettings = {
@@ -482,7 +624,79 @@
 			};
 			name = Release;
 		};
-		8EA0FDA695AB44ECD173B1D578211023 /* Release */ = {
+		A2A809B8638D0BC3EA0A0641EB59ACFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B507443788140E40A1BACD30FB611CB /* Pods-TimerDemoTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TimerDemoTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TimerDemoTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AA51E24C56D47B8A64AEAFB88F06DF77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CB691F8258380442BA7D6AE12D482E9 /* Pods-TimerDemo.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TimerDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TimerDemo/Pods-TimerDemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TimerDemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BED0D83E64C3AD52613CD4BC6F2499B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E11800CBDCCE80DD638DA8D29703C44 /* Pods-TimerDemo.release.xcconfig */;
 			buildSettings = {
@@ -561,9 +775,42 @@
 			};
 			name = Debug;
 		};
-		DD0BF1234B6F56EDFBC8826C162943A5 /* Debug */ = {
+		CDA01A09143BDD5A8FB9AD56BE7553BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F67B81970778A22D1A175E726A4D2A32 /* RSPlayPauseButton.xcconfig */;
+			baseConfigurationReference = A045143FD9B0DAF5ACDA7719F70EE918 /* SCLAlertView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCLAlertView/SCLAlertView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCLAlertView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SCLAlertView/SCLAlertView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SCLAlertView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D577F84BD0C89F5528C1E3A8B390FF3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3989037FDF1F1921AC20B27B8CE1473 /* RSPlayPauseButton.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -592,77 +839,19 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		E7166E4795DB1CE1EA1B369427E2DF80 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B507443788140E40A1BACD30FB611CB /* Pods-TimerDemoTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TimerDemoTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TimerDemoTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E9C7E4433C9130019F381C250765B33E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F67B81970778A22D1A175E726A4D2A32 /* RSPlayPauseButton.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RSPlayPauseButton/RSPlayPauseButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RSPlayPauseButton/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RSPlayPauseButton/RSPlayPauseButton.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = RSPlayPauseButton;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18FF41461F043203C79B3F4799A68A15 /* Build configuration list for PBXNativeTarget "SCLAlertView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDA01A09143BDD5A8FB9AD56BE7553BC /* Debug */,
+				1B8E1E31B47C867957AA83022121A4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -672,29 +861,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F933B4941DD416D7219634D983CB059 /* Build configuration list for PBXNativeTarget "RSPlayPauseButton" */ = {
+		3F053D5EEEB184901848C2D139609D56 /* Build configuration list for PBXNativeTarget "Pods-TimerDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD0BF1234B6F56EDFBC8826C162943A5 /* Debug */,
-				E9C7E4433C9130019F381C250765B33E /* Release */,
+				A2A809B8638D0BC3EA0A0641EB59ACFA /* Debug */,
+				8AC500CFD6D85E538A6EC33C6B81FE3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E2E6D16D58961FB52C9A793BBC013B95 /* Build configuration list for PBXNativeTarget "Pods-TimerDemoTests" */ = {
+		875A83463DF374FDF5DA546D80095333 /* Build configuration list for PBXNativeTarget "RSPlayPauseButton" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E7166E4795DB1CE1EA1B369427E2DF80 /* Debug */,
-				84456486B4A18CA8063ADDF2396B8BF0 /* Release */,
+				D577F84BD0C89F5528C1E3A8B390FF3E /* Debug */,
+				6F65CB063F10267BCA08B12F077AA1D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FBE16E4AD3B81678D175E42E09BBA58C /* Build configuration list for PBXNativeTarget "Pods-TimerDemo" */ = {
+		F36FB20E3B4CD7B13D955DC637E9CF3B /* Build configuration list for PBXNativeTarget "Pods-TimerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				18B96F48AB294AE647908B903E3E9D45 /* Debug */,
-				8EA0FDA695AB44ECD173B1D578211023 /* Release */,
+				AA51E24C56D47B8A64AEAFB88F06DF77 /* Debug */,
+				BED0D83E64C3AD52613CD4BC6F2499B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -40,8 +40,6 @@ class ArcProgressView: UIView {
     
     
     var arcPathEndState : UIBezierPath{
-        let theCenter = CGPoint(x: bounds.width/2, y: 0)
-//        let tempPath = UIBezierPath(arcCenter: center, radius: arcRadius, startAngle: arcStartAngle, endAngle: arcEndAngle, clockwise: true)
         let tempPath = UIBezierPath(arcCenter: center, radius: arcRadius, startAngle: arcStartAngle, endAngle: arcEndAngle, clockwise: true)
         
         tempPath.lineWidth = arcWidth
@@ -52,8 +50,6 @@ class ArcProgressView: UIView {
     
     
     var arcPathStartState : UIBezierPath{
-        let theCenter = CGPoint(x: bounds.width/2, y: 0)
-        
         let tempPath = UIBezierPath(arcCenter: center, radius: arcRadius, startAngle: arcStartAngle, endAngle: arcStartAngle, clockwise: true)
         tempPath.lineWidth = arcWidth
         tempPath.lineCapStyle = .round
@@ -86,7 +82,7 @@ class ArcProgressView: UIView {
     
     
     func drawArcForeGround() {
-//        let arcProgressShape = CAShapeLayer()
+        //        let arcProgressShape = CAShapeLayer()
         arcProgressShape.path = arcPathEndState.cgPath
         arcProgressShape.fillColor = UIColor.clear.cgColor
         arcProgressShape.strokeColor = arcForegroundStrokeColor
@@ -97,34 +93,41 @@ class ArcProgressView: UIView {
         layer.addSublayer(arcProgressShape)
     }
     
+    var anim = CABasicAnimation(keyPath: "strokeEnd")
     
     func animateProgressBar() {
-        
-        var anim = CABasicAnimation(keyPath: "strokeEnd")
-        anim = CABasicAnimation(keyPath: "strokeEnd")
+        //anim = CABasicAnimation(keyPath: "strokeEnd")
         anim.duration = timerDuration
         anim.fromValue = 0
         anim.toValue = 1
         anim.speed = 1.0
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         arcProgressShape.add(anim, forKey: "arcAnimation")
-
     }
     
     func pauseAnimation(){
         let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
         layer.speed = 0.0
         layer.timeOffset = pausedTime
+        
+        layer.presentation()?.value(forKeyPath: "strokeEnd")
+        
+        
+        if let theAnimation = layer.animation(forKey: "arcAnimation") as? CABasicAnimation{
+            print("The Saved Value : \(anim.fromValue)")
+        }else{
+            print("We Faialed to get an animation object ..... PAUSE")
+        }
     }
     
     func resumeAnimation(){
-            let pausedTime = layer.timeOffset
-            layer.speed = 1.0
-            layer.timeOffset = 0.0
-            layer.beginTime = 0.0
-            let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-            layer.beginTime = timeSincePause
-        }
+        let pausedTime = layer.timeOffset
+        layer.speed = 1.0
+        layer.timeOffset = 0.0
+        layer.beginTime = 0.0
+        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        layer.beginTime = timeSincePause
+    }
     
     
     func runTimedCode() {
@@ -160,5 +163,5 @@ class ArcProgressView: UIView {
         theView.frame = self.bounds
         self.addSubview(theView)
     }
-
+    
 }

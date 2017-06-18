@@ -25,7 +25,7 @@ class TimerBoy {
     private var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
     
     var duration: CFTimeInterval = 25.0 // Get his value from the settings Plist
-    private var currentTimerValue : CFTimeInterval!
+    var currentTimerValue : CFTimeInterval!
     
     
     var taskTimer: Timer!

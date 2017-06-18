@@ -23,7 +23,7 @@ class Task : TimerEventHandler {
     private var taskID: UUID
     private var timer: TimerBoy = TimerBoy()
     private var taskName: String                // We dont need this, this will be same as task collection name.
-    private var taskType: TaskType
+    var taskType: TaskType
     private var taskTags: [String]?             // Here we can associate hash Tags with tasks to group and categorize them.
     
     var taskStatus: TaskStatus = .notStarted
@@ -32,7 +32,14 @@ class Task : TimerEventHandler {
     var taskDuration : CFTimeInterval = 60  // Make it 25 * 60 later
     
     var timeRemaining : CFTimeInterval{
-        return timer.timeRemaining!
+        
+        set{
+            timer.currentTimerValue = newValue
+        }
+        
+        get{
+            return timer.timeRemaining!
+        }
     }
     
     var isPerfectTask: Bool{

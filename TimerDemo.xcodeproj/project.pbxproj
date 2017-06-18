@@ -47,6 +47,7 @@
 		2FCB9F1D1EEFE9B1000079F6 /* TimerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */; };
 		2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */; };
 		2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */; };
+		2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */; };
 		2FFAFD471EEBF3E400631DA9 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */; };
 		F88ADD8DA3BF239D57390A2C /* Pods_TimerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContainerView.swift; sourceTree = "<group>"; };
 		2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerContainerView.xib; sourceTree = "<group>"; };
 		2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskVC.swift; sourceTree = "<group>"; };
+		2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertView.swift; sourceTree = "<group>"; };
 		2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +191,7 @@
 			children = (
 				2F446B591EE28BD7005BB176 /* AppDelegate.swift */,
 				2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */,
+				2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */,
 				2F446B6B1EE28C9E005BB176 /* TimerBoy.swift */,
 				2F446B6D1EE3324C005BB176 /* Task.swift */,
 				2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */,
@@ -468,6 +471,7 @@
 				2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */,
 				2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */,
 				2F446B6E1EE3324C005BB176 /* Task.swift in Sources */,
+				2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */,
 				2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */,
 				2F136D211EE875FF00E710FA /* Utilities.swift in Sources */,
 				2FCB9F1D1EEFE9B1000079F6 /* TimerContainerView.swift in Sources */,

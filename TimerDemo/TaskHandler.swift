@@ -19,8 +19,16 @@ protocol TaskHandlerDelegate {
 class TaskHandler : TaskEventHanlder {
     
     static let shared = TaskHandler()
+    
     var delegate : TaskHandlerDelegate?
-    var taskDuration : CFTimeInterval = 60 // 1 Minute
+    
+    var taskDuration : CFTimeInterval{
+        switch (currentTask?.taskType)! {
+        case .deepFocus :   return 60
+        case .shortBreak:   return 5
+        case .longBreak :   return 5
+        }
+    } // 1 Minute
     
     private init() { 
     }
