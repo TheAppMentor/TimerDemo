@@ -16,6 +16,12 @@ struct Utilities {
     let lightRedColor = UIColor(red: CGFloat(237.0 / 255.0), green: CGFloat(85.0 / 255.0), blue: CGFloat(101.0 / 255.0), alpha: 1.0)
     let darkRedColor = UIColor(red: CGFloat(218.0/255.0), green: CGFloat(68.0/255.0), blue: CGFloat(83.0/255.0), alpha: 1.0)
     
+    let lightBlueColor = UIColor(red: CGFloat(102.0 / 255.0), green: CGFloat(136.0 / 255.0), blue: CGFloat(195.0 / 255.0), alpha: 1.0)
+    let darkBlueColor = UIColor(red: CGFloat(57.0/255.0), green: CGFloat(98.0/255.0), blue: CGFloat(176.0/255.0), alpha: 1.0)
+    
+    let lightGreenColor = UIColor(red: CGFloat(68.0 / 255.0), green: CGFloat(160.0 / 255.0), blue: CGFloat(141.0 / 255.0), alpha: 1.0)
+    let darkGreenColor = UIColor(red: CGFloat(25.0/255.0), green: CGFloat(149.0/255.0), blue: CGFloat(151.0/255.0), alpha: 1.0)
+    
     let lightGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.25)
     let darkGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)    
     

@@ -69,19 +69,18 @@
                                     <constraint firstAttribute="width" secondItem="Ybb-Yu-FYN" secondAttribute="height" multiplier="1:1" id="q11-gW-vhX"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8F-bM-6XF" customClass="RoundedButton" customModule="TimerDemo" customModuleProvider="target">
-                                <rect key="frame" x="164" y="335" width="46" height="30"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8F-bM-6XF" customClass="RoundedButton" customModule="TimerDemo" customModuleProvider="target">
+                                <rect key="frame" x="144.5" y="315" width="85" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="HNj-Um-KDe"/>
                                     <constraint firstAttribute="width" secondItem="n8F-bM-6XF" secondAttribute="height" multiplier="1:1" id="TaD-qB-BDl"/>
                                 </constraints>
-                                <state key="normal" image="Play"/>
                                 <connections>
                                     <action selector="timerContolPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RLI-r8-lYg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNY-lR-D7c">
-                                <rect key="frame" x="164" y="297" width="46" height="30"/>
+                                <rect key="frame" x="175" y="271" width="24" height="24"/>
                                 <state key="normal" image="CancelButton"/>
                                 <connections>
                                     <action selector="cancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kgu-H7-9BP"/>
@@ -113,6 +112,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Deep Focus" id="tpe-bc-y8G">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Pze-55-Lg7">
+                            <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                            <inset key="landscapeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Qkt-D7-oey" kind="presentation" modalPresentationStyle="overCurrentContext" id="Mou-Zl-30g"/>
@@ -121,6 +122,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="yNY-lR-D7c" id="tAu-yY-MaG"/>
+                        <outlet property="timerContainerView" destination="Dt8-Sg-mJU" id="6mS-QR-nG8"/>
                         <outlet property="timerControlButton" destination="n8F-bM-6XF" id="V2h-zr-W56"/>
                         <outlet property="timerDisplayView" destination="Ybb-Yu-FYN" id="UgE-lD-QLZ"/>
                     </connections>
@@ -134,7 +136,7 @@
             <objects>
                 <tableViewController id="WhJ-i4-VxV" customClass="SettingsTVC" customModule="TimerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4gc-4s-kJr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -142,11 +144,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LBN-R5-cwD" id="KdT-F9-iJf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="11" contentMode="left" text="Task Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1mK-2X-Alr">
-                                            <rect key="frame" x="16" y="12" width="100" height="20"/>
+                                            <rect key="frame" x="16" y="12" width="100" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,11 +168,11 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkG-Aa-5lu" id="ZFS-S2-pKn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="11" contentMode="left" text="Long Break Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rIH-Et-eML">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43"/>
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -183,7 +185,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F0b-4i-4MW" id="uvS-3y-aea">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="owm-cd-g7V">
@@ -317,10 +319,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qVV-DQ-dqT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tDH-Fw-SHF">
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tDH-Fw-SHF" customClass="CustomNavigationBar" customModule="TimerDemo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.92941176469999998" green="0.33333333329999998" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

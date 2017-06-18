@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2E2453D310E8ECA6BC87E6 /* Pods_TimerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92A68B5B509EAAB3A3D2AD2 /* Pods_TimerDemoTests.framework */; };
 		2F0118751EEE6B6E00D3FEE9 /* VizChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0118741EEE6B6E00D3FEE9 /* VizChartView.swift */; };
 		2F0118771EEED39100D3FEE9 /* VizChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0118761EEED39100D3FEE9 /* VizChartView.xib */; };
 		2F0FC9501EF009700053167F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0FC94F1EF009700053167F /* TimerView.swift */; };
@@ -46,7 +47,9 @@
 		2FCB9F1D1EEFE9B1000079F6 /* TimerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */; };
 		2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */; };
 		2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */; };
+		2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */; };
 		2FFAFD471EEBF3E400631DA9 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */; };
+		F88ADD8DA3BF239D57390A2C /* Pods_TimerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +104,14 @@
 		2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContainerView.swift; sourceTree = "<group>"; };
 		2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerContainerView.xib; sourceTree = "<group>"; };
 		2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskVC.swift; sourceTree = "<group>"; };
+		2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertView.swift; sourceTree = "<group>"; };
 		2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
+		8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B0AABFFB55482E9715E6207D /* Pods-TimerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D92A68B5B509EAAB3A3D2AD2 /* Pods_TimerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5903EFB310ED357837B08E3 /* Pods-TimerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88ADD8DA3BF239D57390A2C /* Pods_TimerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2E2453D310E8ECA6BC87E6 /* Pods_TimerDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +172,8 @@
 				2F446B581EE28BD7005BB176 /* TimerDemo */,
 				2F9207A81EE6A96400DB3C35 /* TimerDemoTests */,
 				2F446B571EE28BD7005BB176 /* Products */,
+				D0B26DDBE6C1DB50E0A5EFAF /* Pods */,
+				C17CA6339253EE5E280AB3BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +191,7 @@
 			children = (
 				2F446B591EE28BD7005BB176 /* AppDelegate.swift */,
 				2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */,
+				2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */,
 				2F446B6B1EE28C9E005BB176 /* TimerBoy.swift */,
 				2F446B6D1EE3324C005BB176 /* Task.swift */,
 				2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */,
@@ -218,6 +233,26 @@
 			path = TimerContainer;
 			sourceTree = "<group>";
 		};
+		C17CA6339253EE5E280AB3BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */,
+				D92A68B5B509EAAB3A3D2AD2 /* Pods_TimerDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0B26DDBE6C1DB50E0A5EFAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0AABFFB55482E9715E6207D /* Pods-TimerDemo.debug.xcconfig */,
+				A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */,
+				F5903EFB310ED357837B08E3 /* Pods-TimerDemoTests.debug.xcconfig */,
+				8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,9 +260,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F446B681EE28BD7005BB176 /* Build configuration list for PBXNativeTarget "TimerDemo" */;
 			buildPhases = (
+				365BA243B0F1DC0C54D6BE17 /* [CP] Check Pods Manifest.lock */,
 				2F446B521EE28BD7005BB176 /* Sources */,
 				2F446B531EE28BD7005BB176 /* Frameworks */,
 				2F446B541EE28BD7005BB176 /* Resources */,
+				405F5C670E9851D11801E14C /* [CP] Embed Pods Frameworks */,
+				3E43CC6987D33605BC0DFF60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,9 +280,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F9207AE1EE6A96400DB3C35 /* Build configuration list for PBXNativeTarget "TimerDemoTests" */;
 			buildPhases = (
+				A6D29D64A61108DF32B2D5DB /* [CP] Check Pods Manifest.lock */,
 				2F9207A31EE6A96400DB3C35 /* Sources */,
 				2F9207A41EE6A96400DB3C35 /* Frameworks */,
 				2F9207A51EE6A96400DB3C35 /* Resources */,
+				339334C4FAB65B60F3F79800 /* [CP] Embed Pods Frameworks */,
+				B12FBFDF8BBA3FC8B9EA33FC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,6 +367,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		339334C4FAB65B60F3F79800 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		365BA243B0F1DC0C54D6BE17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3E43CC6987D33605BC0DFF60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		405F5C670E9851D11801E14C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6D29D64A61108DF32B2D5DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B12FBFDF8BBA3FC8B9EA33FC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F446B521EE28BD7005BB176 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -337,6 +471,7 @@
 				2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */,
 				2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */,
 				2F446B6E1EE3324C005BB176 /* Task.swift in Sources */,
+				2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */,
 				2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */,
 				2F136D211EE875FF00E710FA /* Utilities.swift in Sources */,
 				2FCB9F1D1EEFE9B1000079F6 /* TimerContainerView.swift in Sources */,
@@ -507,6 +642,7 @@
 		};
 		2F446B691EE28BD7005BB176 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0AABFFB55482E9715E6207D /* Pods-TimerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D38394224C;
@@ -520,6 +656,7 @@
 		};
 		2F446B6A1EE28BD7005BB176 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D38394224C;
@@ -533,6 +670,7 @@
 		};
 		2F9207AF1EE6A96400DB3C35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5903EFB310ED357837B08E3 /* Pods-TimerDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TLV25NDMDF;
@@ -547,6 +685,7 @@
 		};
 		2F9207B01EE6A96400DB3C35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TLV25NDMDF;

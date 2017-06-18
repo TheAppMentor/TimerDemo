@@ -12,6 +12,7 @@ enum TaskStatus {
     case notStarted
     case running
     case paused
+    case pausedBecauseAppResignedActive
     case completed
     case abandoned
 }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RSPlayPauseButton
 
-class RoundedButton: UIButton {
+class RoundedButton: RSPlayPauseButton {
 
     
     // Only override draw() if you perform custom drawing.
@@ -16,30 +17,36 @@ class RoundedButton: UIButton {
     override func draw(_ rect: CGRect) {
         // Drawing code
         
-        let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
+        layer.shadowOffset = CGSize(width: 1, height: 4)
+        layer.shadowRadius = 3.0
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
         
-//        let shadowShapeLayer = CAShapeLayer()
+//        let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
+//        
+////        let shadowShapeLayer = CAShapeLayer()
+////        circleShape.path = circlePath.cgPath
+////        circleShape.fillColor = UIColor.white.cgColor
+////        circleShape.frame = bounds
+//        
+//        let circleShape = CAShapeLayer()
 //        circleShape.path = circlePath.cgPath
 //        circleShape.fillColor = UIColor.white.cgColor
 //        circleShape.frame = bounds
-        
-        let circleShape = CAShapeLayer()
-        circleShape.path = circlePath.cgPath
-        circleShape.fillColor = UIColor.white.cgColor
-        circleShape.frame = bounds
-        circleShape.shadowOffset = CGSize(width: 1, height: 4)
-        
-        circleShape.shadowRadius = 3.0
-        circleShape.shadowColor = UIColor.lightGray.cgColor
-        circleShape.shadowOpacity = 0.5
-        circleShape.masksToBounds = false
-        
-        layer.mask = circleShape
-        //layer.masksToBounds = true
-        
-        layer.addSublayer(circleShape)
-        
-        //clipsToBounds = true
+//        circleShape.shadowOffset = CGSize(width: 1, height: 4)
+//        
+//        circleShape.shadowRadius = 3.0
+//        circleShape.shadowColor = UIColor.lightGray.cgColor
+//        circleShape.shadowOpacity = 0.5
+//        circleShape.masksToBounds = false
+//        
+//        layer.mask = circleShape
+//        //layer.masksToBounds = true
+//        
+//        layer.addSublayer(circleShape)
+//        
+//        //clipsToBounds = true
         
     }
     

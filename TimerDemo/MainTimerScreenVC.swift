@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 import AudioToolbox
+import RSPlayPauseButton
+import SCLAlertView
 
-class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
+class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler {
     
     //MARK: GLobal Variables
     let taskBoy = TaskHandler.shared
@@ -19,6 +21,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
     @IBOutlet weak var timerDisplayView: TimerView!
     @IBOutlet weak var timerControlButton: RoundedButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var timerContainerView: TimerContainerView!
     
     //MARK: Computed Properties
     //TODO: Find a better place to store this.
@@ -26,22 +29,53 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
         return UserDefaults.standard.object(forKey: "lastUsedTaskCollection") as? TaskCollection ?? nil
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //makeNavBarTransparent()
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.green]
+        
+        //self.navigationController?.navigationBar.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:80.0)
+        
+        navigationController?.navigationBar.setTitleVerticalPositionAdjustment(15.0, for: .default)
+        
+        createADeepWorkTask()
+        setupUIForTaskBegin()
+    }
+    
+    func makeNavBarTransparent() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+    
+    func createADeepWorkTask(){
         if let lastUsedTaskColl = lastUsedTaskCollection{
             taskBoy.createTask(name: lastUsedTaskColl.taskCollectionName, type: .deepFocus)
         }else{
             taskBoy.createTask(name: "Default", type: .deepFocus)
         }
+    }
+    
+    func setupUIForTaskBegin() {
         taskBoy.delegate = self
         
         cancelButton.isEnabled = false
         cancelButton.bounds = CGRect(x: 0, y: 0, width: 0, height: 0)
         
         timerDisplayView.theArcProgressView.timerDuration = (taskBoy.currentTask?.taskDuration)!
+        
+        //Set Background color of the timer container view.
+        timerContainerView.timerMode = (taskBoy.currentTask?.taskType)!
+        
+        timerControlButton.setPaused(true, animated: false)
     }
+    
+    
     
     func showCancelButton() {
         let showCancelAnim = CABasicAnimation(keyPath: "bounds")
@@ -53,13 +87,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
         
         cancelButton.layer.add(showCancelAnim, forKey: "showCanelButton")
     }
-    
-    
-    
-    
-    
-    
-    
+
     
     
     //MARK: StoryBoard Actions
@@ -72,10 +100,17 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
             taskBoy.startCurrentTask()
             showCancelButton()
             timerDisplayView.theArcProgressView.animateProgressBar()
+            timerControlButton.setPaused(false, animated: true)
             cancelButton.isEnabled = true
             
-        case .running   :  taskBoy.pauseCurrentTask()
-        case .paused    :   taskBoy.resumeCurrentTask()
+        case .running   :
+            taskBoy.pauseCurrentTask()
+            timerControlButton.setPaused(true, animated: true)
+            
+        case .paused    :
+            taskBoy.resumeCurrentTask()
+            timerControlButton.setPaused(false, animated: true)
+            
         default         :    print("Task Status Unknown.")
         }
     }
@@ -83,16 +118,35 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
     
     @IBAction func cancelButton(_ sender: UIButton) {
         print("Cancel Pressed")
+        InfoAlertView(actionDelegate: self).showAlertForTaskCancelled()
+
     }
     
     
     
+    // Info Pop Up Window Event Handler Delegate.
     
+    func userOptedToTakeShortBreak(){
+        
+       taskBoy.createTask(name: "shortBreak", type: .shortBreak)
+        timerContainerView.timerMode = .shortBreak
+        // Setup View for a Short break.
+        setupUIForTaskBegin()
+    }
     
+    func userOptedToTakeLongBreak() {
+        print("Setting UP a long break")
+        taskBoy.createTask(name: "longBreak", type: .longBreak)
+        timerContainerView.timerMode = .longBreak
+        // Setup View for a Short break.
+        setupUIForTaskBegin()
+        
+    }
     
-    
-    
-    
+    func userOptedToContinueWorking(){
+        createADeepWorkTask()
+        setupUIForTaskBegin()
+    }
     
     
     
@@ -109,6 +163,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
     
     func currentTaskPaused() {
         timerDisplayView.theArcProgressView.pauseAnimation()
+        timerControlButton.setPaused(true, animated: false)
     }
     
     func currentTaskResumed(){
@@ -122,6 +177,30 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
     func currentTaskCompleted() {
         print("Got Notificaiton .. current task completed.")
         timerDisplayView.theArcProgressView.timerLabel.text = "DONE"
+        
+        // Set screen again with same type as the task just complete. This is to handle the case, if he cancels from the Pop up.
+        createADeepWorkTask()
+        setupUIForTaskBegin()
+        
+        // Change Task to Break
+        // Show Pop up, asking if he wants a break or wants to continue.
+        // Pop up should also show summary or progress.
+        //SCLAlertView().showInfo("Important info", subTitle: "You are great")
+        
+        switch (taskBoy.currentTask?.taskType)! {
+        case .deepFocus:
+            InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
+        case .shortBreak:
+            InfoAlertView(actionDelegate: self).showAlertForShortBreakComplete()
+        case .longBreak:
+            InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
+        }
+        
+        InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
+        
+        
+        timerControlButton.setPaused(false, animated: true)
+        
         // Vibrate the Phone.
         //if SettingsHandler.shared.isVibrateOn.currentValue == "ON"{
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -137,6 +216,13 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate {
         
        // }
         
+    }
+}
+
+class CustomNavigationBar: UINavigationBar {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let newSize :CGSize = CGSize(width: self.frame.size.width, height: 88)
+        return newSize
     }
 }
 
