@@ -113,38 +113,6 @@
             endingLineNumber = "51"
             landmarkName = "showAlertForTaskComplete()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TimerDemo.InfoAlertView.showAlertForTaskComplete() -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/InfoAlertView.swift"
-                  timestampString = "519470776.476438"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "1404">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in TimerDemo.InfoAlertView.showAlertForTaskComplete() -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/InfoAlertView.swift"
-                  timestampString = "519470776.47768"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/MainTimerScreenVC.swift"
-            timestampString = "519470776.34041"
+            timestampString = "519489178.64895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "sizeThatFits(_:)"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "userOptedToTakeShortBreak()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

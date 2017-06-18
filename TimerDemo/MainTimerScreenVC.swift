@@ -64,8 +64,16 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func setupUIForTaskBegin() {
         taskBoy.delegate = self
         
+        // Setup Cancel Button
         cancelButton.isEnabled = false
         cancelButton.bounds = CGRect(x: 0, y: 0, width: 0, height: 0)
+        
+        // Setup Cancel 
+        cancelButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cancelButton.layer.masksToBounds = false
+        cancelButton.layer.shadowRadius = 2.0
+        cancelButton.layer.shadowOpacity = 0.5
+        
         
         timerDisplayView.theArcProgressView.timerDuration = (taskBoy.currentTask?.taskDuration)!
         
@@ -78,10 +86,18 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     
     func showCancelButton() {
-        let showCancelAnim = CABasicAnimation(keyPath: "bounds")
-        showCancelAnim.fromValue = CGRect(x: 0, y: 0, width: 0, height: 0)
-        showCancelAnim.toValue = CGRect(x: 0, y: 0, width: 30, height: 30)
-        showCancelAnim.duration = 1.0
+ //       "transform.scale"
+//        let showCancelAnim = CABasicAnimation(keyPath: "bounds")
+//        showCancelAnim.fromValue = CGRect(x: 0, y: 0, width: 0, height: 0)
+//        showCancelAnim.toValue = CGRect(x: 0, y: 0, width: 30, height: 30)
+//        showCancelAnim.duration = 1.0
+//        showCancelAnim.autoreverses = false
+//        showCancelAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        
+        let showCancelAnim = CABasicAnimation(keyPath: "transform.scale")
+        showCancelAnim.fromValue = 0
+        showCancelAnim.toValue = 1.0
+        showCancelAnim.duration = 0.75
         showCancelAnim.autoreverses = false
         showCancelAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         

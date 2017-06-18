@@ -1,14 +1,8 @@
-
 DerivedData
+DerivedData/
 DerivedData/ModuleCache/
 *.xcactivitylog
 *.pcm
 *.xcuserstate
 *.idx
 *.log
-
-*.db
-
-*.db
-
-*.db
