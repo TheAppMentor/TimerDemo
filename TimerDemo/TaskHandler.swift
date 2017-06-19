@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol TaskHandlerDelegate {
     func timerDidChangeValue(seconds : CFTimeInterval)
