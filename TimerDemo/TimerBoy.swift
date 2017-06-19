@@ -9,11 +9,11 @@
 import Foundation
 
 protocol TimerEventHandler {
-    func timerValueChanged(seconds : CFTimeInterval)
-    func timerPaused()
-    func timerHasResumed()
-    func timerAbandoned()
-    func timerCompleted()
+    func timerDidChangeValue(seconds : CFTimeInterval)
+    func timerDIdPause()
+    func timerDidResume()
+    func timerDidAbandon()
+    func timerDidComplete()
 }
 
 
@@ -44,17 +44,23 @@ class TimerBoy {
     func pauseTimer() {
         taskTimer.invalidate()
         //taskTimer = nil
-        delegate?.timerPaused()
+        delegate?.timerDIdPause()
     }
     
     func resumeTimer() {
         createTaskTimer()
         taskTimer.fire()
-        delegate?.timerHasResumed()
+        delegate?.timerDidResume()
     }
     
     func resetTimer() {
         startTime = nil
+    }
+    
+    func abandonTimer() {
+        endTime = Date()
+        taskTimer.invalidate()
+        delegate?.timerDidAbandon()
     }
     
     
@@ -62,11 +68,11 @@ class TimerBoy {
         taskTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (theTimer) in
             if self.currentTimerValue <= 0{
                 self.taskTimer.invalidate()
-                self.delegate?.timerCompleted()
+                self.delegate?.timerDidComplete()
             }
             
             self.currentTimerValue = self.currentTimerValue - 1.0
-            self.delegate?.timerValueChanged(seconds: self.currentTimerValue)
+            self.delegate?.timerDidChangeValue(seconds: self.currentTimerValue)
             //timerLabel.text = "\(currentTimerValue)"
         }
     }

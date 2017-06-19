@@ -14,6 +14,7 @@ target 'TimerDemo' do
     # Pods for testing
     pod 'RSPlayPauseButton', '~> 1.0'
     pod 'SCLAlertView', '~> 0.7'
+    pod 'Firebase'
   end
 
 end

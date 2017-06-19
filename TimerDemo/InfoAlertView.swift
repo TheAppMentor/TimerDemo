@@ -13,6 +13,9 @@ protocol InfoAlertEventHandler {
     func userOptedToTakeShortBreak()
     func userOptedToTakeLongBreak()
     func userOptedToContinueWorking()
+    
+    func userOptedToAbandonTask()
+    func userDoesNotWantToAbandonCurrentTask()
 }
 
 
@@ -61,13 +64,13 @@ class InfoAlertView: SCLAlertView {
     }
     
     
-    func showAlertForTaskCancelled() {
+    func showAlertForTaskAbandoned() {
         
         var appearance = SCLAlertView.SCLAppearance(
             kTitleFont: Utilities.shared.regularFontSize!,
             kTextFont: Utilities.shared.largeFontSize!,
             kButtonFont: Utilities.shared.regularFontSize!,
-            showCloseButton: true
+            showCloseButton: false
         )
         
         appearance.kWindowWidth = 300.0
@@ -77,14 +80,15 @@ class InfoAlertView: SCLAlertView {
         let alertView = SCLAlertView(appearance: appearance)
         
         //        alertView.addButton("Short Break", target:self, selector:Selector("firstButton"))
-        alertView.addButton("Short Break") {
-            self.delegateActionHandler?.userOptedToTakeShortBreak()
+        alertView.addButton("Yes, Cancel it.") {
+            self.delegateActionHandler?.userOptedToAbandonTask()
         }
         
-        alertView.addButton("Continue Focus") {
-            self.delegateActionHandler?.userOptedToContinueWorking()
+        alertView.addButton("No, Continue working") {
+            self.delegateActionHandler?.userDoesNotWantToAbandonCurrentTask()
         }
-        alertView.showSuccess("Task Complete", subTitle: "25:00")
+        
+        alertView.showWarning("Are you sure you want to Cancel?", subTitle: "25:00")
     }
     
     func showAlertForLongBreakComplete() {

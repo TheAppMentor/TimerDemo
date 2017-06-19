@@ -68,12 +68,12 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         cancelButton.isEnabled = false
         cancelButton.bounds = CGRect(x: 0, y: 0, width: 0, height: 0)
         
-        // Setup Cancel 
+        // Setup Cancel
+        
         cancelButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         cancelButton.layer.masksToBounds = false
         cancelButton.layer.shadowRadius = 2.0
         cancelButton.layer.shadowOpacity = 0.5
-        
         
         timerDisplayView.theArcProgressView.timerDuration = (taskBoy.currentTask?.taskDuration)!
         
@@ -86,13 +86,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     
     func showCancelButton() {
- //       "transform.scale"
-//        let showCancelAnim = CABasicAnimation(keyPath: "bounds")
-//        showCancelAnim.fromValue = CGRect(x: 0, y: 0, width: 0, height: 0)
-//        showCancelAnim.toValue = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        showCancelAnim.duration = 1.0
-//        showCancelAnim.autoreverses = false
-//        showCancelAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
         let showCancelAnim = CABasicAnimation(keyPath: "transform.scale")
         showCancelAnim.fromValue = 0
@@ -112,30 +105,39 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         
         switch taskBoy.currentTask!.taskStatus {
             
-        case .notStarted:
-            taskBoy.startCurrentTask()
-            showCancelButton()
-            timerDisplayView.theArcProgressView.animateProgressBar()
-            timerControlButton.setPaused(false, animated: true)
-            cancelButton.isEnabled = true
-            
-        case .running   :
-            taskBoy.pauseCurrentTask()
-            timerControlButton.setPaused(true, animated: true)
-            
-        case .paused    :
-            taskBoy.resumeCurrentTask()
-            timerControlButton.setPaused(false, animated: true)
-            
-        default         :    print("Task Status Unknown.")
+        case .notStarted: startCurrentTask()
+        case .running   : pauseCurrentTask()
+        case .paused    : resumeCurrentTask()
+        default         : print("Task Status Unknown.")
         }
     }
     
     
     @IBAction func cancelButton(_ sender: UIButton) {
-        print("Cancel Pressed")
-        InfoAlertView(actionDelegate: self).showAlertForTaskCancelled()
-
+        pauseCurrentTask()
+        InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
+    }
+    
+    func startCurrentTask() {
+        taskBoy.startCurrentTask()
+        showCancelButton()
+        timerDisplayView.theArcProgressView.animateProgressBar()
+        timerControlButton.setPaused(false, animated: true)
+        cancelButton.isEnabled = true
+    }
+    
+    func pauseCurrentTask() {
+        taskBoy.pauseCurrentTask()
+        timerControlButton.setPaused(true, animated: true)
+    }
+    
+    func resumeCurrentTask() {
+        taskBoy.resumeCurrentTask()
+        timerControlButton.setPaused(false, animated: true)
+    }
+    
+    func abandonCurrentTask() {
+        taskBoy.abandonCurrentTask()
     }
     
     
@@ -164,12 +166,22 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         setupUIForTaskBegin()
     }
     
+    func userOptedToAbandonTask(){
+        taskBoy.abandonCurrentTask()
+        
+    }
+    
+    func userDoesNotWantToAbandonCurrentTask(){
+        resumeCurrentTask()
+    }
+    
+    
     
     
     
     //MARK : Current Task Delegate Methods
     
-    func timerValueChanged(seconds: CFTimeInterval) {
+    func timerDidChangeValue(seconds: CFTimeInterval) {
         if seconds > 0 {
             timerDisplayView.theArcProgressView.timerLabel.text = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: seconds)
         }else{
@@ -187,6 +199,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func currentTaskAbandoned() {
+        createADeepWorkTask()
+        setupUIForTaskBegin()
+        timerDisplayView.theArcProgressView.resetAnimation()
         print("CurentTask has been abandoned")
     }
     
@@ -227,7 +242,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         //}
         
         //Find the alert tone and play it
-       // if SettingsHandler.shared.taskCompletedSound == "someSOund"{
+       // if SettingsHandler.shared.taskDidCompleteSound == "someSOund"{
             AudioServicesPlaySystemSound(1054);
         
        // }

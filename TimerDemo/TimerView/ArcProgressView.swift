@@ -49,15 +49,6 @@ class ArcProgressView: UIView {
     }
     
     
-    var arcPathStartState : UIBezierPath{
-        let tempPath = UIBezierPath(arcCenter: center, radius: arcRadius, startAngle: arcStartAngle, endAngle: arcStartAngle, clockwise: true)
-        tempPath.lineWidth = arcWidth
-        tempPath.lineCapStyle = .round
-        
-        return tempPath
-    }
-    
-    
     let arcProgressShape = CAShapeLayer()
     
     // Only override draw() if you perform custom drawing.
@@ -75,6 +66,7 @@ class ArcProgressView: UIView {
         arcBackgroundShape.strokeColor = arcBackgroundStrokeColor
         arcBackgroundShape.lineWidth = arcWidth
         arcBackgroundShape.lineCap = kCALineCapRound
+        arcBackgroundShape.name = "BackGroundArc"
         
         layer.mask = arcBackgroundShape
         layer.addSublayer(arcBackgroundShape)
@@ -88,20 +80,22 @@ class ArcProgressView: UIView {
         arcProgressShape.strokeColor = arcForegroundStrokeColor
         arcProgressShape.lineWidth = arcWidth
         arcProgressShape.lineCap = kCALineCapRound
+        arcProgressShape.name = "ForeGroundArc"
         
         layer.mask = arcProgressShape
         layer.addSublayer(arcProgressShape)
     }
     
-    var anim = CABasicAnimation(keyPath: "strokeEnd")
     
     func animateProgressBar() {
-        //anim = CABasicAnimation(keyPath: "strokeEnd")
+        let anim = CABasicAnimation(keyPath: "strokeEnd")
         anim.duration = timerDuration
         anim.fromValue = 0
         anim.toValue = 1
         anim.speed = 1.0
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = kCAFillModeForwards
         arcProgressShape.add(anim, forKey: "arcAnimation")
     }
     
@@ -109,15 +103,6 @@ class ArcProgressView: UIView {
         let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
         layer.speed = 0.0
         layer.timeOffset = pausedTime
-        
-        layer.presentation()?.value(forKeyPath: "strokeEnd")
-        
-        
-        if let theAnimation = layer.animation(forKey: "arcAnimation") as? CABasicAnimation{
-            print("The Saved Value : \(anim.fromValue)")
-        }else{
-            print("We Faialed to get an animation object ..... PAUSE")
-        }
     }
     
     func resumeAnimation(){
@@ -129,15 +114,31 @@ class ArcProgressView: UIView {
         layer.beginTime = timeSincePause
     }
     
-    
-    func runTimedCode() {
-        if currentTimerValue == 0{
-            taskTimer.invalidate()
-        }
-        
-        currentTimerValue = currentTimerValue - 1
-        timerLabel.text = "\(currentTimerValue)"
+    func resetAnimation() {
+        print("Prashanth : We need to figure out how to reset this animation man......")
+//        layer.sublayers?.forEach({
+//            if $0.name == "ForeGroundArc" || $0.name == "BackGroundArc" {
+//            print("Found This fellow...");
+//            $0.removeFromSuperlayer()
+//            }
+//        })
+//
+//        setNeedsDisplay()
+//
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -148,7 +149,6 @@ class ArcProgressView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
-        
     }
     
     override func prepareForInterfaceBuilder() {
@@ -163,5 +163,4 @@ class ArcProgressView: UIView {
         theView.frame = self.bounds
         self.addSubview(theView)
     }
-    
 }

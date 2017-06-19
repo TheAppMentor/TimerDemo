@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TaskHandlerDelegate {
-    func timerValueChanged(seconds : CFTimeInterval)
+    func timerDidChangeValue(seconds : CFTimeInterval)
     func currentTaskPaused()
     func currentTaskResumed()
     func currentTaskAbandoned()
@@ -36,6 +36,9 @@ class TaskHandler : TaskEventHanlder {
     var currentTask : Task?
     
     func createTask(name : String, type : TaskType) {
+        currentTask = nil
+        
+        
         currentTask = Task(name: name, type: type)
         currentTask?.delegate = self
         currentTask?.taskDuration = taskDuration
@@ -56,27 +59,39 @@ class TaskHandler : TaskEventHanlder {
         currentTask?.taskStatus = .running
     }
     
-    func timerValueChanged(seconds: CFTimeInterval){
-        delegate?.timerValueChanged(seconds: seconds)
+    func timerDidChangeValue(seconds: CFTimeInterval){
+        delegate?.timerDidChangeValue(seconds: seconds)
     }
     
-    func taskResumed() {
+    func taskDidResume() {
      delegate?.currentTaskResumed()
     }
     
-    func taskPaused(){
+    func taskDidPause(){
         delegate?.currentTaskPaused()
     }
     
-    func taskAbandoned(){
-     delegate?.currentTaskAbandoned()
+    func taskDidAbandon() {
+        delegate?.currentTaskAbandoned()
     }
     
-    func taskCompleted() {
+    
+    func abandonCurrentTask(){
+        currentTask?.abandon()
+        archiveCurrentTask()
+        
+    // Save the abandoned task to the task collection.
+        
+    }
+    
+    func taskDidComplete() {
         currentTask?.taskStatus = .completed
         // Add this task to the task collection.
         delegate?.currentTaskCompleted()
     }
     
+    func archiveCurrentTask() {
+        //Add Current task to appropriate Task Collection.
+    }
     
 }

@@ -9,11 +9,11 @@
 import Foundation
 
 protocol TaskEventHanlder {
-    func timerValueChanged(seconds: CFTimeInterval)
-    func taskPaused()
-    func taskResumed()
-    func taskAbandoned()
-    func taskCompleted()
+    func timerDidChangeValue(seconds: CFTimeInterval)
+    func taskDidPause()
+    func taskDidResume()
+    func taskDidAbandon()
+    func taskDidComplete()
 }
 
 class Task : TimerEventHandler {
@@ -21,7 +21,7 @@ class Task : TimerEventHandler {
     var delegate : TaskEventHanlder?
     
     private var taskID: UUID
-    private var timer: TimerBoy = TimerBoy()
+    private var timer: TimerBoy! = TimerBoy()
     private var taskName: String                // We dont need this, this will be same as task collection name.
     var taskType: TaskType
     private var taskTags: [String]?             // Here we can associate hash Tags with tasks to group and categorize them.
@@ -29,7 +29,12 @@ class Task : TimerEventHandler {
     var taskStatus: TaskStatus = .notStarted
     
 //    var taskDuration : CFTimeInterval = SettingsHandler.shared.taskDurationMinutes.currentValue
-    var taskDuration : CFTimeInterval = 60  // Make it 25 * 60 later
+    var taskDuration : CFTimeInterval = 60 {
+        didSet{
+            timer.duration = taskDuration
+        }
+        
+    }  // Make it 25 * 60 later
     
     var timeRemaining : CFTimeInterval{
         
@@ -80,7 +85,7 @@ class Task : TimerEventHandler {
     }
     
      func abandon() {
-        taskStatus = .abandoned
+        timer.abandonTimer()
     }
     
      func edit() {
@@ -97,26 +102,27 @@ class Task : TimerEventHandler {
         return true
     }
     
-    func timerValueChanged(seconds: CFTimeInterval) {
-        delegate?.timerValueChanged(seconds: seconds)
+    func timerDidChangeValue(seconds: CFTimeInterval) {
+        delegate?.timerDidChangeValue(seconds: seconds)
     }
     
-    func timerPaused(){
-        delegate?.taskPaused()
+    func timerDIdPause(){
+        delegate?.taskDidPause()
     }
     
-    func timerHasResumed(){
-        delegate?.taskResumed()
-    }
-    
-    
-    func timerAbandoned(){
-        delegate?.taskAbandoned()
+    func timerDidResume(){
+        delegate?.taskDidResume()
     }
     
     
-    func timerCompleted() {
-        delegate?.taskCompleted()
+    func timerDidAbandon(){
+        taskStatus = .abandoned
+        delegate?.taskDidAbandon()
+    }
+    
+    
+    func timerDidComplete() {
+        delegate?.taskDidComplete()
         print("Delegate : Task : Timer Ended... ")
     }
     

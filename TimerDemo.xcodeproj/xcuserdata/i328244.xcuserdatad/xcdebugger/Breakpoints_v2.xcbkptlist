@@ -103,7 +103,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "taskCompletedSound"
+            landmarkName = "taskDidCompleteSound"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -130,7 +130,7 @@
                   moduleName = "TimerDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Settings/SettingsHandler.swift"
-                  timestampString = "519488048.992454"
+                  timestampString = "519506584.501238"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "157"
@@ -145,7 +145,7 @@
                   moduleName = "TimerDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Settings/SettingsHandler.swift"
-                  timestampString = "519488048.993801"
+                  timestampString = "519506584.502473"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "157"
@@ -178,12 +178,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/TaskHandler.swift"
-            timestampString = "519470776.339663"
+            timestampString = "519503279.884872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "taskPaused()"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "taskDidPause()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -195,22 +195,6 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/TimerBoy.swift"
-            timestampString = "519470776.339853"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "resumeTimer()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
