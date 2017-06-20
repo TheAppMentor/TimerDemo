@@ -17,6 +17,28 @@
         </array>
     </customFonts>
     <scenes>
+        <!--LoginVC-->
+        <scene sceneID="DeT-Tz-PEG">
+            <objects>
+                <viewController id="Yjm-uW-c7T" customClass="LoginVC" customModule="TimerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3gJ-yD-0B3"/>
+                        <viewControllerLayoutGuide type="bottom" id="TRH-zg-OAs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8X2-km-NcR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pqp-Hq-aTh"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="loginSuccess" id="dij-0j-Iut"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpz-ZZ-4kD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118" y="357"/>
+        </scene>
         <!--Deep Focus-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -327,12 +349,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yqj-tC-B17"/>
+                        <segue destination="Yjm-uW-c7T" kind="relationship" relationship="rootViewController" id="nKy-3h-bFW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GsV-PO-Aon" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202" y="357"/>
+            <point key="canvasLocation" x="-759" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tmd-eQ-B8e">

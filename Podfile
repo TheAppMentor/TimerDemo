@@ -9,6 +9,9 @@ target 'TimerDemo' do
   pod 'RSPlayPauseButton', '~> 1.0'
   pod 'SCLAlertView', '~> 0.7'
   pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
   target 'TimerDemoTests' do
     inherit! :search_paths
@@ -16,6 +19,9 @@ target 'TimerDemo' do
     pod 'RSPlayPauseButton', '~> 1.0'
     pod 'SCLAlertView', '~> 0.7'
     pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
   end
 
 end

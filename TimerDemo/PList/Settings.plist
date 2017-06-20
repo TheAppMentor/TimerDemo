@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Goals</key>
+	<dict>
+		<key>dailyGoal</key>
+		<dict>
+			<key>displayName</key>
+			<string>Daily Goal</string>
+			<key>currentValue</key>
+			<string>5 Sessions</string>
+			<key>listOfValues</key>
+			<array>
+				<string>1 Session</string>
+				<string>2 Sessions</string>
+				<string>3 Sessions</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Alerts</key>
+	<dict>
+		<key>isVibrateOn</key>
+		<dict>
+			<key>displayName</key>
+			<string>Vibrate</string>
+			<key>currentValue</key>
+			<string>No</string>
+			<key>listOfValues</key>
+			<array>
+				<string>Yes</string>
+				<string>No</string>
+			</array>
+		</dict>
+		<key>taskCompletedSound</key>
+		<dict>
+			<key>displayName</key>
+			<string>Task Completed Alert</string>
+			<key>currentValue</key>
+			<string>default</string>
+			<key>listOfValues</key>
+			<array>
+				<string>Alert Tune 1</string>
+				<string>Alert Tune 2</string>
+				<string>Alert Tune 3</string>
+			</array>
+		</dict>
+		<key>longBreakCompletedSound</key>
+		<dict>
+			<key>displayName</key>
+			<string>Long Break Completed Alert</string>
+			<key>currentValue</key>
+			<string>default</string>
+			<key>listOfValues</key>
+			<array>
+				<string>Alert Tune 1</string>
+				<string>Alert Tune 2</string>
+				<string>Alert Tune 3</string>
+			</array>
+		</dict>
+		<key>shortBreakCompletedSound</key>
+		<dict>
+			<key>displayName</key>
+			<string>Short Break Completed Alert</string>
+			<key>currentValue</key>
+			<string>default</string>
+			<key>listOfValues</key>
+			<array>
+				<string>Alert Tune 1</string>
+				<string>Alert Tune 2</string>
+				<string>Alert Tune 3</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Intervals</key>
+	<dict>
+		<key>shortBreakInterval</key>
+		<dict>
+			<key>displayName</key>
+			<string>Short Break Interval</string>
+			<key>currentValue</key>
+			<string>5 Tasks</string>
+			<key>listOfValues</key>
+			<array>
+				<string>1 Task</string>
+				<string>2 Tasks</string>
+				<string>3 Tasks</string>
+				<string>4 Tasks</string>
+				<string>5 Tasks</string>
+				<string>6 Tasks</string>
+				<string>7 Tasks</string>
+				<string>8 Tasks</string>
+				<string>9 Tasks</string>
+				<string>10 Tasks</string>
+			</array>
+		</dict>
+		<key>longBreakInterval</key>
+		<dict>
+			<key>displayName</key>
+			<string>Long Break Interval</string>
+			<key>currentValue</key>
+			<string>5</string>
+			<key>listOfValues</key>
+			<array>
+				<string>1</string>
+				<string>2</string>
+				<string>3</string>
+				<string>4</string>
+				<string>5</string>
+				<string>6</string>
+				<string>7</string>
+				<string>8</string>
+				<string>9</string>
+				<string>10</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Duration</key>
+	<dict>
+		<key>taskDurationMinutes</key>
+		<dict>
+			<key>displayName</key>
+			<string>Task Duration</string>
+			<key>currentValue</key>
+			<string>25 Minutes</string>
+			<key>listOfValues</key>
+			<array>
+				<string>5 Minutes</string>
+				<string>10 Minutes</string>
+				<string>15 Minutes</string>
+				<string>20 Minutes</string>
+				<string>25 Minutes</string>
+				<string>30 Minutes</string>
+				<string>35 Minutes</string>
+				<string>40 Minutes</string>
+				<string>45 Minutes</string>
+				<string>50 Minutes</string>
+				<string>55 Minutes</string>
+				<string>60 Minutes</string>
+				<string>65 Minutes</string>
+				<string>70 Minutes</string>
+				<string>75 Minutes</string>
+				<string>80 Minutes</string>
+				<string>85 Minutes</string>
+				<string>90 Minutes</string>
+			</array>
+		</dict>
+		<key>shortBreakDurationMinutes</key>
+		<dict>
+			<key>displayName</key>
+			<string>Short Break Duration</string>
+			<key>currentValue</key>
+			<string>5 Minutes</string>
+			<key>listOfValues</key>
+			<array>
+				<string>5 Minutes</string>
+				<string>10 Minutes</string>
+				<string>15 Minutes</string>
+				<string>20 Minutes</string>
+				<string>25 Minutes</string>
+				<string>30 Minutes</string>
+				<string>35 Minutes</string>
+				<string>40 Minutes</string>
+				<string>45 Minutes</string>
+				<string>50 Minutes</string>
+				<string>55 Minutes</string>
+				<string>60 Minutes</string>
+				<string>65 Minutes</string>
+				<string>70 Minutes</string>
+				<string>75 Minutes</string>
+				<string>80 Minutes</string>
+				<string>85 Minutes</string>
+				<string>90 Minutes</string>
+			</array>
+		</dict>
+		<key>longBreakDurationMinutes</key>
+		<dict>
+			<key>displayName</key>
+			<string>Long Break Duration</string>
+			<key>currentValue</key>
+			<string>5 Minutes</string>
+			<key>listOfValues</key>
+			<array>
+				<string>5 Minutes</string>
+				<string>10 Minutes</string>
+				<string>15 Minutes</string>
+				<string>20 Minutes</string>
+				<string>25 Minutes</string>
+				<string>30 Minutes</string>
+				<string>35 Minutes</string>
+				<string>40 Minutes</string>
+				<string>45 Minutes</string>
+				<string>50 Minutes</string>
+				<string>55 Minutes</string>
+				<string>60 Minutes</string>
+				<string>65 Minutes</string>
+				<string>70 Minutes</string>
+				<string>75 Minutes</string>
+				<string>80 Minutes</string>
+				<string>85 Minutes</string>
+				<string>90 Minutes</string>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>
