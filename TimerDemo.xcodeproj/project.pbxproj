@@ -19,6 +19,7 @@
 		2F2C9B071EEAC310000C5279 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B061EEAC30F000C5279 /* Constants.swift */; };
 		2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B091EEAD8FA000C5279 /* Settting.swift */; };
 		2F2C9B0B1EEADD27000C5279 /* Settting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B091EEAD8FA000C5279 /* Settting.swift */; };
+		2F3C68411EF989750022BE57 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */; };
 		2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B591EE28BD7005BB176 /* AppDelegate.swift */; };
 		2F446B5C1EE28BD7005BB176 /* MainTimerScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */; };
 		2F446B5F1EE28BD7005BB176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B5D1EE28BD7005BB176 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		2F9207B21EE6AF0A00DB3C35 /* SettingsHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */; };
 		2F9207B31EE6B40900DB3C35 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92079F1EE67A6A00DB3C35 /* SettingsHandler.swift */; };
 		2F9207B51EE7200900DB3C35 /* Project Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9207B41EE7200900DB3C35 /* Project Info.rtf */; };
+		2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */; };
 		2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */; };
 		2FB39E921EF01307005B3DF4 /* ArcProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */; };
 		2FBDC4251EF05B9D0022C10D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDC4241EF05B9D0022C10D /* RoundedButton.swift */; };
@@ -77,6 +79,7 @@
 		2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHandler.swift; sourceTree = "<group>"; };
 		2F2C9B061EEAC30F000C5279 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F2C9B091EEAD8FA000C5279 /* Settting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settting.swift; sourceTree = "<group>"; };
+		2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		2F446B561EE28BD7005BB176 /* TimerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F446B591EE28BD7005BB176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimerScreenVC.swift; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		2F9207AB1EE6A96400DB3C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandlerTests.swift; sourceTree = "<group>"; };
 		2F9207B41EE7200900DB3C35 /* Project Info.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Project Info.rtf"; sourceTree = "<group>"; };
+		2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseCollection.swift; sourceTree = "<group>"; };
 		2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
 		2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArcProgressView.xib; sourceTree = "<group>"; };
 		2FBDC4241EF05B9D0022C10D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 			children = (
 				2F8AF1E31EF8315900B8BB6B /* LoginVC.swift */,
 				2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */,
+				2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */,
 				2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */,
 				2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */,
 			);
@@ -228,6 +233,7 @@
 				2F446B731EE5ACFE005BB176 /* TaskType.swift */,
 				2F446B6F1EE51FB0005BB176 /* TaskCollection.swift */,
 				2F446B711EE5AC41005BB176 /* TaskList.swift */,
+				2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3C68411EF989750022BE57 /* CustomNavigationBar.swift in Sources */,
 				2F0FC9501EF009700053167F /* TimerView.swift in Sources */,
 				2F8B3A7A1EE9B8C30008F439 /* SettingsPickerView.swift in Sources */,
 				2F446B721EE5AC41005BB176 /* TaskList.swift in Sources */,
@@ -554,6 +561,7 @@
 				2FBDC4251EF05B9D0022C10D /* RoundedButton.swift in Sources */,
 				2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */,
 				2F446B701EE51FB0005BB176 /* TaskCollection.swift in Sources */,
+				2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */,
 				2F136D1F1EE8741500E710FA /* SettingsTVC.swift in Sources */,
 				2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */,
 			);

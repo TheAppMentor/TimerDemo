@@ -11,10 +11,10 @@ import FirebaseDatabase
 
 protocol TaskHandlerDelegate {
     func timerDidChangeValue(seconds : CFTimeInterval)
-    func currentTaskPaused()
-    func currentTaskResumed()
-    func currentTaskAbandoned()
-    func currentTaskCompleted()
+    func currentDidPause()
+    func currentTaskDidResume()
+    func currentTaskDidAbandon()
+    func currentTaskDidComplete()
 }
 
 class TaskHandler : TaskEventHanlder {
@@ -37,7 +37,6 @@ class TaskHandler : TaskEventHanlder {
     
     func createTask(name : String, type : TaskType) {
         currentTask = nil
-        
         
         currentTask = Task(name: name, type: type)
         currentTask?.delegate = self
@@ -64,15 +63,15 @@ class TaskHandler : TaskEventHanlder {
     }
     
     func taskDidResume() {
-     delegate?.currentTaskResumed()
+     delegate?.currentTaskDidResume()
     }
     
     func taskDidPause(){
-        delegate?.currentTaskPaused()
+        delegate?.currentDidPause()
     }
     
     func taskDidAbandon() {
-        delegate?.currentTaskAbandoned()
+        delegate?.currentTaskDidAbandon()
     }
     
     
@@ -89,12 +88,13 @@ class TaskHandler : TaskEventHanlder {
         // Add this task to the task collection.
         archiveCurrentTask()
         
-        delegate?.currentTaskCompleted()
+        delegate?.currentTaskDidComplete()
     }
     
     func archiveCurrentTask() {
         //Add Current task to appropriate Task Collection.
         PersistenceHandler.shared.saveTask(task: currentTask!)
+        PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
     }
     
 }

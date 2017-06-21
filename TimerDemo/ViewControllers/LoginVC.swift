@@ -16,20 +16,26 @@ class LoginVC: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        AuthHandler.shared.authenticateUser { (success, userInfo) in
-            if success == true{
-                // Present the first screen
-                print("\n\n the User infor is ... \(userInfo) \n\n\n")
-                self.performSegue(withIdentifier: "loginSuccess", sender: self)
-            }
-            
-            if success == false{
-                print("We Could not login the user, get him to login again....")
-            }
-            
-        }
+//        AuthHandler.shared.authenticateUser { (success, userInfo) in
+//            if success == true{
+//                // Present the first screen
+//                print("\n\n the User infor is ... \(userInfo) \n\n\n")
+//                self.performSegue(withIdentifier: "loginSuccess", sender: self)
+//            }
+//
+//            if success == false{
+//                print("We Could not login the user, get him to login again....")
+//            }
+//        }
         
     }
+    
+    @IBAction func dismissLoginScreen(_ sender: UIButton) {
+        dismiss(animated: true) {
+            print("Login Screen dismissed")
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

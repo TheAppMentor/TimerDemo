@@ -28,16 +28,30 @@
                     <view key="view" contentMode="scaleToFill" id="8X2-km-NcR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In Screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egb-Nw-lS9">
+                                <rect key="frame" x="108" y="28" width="159" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-Cs-enD">
+                                <rect key="frame" x="113" y="111" width="148" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissLoginScreen:" destination="Yjm-uW-c7T" eventType="touchUpInside" id="6jE-SH-InY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Pqp-Hq-aTh"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="loginSuccess" id="dij-0j-Iut"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpz-ZZ-4kD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="357"/>
+            <point key="canvasLocation" x="216.80000000000001" y="1135.6821589205399"/>
         </scene>
         <!--Deep Focus-->
         <scene sceneID="tne-QT-ifu">
@@ -57,15 +71,18 @@
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="gkv-Vm-qny"/>
                                     <barButtonItem image="Analyze" id="DUA-7W-gKs">
                                         <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <segue destination="tbA-WR-IVT" kind="show" id="1Bz-IQ-VNB"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vLN-4E-3Ud"/>
                                     <barButtonItem image="Settings" style="plain" id="3Ne-PR-Tgf">
                                         <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="mgj-U6-Pd2" kind="presentation" id="kbh-mS-P4Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="axB-Ii-c9I"/>
+                                    <barButtonItem title="Login" style="plain" id="uWh-Tp-E6a">
+                                        <connections>
+                                            <action selector="userWantsToLogin:" destination="BYZ-38-t0r" id="YWW-aX-Mf4"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="6NH-hV-BFV"/>
@@ -147,6 +164,7 @@
                         <outlet property="timerContainerView" destination="Dt8-Sg-mJU" id="6mS-QR-nG8"/>
                         <outlet property="timerControlButton" destination="n8F-bM-6XF" id="V2h-zr-W56"/>
                         <outlet property="timerDisplayView" destination="Ybb-Yu-FYN" id="UgE-lD-QLZ"/>
+                        <segue destination="Yjm-uW-c7T" kind="presentation" identifier="showSignInScreen" id="OiP-h0-dtR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -345,16 +363,15 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tDH-Fw-SHF" customClass="CustomNavigationBar" customModule="TimerDemo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Yjm-uW-c7T" kind="relationship" relationship="rootViewController" id="nKy-3h-bFW"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8Bm-4w-1az"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GsV-PO-Aon" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-759" y="357"/>
+            <point key="canvasLocation" x="-14" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tmd-eQ-B8e">
