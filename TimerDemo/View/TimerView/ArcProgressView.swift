@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable
 
-class ArcProgressView: UIView {
+class ArcProgressView: UIView,CAAnimationDelegate {
     
     var timerDuration : CFTimeInterval = 25 * 60{
         didSet{
@@ -36,8 +36,6 @@ class ArcProgressView: UIView {
     var arcWidth : CGFloat = 16.0
     var arcBackgroundStrokeColor = UIColor(colorLiteralRed: (155.0/255.0), green: (155.0/255.0), blue: (155.0/255.0), alpha: 0.5).cgColor
     var arcForegroundStrokeColor = UIColor(colorLiteralRed: (255.0/255.0), green: (255.0/255.0), blue: (255.0/255.0), alpha: 1.0).cgColor
-    //var arcForegroundStrokeColor = UIColor.red.cgColor
-    
     
     var arcPathEndState : UIBezierPath{
         let tempPath = UIBezierPath(arcCenter: center, radius: arcRadius, startAngle: arcStartAngle, endAngle: arcEndAngle, clockwise: true)
@@ -94,8 +92,9 @@ class ArcProgressView: UIView {
         anim.toValue = 1
         anim.speed = 1.0
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        anim.isRemovedOnCompletion = false
-        anim.fillMode = kCAFillModeForwards
+//        anim.isRemovedOnCompletion = true
+//        anim.fillMode = kCAFillModeForwards
+        anim.delegate = self
         arcProgressShape.add(anim, forKey: "arcAnimation")
     }
     
@@ -114,23 +113,56 @@ class ArcProgressView: UIView {
         layer.beginTime = timeSincePause
     }
     
-    func resetAnimation() {
-        print("Prashanth : We need to figure out how to reset this animation man......")
+    
+    func resetLayerToFullPosition() {
+        layer.speed = 100.0
+        layer.timeOffset = 0.0
+        layer.beginTime = 0.0
+        
 //        layer.sublayers?.forEach({
-//            if $0.name == "ForeGroundArc" || $0.name == "BackGroundArc" {
 //            print("Found This fellow...");
-//            $0.removeFromSuperlayer()
+//            if $0.name == "ForeGroundArc"{
+//                ($0 as! CAShapeLayer).strokeEnd = 1.0
+//                layer.setNeedsDisplay()
 //            }
 //        })
-//
-//        setNeedsDisplay()
-//
+        
+        
+    }
+    
+    func resumeAnimationFromStart(){
     }
     
     
+    func resetAnimation() {
+        print("Prashanth : We need to figure out how to reset this animation man......")
+//        animateProgressBar()
+//        arcProgressShape.animationKeys()
+        
+        layer.sublayers?.forEach({
+            if $0.name == "ForeGroundArc"{
+            print("Found This fellow...");
+                if let theAnimation = $0.animation(forKey: "arcAnimation"){
+                    print("Found the Animation also...");
+                    ($0 as! CAShapeLayer).strokeEnd = 0.0
+                    //($0 as! CAShapeLayer).presentation()?
+                    $0.add(theAnimation, forKey: "arcAnimation")
+                    //($0 as! CAShapeLayer).strokeEnd = 0.0
+                }else{
+                    assertionFailure("Could not find the animation !!!")
+                }
+            }
+        })
+        
     
     
-    
+    func animationDidStart(_ anim: CAAnimation) {
+        print("ANimation Started")
+    }
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        print("animation ENded \(flag)")
+        layer.speed = 1.0
+    }
     
     
     

@@ -46,7 +46,7 @@ extension Task{
         tempDict["taskID"] = taskID.uuidString
         tempDict["taskName"] = taskName
         tempDict["timer"] = "ERROR >>> WE NEED TO SAVE THE TIMER HERE"
-        tempDict["taskType"] = taskStatus.rawValue
+        tempDict["taskType"] = taskType.rawValue
         tempDict["taskStatus"] = taskStatus.rawValue
         tempDict["isPerfectTask"] = false
         tempDict["pauseList"] = pauseList

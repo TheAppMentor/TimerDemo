@@ -127,7 +127,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func startCurrentTask() {
         taskBoy.startCurrentTask()
         showCancelButton()
-        timerDisplayView.theArcProgressView.animateProgressBarForwards()
+        timerDisplayView.theArcProgressView.animateProgressBar()
+        view.setNeedsDisplay()
         timerControlButton.setPaused(false, animated: true)
         cancelButton.isEnabled = true
     }
