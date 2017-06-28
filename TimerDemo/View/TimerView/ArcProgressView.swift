@@ -153,7 +153,7 @@ class ArcProgressView: UIView,CAAnimationDelegate {
                 }
             }
         })
-        
+    }
     
     
     func animationDidStart(_ anim: CAAnimation) {

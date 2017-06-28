@@ -51,6 +51,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Schedule a local notification.
         //
         
+        
+                            let center = UNUserNotificationCenter.current()
+                            let content = UNMutableNotificationContent()
+                            content.title = "Late wake up call"
+                            content.body = "The early bird catches the worm, but the second mouse gets the cheese."
+                            content.categoryIdentifier = "alarm"
+                            content.userInfo = ["customData": "fizzbuzz"]
+                            content.sound = UNNotificationSound.default()
+        
+                            var dateComponents = DateComponents()
+        //                    dateComponents.hour = 15
+        //                    dateComponents.minute = 49
+                            dateComponents.minute = 1
+                            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+                            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                            center.add(request)
+        
+        
+        
+        
         let notification = UILocalNotification()
         //notification.fireDate = NSDate(timeIntervalSinceNow: currTask.timer) as Date
         notification.fireDate = NSDate(timeIntervalSinceNow: 5) as Date
@@ -58,8 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notification.alertAction = "be awesome!"
         notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.shared.scheduleLocalNotification(notification)
-
-        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

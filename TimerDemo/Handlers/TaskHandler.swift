@@ -25,7 +25,7 @@ class TaskHandler : TaskEventHanlder {
     
     var taskDuration : CFTimeInterval{
         switch (currentTask?.taskType)! {
-        case .deepFocus :   return 60
+        case .deepFocus :   return 10
         case .shortBreak:   return 5
         case .longBreak :   return 5
         }
@@ -93,8 +93,8 @@ class TaskHandler : TaskEventHanlder {
     
     func archiveCurrentTask() {
         //Add Current task to appropriate Task Collection.
-        PersistenceHandler.shared.saveTask(task: currentTask!)
-        PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
+        //PersistenceHandler.shared.saveTask(task: currentTask!)
+        //PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
     }
     
 }

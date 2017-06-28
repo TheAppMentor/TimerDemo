@@ -25,7 +25,7 @@ class TestViewVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        progressView.animateProgressBarForwards()
+        //progressView.animateProgressBarForwards()
     }
     
 

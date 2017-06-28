@@ -116,7 +116,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     @IBAction func cancelButton(_ sender: UIButton) {
         pauseCurrentTask()
-        InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
     }
     
     @IBAction func userWantsToLogin(_ sender: UIBarButtonItem) {
@@ -135,7 +134,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     func pauseCurrentTask() {
         taskBoy.pauseCurrentTask()
-        //timerControlButton.setPaused(true, animated: true)
+        timerControlButton.setPaused(true, animated: true)
     }
     
     func resumeCurrentTask() {
@@ -175,7 +174,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func userOptedToAbandonTask(){
 //        createADeepWorkTask()
 //        setupUIForTaskBegin()
-        taskBoy.abandonCurrentTask()
+        abandonCurrentTask()
         
 //        taskBoy.abandonCurrentTask()
 //
@@ -214,6 +213,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func currentDidPause() {
         timerDisplayView.theArcProgressView.pauseAnimation()
         timerControlButton.setPaused(true, animated: false)
+        InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
     }
     
     func currentTaskDidResume(){
@@ -221,11 +221,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func currentTaskDidAbandon() {
-        timerDisplayView.theArcProgressView.completeAnimation()
-        let oldFrame = timerDisplayView.theArcProgressView.frame
-        let newTimerDisplayView = 
+        // Short Break seems to work..
+        timerDisplayView.theArcProgressView.resetLayerToFullPosition()
         
-        // Create a new task
         createADeepWorkTask()
         setupUIForTaskBegin()
     }

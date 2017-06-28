@@ -33,9 +33,6 @@ class PersistenceHandler {
             //  -> user Phone
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").setValue(["UserInfo" : userInfo.jsonFormat])
     }
-    
-    
-    
 }
 
 

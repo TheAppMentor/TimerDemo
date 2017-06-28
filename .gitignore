@@ -7,3 +7,5 @@ DerivedData/ModuleCache/
 *.idx
 *.log
 TimerDemo\.xcodeproj/xcuserdata/i328244\.xcuserdatad/xcdebugger/
+
+TimerDemo\.xcworkspace/xcuserdata/i328244\.xcuserdatad/xcdebugger/Breakpoints_v2\.xcbkptlist
