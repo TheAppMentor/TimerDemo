@@ -16,6 +16,7 @@
 		2F136D211EE875FF00E710FA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F136D201EE875FF00E710FA /* Utilities.swift */; };
 		2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F18CB561EF021F4005C5902 /* TestViewVC.swift */; };
 		2F24C1AD1EF12FD200B2CE13 /* TaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */; };
+		2F26BF571F0943BF0067C9A5 /* TaskDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F26BF561F0943BF0067C9A5 /* TaskDetailsVC.swift */; };
 		2F2C9B071EEAC310000C5279 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B061EEAC30F000C5279 /* Constants.swift */; };
 		2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B091EEAD8FA000C5279 /* Settting.swift */; };
 		2F2C9B0B1EEADD27000C5279 /* Settting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B091EEAD8FA000C5279 /* Settting.swift */; };
@@ -33,6 +34,10 @@
 		2F446B761EE5AD32005BB176 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B751EE5AD32005BB176 /* TaskStatus.swift */; };
 		2F446B781EE67723005BB176 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B771EE67723005BB176 /* Settings.plist */; };
 		2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4FB5491EF109E50066BEDA /* Pause.swift */; };
+		2F5DBB7B1F05473A009E54F7 /* OnlineSettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7A1F05473A009E54F7 /* OnlineSettingsHandler.swift */; };
+		2F5DBB7D1F06C27F009E54F7 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7C1F06C27F009E54F7 /* LaunchScreenVC.swift */; };
+		2F5DBB7F1F07A26A009E54F7 /* TaskPickerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7E1F07A26A009E54F7 /* TaskPickerTVC.swift */; };
+		2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60AF8E1F0417BF007674C9 /* Preferences.swift */; };
 		2F7CB35E1EEED4FB004272A7 /* VizCanvasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */; };
 		2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7CB35F1EEED53A004272A7 /* VizCanvasView.swift */; };
 		2F8AF1E01EF7F68000B8BB6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F8AF1DF1EF7F68000B8BB6B /* GoogleService-Info.plist */; };
@@ -77,6 +82,7 @@
 		2F136D201EE875FF00E710FA /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2F18CB561EF021F4005C5902 /* TestViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewVC.swift; sourceTree = "<group>"; };
 		2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHandler.swift; sourceTree = "<group>"; };
+		2F26BF561F0943BF0067C9A5 /* TaskDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsVC.swift; sourceTree = "<group>"; };
 		2F2C9B061EEAC30F000C5279 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F2C9B091EEAD8FA000C5279 /* Settting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settting.swift; sourceTree = "<group>"; };
 		2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
@@ -95,6 +101,10 @@
 		2F446B751EE5AD32005BB176 /* TaskStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		2F446B771EE67723005BB176 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		2F4FB5491EF109E50066BEDA /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
+		2F5DBB7A1F05473A009E54F7 /* OnlineSettingsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineSettingsHandler.swift; sourceTree = "<group>"; };
+		2F5DBB7C1F06C27F009E54F7 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
+		2F5DBB7E1F07A26A009E54F7 /* TaskPickerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPickerTVC.swift; sourceTree = "<group>"; };
+		2F60AF8E1F0417BF007674C9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VizCanvasView.xib; sourceTree = "<group>"; };
 		2F7CB35F1EEED53A004272A7 /* VizCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VizCanvasView.swift; sourceTree = "<group>"; };
 		2F8AF1DF1EF7F68000B8BB6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -163,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				2F2C9B091EEAD8FA000C5279 /* Settting.swift */,
-				2F136D1E1EE8741500E710FA /* SettingsTVC.swift */,
 				2F0118741EEE6B6E00D3FEE9 /* VizChartView.swift */,
 				2F0118761EEED39100D3FEE9 /* VizChartView.xib */,
 				2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */,
@@ -216,9 +225,13 @@
 			isa = PBXGroup;
 			children = (
 				2F8AF1E31EF8315900B8BB6B /* LoginVC.swift */,
+				2F5DBB7C1F06C27F009E54F7 /* LaunchScreenVC.swift */,
 				2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */,
 				2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */,
 				2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */,
+				2F136D1E1EE8741500E710FA /* SettingsTVC.swift */,
+				2F5DBB7E1F07A26A009E54F7 /* TaskPickerTVC.swift */,
+				2F26BF561F0943BF0067C9A5 /* TaskDetailsVC.swift */,
 				2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */,
 			);
 			path = ViewControllers;
@@ -234,6 +247,7 @@
 				2F446B6F1EE51FB0005BB176 /* TaskCollection.swift */,
 				2F446B711EE5AC41005BB176 /* TaskList.swift */,
 				2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */,
+				2F60AF8E1F0417BF007674C9 /* Preferences.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +259,7 @@
 				2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */,
 				2F92079F1EE67A6A00DB3C35 /* SettingsHandler.swift */,
 				2F8AF1E11EF7FF9500B8BB6B /* PersistenceHandler.swift */,
+				2F5DBB7A1F05473A009E54F7 /* OnlineSettingsHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -539,7 +554,10 @@
 				2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */,
 				2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */,
 				2F446B6E1EE3324C005BB176 /* Task.swift in Sources */,
+				2F26BF571F0943BF0067C9A5 /* TaskDetailsVC.swift in Sources */,
 				2F8AF1E21EF7FF9500B8BB6B /* PersistenceHandler.swift in Sources */,
+				2F5DBB7F1F07A26A009E54F7 /* TaskPickerTVC.swift in Sources */,
+				2F5DBB7B1F05473A009E54F7 /* OnlineSettingsHandler.swift in Sources */,
 				2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */,
 				2F8AF1E61EF8394100B8BB6B /* AuthHandler.swift in Sources */,
 				2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */,
@@ -561,7 +579,9 @@
 				2FBDC4251EF05B9D0022C10D /* RoundedButton.swift in Sources */,
 				2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */,
 				2F446B701EE51FB0005BB176 /* TaskCollection.swift in Sources */,
+				2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */,
 				2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */,
+				2F5DBB7D1F06C27F009E54F7 /* LaunchScreenVC.swift in Sources */,
 				2F136D1F1EE8741500E710FA /* SettingsTVC.swift in Sources */,
 				2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */,
 			);

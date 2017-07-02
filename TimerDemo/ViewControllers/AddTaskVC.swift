@@ -43,13 +43,20 @@ class AddTaskVC: UIViewController {
     }
     
     @IBAction func doneTaskComplete(_ sender: UIButton) {
+        
+        let valueEntered = taskTitleInputTextField.text
+        guard valueEntered?.isEmpty != true else {assertionFailure("Handle Emtpy Task Name Condition"); return}
+        let taskCollection = TaskCollection.init(taskName: valueEntered!)
+        //let newTaskColl = taskCollection.addTaskID(taskID: "Some Task 1")
+        PersistenceHandler.shared.saveTaskCollection(taskColl: taskCollection)
         dismissScreen()
+        //PersistenceHandler.shared.fetchAllTaskCollections()
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
         dismissScreen()
     }
-    
+        
     func dismissScreen() {
         dismiss(animated: true, completion: nil)
     }

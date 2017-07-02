@@ -31,8 +31,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         makeNavBarTransparent()
+        hideBackButton()
         
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -50,9 +51,13 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         self.navigationController?.view.backgroundColor = .clear
     }
     
+    func hideBackButton() {
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     func createADeepWorkTask(){
         if let lastUsedTaskColl = lastUsedTaskCollection{
-            taskBoy.createTask(name: lastUsedTaskColl.taskCollectionName, type: .deepFocus)
+            taskBoy.createTask(name: lastUsedTaskColl.taskName, type: .deepFocus)
         }else{
             taskBoy.createTask(name: "Default", type: .deepFocus)
         }
@@ -264,6 +269,19 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
        // }
         
     }
+    
+    @IBAction func showTaskList(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showTaskList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let theDestVC = segue.destination as? TaskPickerTVC{
+            //theDestVC.allTasks = ["Task Name"]
+        }
+    }
+    
+    
+    
 }
 
 

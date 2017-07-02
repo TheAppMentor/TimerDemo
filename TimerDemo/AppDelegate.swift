@@ -26,18 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey:Any]?) -> Bool {
         
         // Override point for customization after application launch.
-        AuthHandler.shared.authenticateUser(completionHandler: { (isLoginSuccessful, theLoggedInUserInfo) in
-            if isLoginSuccessful == true{
-                // The login in can be Anonymous or With Valid credentials.
-                // Go to Main screen along with login
-                
-            }else{
-                // Login in both anoynymous and WIth Credentials has failed.
-                assertionFailure("Login with both Credetinals and Anonymous has failed.")
-            }
-        })
-        
-        
         return true
     }
 

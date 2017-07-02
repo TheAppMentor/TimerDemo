@@ -22,7 +22,7 @@ class Task : TimerEventHandler {
     
     var taskID: UUID
     internal var timer: TimerBoy! = TimerBoy()
-    internal var taskName: String                // We dont need this, this will be same as task collection name.
+    internal var taskName: String                // We this value both in the task and in the Task colleciont, to help fire base keep a tow way reference.
     var taskType: TaskType
     internal var taskTags: [String]?             // Here we can associate hash Tags with tasks to group and categorize them.
     
@@ -51,7 +51,13 @@ class Task : TimerEventHandler {
         return pauseList.isEmpty
     }
     
-    var pauseList = [Pause]()
+    private var pauseList = [Pause]()
+    
+    var pauseListDictFormat : [[String:Any?]]{
+        var tempPauseArr = [[String:Any?]]()
+        pauseList.forEach({tempPauseArr.append($0.dictFormat)})
+        return tempPauseArr
+    }
     
     private var currentPause : Pause?
     
@@ -62,6 +68,27 @@ class Task : TimerEventHandler {
         
         timer.duration = taskDuration
         timer.delegate = self
+    }
+    
+    init?(firebaseDict : [String:Any?]) {
+        guard let validTaskID = firebaseDict["taskID"] as? String else {return nil}
+        guard let validTaskName = firebaseDict["taskName"] as? String else {return nil}
+        guard let validTaskType = firebaseDict["taskType"] as? String else {return nil}
+        guard let validPerfectTask = firebaseDict["isPerfectTask"] as? Bool else {return nil}
+        guard let validPauseList = firebaseDict["pauseList"] as? [[String:Any?]] else {return nil}
+        guard let validTimer = firebaseDict["timer"] as? String else {return nil}  //TODO: Prashanth need to code for the timer guy.. archive and unarchive.
+        
+        taskID = UUID(uuidString: validTaskID)!
+        taskName = validTaskName
+        taskType = TaskType(rawValue: validTaskType)!
+        //isPerfectTask = validPerfectTask
+        //timer =
+        
+        for eachPauseDict in validPauseList{
+            if let aPause = Pause(firebaseDict: eachPauseDict){
+                pauseList.append(aPause)
+            }
+        }
     }
     
      func start() {
@@ -86,6 +113,7 @@ class Task : TimerEventHandler {
     
      func abandon() {
         timer.abandonTimer()
+        taskStatus = .abandoned
     }
     
      func edit() {
@@ -126,4 +154,29 @@ class Task : TimerEventHandler {
     }
     
     
+}
+
+
+extension Task{
+    
+    var dictFormat : [String : Any]{
+        var tempDict = [String : Any]()
+        tempDict["taskID"] = taskID.uuidString
+        tempDict["taskName"] = taskName
+        tempDict["timer"] = "ERROR >>> WE NEED TO SAVE THE TIMER HERE"
+        tempDict["taskType"] = taskType.rawValue
+        tempDict["taskStatus"] = taskStatus.rawValue
+        tempDict["isPerfectTask"] = isPerfectTask
+        tempDict["pauseList"] = pauseListDictFormat
+        
+        return tempDict
+    }
+    
+    var jsonFormat : String {
+        let tempDict = dictFormat
+        let tempDictData = try! JSONSerialization.data(withJSONObject: tempDict, options: .prettyPrinted)
+        let stringVal = String(data: tempDictData, encoding: .utf8)
+        
+        return stringVal!
+    }
 }
