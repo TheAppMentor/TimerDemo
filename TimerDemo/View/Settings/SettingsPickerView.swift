@@ -19,13 +19,10 @@ protocol SettingsPickerViewData {
     var pickerViewTitle : String {get}
 }
 
-
-class SettingsPickerView: UIView {
-    
+class SettingsPickerView: UIView {    
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var titleLabel: UILabel!
-    
     
     @IBAction func userPressedDone(_ sender: UIButton) {
         delegate?.settingsPickerViewDonePressed(index: pickerView.selectedRow(inComponent: 0))

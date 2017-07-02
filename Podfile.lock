@@ -35,6 +35,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - KeychainSwift (8.0.2)
   - RSPlayPauseButton (1.0.1)
   - SCLAlertView (0.7.0)
 
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - KeychainSwift (~> 8.0)
   - RSPlayPauseButton (~> 1.0)
   - SCLAlertView (~> 0.7)
 
@@ -55,9 +57,10 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   RSPlayPauseButton: 9def027a1259ded3a6ecfeb0e57df1775ff22fb0
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
 
-PODFILE CHECKSUM: ef79786764c53636aac9b31fb55f846cd5023b55
+PODFILE CHECKSUM: 5faededce01b7558cbb0abc4aaa5b06c8ff2ca11
 
 COCOAPODS: 1.2.1.beta.1

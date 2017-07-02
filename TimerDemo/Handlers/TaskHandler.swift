@@ -11,10 +11,10 @@ import FirebaseDatabase
 
 protocol TaskHandlerDelegate {
     func timerDidChangeValue(seconds : CFTimeInterval)
-    func currentTaskPaused()
-    func currentTaskResumed()
-    func currentTaskAbandoned()
-    func currentTaskCompleted()
+    func currentDidPause()
+    func currentTaskDidResume()
+    func currentTaskDidAbandon()
+    func currentTaskDidComplete()
 }
 
 class TaskHandler : TaskEventHanlder {
@@ -25,9 +25,14 @@ class TaskHandler : TaskEventHanlder {
     
     var taskDuration : CFTimeInterval{
         switch (currentTask?.taskType)! {
-        case .deepFocus :   return 60
-        case .shortBreak:   return 5
-        case .longBreak :   return 5
+        case .deepFocus :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "taskDurationMinutes")?.currentValue as! Int))
+        case .shortBreak:   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "longBreakDurationMinutes")?.currentValue as! Int))
+        case .longBreak :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "shortBreakDurationMinutes")?.currentValue as! Int))
+            
+            
+//        case .deepFocus :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "taskDurationMinutes")?.currentValue as! Int) * 60)
+//        case .shortBreak:   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "longBreakDurationMinutes")?.currentValue as! Int) * 60)
+//        case .longBreak :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "shortBreakDurationMinutes")?.currentValue as! Int) * 60)
         }
     } // 1 Minute
     
@@ -37,7 +42,6 @@ class TaskHandler : TaskEventHanlder {
     
     func createTask(name : String, type : TaskType) {
         currentTask = nil
-        
         
         currentTask = Task(name: name, type: type)
         currentTask?.delegate = self
@@ -64,21 +68,20 @@ class TaskHandler : TaskEventHanlder {
     }
     
     func taskDidResume() {
-     delegate?.currentTaskResumed()
+     delegate?.currentTaskDidResume()
     }
     
     func taskDidPause(){
-        delegate?.currentTaskPaused()
+        delegate?.currentDidPause()
     }
     
     func taskDidAbandon() {
-        delegate?.currentTaskAbandoned()
+        delegate?.currentTaskDidAbandon()
+        archiveCurrentTask()
     }
-    
     
     func abandonCurrentTask(){
         currentTask?.abandon()
-        archiveCurrentTask()
         
     // Save the abandoned task to the task collection.
         
@@ -88,13 +91,13 @@ class TaskHandler : TaskEventHanlder {
         currentTask?.taskStatus = .completed
         // Add this task to the task collection.
         archiveCurrentTask()
-        
-        delegate?.currentTaskCompleted()
+        delegate?.currentTaskDidComplete()
     }
     
     func archiveCurrentTask() {
         //Add Current task to appropriate Task Collection.
         PersistenceHandler.shared.saveTask(task: currentTask!)
+        //PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
     }
     
 }

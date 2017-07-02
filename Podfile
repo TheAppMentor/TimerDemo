@@ -12,6 +12,7 @@ target 'TimerDemo' do
   pod 'Firebase/Database'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'KeychainSwift', '~> 8.0'
 
   target 'TimerDemoTests' do
     inherit! :search_paths
@@ -22,6 +23,7 @@ target 'TimerDemo' do
     pod 'Firebase/Database'
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
+    pod 'KeychainSwift', '~> 8.0'
   end
 
 end

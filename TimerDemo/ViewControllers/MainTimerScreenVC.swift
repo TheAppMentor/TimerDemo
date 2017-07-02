@@ -31,16 +31,14 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //makeNavBarTransparent()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        makeNavBarTransparent()
+        hideBackButton()
         
         UIApplication.shared.statusBarStyle = .lightContent
         
-        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.green]
-        
-        //self.navigationController?.navigationBar.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:80.0)
-        
-        navigationController?.navigationBar.setTitleVerticalPositionAdjustment(15.0, for: .default)
+         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.white]
+        // navigationController?.navigationBar.setTitleVerticalPositionAdjustment(15.0, for: .default)
         
         createADeepWorkTask()
         setupUIForTaskBegin()
@@ -53,9 +51,13 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         self.navigationController?.view.backgroundColor = .clear
     }
     
+    func hideBackButton() {
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     func createADeepWorkTask(){
         if let lastUsedTaskColl = lastUsedTaskCollection{
-            taskBoy.createTask(name: lastUsedTaskColl.taskCollectionName, type: .deepFocus)
+            taskBoy.createTask(name: lastUsedTaskColl.taskName, type: .deepFocus)
         }else{
             taskBoy.createTask(name: "Default", type: .deepFocus)
         }
@@ -88,9 +90,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func showCancelButton() {
         
         let showCancelAnim = CABasicAnimation(keyPath: "transform.scale")
-        showCancelAnim.fromValue = 0
+        showCancelAnim.fromValue = 0.0
         showCancelAnim.toValue = 1.0
-        showCancelAnim.duration = 0.75
+        showCancelAnim.duration = 0.5
         showCancelAnim.autoreverses = false
         showCancelAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
@@ -113,15 +115,24 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     
+    
+    
+    //MARK: User Interactions
+    
     @IBAction func cancelButton(_ sender: UIButton) {
         pauseCurrentTask()
-        InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
+    }
+    
+    @IBAction func userWantsToLogin(_ sender: UIBarButtonItem) {
+        // Here we either take him to the login screen or user profile screen. (If he has already logged in).
+        performSegue(withIdentifier: "showSignInScreen", sender: self)
     }
     
     func startCurrentTask() {
         taskBoy.startCurrentTask()
         showCancelButton()
         timerDisplayView.theArcProgressView.animateProgressBar()
+        view.setNeedsDisplay()
         timerControlButton.setPaused(false, animated: true)
         cancelButton.isEnabled = true
     }
@@ -142,7 +153,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     
     
-    // Info Pop Up Window Event Handler Delegate.
+    //MARK: Info Pop Up Window Event Handler Delegate.
     
     func userOptedToTakeShortBreak(){
         
@@ -158,7 +169,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         timerContainerView.timerMode = .longBreak
         // Setup View for a Short break.
         setupUIForTaskBegin()
-        
     }
     
     func userOptedToContinueWorking(){
@@ -167,13 +177,29 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func userOptedToAbandonTask(){
-        taskBoy.abandonCurrentTask()
+//        createADeepWorkTask()
+//        setupUIForTaskBegin()
+        abandonCurrentTask()
+        
+//        taskBoy.abandonCurrentTask()
+//
+//        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
+//        timerContainerView.timerMode = .shortBreak
+//        // Setup View for a Short break.
+//        setupUIForTaskBegin()
+        
+        
+//        taskBoy.abandonCurrentTask()
         
     }
     
     func userDoesNotWantToAbandonCurrentTask(){
         resumeCurrentTask()
     }
+    
+    
+    
+    
     
     
     
@@ -189,23 +215,25 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         }
     }
     
-    func currentTaskPaused() {
+    func currentDidPause() {
         timerDisplayView.theArcProgressView.pauseAnimation()
         timerControlButton.setPaused(true, animated: false)
+        InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
     }
     
-    func currentTaskResumed(){
+    func currentTaskDidResume(){
         timerDisplayView.theArcProgressView.resumeAnimation()
     }
     
-    func currentTaskAbandoned() {
+    func currentTaskDidAbandon() {
+        // Short Break seems to work..
+        timerDisplayView.theArcProgressView.resetLayerToFullPosition()
+        
         createADeepWorkTask()
         setupUIForTaskBegin()
-        timerDisplayView.theArcProgressView.resetAnimation()
-        print("CurentTask has been abandoned")
     }
     
-    func currentTaskCompleted() {
+    func currentTaskDidComplete() {
         print("Got Notificaiton .. current task completed.")
         timerDisplayView.theArcProgressView.timerLabel.text = "DONE"
         
@@ -219,16 +247,10 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         //SCLAlertView().showInfo("Important info", subTitle: "You are great")
         
         switch (taskBoy.currentTask?.taskType)! {
-        case .deepFocus:
-            InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
-        case .shortBreak:
-            InfoAlertView(actionDelegate: self).showAlertForShortBreakComplete()
-        case .longBreak:
-            InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
+        case .deepFocus:    InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
+        case .shortBreak:   InfoAlertView(actionDelegate: self).showAlertForShortBreakComplete()
+        case .longBreak:    InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
         }
-        
-        InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
-        
         
         timerControlButton.setPaused(false, animated: true)
         
@@ -244,16 +266,22 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         //Find the alert tone and play it
        // if SettingsHandler.shared.taskDidCompleteSound == "someSOund"{
             AudioServicesPlaySystemSound(1054);
-        
        // }
         
     }
+    
+    @IBAction func showTaskList(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showTaskList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let theDestVC = segue.destination as? TaskPickerTVC{
+            //theDestVC.allTasks = ["Task Name"]
+        }
+    }
+    
+    
+    
 }
 
-class CustomNavigationBar: UINavigationBar {
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let newSize :CGSize = CGSize(width: self.frame.size.width, height: 88)
-        return newSize
-    }
-}
 
