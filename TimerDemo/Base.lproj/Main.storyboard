@@ -121,20 +121,20 @@
                                 <rect key="frame" x="16" y="20" width="343" height="563"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YB1-xT-WF1">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kfu-5l-WOM">
-                                        <rect key="frame" x="0.0" y="34" width="343" height="529"/>
+                                        <rect key="frame" x="0.0" y="10" width="343" height="553"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xov-Zh-ZAq">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="204"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="228"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7R-63-C2e">
-                                                <rect key="frame" x="0.0" y="204" width="343" height="325"/>
+                                                <rect key="frame" x="0.0" y="228" width="343" height="325"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="325" id="0AD-fT-YvX"/>
@@ -344,6 +344,10 @@
                                     <action selector="cancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kgu-H7-9BP"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5X-tm-of7" customClass="AKPickerView" customModule="AKPickerView_Swift">
+                                <rect key="frame" x="16" y="408" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -354,14 +358,18 @@
                             <constraint firstAttribute="trailing" secondItem="co4-QV-cym" secondAttribute="trailing" id="Eyg-qB-vSC"/>
                             <constraint firstItem="Ybb-Yu-FYN" firstAttribute="centerY" secondItem="Dt8-Sg-mJU" secondAttribute="centerY" id="Fdy-Yv-aNf"/>
                             <constraint firstItem="LAQ-AF-JJf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gmi-75-J4K"/>
+                            <constraint firstItem="LAQ-AF-JJf" firstAttribute="top" secondItem="I5X-tm-of7" secondAttribute="bottom" constant="-1.5" id="GtT-49-YTK"/>
                             <constraint firstItem="Dt8-Sg-mJU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JJJ-8l-eqe"/>
                             <constraint firstItem="n8F-bM-6XF" firstAttribute="top" secondItem="yNY-lR-D7c" secondAttribute="bottom" constant="20" id="L1F-Rj-3Dx"/>
                             <constraint firstItem="Ybb-Yu-FYN" firstAttribute="centerX" secondItem="Dt8-Sg-mJU" secondAttribute="centerX" id="OfX-8I-lmP"/>
+                            <constraint firstAttribute="trailing" secondItem="I5X-tm-of7" secondAttribute="trailing" constant="16" id="Ouy-7q-4Mz"/>
+                            <constraint firstItem="I5X-tm-of7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="PHV-4o-Big"/>
                             <constraint firstAttribute="trailing" secondItem="LAQ-AF-JJf" secondAttribute="trailing" constant="16" id="RIO-Yq-LcU"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="co4-QV-cym" secondAttribute="bottom" id="T1s-WK-syw"/>
                             <constraint firstItem="LAQ-AF-JJf" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="ZHH-su-ydy"/>
                             <constraint firstItem="Dt8-Sg-mJU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="dCt-BJ-Y00"/>
                             <constraint firstItem="n8F-bM-6XF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fTi-rR-6zV"/>
+                            <constraint firstItem="I5X-tm-of7" firstAttribute="top" secondItem="Ybb-Yu-FYN" secondAttribute="bottom" constant="20.5" id="lfu-LR-EON"/>
                             <constraint firstAttribute="trailing" secondItem="Dt8-Sg-mJU" secondAttribute="trailing" id="n32-kV-TRf"/>
                             <constraint firstItem="Ybb-Yu-FYN" firstAttribute="width" secondItem="Dt8-Sg-mJU" secondAttribute="width" id="ubF-BU-lhh"/>
                             <constraint firstItem="LAQ-AF-JJf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="uyM-jc-Ncj"/>
@@ -380,6 +388,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="yNY-lR-D7c" id="tAu-yY-MaG"/>
+                        <outlet property="taskPickerView" destination="I5X-tm-of7" id="bxR-WM-oPo"/>
                         <outlet property="timerContainerView" destination="Dt8-Sg-mJU" id="6mS-QR-nG8"/>
                         <outlet property="timerControlButton" destination="n8F-bM-6XF" id="V2h-zr-W56"/>
                         <outlet property="timerDisplayView" destination="Ybb-Yu-FYN" id="UgE-lD-QLZ"/>

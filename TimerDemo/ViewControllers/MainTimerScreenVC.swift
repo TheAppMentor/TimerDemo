@@ -11,11 +11,15 @@ import UIKit
 import AudioToolbox
 import RSPlayPauseButton
 import SCLAlertView
+import AKPickerView_Swift
 
-class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler {
+class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler, AKPickerViewDelegate, AKPickerViewDataSource {
     
     //MARK: GLobal Variables
     let taskBoy = TaskHandler.shared
+    
+    @IBOutlet weak var taskPickerView: AKPickerView!
+    
     
     //MARK: Oulets Story Board
     @IBOutlet weak var timerDisplayView: TimerView!
@@ -42,7 +46,24 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         
         createADeepWorkTask()
         setupUIForTaskBegin()
+        
+        // Setup the Horizontal Scroll Task Picker View
+        taskPickerView.delegate = self
+        taskPickerView.dataSource = self
+        taskPickerView.textColor = UIColor.lightGray
+        taskPickerView.pickerViewStyle = .flat
+        taskPickerView.interitemSpacing = taskPickerView.frame.width/4.0
+        taskPickerView.highlightedTextColor = UIColor.white
     }
+    
+    func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
+        return 5
+    }
+    
+    func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
+        return "Hellow"
+    }
+    
     
     func makeNavBarTransparent() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
