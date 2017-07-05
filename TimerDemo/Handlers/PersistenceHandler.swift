@@ -43,9 +43,11 @@ class PersistenceHandler {
     }
     
     func fetchTaskWithID(taskID : String, completionHandler : @escaping (_ fetchedTask : Task)->()) {
+        print("PH : Fetching Task For \(taskID)")
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(taskID).child("taskDetails").observe(DataEventType.value, with: { (snapShot) in
-            let fetchedTaskDict = snapShot as? [String:Any?] ?? [:]
+            let fetchedTaskDict = snapShot.value as? [String:Any?] ?? [:]
             if let theTask = Task(firebaseDict: fetchedTaskDict){
+                print("PH : I have now created a task \(theTask)")
                 completionHandler(theTask)
             }
         })
@@ -53,14 +55,14 @@ class PersistenceHandler {
     
     func fetchTasksWithID(taskIDArray : [String], completionHandler : @escaping (_ fetchedTaskArr : Task)->()) {
         
+        print("PH : I am going to fetch values for \(taskIDArray)")
         
-        taskIDArray.map { (eachTaskID) in
+        for eachTaskID in taskIDArray{
             fetchTaskWithID(taskID: eachTaskID, completionHandler: { (theTask) in
+                print("PH : I fetched a task with ID \(theTask.taskID)")
                 completionHandler(theTask)
-                
             })
         }
-        
     }
     
     

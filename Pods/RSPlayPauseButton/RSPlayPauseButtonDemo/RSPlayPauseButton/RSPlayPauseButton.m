@@ -236,10 +236,10 @@ static const CGPoint p8 = {kPauseLineWidth + kPauseLinesSpace, kPauseLineHeight}
         CGRect borderRect = CGRectInset(self.bounds, ceil(kBorderWidth / 2), ceil(kBorderWidth / 2));
         self.borderShapeLayer.path = [UIBezierPath bezierPathWithOvalInRect:borderRect].CGPath;
         self.borderShapeLayer.lineWidth = kBorderWidth;
-        self.borderShapeLayer.fillColor = [UIColor whiteColor].CGColor;
+        self.borderShapeLayer.fillColor = [[UIColor whiteColor] CGColor];
         [self.layer addSublayer:self.borderShapeLayer];
     }
-    self.borderShapeLayer.strokeColor = [UIColor clearColor].CGColor;
+    self.borderShapeLayer.strokeColor = [[UIColor clearColor] CGColor ];
     
     if (!self.playPauseShapeLayer) {
         self.playPauseShapeLayer = [[CAShapeLayer alloc] init];
@@ -253,10 +253,10 @@ static const CGPoint p8 = {kPauseLineWidth + kPauseLinesSpace, kPauseLineHeight}
         self.playPauseShapeLayer.path = path.CGPath;
         [self.layer addSublayer:self.playPauseShapeLayer];
     }
-    //self.playPauseShapeLayer.fillColor =  [UIColor lightGrayColor].CGColor;
-    self.playPauseShapeLayer.fillColor =  [UIColor colorWithRed:(0.0 / 255.0) green:(0.0 / 255.0) blue:(0.0 / 255.0) alpha:0.5].CGColor;
-//    self.playPauseShapeLayer.fillColor =  [UIColor clearColor].CGColor;
-//    self.playPauseShapeLayer.strokeColor =  [UIColor colorWithRed:(0.0 / 255.0) green:(0.0 / 255.0) blue:(0.0 / 255.0) alpha:0.5].CGColor;
+    //self.playPauseShapeLayer.fillColor =  [UIColor lightGrayColor].cgColor;
+    self.playPauseShapeLayer.fillColor =  [[UIColor colorWithRed:(0.0 / 255.0) green:(0.0 / 255.0) blue:(0.0 / 255.0) alpha:0.5] CGColor];
+//    self.playPauseShapeLayer.fillColor =  [UIColor clearColor].cgColor;
+//    self.playPauseShapeLayer.strokeColor =  [UIColor colorWithRed:(0.0 / 255.0) green:(0.0 / 255.0) blue:(0.0 / 255.0) alpha:0.5].cgColor;
 //    self.playPauseShapeLayer.lineWidth =  3.0;
     
     //UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)

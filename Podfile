@@ -13,6 +13,7 @@ target 'TimerDemo' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'KeychainSwift', '~> 8.0'
+  pod 'AKPickerView-Swift', '~> 1.0'
 
   target 'TimerDemoTests' do
     inherit! :search_paths

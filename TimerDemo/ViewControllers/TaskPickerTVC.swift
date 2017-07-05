@@ -13,6 +13,7 @@ class TaskPickerTVC: UITableViewController {
     //var allTasks : [TaskCollection]
     var allTasks : [String] = []
     var selectedTaskCollToShowDetails : TaskCollection?
+    var taskListToPass = [String : Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +93,15 @@ class TaskPickerTVC: UITableViewController {
         PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: allTasks[indexPath.row]) { (fetchedTaskCollection) in
             print("We have a task collection man.. \(fetchedTaskCollection)")
             self.selectedTaskCollToShowDetails = fetchedTaskCollection
-            self.performSegue(withIdentifier: "showTaskDetails", sender: self)
+            
+            //Fetch all associated Tasks Also :  //TODO: THis is where we need the smart logic to fetch only those tasks that the tbleview actually needs. Dont fetch everything.
+            PersistenceHandler.shared.fetchTasksWithID(taskIDArray: (self.selectedTaskCollToShowDetails?.allAssociatedTaskIDs())!, completionHandler: { (theTask) in
+                self.taskListToPass[theTask.taskID.uuidString] = theTask
+                self.performSegue(withIdentifier: "showTaskDetails", sender: self)
+            })
+            
+            
+            
         }
     }
     
@@ -148,12 +157,9 @@ class TaskPickerTVC: UITableViewController {
         if segue.identifier == "showTaskDetails"{
             if let destVC = segue.destination as?  TaskDetailsVC{
                 destVC.currentTaskColl = selectedTaskCollToShowDetails
+                destVC.taskList = taskListToPass
+                print("Passing Task List : \(taskListToPass)")
                 
-                //Fetch all associated Tasks Also :  //TODO: THis is where we need the smart logic to fetch only those tasks that the tbleview actually needs. Dont fetch everything.
-                PersistenceHandler.shared.fetchTasksWithID(taskIDArray: (selectedTaskCollToShowDetails?.allAssociatedTaskIDs())!, completionHandler: { (theTask) in
-                    destVC.taskList[theTask.taskID.uuidString] = theTask
-                    destVC.sessionListTableView.reloadData()   //TODO: This is terrible.. table view reloads for each item.. CHNAGE IT !!!!!
-                })
             }
         }
     }
