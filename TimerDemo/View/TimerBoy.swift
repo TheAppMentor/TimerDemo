@@ -21,17 +21,38 @@ class TimerBoy {
     
     var delegate : TimerEventHandler?
     
-    private var startTime: Date?
-    private var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
+    fileprivate var startTime: Date?
+    fileprivate var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
     
-    var duration: CFTimeInterval = 25.0 // Get his value from the settings Plist
-    var currentTimerValue : CFTimeInterval!
-    
+    var duration: TimeInterval = 25.0 // Get his value from the settings Plist
+    var currentTimerValue : TimeInterval!
     
     var taskTimer: Timer!
     
-    var timeRemaining: CFTimeInterval? {
+    var timeRemaining: TimeInterval? {
         return currentTimerValue
+    }
+    
+    var dictFormat : [String : Any]{
+        var tempDict = [String : Any]()
+        
+        tempDict["startTime"] = startTime?.timeIntervalSince1970 ?? 0
+        tempDict["endTime"] = endTime?.timeIntervalSince1970 ?? 0
+        tempDict["duration"] = duration
+        tempDict["currentTimerValue"] = currentTimerValue ?? 0
+        
+        return tempDict
+    }
+    
+    
+    var timerElapsedTime : TimeInterval?{
+        //TODO: This is wrong!!! the guy could have puased the tiemr ... so you can calulate this way !
+        print("Calculating time Elapsed..........")
+        guard startTime != nil else {return nil}
+        guard endTime != nil else {return nil}
+        
+        print("          Timer Talking   => StartTime : \(startTime)   End Time : \(endTime)  => \(endTime!.timeIntervalSince(startTime!))")
+        return endTime!.timeIntervalSince(startTime!)
     }
 
     func startTimer() {
@@ -68,6 +89,7 @@ class TimerBoy {
         taskTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (theTimer) in
             if self.currentTimerValue <= 0{
                 self.taskTimer.invalidate()
+                self.endTime = Date()
                 self.delegate?.timerDidComplete()
             }
             
@@ -81,6 +103,26 @@ class TimerBoy {
 
 
 extension TimerBoy{
+    
+    convenience init?(firebaseDict : [String : Any?]) {
+        
+        self.init()
+        
+        guard let validDuration = firebaseDict["duration"] as? TimeInterval else {return nil}
+        guard let validCurrTimerVal = firebaseDict["currentTimerValue"] as? TimeInterval else {return nil}
+        
+        
+        //TODO : This will definlti be an issue.. fix it.. nil and zeor are all not the same thing man.
+        let startTimeInterval = firebaseDict["startTime"] as? Double ?? nil
+        let endTimeInterval = firebaseDict["endTime"] as? Double ?? nil
+        
+        if startTimeInterval != nil {startTime = Date(timeIntervalSince1970: startTimeInterval!)} else {startTime = nil}
+        if endTimeInterval != nil {endTime = Date(timeIntervalSince1970: endTimeInterval!)} else {endTime = nil}
+        
+        duration = validDuration
+        currentTimerValue = validCurrTimerVal
+    }
+    
     
     // Helper Methods
     internal func convertTimeIntervalToDisplayFormat(seconds : CFTimeInterval) -> String {

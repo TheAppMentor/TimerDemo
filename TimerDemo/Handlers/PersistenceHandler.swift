@@ -53,16 +53,25 @@ class PersistenceHandler {
         })
     }
     
-    func fetchTasksWithID(taskIDArray : [String], completionHandler : @escaping (_ fetchedTaskArr : Task)->()) {
+    func fetchTasksWithID(taskIDArray : [String], completionHandler : @escaping (_ fetchedTaskArr : [Task])->()) {
         
         print("PH : I am going to fetch values for \(taskIDArray)")
+        var tempTaskArr = [Task]()
         
-        for eachTaskID in taskIDArray{
-            fetchTaskWithID(taskID: eachTaskID, completionHandler: { (theTask) in
-                print("PH : I fetched a task with ID \(theTask.taskID)")
-                completionHandler(theTask)
+        for i in 0..<taskIDArray.count{
+            let eachTaskID = taskIDArray[i]
+            self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).child("taskDetails").observe(DataEventType.value, with: { (snapShot) in
+                let fetchedTaskDict = snapShot.value as? [String:Any?] ?? [:]
+                if let theTask = Task(firebaseDict: fetchedTaskDict){
+                    tempTaskArr.append(theTask)
+                    print("Duration for this task is : \(theTask.timer.timerElapsedTime)")
+                    if i == taskIDArray.count - 1 {
+                        completionHandler(tempTaskArr)
+                    }
+                }
             })
         }
+        
     }
     
     
@@ -102,10 +111,13 @@ class PersistenceHandler {
             var tempTaskCollArray = [TaskCollection]()
             
                 for eachColl in collArray{
+                    print("Processing .... \(eachColl["taskName"])")
                     if let tempColl = TaskCollection(firebaseDict: eachColl){
+                        print("Appending......")
                         tempTaskCollArray.append(tempColl)
                     }
                 }
+            print("The Collected Array is : \(tempTaskCollArray)")
             completionHandler?(tempTaskCollArray)
         })
     }
@@ -125,7 +137,21 @@ class PersistenceHandler {
         })
     }
     
-    
+    func fetchTotalTimeForTaskCollection(taskCollection : TaskCollection, completionHanlder : @escaping (_ totalTime : TimeInterval) -> ()) {
+        
+        print("\t\t\tPH : Fetching total time .... Begin")
+        
+        var totalTime : TimeInterval = 0
+        
+            self.fetchTasksWithID(taskIDArray: taskCollection.allAssociatedTaskIDs(), completionHandler: { (theTaskArr) in
+                assert(!theTaskArr.isEmpty, "We Have got back an empty task array")
+                for eachTask in theTaskArr{
+                    print("!!!!!!!!!!!!!!!!!!!!!!!!!   \(eachTask.taskID) : \(eachTask.timer.timerElapsedTime)")
+                    totalTime += (eachTask.timer.timerElapsedTime ?? 0)
+                }
+                completionHanlder(totalTime)
+            })
+    }
     
     // =============================================//
     //         MARK: Preferences Processing

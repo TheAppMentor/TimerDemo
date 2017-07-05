@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskPickerScrollView" customModule="TimerDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="thePickerView" destination="jAr-kd-1SJ" id="Y9k-wa-c6h"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="574" height="112"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AR9-RM-5kG">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="112"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAr-kd-1SJ" customClass="AKPickerView" customModule="AKPickerView_Swift">
+                            <rect key="frame" x="72" y="8" width="430.5" height="96"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHz-rJ-eg2">
+                            <rect key="frame" x="504" y="31" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="IK2-Hw-VEP"/>
+                                <constraint firstAttribute="width" secondItem="YHz-rJ-eg2" secondAttribute="height" multiplier="1:1" id="SeO-dm-FHV"/>
+                            </constraints>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="AddButton"/>
+                            <connections>
+                                <action selector="addTaskButtonClicked:" destination="-1" eventType="touchUpInside" id="fCe-ZS-Oui"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="jAr-kd-1SJ" firstAttribute="width" secondItem="AR9-RM-5kG" secondAttribute="width" multiplier="0.75" id="2Y9-ae-Cb6"/>
+                        <constraint firstItem="YHz-rJ-eg2" firstAttribute="centerY" secondItem="AR9-RM-5kG" secondAttribute="centerY" id="PRq-Qk-NGw"/>
+                        <constraint firstAttribute="bottom" secondItem="jAr-kd-1SJ" secondAttribute="bottom" constant="8" id="PfK-ky-5oe"/>
+                        <constraint firstItem="jAr-kd-1SJ" firstAttribute="centerX" secondItem="AR9-RM-5kG" secondAttribute="centerX" id="d4F-sV-X5D"/>
+                        <constraint firstItem="jAr-kd-1SJ" firstAttribute="top" secondItem="AR9-RM-5kG" secondAttribute="top" constant="8" id="lYJ-AW-oUr"/>
+                        <constraint firstAttribute="trailing" secondItem="YHz-rJ-eg2" secondAttribute="trailing" constant="20" id="oVI-7t-He3"/>
+                        <constraint firstItem="jAr-kd-1SJ" firstAttribute="centerY" secondItem="AR9-RM-5kG" secondAttribute="centerY" id="pig-lD-HuC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="AR9-RM-5kG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6aO-5J-ZcS"/>
+                <constraint firstAttribute="trailing" secondItem="AR9-RM-5kG" secondAttribute="trailing" id="Kqo-wM-Rmu"/>
+                <constraint firstItem="AR9-RM-5kG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g98-QL-j1n"/>
+                <constraint firstAttribute="bottom" secondItem="AR9-RM-5kG" secondAttribute="bottom" id="wMm-vh-V3i"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-16" y="-5"/>
+        </view>
+        <view contentMode="scaleToFill" id="mue-ya-Lgh">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="517" y="-103"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AddButton" width="44" height="44"/>
+    </resources>
+</document>

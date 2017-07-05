@@ -13,13 +13,15 @@ import RSPlayPauseButton
 import SCLAlertView
 import AKPickerView_Swift
 
-class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler, AKPickerViewDelegate, AKPickerViewDataSource {
+class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler,TaskPickerTVCEventHandlerDelegate {
     
     //MARK: GLobal Variables
     let taskBoy = TaskHandler.shared
     
-    @IBOutlet weak var taskPickerView: AKPickerView!
+    var taskPickerView: AKPickerView!
+    var taskPickerScrollView : TaskPickerScrollView = TaskPickerScrollView()
     
+    var allTaskColl = [TaskCollection]()
     
     //MARK: Oulets Story Board
     @IBOutlet weak var timerDisplayView: TimerView!
@@ -29,41 +31,62 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     //MARK: Computed Properties
     //TODO: Find a better place to store this.
-    var lastUsedTaskCollection : TaskCollection? {
-        return UserDefaults.standard.object(forKey: "lastUsedTaskCollection") as? TaskCollection ?? nil
+    var userSelectedTaskColl : String? {
+        return UserDefaults.standard.object(forKey: "userSelectedTaskColl") as? String ?? nil
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        makeNavBarTransparent()
+        //makeNavBarTransparent()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         hideBackButton()
-        
         UIApplication.shared.statusBarStyle = .lightContent
         
          navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.white]
-        // navigationController?.navigationBar.setTitleVerticalPositionAdjustment(15.0, for: .default)
         
         createADeepWorkTask()
         setupUIForTaskBegin()
         
-        // Setup the Horizontal Scroll Task Picker View
-        taskPickerView.delegate = self
-        taskPickerView.dataSource = self
-        taskPickerView.textColor = UIColor.lightGray
-        taskPickerView.pickerViewStyle = .flat
-        taskPickerView.interitemSpacing = taskPickerView.frame.width/4.0
-        taskPickerView.highlightedTextColor = UIColor.white
+        setupTaskPickerView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        view.bringSubview(toFront: taskPickerView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //TODO: parashat we need to remove this, we cannot reload all the task coll each tiem the view appears.
+        // WE should only reload when a new task is added.. set up a delegate and do this.
+        populateAllTaskCollNames()
+    }
+    
+    
+    func setupTimerForNewTaskPicked(taskName : String) {
+        UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
+        if UserDefaults.standard.synchronize(){
+            //taskPickerView.reloadData()
+            createADeepWorkTask()
+        }
+    }
+    
+    // eventHandlerDelegate
+    
+    func userPickedATaskWithName(name: String) {
+        setupTimerForNewTaskPicked(taskName: name)
+        
+        let selectedIndex = findIndexForTaskName(taskName: name)
+        taskPickerView.selectItem(selectedIndex, animated: true)
+    }
+    
+    
     func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
-        return 5
+        return allTaskColl.count
     }
     
     func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
-        return "Hellow"
+        return allTaskColl[item].taskName
     }
-    
     
     func makeNavBarTransparent() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -77,10 +100,11 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func createADeepWorkTask(){
-        if let lastUsedTaskColl = lastUsedTaskCollection{
-            taskBoy.createTask(name: lastUsedTaskColl.taskName, type: .deepFocus)
+        if let lastUsedTaskColl = userSelectedTaskColl{
+            taskBoy.createTask(name: lastUsedTaskColl, type: .deepFocus)
         }else{
             taskBoy.createTask(name: "Default", type: .deepFocus)
+            UserDefaults.standard.set("Default", forKey: "userSelectedTaskColl")
         }
     }
     
@@ -92,7 +116,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         cancelButton.bounds = CGRect(x: 0, y: 0, width: 0, height: 0)
         
         // Setup Cancel
-        
         cancelButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         cancelButton.layer.masksToBounds = false
         cancelButton.layer.shadowRadius = 2.0
@@ -106,8 +129,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         timerControlButton.setPaused(true, animated: false)
     }
     
-    
-    
     func showCancelButton() {
         
         let showCancelAnim = CABasicAnimation(keyPath: "transform.scale")
@@ -119,8 +140,38 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         
         cancelButton.layer.add(showCancelAnim, forKey: "showCanelButton")
     }
-
     
+    //: Fetch all Task Coll Names
+    func populateAllTaskCollNames()  {
+        
+        PersistenceHandler.shared.fetchAllTaskCollections { (taskCollArr) in
+            self.allTaskColl = taskCollArr
+            
+            self.taskPickerView.delegate = self
+            self.taskPickerView.dataSource = self
+            
+            self.taskPickerView.reloadData()
+            
+            
+            if !self.allTaskColl.isEmpty{
+                //return UserDefaults.standard.object(forKey: "userSelectedTaskColl") as? TaskCollection ?? nil
+                if let taskToSelect = UserDefaults.standard.object(forKey: "userSelectedTaskColl") as? String{
+                    
+                    let taskIndex = self.findIndexForTaskName(taskName: taskToSelect)
+                    self.taskPickerView.selectItem(taskIndex, animated: true)
+                }
+            }
+        }
+    }
+    
+    func findIndexForTaskName(taskName : String) -> Int {
+        for eachTask in self.allTaskColl.enumerated(){
+            if (eachTask.element.taskName == taskName){
+                return eachTask.offset
+            }
+        }
+        return 0
+    }
     
     //MARK: StoryBoard Actions
     
@@ -296,13 +347,47 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let theDestVC = segue.destination as? TaskPickerTVC{
-            //theDestVC.allTasks = ["Task Name"]
+        
+        switch segue.identifier ?? "" {
+        case "addNewTask":
+            if let theDestVC = segue.destination as? AddTaskVC{
+                theDestVC.taskAddVCEventHandlerDelegate = self
+            }
+        case "showTaskList":
+            if let theDestVC = segue.destination as? UINavigationController{
+                if let theTaskVC = theDestVC.viewControllers.first as? TaskPickerTVC{
+                    theTaskVC.eventHandlerDelegate = self
+                }
+            }
+        default:
+            break
         }
     }
+}
+
+
+
+
+
+
+
+// ========================================================= //
+//            MARK: New Task Add Processing.
+// ========================================================= //
+
+extension MainTimerScreenVC : TaskAddEventHandlerDelegate{
     
+    func addNewTaskClicked() {
+        performSegue(withIdentifier: "addNewTask", sender: self)
+    }
     
-    
+    // Delegate Call Back.
+    func newTaskAddedWithName(taskName : String){
+        UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
+//        if UserDefaults.standard.synchronize() == true{
+//            userPickedATaskWithName(name: taskName)
+//        }
+    }
 }
 
 

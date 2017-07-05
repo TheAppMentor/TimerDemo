@@ -26,10 +26,11 @@ struct Utilities {
     let darkGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)    
     
     // Fonts
-    let verySmallFontSize   = UIFont(name: "HelveticaNeue-Light", size: 12.0)
-    let smallFontSize       = UIFont(name: "HelveticaNeue-Light", size: 14.0)
-    let regularFontSize     = UIFont(name: "HelveticaNeue-Light", size: 17.0)
-    let largeFontSize       = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+    let verySmallFontSize   = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
+    let smallFontSize       = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
+    let regularFontSize     = UIFont(name: "HelveticaNeue-Light", size: 17.0)!
+    let largeFontSize       = UIFont(name: "HelveticaNeue-Light", size: 24.0)!
+    let veryLargeFontSize   = UIFont(name: "HelveticaNeue-Light", size: 28.0)!
     
     
     // Helper Methods
@@ -57,6 +58,24 @@ struct Utilities {
     
     func getStringFrom(seconds: Int) -> String {
         return seconds < 10 ? "0\(seconds)" : "\(seconds)"
+    }
+    
+    func getHHMMSSFrom(seconds : Int) -> String {
+        let hrs = seconds/(60 * 60)
+        let mins = (seconds % 3600) / 60
+        let secs = (seconds % 3600) % 60
+        
+        let hrsDisplay = hrs == 0 ? "" : "\(hrs) hr"
+        let minsDisplay = mins == 0 ? "" : "\(mins) min"
+        let secsDisplay = secs == 0 ? "" : "\(secs) sec"
+        
+        if hrs > 0 {
+            return hrsDisplay + " " + minsDisplay
+        } else if mins > 0{
+            return minsDisplay + " " + secsDisplay
+        } else{
+            return secsDisplay
+        }
     }
     
 }

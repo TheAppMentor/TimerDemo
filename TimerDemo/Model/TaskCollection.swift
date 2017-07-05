@@ -12,6 +12,7 @@ struct TaskCollection {
     
     var taskName : String
     private var listOfAssociatedTaskID: [String] = []
+    var totalDuration : CFTimeInterval = 0.0
     
     init(taskName : String) {
         self.taskName = taskName
@@ -19,11 +20,25 @@ struct TaskCollection {
     
     init?(firebaseDict : [String : Any?]) {
         guard let validTaskName = firebaseDict["taskName"] as? String else {return nil}
-        guard let validListOfAssociatedTaskID = firebaseDict["listOfAssociatedTaskID"] as? [String] else {return nil}
+        let validListOfAssociatedTaskID = firebaseDict["listOfAssociatedTaskID"] as? [String] ?? [String]()
         
         taskName = validTaskName
         listOfAssociatedTaskID = validListOfAssociatedTaskID
     }
+    
+    func calcTotalDuration(completionH : @escaping (_ timeInterval : TimeInterval) -> ()) {
+        print("\t\tTask Collection : Requesting for total time")
+        PersistenceHandler.shared.fetchTotalTimeForTaskCollection(taskCollection: self) { (theTimeInterval) in
+            print("\t\tTask Collection : Got back Response")
+            completionH(theTimeInterval)
+        }
+    }
+    
+//    func getTotalDuration(completionHandler : (_ totalTime : TimeInterval) -> ()) {
+//        PersistenceHandler.shared.fetchTotalTimeForTaskCollection(taskCollection: self) { (theTimeInterval) in
+//            completionHandler()
+//        }
+//    }
     
     func numberOfSessions() -> Int {
        return listOfAssociatedTaskID.count
@@ -31,10 +46,6 @@ struct TaskCollection {
     
     func allAssociatedTaskIDs() -> [String] {
         return listOfAssociatedTaskID
-    }
-    
-    func totalDuration() -> CFTimeInterval {
-        return 0.0
     }
     
     func addTaskID(taskID : String) -> TaskCollection  {

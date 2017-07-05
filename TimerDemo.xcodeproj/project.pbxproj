@@ -52,14 +52,17 @@
 		2F9207B31EE6B40900DB3C35 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92079F1EE67A6A00DB3C35 /* SettingsHandler.swift */; };
 		2F9207B51EE7200900DB3C35 /* Project Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9207B41EE7200900DB3C35 /* Project Info.rtf */; };
 		2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */; };
+		2FB26E8A1F0ABB1E00C9C46D /* TaskPickerScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */; };
 		2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */; };
 		2FB39E921EF01307005B3DF4 /* ArcProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */; };
 		2FBDC4251EF05B9D0022C10D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDC4241EF05B9D0022C10D /* RoundedButton.swift */; };
 		2FCB9F1D1EEFE9B1000079F6 /* TimerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */; };
 		2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */; };
+		2FD341061F0ABD4300A36B5B /* TaskPickerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD341051F0ABD4300A36B5B /* TaskPickerScrollView.swift */; };
 		2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */; };
 		2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */; };
 		2FFAFD471EEBF3E400631DA9 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */; };
+		2FFB38591F0CBA07006CDF27 /* Ext_TaskPickerView_MainTimerScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38581F0CBA07006CDF27 /* Ext_TaskPickerView_MainTimerScreenVC.swift */; };
 		F88ADD8DA3BF239D57390A2C /* Pods_TimerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,14 +123,17 @@
 		2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandlerTests.swift; sourceTree = "<group>"; };
 		2F9207B41EE7200900DB3C35 /* Project Info.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Project Info.rtf"; sourceTree = "<group>"; };
 		2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseCollection.swift; sourceTree = "<group>"; };
+		2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskPickerScrollView.xib; sourceTree = "<group>"; };
 		2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
 		2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArcProgressView.xib; sourceTree = "<group>"; };
 		2FBDC4241EF05B9D0022C10D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContainerView.swift; sourceTree = "<group>"; };
 		2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerContainerView.xib; sourceTree = "<group>"; };
+		2FD341051F0ABD4300A36B5B /* TaskPickerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPickerScrollView.swift; sourceTree = "<group>"; };
 		2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskVC.swift; sourceTree = "<group>"; };
 		2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertView.swift; sourceTree = "<group>"; };
 		2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
+		2FFB38581F0CBA07006CDF27 /* Ext_TaskPickerView_MainTimerScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_TaskPickerView_MainTimerScreenVC.swift; sourceTree = "<group>"; };
 		8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,7 +232,7 @@
 			children = (
 				2F8AF1E31EF8315900B8BB6B /* LoginVC.swift */,
 				2F5DBB7C1F06C27F009E54F7 /* LaunchScreenVC.swift */,
-				2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */,
+				2FFB38571F0CB9CF006CDF27 /* Main TImer Screen */,
 				2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */,
 				2FF5611E1EEDBF5C00609F59 /* AddTaskVC.swift */,
 				2F136D1E1EE8741500E710FA /* SettingsTVC.swift */,
@@ -271,6 +277,8 @@
 				2F446B5D1EE28BD7005BB176 /* Main.storyboard */,
 				2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */,
 				2F446B6B1EE28C9E005BB176 /* TimerBoy.swift */,
+				2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */,
+				2FD341051F0ABD4300A36B5B /* TaskPickerScrollView.swift */,
 				2F0FC9531EF009860053167F /* TimerView */,
 				2FCB9F201EEFE9D1000079F6 /* TimerContainer */,
 				2F136D1D1EE85FC500E710FA /* Settings */,
@@ -312,6 +320,15 @@
 				2FCB9F1E1EEFE9CB000079F6 /* TimerContainerView.xib */,
 			);
 			path = TimerContainer;
+			sourceTree = "<group>";
+		};
+		2FFB38571F0CB9CF006CDF27 /* Main TImer Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2F446B5B1EE28BD7005BB176 /* MainTimerScreenVC.swift */,
+				2FFB38581F0CBA07006CDF27 /* Ext_TaskPickerView_MainTimerScreenVC.swift */,
+			);
+			path = "Main TImer Screen";
 			sourceTree = "<group>";
 		};
 		C17CA6339253EE5E280AB3BA /* Frameworks */ = {
@@ -429,6 +446,7 @@
 				2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */,
 				2F446B641EE28BD7005BB176 /* LaunchScreen.storyboard in Resources */,
 				2F9207B51EE7200900DB3C35 /* Project Info.rtf in Resources */,
+				2FB26E8A1F0ABB1E00C9C46D /* TaskPickerScrollView.xib in Resources */,
 				2F7CB35E1EEED4FB004272A7 /* VizCanvasView.xib in Resources */,
 				2F8AF1E01EF7F68000B8BB6B /* GoogleService-Info.plist in Resources */,
 				2F446B781EE67723005BB176 /* Settings.plist in Resources */,
@@ -558,6 +576,7 @@
 				2F8AF1E21EF7FF9500B8BB6B /* PersistenceHandler.swift in Sources */,
 				2F5DBB7F1F07A26A009E54F7 /* TaskPickerTVC.swift in Sources */,
 				2F5DBB7B1F05473A009E54F7 /* OnlineSettingsHandler.swift in Sources */,
+				2FFB38591F0CBA07006CDF27 /* Ext_TaskPickerView_MainTimerScreenVC.swift in Sources */,
 				2FF8D9FF1EF44B600053A66B /* InfoAlertView.swift in Sources */,
 				2F8AF1E61EF8394100B8BB6B /* AuthHandler.swift in Sources */,
 				2FF5611F1EEDBF5C00609F59 /* AddTaskVC.swift in Sources */,
@@ -569,6 +588,7 @@
 				2F9207A01EE67A6A00DB3C35 /* SettingsHandler.swift in Sources */,
 				2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */,
 				2F8AF1E41EF8315900B8BB6B /* LoginVC.swift in Sources */,
+				2FD341061F0ABD4300A36B5B /* TaskPickerScrollView.swift in Sources */,
 				2F446B5C1EE28BD7005BB176 /* MainTimerScreenVC.swift in Sources */,
 				2F446B6C1EE28C9E005BB176 /* TimerBoy.swift in Sources */,
 				2F446B741EE5ACFE005BB176 /* TaskType.swift in Sources */,

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+    
+    protocol TaskPickerTVCEventHandlerDelegate {
+        func userPickedATaskWithName(name : String)
+    }
 
 class TaskPickerTVC: UITableViewController {
     
@@ -14,6 +18,8 @@ class TaskPickerTVC: UITableViewController {
     var allTasks : [String] = []
     var selectedTaskCollToShowDetails : TaskCollection?
     var taskListToPass = [String : Task]()
+    
+    var eventHandlerDelegate : TaskPickerTVCEventHandlerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +87,13 @@ class TaskPickerTVC: UITableViewController {
             }
             
             if let totalTimeLabel = cell.viewWithTag(44) as? UILabel{
-                totalTimeLabel.text = "3 hr 44 min"
+                PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: self.allTasks[indexPath.row]) { (fetchedTaskCollection) in
+                    
+                    fetchedTaskCollection?.calcTotalDuration(completionH: { (theTotalDuration) in
+                        totalTimeLabel.text = Utilities.shared.getHHMMSSFrom(seconds: Int(theTotalDuration))
+                    })
+                }
             }
-            
         }
         
         return cell
@@ -91,12 +101,13 @@ class TaskPickerTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: allTasks[indexPath.row]) { (fetchedTaskCollection) in
-            print("We have a task collection man.. \(fetchedTaskCollection)")
             self.selectedTaskCollToShowDetails = fetchedTaskCollection
             
             //Fetch all associated Tasks Also :  //TODO: THis is where we need the smart logic to fetch only those tasks that the tbleview actually needs. Dont fetch everything.
-            PersistenceHandler.shared.fetchTasksWithID(taskIDArray: (self.selectedTaskCollToShowDetails?.allAssociatedTaskIDs())!, completionHandler: { (theTask) in
-                self.taskListToPass[theTask.taskID.uuidString] = theTask
+            PersistenceHandler.shared.fetchTasksWithID(taskIDArray: (self.selectedTaskCollToShowDetails?.allAssociatedTaskIDs())!, completionHandler: { (theTaskArr) in
+                for eachTask in theTaskArr{
+                    self.taskListToPass[eachTask.taskID.uuidString] = eachTask
+                }
                 self.performSegue(withIdentifier: "showTaskDetails", sender: self)
             })
             
@@ -105,48 +116,21 @@ class TaskPickerTVC: UITableViewController {
         }
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Row Selected : \(allTasks[indexPath.row])")
-        PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: allTasks[indexPath.row]) { (fetchedTaskCollection) in
-            print("We have a task collection man.. \(fetchedTaskCollection)")
-        }
+        print("THe Task selected is \(allTasks[indexPath.row])")
+        eventHandlerDelegate?.userPickedATaskWithName(name: allTasks[indexPath.row])
+        dismissScreen()
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
+    
+    
+    
+    
+    
+    
     
     // MARK: - Navigation
 
@@ -154,15 +138,37 @@ class TaskPickerTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "showTaskDetails"{
+        
+        switch segue.identifier ?? "" {
+        case "showTaskDetails":
             if let destVC = segue.destination as?  TaskDetailsVC{
                 destVC.currentTaskColl = selectedTaskCollToShowDetails
                 destVC.taskList = taskListToPass
-                print("Passing Task List : \(taskListToPass)")
-                
             }
+            
+        case "showAddTask":
+            if let destVC = segue.destination as? AddTaskVC{
+                if let theOtherEventHanlder = eventHandlerDelegate as? MainTimerScreenVC{
+                    destVC.taskAddVCEventHandlerDelegate = theOtherEventHanlder //TODO: maybe not a good way to get back to the mainscreen vc.
+                }
+                tableView.reloadData()
+            }
+            
+        default:
+            break
+        }
+        
+        
+        if segue.identifier == "showTaskDetails"{
         }
     }
+    
+    
+    @IBAction func addNewTask(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showAddTask", sender: self)
+    }
+    
+    
     
     @IBAction func dismissScreen(_ sender: UIBarButtonItem) {
         dismissScreen()
