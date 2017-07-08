@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  TimerDemo
@@ -20,6 +21,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     var taskPickerView: AKPickerView!
     var taskPickerScrollView : TaskPickerScrollView = TaskPickerScrollView()
+    
+    @IBOutlet weak var miniVizContainerView: UIView!
     
     var allTaskColl = [TaskCollection]()
     
@@ -103,8 +106,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         if let lastUsedTaskColl = userSelectedTaskColl{
             taskBoy.createTask(name: lastUsedTaskColl, type: .deepFocus)
         }else{
-            taskBoy.createTask(name: "Default", type: .deepFocus)
-            UserDefaults.standard.set("Default", forKey: "userSelectedTaskColl")
+            let taskName = UserInfoHandler.shared.fetchMostRecentUsedTaskColl(limit: 1).first ?? ""
+            taskBoy.createTask(name: taskName, type: .deepFocus)
+            UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
         }
     }
     
@@ -191,7 +195,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     //MARK: User Interactions
     
-    @IBAction func cancelButton(_ sender: UIButton) {
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
         pauseCurrentTask()
     }
     
@@ -308,6 +312,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func currentTaskDidComplete() {
         print("Got Notificaiton .. current task completed.")
         timerDisplayView.theArcProgressView.timerLabel.text = "DONE"
+        timerControlButton.setPaused(true, animated: false)  // Hack to make the timer button set properly. Need to research why it behaves this way.
+        timerControlButton.setPaused(false, animated: false)
         
         // Set screen again with same type as the task just complete. This is to handle the case, if he cancels from the Pop up.
         createADeepWorkTask()
@@ -323,9 +329,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         case .shortBreak:   InfoAlertView(actionDelegate: self).showAlertForShortBreakComplete()
         case .longBreak:    InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
         }
-        
-        timerControlButton.setPaused(false, animated: true)
-        
+                
         // Vibrate the Phone.
         //if SettingsHandler.shared.isVibrateOn.currentValue == "ON"{
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -359,10 +363,34 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
                     theTaskVC.eventHandlerDelegate = self
                 }
             }
+            
+        case "showMiniVC" :
+            if let theDestVC = segue.destination as? VizDetailsPageVC{
+                    theDestVC.myContainerVC = self
+            }
+            
         default:
             break
         }
     }
+    
+    
+    @IBAction func saveTaskTemp(_ sender: UIBarButtonItem) {
+        let user1 = UserInfo(userID: "User1", isAnonymous: true, userName: "Prashanth", displayName: "Prashanth Moorthy", email: "chapparfellow@gmail.com", phone: "81975-10162", recentUsedTaskColl: ["Default"], mostUsedTaskColl: ["Default"])
+        
+//        PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
+        
+        PersistenceHandler.shared.saveUserInfo(userInfo: user1)
+    }
+    
+    @IBAction func fetchUserInfo(_ sender: UIBarButtonItem) {
+        PersistenceHandler.shared.fetchUserInfo { (theUserInfo) in
+            print("We Have User infor : \(theUserInfo)")
+        }
+        
+    }
+    
+    
 }
 
 

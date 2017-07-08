@@ -10,16 +10,6 @@ import Foundation
 import FirebaseAuth
 import KeychainSwift
 
-
-struct UserInfo {
-    let userID : String
-    let isAnonymous : Bool
-    let userName : String
-    let displayName : String
-    let email : String
-    let phone : String
-}
-
 class AuthHandler {
     
     var isLoggedIn = false
@@ -30,7 +20,6 @@ class AuthHandler {
     private init() {}
     
     func authenticateUser(completionHandler : @escaping ((_ success : Bool, _ userInfo : UserInfo?)->())){
-        
         
         let theKeyChain = KeychainSwift()
         
@@ -77,7 +66,8 @@ class AuthHandler {
             
             if user != nil{
                 self.isLoggedIn = true
-                self.userInfo = UserInfo(userID: user!.uid, isAnonymous : true, userName: "", displayName: "", email: "", phone: "")
+                //self.userInfo = UserInfo(userID: user!.uid, isAnonymous : true, userName: "", displayName: "", email: "", phone: "")
+                self.userInfo = UserInfo(userID: user!.uid, isAnonymous: true, userName: "", displayName: "", email: "", phone: "", recentUsedTaskColl: [], mostUsedTaskColl: [])
                 self.isLoggedIn = true
                 completionHandler(true, self.userInfo)
             }

@@ -31,7 +31,6 @@ class TaskPickerTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         PersistenceHandler.shared.fetchAllTaskCollections(completionHandler: { (theTaskColl) in
-            //self.allTasks = theTaskColl.map({return $0.taskName})
             theTaskColl.forEach({self.allTasks.append($0.taskName)})
             print("Reloading the Task with : \(self.allTasks)")
             self.tableView.reloadData()
@@ -70,7 +69,6 @@ class TaskPickerTVC: UITableViewController {
         
         //TODO: This might be slow to fetch incase of scrollign etc.. check this....
         PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: allTasks[indexPath.row]) { (fetchedTaskCollection) in
-            print("We have a task collection man.. \(fetchedTaskCollection)")
             // Configure the cell...
             // tag 11 : Task name Label
             // tag 22 : Number of sessions label
@@ -89,9 +87,12 @@ class TaskPickerTVC: UITableViewController {
             if let totalTimeLabel = cell.viewWithTag(44) as? UILabel{
                 PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: self.allTasks[indexPath.row]) { (fetchedTaskCollection) in
                     
-                    fetchedTaskCollection?.calcTotalDuration(completionH: { (theTotalDuration) in
-                        totalTimeLabel.text = Utilities.shared.getHHMMSSFrom(seconds: Int(theTotalDuration))
-                    })
+                    let totalTime = Utilities.shared.getHHMMSSFrom(seconds: Int(fetchedTaskCollection?.totalDurationCompletedTasks ?? 0))
+                    totalTimeLabel.text = totalTime
+                    
+//                    fetchedTaskCollection?.calcTotalDuration(completionH: { (theTotalDuration) in
+//                        totalTimeLabel.text = Utilities.shared.getHHMMSSFrom(seconds: Int(theTotalDuration))
+//                    })
                 }
             }
         }
@@ -119,7 +120,6 @@ class TaskPickerTVC: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("THe Task selected is \(allTasks[indexPath.row])")
         eventHandlerDelegate?.userPickedATaskWithName(name: allTasks[indexPath.row])
         dismissScreen()
     }

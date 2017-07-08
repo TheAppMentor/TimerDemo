@@ -26,6 +26,7 @@ struct Utilities {
     let darkGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)    
     
     // Fonts
+    let minuteFontSize   = UIFont(name: "HelveticaNeue-Light", size: 10.0)!
     let verySmallFontSize   = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
     let smallFontSize       = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
     let regularFontSize     = UIFont(name: "HelveticaNeue-Light", size: 17.0)!

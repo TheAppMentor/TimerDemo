@@ -12,7 +12,13 @@ struct TaskCollection {
     
     var taskName : String
     private var listOfAssociatedTaskID: [String] = []
-    var totalDuration : CFTimeInterval = 0.0
+    private var totalDuration : CFTimeInterval = 0.0
+    
+    var totalDurationTasksAllStatus : CFTimeInterval = 0.0
+    var totalDurationCompletedTasks : CFTimeInterval = 0.0
+    
+    private var numberOfSessionsAllStatus : Int = 0
+    private var numberOfSessionsCompletedStatus : Int = 0
     
     init(taskName : String) {
         self.taskName = taskName
@@ -21,9 +27,17 @@ struct TaskCollection {
     init?(firebaseDict : [String : Any?]) {
         guard let validTaskName = firebaseDict["taskName"] as? String else {return nil}
         let validListOfAssociatedTaskID = firebaseDict["listOfAssociatedTaskID"] as? [String] ?? [String]()
+        guard let validTotalDurationTasksAllStatus = firebaseDict["totalDurationTasksAllStatus"] as? TimeInterval else {return nil}
+        guard let validTotalDurationCompletedTasks = firebaseDict["totalDurationCompletedTasks"] as? TimeInterval else {return nil}
+        guard let validNumberOfSessionsAllStatus = firebaseDict["numberOfSessionsAllStatus"] as? Int else {return nil}
+        guard let validNumberOfSessionsCompletedStatus = firebaseDict["numberOfSessionsCompletedStatus"] as? Int else {return nil}
         
         taskName = validTaskName
         listOfAssociatedTaskID = validListOfAssociatedTaskID
+        totalDurationTasksAllStatus = validTotalDurationTasksAllStatus
+        totalDurationCompletedTasks = validTotalDurationCompletedTasks
+        numberOfSessionsAllStatus = validNumberOfSessionsAllStatus
+        numberOfSessionsCompletedStatus = validNumberOfSessionsCompletedStatus
     }
     
     func calcTotalDuration(completionH : @escaping (_ timeInterval : TimeInterval) -> ()) {
@@ -48,9 +62,18 @@ struct TaskCollection {
         return listOfAssociatedTaskID
     }
     
-    func addTaskID(taskID : String) -> TaskCollection  {
+    func addTaskID(task : Task) -> TaskCollection  {
         var tempColl = self
-        tempColl.listOfAssociatedTaskID.append(taskID)
+        tempColl.listOfAssociatedTaskID.append(task.taskID.uuidString)
+        tempColl.numberOfSessionsAllStatus += 1
+        
+        tempColl.totalDurationTasksAllStatus += task.timer.duration
+        
+        if task.taskStatus == .completed {
+            tempColl.totalDurationCompletedTasks += task.timer.duration
+            tempColl.numberOfSessionsCompletedStatus += 1
+        }
+        
         return tempColl
     }
     
@@ -71,6 +94,10 @@ struct TaskCollection {
         
         tempDict["taskName"] = taskName
         tempDict["listOfAssociatedTaskID"] = listOfAssociatedTaskID
+        tempDict["totalDurationTasksAllStatus"] = totalDurationTasksAllStatus
+        tempDict["totalDurationCompletedTasks"] = totalDurationCompletedTasks
+        tempDict["numberOfSessionsAllStatus"] = numberOfSessionsAllStatus
+        tempDict["numberOfSessionsCompletedStatus"] = numberOfSessionsCompletedStatus
         
         return tempDict
     }

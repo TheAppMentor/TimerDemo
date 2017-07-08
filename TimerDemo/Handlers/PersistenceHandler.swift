@@ -20,10 +20,7 @@ class PersistenceHandler {
         Database.database().isPersistenceEnabled = true
         ref = Database.database().reference()
     }
-    
-    
-    
-    
+
     
     // =============================================//
     //         MARK: Task Processing
@@ -36,7 +33,7 @@ class PersistenceHandler {
         
         self.fetchTaskCollectionWithName(taskName: task.taskName) { (fetchedTaskColl) in
             if fetchedTaskColl != nil{
-                let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: task.taskID.uuidString)
+                let updatedTaskColl = fetchedTaskColl?.addTaskID(task: task)
                 self.saveTaskCollection(taskColl: updatedTaskColl!)
             }
         }
@@ -44,8 +41,8 @@ class PersistenceHandler {
     
     func fetchTaskWithID(taskID : String, completionHandler : @escaping (_ fetchedTask : Task)->()) {
         print("PH : Fetching Task For \(taskID)")
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(taskID).child("taskDetails").observe(DataEventType.value, with: { (snapShot) in
-            let fetchedTaskDict = snapShot.value as? [String:Any?] ?? [:]
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(taskID).child("taskDetails").observe(DataEventType.value, with: { (snapshot) in
+            let fetchedTaskDict = snapshot.value as? [String:Any?] ?? [:]
             if let theTask = Task(firebaseDict: fetchedTaskDict){
                 print("PH : I have now created a task \(theTask)")
                 completionHandler(theTask)
@@ -60,8 +57,8 @@ class PersistenceHandler {
         
         for i in 0..<taskIDArray.count{
             let eachTaskID = taskIDArray[i]
-            self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).child("taskDetails").observe(DataEventType.value, with: { (snapShot) in
-                let fetchedTaskDict = snapShot.value as? [String:Any?] ?? [:]
+            self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).child("taskDetails").observe(DataEventType.value, with: { (snapshot) in
+                let fetchedTaskDict = snapshot.value as? [String:Any?] ?? [:]
                 if let theTask = Task(firebaseDict: fetchedTaskDict){
                     tempTaskArr.append(theTask)
                     print("Duration for this task is : \(theTask.timer.timerElapsedTime)")
@@ -87,9 +84,30 @@ class PersistenceHandler {
             //  -> user Display Name
             //  -> user email ID
             //  -> user Phone
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").setValue(["UserInfo" : userInfo.jsonFormat])
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").setValue(userInfo.dictFormat)
     }
     
+    func fetchUserInfo(completionHandler : @escaping (_ theUserInfo : UserInfo)->()) {
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").observeSingleEvent(of: .value, with: { (snapshot) in
+            let fetchedUserInfo = snapshot.value as? [String : Any?] ?? [:]
+            
+            if fetchedUserInfo.isEmpty{
+                self.setInitialValueForUserInfo(completionHanlder_: { (theUserInfo) in
+                    completionHandler(theUserInfo)
+                })
+            }else{
+                if let tempUser = UserInfo(firebaseDict: fetchedUserInfo){
+                    completionHandler(tempUser)
+                }
+            }
+        })
+    }
+    
+    func setInitialValueForUserInfo(completionHanlder_  : (_ theUserInfo : UserInfo) -> ()) {
+        let tempUser = UserInfo(userID: "", isAnonymous: true, userName: "", displayName: "", email: "", phone: "", recentUsedTaskColl: ["Default"], mostUsedTaskColl: ["Default"])
+        saveUserInfo(userInfo: tempUser)
+        completionHanlder_(tempUser)
+    }
     
     
     
@@ -103,15 +121,14 @@ class PersistenceHandler {
     }
     
     func fetchAllTaskCollections(completionHandler : ((_ fetchedTaskColl : [TaskCollection])->())? = nil){
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").observe(DataEventType.value, with: { (snapShot) in
-            print("These are the Collcection s: \(snapShot)")
-            let fetchedDictAllColl = snapShot.value as? [String:[String : Any?]] ?? [:]
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").observe(DataEventType.value, with: { (snapshot) in
+            print("These are the Collcection s: \(snapshot)")
+            let fetchedDictAllColl = snapshot.value as? [String:[String : Any?]] ?? [:]
             let collArray = Array(fetchedDictAllColl.values)
             
             var tempTaskCollArray = [TaskCollection]()
             
                 for eachColl in collArray{
-                    print("Processing .... \(eachColl["taskName"])")
                     if let tempColl = TaskCollection(firebaseDict: eachColl){
                         print("Appending......")
                         tempTaskCollArray.append(tempColl)
@@ -122,10 +139,28 @@ class PersistenceHandler {
         })
     }
     
+    
+    func fetchTaskCollectionsMatchingNames(taskCollNames : [String], completionHandler : @escaping (_ taskCollArray : [TaskCollection]) -> ()) {
+        var tempMatchedTaskCollArray = [TaskCollection]()
+        for eachIndex in 0..<taskCollNames.count{
+            
+            fetchTaskCollectionWithName(taskName: taskCollNames[eachIndex], completionHandler: { (theTaskColl) in
+                if let validTaskColl = theTaskColl{
+                    tempMatchedTaskCollArray.append(validTaskColl)
+                    
+                    if (eachIndex == (taskCollNames.count - 1)){
+                        completionHandler(tempMatchedTaskCollArray)
+                    }
+                }
+            })
+            
+        }
+    }
+    
     func fetchTaskCollectionWithName(taskName : String, completionHandler : ((_ fetchedTaskCollArr : TaskCollection?)->())? = nil) {
         //TODO: prashanth this looks a little fishy.
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskName).observeSingleEvent(of: .value, with: { (snapShot) in            
-            if let fetchedDict = snapShot.value as? [String : AnyObject]{
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskName).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let fetchedDict = snapshot.value as? [String : AnyObject]{
                 if let tempTaskColl = TaskCollection(firebaseDict: fetchedDict){
                     completionHandler?(tempTaskColl)
                 }
@@ -157,38 +192,69 @@ class PersistenceHandler {
     //         MARK: Preferences Processing
     // =============================================//
     
-    func setInitialValueForPreferences() {
+    func setInitialValueForPreferences(completionHanlder : () -> ()) {
         
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Goals").setValue(["dailyGoal" : ["displayName" : "Daily Goal","currentValue" : 5,"listOfValues" : [1,2,3,4,5],"unitName" : "Sessions"]])
+        let prefDetailsArray = ["Goals":["dailyGoal" : ["displayName" : "Daily Goal","currentValue" : 5,"listOfValues" : [1,2,3,4,5],"unitName" : "Sessions"]],
+                                "Alerts":[
+                                    "isVibrateOn" : ["displayName" : "Vibrate","currentValue" : false,"listOfValues" : [true,false],"unitName" : ""],
+                                    "taskCompletedSound":["displayName":"Task Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
+                                    "longBreakCompletedSound":["displayName":"Long Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
+                                    "shortBreakCompletedSound":["displayName":"Short Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""]
+            ],
+                                "Intervals":[
+                                    "shortBreakInterval" : ["displayName" : "Short Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"],
+                                    "longBreakInterval" : ["displayName" : "Long Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"]
+            ],
+                                "Duration":[
+                                    "taskDurationMinutes" : ["displayName" : "Task Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
+                                    "shortBreakDurationMinutes" : ["displayName" : "Short Break Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
+                                    "longBreakDurationMinutes" : ["displayName" : "Long Break Duration","currentValue" : 5,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"]
+            ]]
         
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Goals").setValue(["dailyGoal" : ["displayName" : "Daily Goal","currentValue" : 5,"listOfValues" : [1,2,3,4,5],"unitName" : "Sessions"]])
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").setValue(prefDetailsArray)
+        completionHanlder()
         
         
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Alerts").setValue([
-                            "isVibrateOn" : ["displayName" : "Vibrate","currentValue" : false,"listOfValues" : [true,false],"unitName" : ""],
-                            "taskCompletedSound":["displayName":"Task Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
-                            "longBreakCompletedSound":["displayName":"Long Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
-                            "shortBreakCompletedSound":["displayName":"Short Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""]
-            ])
-
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Intervals").setValue(
-            [
-                "shortBreakInterval" : ["displayName" : "Short Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"],
-                "longBreakInterval" : ["displayName" : "Long Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"]
-            ])
-
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Duration").setValue(
-            [
-                "taskDurationMinutes" : ["displayName" : "Task Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
-                "shortBreakDurationMinutes" : ["displayName" : "Short Break Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
-                "longBreakDurationMinutes" : ["displayName" : "Long Break Duration","currentValue" : 5,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"]
-            ])
+//        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Goals").setValue(["dailyGoal" : ["displayName" : "Daily Goal","currentValue" : 5,"listOfValues" : [1,2,3,4,5],"unitName" : "Sessions"]])
+//
+//
+//        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Alerts").setValue([
+//                            "isVibrateOn" : ["displayName" : "Vibrate","currentValue" : false,"listOfValues" : [true,false],"unitName" : ""],
+//                            "taskCompletedSound":["displayName":"Task Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
+//                            "longBreakCompletedSound":["displayName":"Long Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
+//                            "shortBreakCompletedSound":["displayName":"Short Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""]
+//            ])
+//
+//        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Intervals").setValue(
+//            [
+//                "shortBreakInterval" : ["displayName" : "Short Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"],
+//                "longBreakInterval" : ["displayName" : "Long Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"]
+//            ])
+//
+//        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child("Duration").setValue(
+//            [
+//                "taskDurationMinutes" : ["displayName" : "Task Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
+//                "shortBreakDurationMinutes" : ["displayName" : "Short Break Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
+//                "longBreakDurationMinutes" : ["displayName" : "Long Break Duration","currentValue" : 5,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"]
+//            ])
+        
     }
     
     func fetchAllPreferences(completionHandler : @escaping (_ fetchedPreference : [String : AnyObject])->()) {
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").observe(DataEventType.value, with: { (snapshot) in
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").observeSingleEvent(of: .value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-            completionHandler(postDict)            
+            
+            if postDict.isEmpty{
+                self.setInitialValueForPreferences {
+                    print("____________Completion called from isempty")
+                    self.fetchAllPreferences(completionHandler: { (fetchedValues) in
+                        completionHandler(fetchedValues)
+                    })
+                }
+            }else{
+                print("____________Completion called from ELSE")
+                completionHandler(postDict)
+                }            
         })
     }
     
@@ -202,7 +268,7 @@ class PersistenceHandler {
     //TODO: Each time a value in perferece changes, we are updating the entire category, this needs to be changed to modify only that specific Perfernce.
     func updatePreferenceCategory(preferenceType : PreferenceType, withPreference : PreferenceCategory) {
         for eachPerf in withPreference.allPerferences{
-            self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child(preferenceType.rawValue).child(eachPerf.name).setValue(eachPerf.dictFormat)
+                self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child(preferenceType.rawValue).child(eachPerf.name).setValue(eachPerf.dictFormat)
         }
     }
 }
@@ -215,32 +281,7 @@ class PersistenceHandler {
 
 
 
-extension UserInfo{
-    
-    var dictFormat : [String : Any]{
-        
-        var tempDict = [String : Any?]()
-        
-        tempDict["userID"] = userID
-        tempDict["isAnonymous"] = isAnonymous
-        tempDict["userName"] = userName
-        tempDict["displayName"] = displayName
-        tempDict["email"] = email
-        tempDict["phone"] = phone
-        
-        return tempDict
-    }
-    
-    var jsonFormat : String{
-        let tempDict = dictFormat
-        
-        let tempDictData = try! JSONSerialization.data(withJSONObject: tempDict, options: .prettyPrinted)
-        let stringVal = String(data: tempDictData, encoding: .utf8)
-        
-        return stringVal!
-    }
-    
-}
+
 
 
 extension Timer{

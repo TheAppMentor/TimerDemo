@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/RSPlayPauseButton/RSPlayPauseButtonDemo/RSPlayPauseButton/RSPlayPauseButton.m"
-            timestampString = "520795072.545203"
+            timestampString = "521187063.88347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -319,22 +319,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TimerDemo/ViewControllers/TaskPickerTVC.swift"
-            timestampString = "520939663.296772"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TimerDemo/ViewControllers/MainTimerScreenVC.swift"
             timestampString = "520927263.113652"
             startingColumnNumber = "9223372036854775807"
@@ -352,12 +336,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/ViewControllers/Main TImer Screen/MainTimerScreenVC.swift"
-            timestampString = "520939663.297134"
+            timestampString = "521188577.718441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "userPickedATaskWithName(name:)"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "currentTaskDidComplete()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/RSPlayPauseButton/RSPlayPauseButtonDemo/RSPlayPauseButton/RSPlayPauseButton.m"
+            timestampString = "521187063.884232"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "-setPaused:animated:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
