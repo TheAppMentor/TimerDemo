@@ -44,6 +44,8 @@ class TaskPickerTVC: UITableViewController {
              NSFontAttributeName: Utilities.shared.regularFontSize]
         
         tableView.tableFooterView = UIView()
+        tableView.reloadData()   //Incase a new task is added we need to reload. //TODO: May not be a good way if there are many tasks.. need to refine this further
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,10 +91,6 @@ class TaskPickerTVC: UITableViewController {
                     
                     let totalTime = Utilities.shared.getHHMMSSFrom(seconds: Int(fetchedTaskCollection?.totalDurationCompletedTasks ?? 0))
                     totalTimeLabel.text = totalTime
-                    
-//                    fetchedTaskCollection?.calcTotalDuration(completionH: { (theTotalDuration) in
-//                        totalTimeLabel.text = Utilities.shared.getHHMMSSFrom(seconds: Int(theTotalDuration))
-//                    })
                 }
             }
         }
@@ -151,7 +149,7 @@ class TaskPickerTVC: UITableViewController {
                 if let theOtherEventHanlder = eventHandlerDelegate as? MainTimerScreenVC{
                     destVC.taskAddVCEventHandlerDelegate = theOtherEventHanlder //TODO: maybe not a good way to get back to the mainscreen vc.
                 }
-                tableView.reloadData()
+//                tableView.reloadData()
             }
             
         default:
@@ -166,6 +164,7 @@ class TaskPickerTVC: UITableViewController {
     
     @IBAction func addNewTask(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showAddTask", sender: self)
+        self.allTasks = []
     }
     
     
