@@ -40,9 +40,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForTaskComplete() {
         
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize!,
-            kTextFont: Utilities.shared.largeFontSize!,
-            kButtonFont: Utilities.shared.regularFontSize!,
+            kTitleFont: Utilities.shared.regularFontSize,
+            kTextFont: Utilities.shared.largeFontSize,
+            kButtonFont: Utilities.shared.regularFontSize,
             showCloseButton: true
         )
         
@@ -67,9 +67,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForTaskAbandoned() {
         
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize!,
-            kTextFont: Utilities.shared.largeFontSize!,
-            kButtonFont: Utilities.shared.regularFontSize!,
+            kTitleFont: Utilities.shared.regularFontSize,
+            kTextFont: Utilities.shared.largeFontSize,
+            kButtonFont: Utilities.shared.regularFontSize,
             showCloseButton: false
         )
         
@@ -94,9 +94,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForLongBreakComplete() {
         
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize!,
-            kTextFont: Utilities.shared.largeFontSize!,
-            kButtonFont: Utilities.shared.regularFontSize!,
+            kTitleFont: Utilities.shared.regularFontSize,
+            kTextFont: Utilities.shared.largeFontSize,
+            kButtonFont: Utilities.shared.regularFontSize,
             showCloseButton: true
         )
         
@@ -116,9 +116,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForShortBreakComplete() {
         
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize!,
-            kTextFont: Utilities.shared.largeFontSize!,
-            kButtonFont: Utilities.shared.regularFontSize!,
+            kTitleFont: Utilities.shared.regularFontSize,
+            kTextFont: Utilities.shared.largeFontSize,
+            kButtonFont: Utilities.shared.regularFontSize,
             showCloseButton: true
         )
         

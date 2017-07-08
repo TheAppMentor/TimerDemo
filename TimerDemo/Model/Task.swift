@@ -75,14 +75,19 @@ class Task : TimerEventHandler {
         guard let validTaskName = firebaseDict["taskName"] as? String else {return nil}
         guard let validTaskType = firebaseDict["taskType"] as? String else {return nil}
         guard let validPerfectTask = firebaseDict["isPerfectTask"] as? Bool else {return nil}
-        guard let validPauseList = firebaseDict["pauseList"] as? [[String:Any?]] else {return nil}
-        guard let validTimer = firebaseDict["timer"] as? String else {return nil}  //TODO: Prashanth need to code for the timer guy.. archive and unarchive.
+//        guard let validTimer = firebaseDict["timer"] as? String else {return nil}  //TODO: Prashanth need to code for the timer guy.. archive and unarchive.
+        guard let validTimer = firebaseDict["timer"] as? [String : Any?] else {return nil}  //TODO: Prashanth need to code for the timer guy.. archive and unarchive.
+        
+        var validPauseList = [["":""]]
+                
+        
         
         taskID = UUID(uuidString: validTaskID)!
         taskName = validTaskName
         taskType = TaskType(rawValue: validTaskType)!
         //isPerfectTask = validPerfectTask
-        //timer =
+        timer = TimerBoy(firebaseDict: validTimer)!
+        print("Timer Check : Recreated Timer : \(timer)")
         
         for eachPauseDict in validPauseList{
             if let aPause = Pause(firebaseDict: eachPauseDict){
@@ -163,7 +168,9 @@ extension Task{
         var tempDict = [String : Any]()
         tempDict["taskID"] = taskID.uuidString
         tempDict["taskName"] = taskName
-        tempDict["timer"] = "ERROR >>> WE NEED TO SAVE THE TIMER HERE"
+//        tempDict["timer"] = "ERROR >>> WE NEED TO SAVE THE TIMER HERE"
+        tempDict["timer"] = timer.dictFormat
+        print("Timer Check : Recreated Timer : \(tempDict["timer"])")
         tempDict["taskType"] = taskType.rawValue
         tempDict["taskStatus"] = taskStatus.rawValue
         tempDict["isPerfectTask"] = isPerfectTask

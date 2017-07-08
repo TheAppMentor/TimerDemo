@@ -26,28 +26,58 @@ class OnlinePreferenceHandler {
         var prefCatArray = [PreferenceCategory]()
         
         PersistenceHandler.shared.fetchAllPreferences{ (fetchedPrefDict) in
-            for eachPrefGroup in fetchedPrefDict.enumerated(){
-                
-                var tempPerfArr = [Preference]()
-                
-                if let eachPrefCategoryDict = eachPrefGroup.element.value as? [String : AnyObject]{
-                    for eachPref in eachPrefCategoryDict.enumerated(){
-                        let tempPref = Preference(name: eachPref.element.key ,
-                                                  displayName:eachPref.element.value["displayName"] as! String,
-                                                  listOfValues: eachPref.element.value["listOfValues"] as! [AnyObject],
-                                                  currentValue: eachPref.element.value["currentValue"]! as AnyObject,
-                                                  unitName: eachPref.element.value["unitName"] as! String)
-                        tempPerfArr.append(tempPref)
+            
+                for eachPrefGroup in fetchedPrefDict.enumerated(){
+                    var tempPerfArr = [Preference]()
+                    
+                    if let eachPrefCategoryDict = eachPrefGroup.element.value as? [String : AnyObject]{
+                        for eachPref in eachPrefCategoryDict.enumerated(){
+                            let tempPref = Preference(name: eachPref.element.key ,
+                                                      displayName:eachPref.element.value["displayName"] as! String,
+                                                      listOfValues: eachPref.element.value["listOfValues"] as! [AnyObject],
+                                                      currentValue: eachPref.element.value["currentValue"]! as AnyObject,
+                                                      unitName: eachPref.element.value["unitName"] as! String)
+                            tempPerfArr.append(tempPref)
+                        }
                     }
+                    
+                    prefCatArray.append(PreferenceCategory(categoryName: PreferenceType(rawValue: eachPrefGroup.element.key)!, preferences: tempPerfArr))
+                    
                 }
-                
-                prefCatArray.append(PreferenceCategory(categoryName: PreferenceType(rawValue: eachPrefGroup.element.key)!, preferences: tempPerfArr))
-                
-            }
-            self.allPreferences = prefCatArray
-            completionHandler?()
+                self.allPreferences = prefCatArray
+                completionHandler?()
         }
     }
+    
+//    func loadInitialPerferenceValues(completionHanlder : @escaping () -> ()) {
+//
+//        var prefCatArray = [PreferenceCategory]()
+//
+//        PersistenceHandler.shared.setInitialValueForPreferences {
+//            PersistenceHandler.shared.fetchAllPreferences{ (fetchedPrefDict) in
+//                for eachPrefGroup in fetchedPrefDict.enumerated(){
+//                    var tempPerfArr = [Preference]()
+//
+//                    if let eachPrefCategoryDict = eachPrefGroup.element.value as? [String : AnyObject]{
+//                        for eachPref in eachPrefCategoryDict.enumerated(){
+//                            let tempPref = Preference(name: eachPref.element.key ,
+//                                                      displayName:eachPref.element.value["displayName"] as! String,
+//                                                      listOfValues: eachPref.element.value["listOfValues"] as! [AnyObject],
+//                                                      currentValue: eachPref.element.value["currentValue"]! as AnyObject,
+//                                                      unitName: eachPref.element.value["unitName"] as! String)
+//                            tempPerfArr.append(tempPref)
+//                        }
+//                    }
+//
+//                    prefCatArray.append(PreferenceCategory(categoryName: PreferenceType(rawValue: eachPrefGroup.element.key)!, preferences: tempPerfArr))
+//
+//                }
+//                self.allPreferences = prefCatArray
+//                completionHanlder()
+//            }
+//
+//        }
+//    }
     
     
     func updatePreference(prefType : PreferenceType, updatedValue : Preference, completionHandler : @escaping ()->()) {

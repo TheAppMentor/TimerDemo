@@ -112,6 +112,15 @@ class VizCanvasView: UIView {
         
         columnContainerLayer.addSublayer(textLayerWith(textString: dataPoint.dimension, frame: labelFrame))
         
+        // Build Value Label.
+        
+        let valueLabelFrame = CGRect(x: 0,
+                                     y: theColumnLayer.frame.origin.y - dataLabelHeight,
+                                     width: colContainerFrame.width,
+                                     height: dataLabelHeight)
+        
+        columnContainerLayer.addSublayer(textLayerWith(textString: "255 h 48 m", frame: valueLabelFrame))
+        
         return columnContainerLayer
     }
     
@@ -149,8 +158,8 @@ class VizCanvasView: UIView {
     func textLayerWith(textString : String, frame : CGRect) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.string = textString
-        textLayer.font = Utilities.shared.verySmallFontSize
-        textLayer.fontSize = 12.0
+        textLayer.font = Utilities.shared.minuteFontSize
+        textLayer.fontSize = 10.0
         textLayer.foregroundColor = UIColor.darkGray.cgColor
         textLayer.frame = frame
         textLayer.alignmentMode = kCAAlignmentCenter

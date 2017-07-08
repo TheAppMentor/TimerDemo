@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol TaskAddEventHandlerDelegate {
+    func newTaskAddedWithName(taskName : String)
+}
+
 class AddTaskVC: UIViewController {
     
+    var taskAddVCEventHandlerDelegate : TaskAddEventHandlerDelegate?
     
     @IBOutlet weak var addTaskPopUpContainerView: UIView!
     @IBOutlet weak var addTaskDoneButton: UIButton!
@@ -44,11 +49,13 @@ class AddTaskVC: UIViewController {
     
     @IBAction func doneTaskComplete(_ sender: UIButton) {
         
+        //TODO : Check for duplicate task name here... 
         let valueEntered = taskTitleInputTextField.text
         guard valueEntered?.isEmpty != true else {assertionFailure("Handle Emtpy Task Name Condition"); return}
         let taskCollection = TaskCollection.init(taskName: valueEntered!)
         //let newTaskColl = taskCollection.addTaskID(taskID: "Some Task 1")
         PersistenceHandler.shared.saveTaskCollection(taskColl: taskCollection)
+        taskAddVCEventHandlerDelegate?.newTaskAddedWithName(taskName: valueEntered!)
         dismissScreen()
         //PersistenceHandler.shared.fetchAllTaskCollections()
     }

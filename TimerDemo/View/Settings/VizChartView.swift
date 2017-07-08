@@ -26,13 +26,16 @@ protocol ChartData {
 struct ChartDataConformer : ChartData {
     var chartTitle : String = "Title Boy"
     var chartDataPoints = [
-        ChartDataPoint(dimension: "Sun", measure: 20.0),
-        ChartDataPoint(dimension: "Mon", measure: 30.0),
-        ChartDataPoint(dimension: "Tue", measure: 40.0),
-        ChartDataPoint(dimension: "Wed", measure: 50.0),
-        ChartDataPoint(dimension: "Thu", measure: 60.0),
-        ChartDataPoint(dimension: "Fri", measure: 70.0),
-        ChartDataPoint(dimension: "Sat", measure: 80.0)
+        ChartDataPoint(dimension: "Programming", measure: 40.0),
+        ChartDataPoint(dimension: "Default", measure: 65.0),
+        ChartDataPoint(dimension: "Read Fiction", measure: 20.0),
+//        ChartDataPoint(dimension: "Playing", measure: 100.0),
+//        ChartDataPoint(dimension: "Guitar", measure: 32.0),
+        
+        //        ChartDataPoint(dimension: "Wed", measure: 50.0),
+//        ChartDataPoint(dimension: "Thu", measure: 60.0),
+//        ChartDataPoint(dimension: "Fri", measure: 70.0),
+//        ChartDataPoint(dimension: "Sat", measure: 80.0)
     ]
     
 }
@@ -91,6 +94,5 @@ class VizChartView : UIView  {
         let minDataPoint = chartData.chartDataPoints.min { (dataPoint1, dataPoint2) -> Bool in return dataPoint1.measure < dataPoint2.measure}
         
         return ChartMetaData(minDataPoint: minDataPoint!, maxDataPoint: maxDataPoint!, numberOfDataPoints: dataPointCount)
-        
     }
 }

@@ -51,6 +51,10 @@ class TaskHandler : TaskEventHanlder {
     func startCurrentTask(){
         currentTask?.start()
         currentTask?.taskStatus = .running
+        
+        // Save this in Recently used tasks.
+//        UserInfoHandler.shared.addTaskCollToRecent(taskCollName: currentTask?.taskName ?? "")
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
     }
     
     func pauseCurrentTask() {
@@ -92,6 +96,10 @@ class TaskHandler : TaskEventHanlder {
         // Add this task to the task collection.
         archiveCurrentTask()
         delegate?.currentTaskDidComplete()
+        
+        UserInfoHandler.shared.addTaskCollToRecent(taskCollName: currentTask?.taskName ?? "")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
+        
     }
     
     func archiveCurrentTask() {
