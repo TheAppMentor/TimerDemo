@@ -819,7 +819,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="311" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zdy-hX-Xdx">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zdy-hX-Xdx">
                                 <rect key="frame" x="0.0" y="0.0" width="311" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cW-0O-H9R">
@@ -829,26 +829,16 @@
                                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYg-Q1-Oq8" customClass="VizChartView" customModule="TimerDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="36.5" width="311" height="163.5"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isCornerRounded" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="theCornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRn-al-7Oa">
+                                        <rect key="frame" x="0.0" y="28.5" width="311" height="171.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="8cW-0O-H9R" firstAttribute="leading" secondItem="Zdy-hX-Xdx" secondAttribute="leading" id="2KB-IG-TZT"/>
                                     <constraint firstItem="8cW-0O-H9R" firstAttribute="top" secondItem="Zdy-hX-Xdx" secondAttribute="top" id="DLJ-mI-EGg"/>
-                                    <constraint firstAttribute="trailing" secondItem="NYg-Q1-Oq8" secondAttribute="trailing" id="V5b-Yw-AKA"/>
                                     <constraint firstAttribute="trailing" secondItem="8cW-0O-H9R" secondAttribute="trailing" id="aeD-Kk-aQH"/>
-                                    <constraint firstItem="NYg-Q1-Oq8" firstAttribute="leading" secondItem="Zdy-hX-Xdx" secondAttribute="leading" id="j3p-eI-RVJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="NYg-Q1-Oq8" secondAttribute="bottom" id="nGr-op-8Rg"/>
-                                    <constraint firstItem="NYg-Q1-Oq8" firstAttribute="top" secondItem="8cW-0O-H9R" secondAttribute="bottom" constant="-2" id="tCa-zt-T3F"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -860,6 +850,10 @@
                             <constraint firstAttribute="trailing" secondItem="Zdy-hX-Xdx" secondAttribute="trailing" id="sFo-Ju-pgl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="vizChartView" destination="TRn-al-7Oa" id="bu9-Gz-Kav"/>
+                        <outlet property="vizTitleLabel" destination="8cW-0O-H9R" id="rgn-QZ-fuu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGY-vd-0yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,7 +15,8 @@ func ==(lhs : ChartDataPoint, rhs : ChartDataPoint) -> Bool {
 
 struct ChartDataPoint : Equatable {
     var dimension : String
-    var measure : CGFloat
+    var measure : TimeInterval
+    var measureDisplayValue : String?
 }
 
 protocol ChartData {
@@ -24,20 +25,15 @@ protocol ChartData {
 }
 
 struct ChartDataConformer : ChartData {
-    var chartTitle : String = "Title Boy"
-    var chartDataPoints = [
-        ChartDataPoint(dimension: "Programming", measure: 40.0),
-        ChartDataPoint(dimension: "Default", measure: 65.0),
-        ChartDataPoint(dimension: "Read Fiction", measure: 20.0),
-//        ChartDataPoint(dimension: "Playing", measure: 100.0),
-//        ChartDataPoint(dimension: "Guitar", measure: 32.0),
-        
-        //        ChartDataPoint(dimension: "Wed", measure: 50.0),
-//        ChartDataPoint(dimension: "Thu", measure: 60.0),
-//        ChartDataPoint(dimension: "Fri", measure: 70.0),
-//        ChartDataPoint(dimension: "Sat", measure: 80.0)
-    ]
     
+    var chartTitle : String
+    var chartDataPoints : [ChartDataPoint]
+    
+    //var chartTitle : String = "Title Boy"
+//    var chartDataPoints = [
+//        ChartDataPoint(dimension: "Programming", measure: 40.0, measureDisplayValue: "Hi"),
+//        ChartDataPoint(dimension: "Default", measure: 65.0, measureDisplayValue: "Hi"),
+//        ChartDataPoint(dimension: "Read Fiction", measure: 20.0, measureDisplayValue: "Hi")]
 }
 
 struct ChartMetaData {
@@ -48,11 +44,19 @@ struct ChartMetaData {
 
 @IBDesignable
 
-class VizChartView : UIView  {
+class VizChartView : UIView,ChartDataProvider  {    
     // Layer/Drawing based chart
     
     @IBInspectable var isCornerRounded : Bool = true
     @IBInspectable var theCornerRadius : CGFloat = 5.0
+    
+    @IBOutlet weak var vizCanvasView: VizCanvasView!{
+        didSet{
+            print("VizChart View Got SET !!!!!!!!!!!!!!!")
+            vizCanvasView.chartDataProvider = self
+        }
+    }
+    var chartData : ChartData?
     
     override func draw(_ rect: CGRect) {
         
@@ -60,6 +64,7 @@ class VizChartView : UIView  {
     
     init(frame : CGRect, data : ChartData) {
         super.init(frame: frame)
+        chartData = data
         setupView()
     }
     
@@ -73,7 +78,7 @@ class VizChartView : UIView  {
         setupView()
     }
     
-    func setupView(){
+    func setupView(withData : ChartData? = nil){
         let bundle = Bundle.init(for: type(of: self))
         let ourNib = UINib(nibName: "VizChartView", bundle: bundle)
         let theView = ourNib.instantiate(withOwner: self, options: nil).first as! UIView
@@ -84,6 +89,7 @@ class VizChartView : UIView  {
             layer.cornerRadius = theCornerRadius
             layer.masksToBounds = false
         }
+        setNeedsDisplay()
     }
     
     
@@ -94,5 +100,9 @@ class VizChartView : UIView  {
         let minDataPoint = chartData.chartDataPoints.min { (dataPoint1, dataPoint2) -> Bool in return dataPoint1.measure < dataPoint2.measure}
         
         return ChartMetaData(minDataPoint: minDataPoint!, maxDataPoint: maxDataPoint!, numberOfDataPoints: dataPointCount)
+    }
+    
+    override func didMoveToSuperview() {
+        setNeedsDisplay()
     }
 }

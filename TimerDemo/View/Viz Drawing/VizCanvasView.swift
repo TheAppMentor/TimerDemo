@@ -6,6 +6,10 @@
 //  Copyright © 2017 Moorthy, Prashanth. All rights reserved.
 //
 
+protocol ChartDataProvider {
+    var chartData : ChartData? {get}
+}
+
 import UIKit
 
 @IBDesignable
@@ -13,22 +17,24 @@ import UIKit
 
 class VizCanvasView: UIView {
     
-    var chartData : ChartData? = ChartDataConformer() as ChartData
+    var chartDataProvider : ChartDataProvider?
     
     var metaData : ChartMetaData!
     
     let axisLabelHeight : CGFloat = 20.0
     let dataLabelHeight : CGFloat = 20.0
     
+    var containerView : VizChartView?
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
-        processChartData(chartData: chartData!)
+        if let validChartData = chartDataProvider?.chartData{
+            processChartData(chartData: validChartData)
+        }
     }
-    
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -52,7 +58,6 @@ class VizCanvasView: UIView {
     }
     
     
-    
     // Chart Data Processing :
     
     func processChartData(chartData : ChartData) {
@@ -65,7 +70,7 @@ class VizCanvasView: UIView {
         for (eachIndex,eachDataPoint) in chartData.chartDataPoints.enumerated(){
             
             let colContainerFrame = CGRect(x: CGFloat(eachIndex) * eachColumnContainerWidth, y: 0, width: eachColumnContainerWidth, height: bounds.height)
-            let height = (maxColHeight/(metaData?.maxDataPoint.measure)!) * eachDataPoint.measure
+            let height = maxColHeight/CGFloat((metaData?.maxDataPoint.measure)!) * CGFloat(eachDataPoint.measure)
             
             let eachColContainer = buildColumnContainer(dataPoint: eachDataPoint, colContainerFrame: colContainerFrame, colWidth: 10.0, colHeight: height)
             //eachColContainer.backgroundColor = UIColor.yellow.cgColor
@@ -119,7 +124,7 @@ class VizCanvasView: UIView {
                                      width: colContainerFrame.width,
                                      height: dataLabelHeight)
         
-        columnContainerLayer.addSublayer(textLayerWith(textString: "255 h 48 m", frame: valueLabelFrame))
+        columnContainerLayer.addSublayer(textLayerWith(textString: dataPoint.measureDisplayValue ?? "", frame: valueLabelFrame))
         
         return columnContainerLayer
     }

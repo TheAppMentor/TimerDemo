@@ -122,7 +122,6 @@ class PersistenceHandler {
     
     func fetchAllTaskCollections(completionHandler : ((_ fetchedTaskColl : [TaskCollection])->())? = nil){
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").observe(DataEventType.value, with: { (snapshot) in
-            print("These are the Collcection s: \(snapshot)")
             let fetchedDictAllColl = snapshot.value as? [String:[String : Any?]] ?? [:]
             let collArray = Array(fetchedDictAllColl.values)
             
@@ -130,11 +129,9 @@ class PersistenceHandler {
             
                 for eachColl in collArray{
                     if let tempColl = TaskCollection(firebaseDict: eachColl){
-                        print("Appending......")
                         tempTaskCollArray.append(tempColl)
                     }
                 }
-            print("The Collected Array is : \(tempTaskCollArray)")
             completionHandler?(tempTaskCollArray)
         })
     }
