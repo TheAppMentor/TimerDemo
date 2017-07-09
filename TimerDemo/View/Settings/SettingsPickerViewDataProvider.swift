@@ -12,4 +12,5 @@ struct SettingsPickerViewDataProvider : SettingsPickerViewData {
     var pickerViewIndexOfSelectedItem: Int
     let pickerViewItems : [String]
     let pickerViewTitle : String
+    let isAlert: Bool
 }

@@ -124,7 +124,7 @@ class ChartHandler {
         
         for eachDataPoint in chartData.chartDataPoints{
             var dataPoint = eachDataPoint
-            dataPoint.measureDisplayValue = Utilities.shared.getHHMMSSFrom(seconds: Int(eachDataPoint.measure))
+            dataPoint.measureDisplayValue = Utilities.shared.getHHMMSSFrom(seconds: Int(eachDataPoint.measure), compact: true)
             tempChartData.chartDataPoints.append(dataPoint)
         }
         return tempChartData

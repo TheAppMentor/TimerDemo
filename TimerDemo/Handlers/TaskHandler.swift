@@ -95,17 +95,15 @@ class TaskHandler : TaskEventHanlder {
         currentTask?.taskStatus = .completed
         // Add this task to the task collection.
         archiveCurrentTask()
-        delegate?.currentTaskDidComplete()
-        
         UserInfoHandler.shared.addTaskCollToRecent(taskCollName: currentTask?.taskName ?? "")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
         
+        delegate?.currentTaskDidComplete()
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
     }
     
     func archiveCurrentTask() {
         //Add Current task to appropriate Task Collection.
         PersistenceHandler.shared.saveTask(task: currentTask!)
-        //PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
     }
     
 }

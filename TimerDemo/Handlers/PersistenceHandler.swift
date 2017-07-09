@@ -78,13 +78,12 @@ class PersistenceHandler {
     //         MARK: User Info Processing
     // =============================================//
     
-    func saveUserInfo(userInfo : UserInfo) {
-        //UserInfo : UserID -
-            //  -> user Name
-            //  -> user Display Name
-            //  -> user email ID
-            //  -> user Phone
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").setValue(userInfo.dictFormat)
+    func saveUserInfo(userInfo : UserInfo, completionHandler : (()->())? = nil) {
+//        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").setValue(userInfo.dictFormat)
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("UserInfo").child("UserDetails").setValue(userInfo.dictFormat) { (_, _) in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
+        }
+        
     }
     
     func fetchUserInfo(completionHandler : @escaping (_ theUserInfo : UserInfo)->()) {

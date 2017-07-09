@@ -1,4 +1,3 @@
-
 //
 //  ViewController.swift
 //  TimerDemo
@@ -23,6 +22,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     var taskPickerScrollView : TaskPickerScrollView = TaskPickerScrollView()
     
     @IBOutlet weak var miniVizContainerView: UIView!
+    var miniVizContainerVC : VizDetailsPageVC?
     
     var allTaskColl = [TaskCollection]()
     
@@ -232,7 +232,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     //MARK: Info Pop Up Window Event Handler Delegate.
     
     func userOptedToTakeShortBreak(){
-        
        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
         timerContainerView.timerMode = .shortBreak
         // Setup View for a Short break.
@@ -310,8 +309,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func currentTaskDidComplete() {
-        print("Got Notificaiton .. current task completed.")
-        timerDisplayView.theArcProgressView.timerLabel.text = "DONE"
         timerControlButton.setPaused(true, animated: false)  // Hack to make the timer button set properly. Need to research why it behaves this way.
         timerControlButton.setPaused(false, animated: false)
         
@@ -319,31 +316,23 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         createADeepWorkTask()
         setupUIForTaskBegin()
         
-        // Change Task to Break
-        // Show Pop up, asking if he wants a break or wants to continue.
-        // Pop up should also show summary or progress.
-        //SCLAlertView().showInfo("Important info", subTitle: "You are great")
+        // Reload the mini Chart view.
+        //self.miniVizContainerVC?.reloadAllViews()
         
         switch (taskBoy.currentTask?.taskType)! {
         case .deepFocus:    InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
         case .shortBreak:   InfoAlertView(actionDelegate: self).showAlertForShortBreakComplete()
         case .longBreak:    InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
         }
-                
-        // Vibrate the Phone.
-        //if SettingsHandler.shared.isVibrateOn.currentValue == "ON"{
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-//            AudioServicesPlaySystemSound(1519) // Actuate `Peek` feedback (weak boom)
-//            AudioServicesPlaySystemSound(1520) // Actuate `Pop` feedback (strong boom)
-//            AudioServicesPlaySystemSound(1521) // Actuate `Nope` feedback (series of three weak booms)
-            
-        //}
         
-        //Find the alert tone and play it
-       // if SettingsHandler.shared.taskDidCompleteSound == "someSOund"{
-            AudioServicesPlaySystemSound(1054);
-       // }
+//        // Reload the mini Chart view.
+//        self.miniVizContainerVC?.reloadAllViews()
         
+        // Vibrate the Phone. If User requested
+        AudioHandler.shared.vibrate()
+        
+        // Play Sound
+        AudioHandler.shared.playAudioForEvent(taskType: (taskBoy.currentTask?.taskType)!)
     }
     
     @IBAction func showTaskList(_ sender: UIBarButtonItem) {
@@ -366,31 +355,14 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
             
         case "showMiniVC" :
             if let theDestVC = segue.destination as? VizDetailsPageVC{
-                    theDestVC.myContainerVC = self
+                theDestVC.myContainerVC = self
+                self.miniVizContainerVC = theDestVC
             }
             
         default:
             break
         }
     }
-    
-    
-    @IBAction func saveTaskTemp(_ sender: UIBarButtonItem) {
-        let user1 = UserInfo(userID: "User1", isAnonymous: true, userName: "Prashanth", displayName: "Prashanth Moorthy", email: "chapparfellow@gmail.com", phone: "81975-10162", recentUsedTaskColl: ["Default"], mostUsedTaskColl: ["Default"])
-        
-//        PersistenceHandler.shared.saveUserInfo(userInfo: UserInfo(userID: "SomeShit", isAnonymous: true, userName: "Some Fellow", displayName: "The Fellow", email: "The fellow@ gmail.com", phone: "12121212121232121"))
-        
-        PersistenceHandler.shared.saveUserInfo(userInfo: user1)
-    }
-    
-    @IBAction func fetchUserInfo(_ sender: UIBarButtonItem) {
-        PersistenceHandler.shared.fetchUserInfo { (theUserInfo) in
-            print("We Have User infor : \(theUserInfo)")
-        }
-        
-    }
-    
-    
 }
 
 

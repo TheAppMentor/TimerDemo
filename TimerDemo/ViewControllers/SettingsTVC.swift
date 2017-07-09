@@ -117,24 +117,23 @@ class SettingsTVC: UITableViewController, PickerSelectionDelegate {
         
         if let thePickerVC = segue.destination as? PickerVC{
             
-//            var pickerViewIndexOfSelectedItem: Int
-//            let pickerViewItems : [String]
-//            let pickerViewTitle : String
-            
             let currentValue = selectedPref?.currentValue ?? "" as AnyObject
             let displayName = selectedPref?.displayName ?? ""
-//            let listOfValueInPicker = selectedPref?.listOfValues ?? []
+            var isAlert = false
             
-            //let listOfValueInPicker = selectedPref?.listOfValues ?? []
+            //TODO: Ned to fix this, not a good way.
+            if selectedPref?.name == "longBreakCompletedSound" || selectedPref?.name == "shortBreakCompletedSound" || selectedPref?.name == "taskCompletedSound"{
+                    isAlert = true
+            }
             
             let listOfValueInPicker =  selectedPref?.listOfValues.map({String(describing: $0)})
             
-            //let indexOfCurrentSelectedValue = selectedPref?.listOfValues.index(of: currentValue) ?? 0
             let indexOfCurrentSelectedValue = listOfValueInPicker?.index(where: {$0 == String(describing: currentValue)})
             
             thePickerVC.pickerViewData = SettingsPickerViewDataProvider(pickerViewIndexOfSelectedItem: indexOfCurrentSelectedValue!,
                                                                         pickerViewItems: listOfValueInPicker ?? [],
-                                                                        pickerViewTitle: displayName)
+                                                                        pickerViewTitle: displayName,
+                                                                        isAlert: isAlert)
             
             thePickerVC.pickerSelectionDelegate = self
         }

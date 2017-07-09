@@ -17,6 +17,7 @@ protocol SettingsPickerViewData {
     var pickerViewItems : [String] {get}
     var pickerViewIndexOfSelectedItem : Int {get}
     var pickerViewTitle : String {get}
+    var isAlert : Bool {get}
 }
 
 class SettingsPickerView: UIView {    
@@ -115,6 +116,13 @@ extension SettingsPickerView : UIPickerViewDataSource,UIPickerViewDelegate{
     func scrollToSelectedRow() {
         pickerView.selectRow(pickerViewData?.pickerViewIndexOfSelectedItem ?? 0, inComponent: 0, animated: true)
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerViewData?.isAlert == true{
+            AudioHandler.shared.playAudio(audioID: AudioFileMap(rawValue: pickerViewData!.pickerViewItems[row])!)
+        }
+    }
+    
     
 }
 

@@ -1,15 +1,16 @@
  //
-//  VizDetailsPageVC.swift
-//  
-//
-//  Created by Moorthy, Prashanth on 7/5/17.
-//
-
-import UIKit
-
-class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPageViewControllerDataSource{
+ //  VizDetailsPageVC.swift
+ //
+ //
+ //  Created by Moorthy, Prashanth on 7/5/17.
+ //
+ 
+ import UIKit
+ 
+ class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPageViewControllerDataSource{
     
-    var miniVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent,.chartToday,.chartAlltime,.chartAlltime]
+//    var miniVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent,.chartToday,.chartAlltime,.chartAlltime] // The Ideal Goal
+    var miniVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent]
     
     var myContainerVC : MainTimerScreenVC!
     
@@ -17,7 +18,12 @@ class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        populateVCs()
+        delegate = self
+        dataSource = self
+    }
+    
+    func populateVCs() {
         for eachVizType in miniVizToDisplay{
             switch eachVizType{
             case .tableTaskList:
@@ -31,31 +37,25 @@ class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPage
                     tempChartVC.typeOfViz = eachVizType
                     allViewControllers.append(tempChartVC)
                 }
-                break
-        }
-        
-//        // Do any additional setup after loading the view.
-//        if let firstVC = storyboard?.instantiateViewController(withIdentifier: "VizDisplayVC"){
-//            firstVC.view.backgroundColor = UIColor.gray
-//            allViewControllers.append(firstVC)
-//        }
-//
-//        if let secVC = storyboard?.instantiateViewController(withIdentifier: "miniTaskList") as? MiniTaskListTVC{
-//            secVC.view.backgroundColor = UIColor.blue
-//            secVC.eventHandlerDelegate = myContainerVC
-//            allViewControllers.append(secVC)
-//        }
-//
-//        if let thirdVC = storyboard?.instantiateViewController(withIdentifier: "VizDisplayVC"){
-//            thirdVC.view.backgroundColor = UIColor.green
-//            allViewControllers.append(thirdVC)
+            }
         }
         
         self.setViewControllers([allViewControllers.first!], direction: .forward, animated: true, completion: nil)
-        delegate = self
-        dataSource = self
     }
-
+    
+    
+    func reloadAllViews() {
+        //TODO: Since we have only two VC this is ok, the curretn way is to keep track of index of current displayed vc and then reloading only that.
+        //https://stackoverflow.com/questions/8400870/uipageviewcontroller-return-the-current-visible-view
+        
+        for eachVC in allViewControllers{
+            if let currDispVC = eachVC as? MiniTaskListTVC{
+                currDispVC.fetchInfoForTableAndReload()
+            }
+            
+        }
+        
+    }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
@@ -77,6 +77,7 @@ class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPage
         return nil
     }
     
+    
     // The number of items reflected in the page indicator.
     func presentationCount(for pageViewController: UIPageViewController) -> Int{
         return miniVizToDisplay.count
@@ -85,18 +86,4 @@ class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPage
     func presentationIndex(for pageViewController: UIPageViewController) -> Int{
         return 0
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+ }

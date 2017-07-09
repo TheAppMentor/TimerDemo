@@ -61,14 +61,19 @@ struct Utilities {
         return seconds < 10 ? "0\(seconds)" : "\(seconds)"
     }
     
-    func getHHMMSSFrom(seconds : Int) -> String {
+    func getHHMMSSFrom(seconds : Int, compact : Bool = false) -> String {
+        
         let hrs = seconds/(60 * 60)
         let mins = (seconds % 3600) / 60
         let secs = (seconds % 3600) % 60
         
-        let hrsDisplay = hrs == 0 ? "" : "\(hrs) hr"
-        let minsDisplay = mins == 0 ? "" : "\(mins) min"
-        let secsDisplay = secs == 0 ? "" : "\(secs) sec"
+        let hrString = compact ? "h" : "hr"
+        let minString = compact ? "m" : "min"
+        let sectring = compact ? "s" : "sec"
+        
+        let hrsDisplay = hrs == 0 ? "" : "\(hrs) \(hrString)"
+        let minsDisplay = mins == 0 ? "" : "\(mins) \(minString)"
+        let secsDisplay = secs == 0 ? "" : "\(secs) \(sectring)"
         
         if hrs > 0 {
             return hrsDisplay + " " + minsDisplay
@@ -78,6 +83,8 @@ struct Utilities {
             return secsDisplay
         }
     }
+    
+    
     
 }
 
