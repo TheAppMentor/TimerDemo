@@ -11,6 +11,8 @@ import Foundation
 protocol TimerEventHandler {
     func timerDidChangeValue(seconds : CFTimeInterval)
     func timerDIdPause()
+    func timerDidFreeze()
+    func timerDidUnfreeze(timeRemaining : TimeInterval)
     func timerDidResume()
     func timerDidAbandon()
     func timerDidComplete()
@@ -27,7 +29,7 @@ class TimerBoy {
     var duration: TimeInterval = 25.0 // Get his value from the settings Plist
     var currentTimerValue : TimeInterval!
     
-    var taskTimer: Timer!
+    var taskTimer: Timer?
     
     var timeRemaining: TimeInterval? {
         return currentTimerValue
@@ -57,20 +59,32 @@ class TimerBoy {
 
     func startTimer() {
         startTime = Date()
-        currentTimerValue = duration
+        currentTimerValue = duration + 1.0 //Hack : Beasue timer starts and fires immediately, we end one second too soon.
         createTaskTimer()
-        taskTimer.fire()
+        taskTimer?.fire()
     }
     
     func pauseTimer() {
-        taskTimer.invalidate()
+        taskTimer?.invalidate()
         //taskTimer = nil
         delegate?.timerDIdPause()
     }
     
+    func freezeTimer() {
+        taskTimer?.invalidate()
+        delegate?.timerDidFreeze()
+    }
+    
+    func UnfreezeTimer(estimatedEndTime : Date) {
+        self.currentTimerValue = estimatedEndTime.timeIntervalSince(Date())
+        createTaskTimer()
+        taskTimer?.fire()
+        delegate?.timerDidUnfreeze(timeRemaining: self.currentTimerValue)
+    }
+    
     func resumeTimer() {
         createTaskTimer()
-        taskTimer.fire()
+        taskTimer?.fire()
         delegate?.timerDidResume()
     }
     
@@ -80,7 +94,7 @@ class TimerBoy {
     
     func abandonTimer() {
         endTime = Date()
-        taskTimer.invalidate()
+        taskTimer?.invalidate()
         delegate?.timerDidAbandon()
     }
     
@@ -88,7 +102,7 @@ class TimerBoy {
     func createTaskTimer() {
         taskTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (theTimer) in
             if self.currentTimerValue <= 0{
-                self.taskTimer.invalidate()
+                self.taskTimer?.invalidate()
                 self.endTime = Date()
                 self.delegate?.timerDidComplete()
             }
@@ -98,7 +112,6 @@ class TimerBoy {
             //timerLabel.text = "\(currentTimerValue)"
         }
     }
-    
 }
 
 
@@ -110,7 +123,6 @@ extension TimerBoy{
         
         guard let validDuration = firebaseDict["duration"] as? TimeInterval else {return nil}
         guard let validCurrTimerVal = firebaseDict["currentTimerValue"] as? TimeInterval else {return nil}
-        
         
         //TODO : This will definlti be an issue.. fix it.. nil and zeor are all not the same thing man.
         let startTimeInterval = firebaseDict["startTime"] as? Double ?? nil
@@ -136,7 +148,5 @@ extension TimerBoy{
     internal func getStringFrom(seconds: Int) -> String {
         return seconds < 10 ? "0\(seconds)" : "\(seconds)"
     }
-    
-    
 }
 

@@ -11,6 +11,8 @@ import Foundation
 protocol TaskEventHanlder {
     func timerDidChangeValue(seconds: CFTimeInterval)
     func taskDidPause()
+    func taskDidFreeze()
+    func taskDidUnFreeze(timeRemaining : TimeInterval)
     func taskDidResume()
     func taskDidAbandon()
     func taskDidComplete()
@@ -106,6 +108,22 @@ class Task : TimerEventHandler {
         currentPause = Pause(startTime: Date(), endTime: nil, reason: "Pause Reason ....")
     }
     
+    func freeze() {
+        taskStatus = .pausedBecauseAppResignedActive
+        timer.freezeTimer()
+        currentPause = Pause(startTime: Date(), endTime: nil, reason: "Task Went to Background ....")
+    }
+    
+    func Unfreeze(estimatedEndTime : Date) {
+        //currentPause?.endTime = Date()
+//        if let currentPause = currentPause{
+//            pauseList.append(currentPause)
+//        }
+//        currentPause = nil
+        taskStatus = .running
+        timer.UnfreezeTimer(estimatedEndTime: estimatedEndTime)
+    }
+    
      func resume() {
         currentPause?.endTime = Date()
         if let currentPause = currentPause{
@@ -143,6 +161,14 @@ class Task : TimerEventHandler {
         delegate?.taskDidPause()
     }
     
+    func timerDidFreeze() {
+        delegate?.taskDidFreeze()
+    }
+    
+    func timerDidUnfreeze(timeRemaining : CFTimeInterval) {
+        delegate?.taskDidUnFreeze(timeRemaining: timeRemaining)
+    }
+    
     func timerDidResume(){
         delegate?.taskDidResume()
     }
@@ -168,9 +194,7 @@ extension Task{
         var tempDict = [String : Any]()
         tempDict["taskID"] = taskID.uuidString
         tempDict["taskName"] = taskName
-//        tempDict["timer"] = "ERROR >>> WE NEED TO SAVE THE TIMER HERE"
         tempDict["timer"] = timer.dictFormat
-        print("Timer Check : Recreated Timer : \(tempDict["timer"])")
         tempDict["taskType"] = taskType.rawValue
         tempDict["taskStatus"] = taskStatus.rawValue
         tempDict["isPerfectTask"] = isPerfectTask
