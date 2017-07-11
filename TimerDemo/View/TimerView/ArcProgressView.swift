@@ -84,6 +84,20 @@ class ArcProgressView: UIView,CAAnimationDelegate {
         layer.addSublayer(arcProgressShape)
     }
     
+    func makeAnimation(withArcPosition : CGFloat = 0.0, animationDuration : TimeInterval) {
+        print("Making New Animation : Duration : \(animationDuration) : Position : \(withArcPosition)")
+        let anim = CABasicAnimation(keyPath: "strokeEnd")
+        anim.duration = animationDuration
+        anim.fromValue = withArcPosition
+        anim.toValue = 1
+        anim.speed = 1.0
+        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = kCAFillModeForwards
+        anim.delegate = self
+        arcProgressShape.add(anim, forKey: "arcAnimation")
+    }
+    
     
     func animateProgressBar() {
         let anim = CABasicAnimation(keyPath: "strokeEnd")
@@ -92,7 +106,7 @@ class ArcProgressView: UIView,CAAnimationDelegate {
         anim.toValue = 1
         anim.speed = 1.0
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-//        anim.isRemovedOnCompletion = true
+        anim.isRemovedOnCompletion = false
 //        anim.fillMode = kCAFillModeForwards
         anim.delegate = self
         arcProgressShape.add(anim, forKey: "arcAnimation")
@@ -113,47 +127,52 @@ class ArcProgressView: UIView,CAAnimationDelegate {
         layer.beginTime = timeSincePause
     }
     
-    
     func resetLayerToFullPosition() {
-        layer.speed = 100.0
-        layer.timeOffset = 0.0
+        layer.speed = 1.0
         layer.beginTime = 0.0
-        
-//        layer.sublayers?.forEach({
-//            print("Found This fellow...");
-//            if $0.name == "ForeGroundArc"{
-//                ($0 as! CAShapeLayer).strokeEnd = 1.0
-//                layer.setNeedsDisplay()
-//            }
-//        })
-        
-        
+        layer.timeOffset = timerDuration
     }
     
     func resumeAnimationFromStart(){
+        layer.removeAllAnimations()
+        makeAnimation(animationDuration: self.timerDuration)
+        layer.speed = 1.0
+        layer.beginTime = 0.0
+        layer.timeOffset = 0.0
+    }
+    
+    func resumeAnimationWithTimeRemaining(timeRemaining : TimeInterval) {
+        layer.removeAllAnimations()
+        makeAnimation(withArcPosition : (1.0 - CGFloat(timeRemaining/timerDuration)), animationDuration: timeRemaining)
+        layer.speed = 1.0
+        layer.beginTime = 0.0
+        layer.timeOffset = 0.0  //This Works Somewhat
     }
     
     
-    func resetAnimation() {
-        print("Prashanth : We need to figure out how to reset this animation man......")
-//        animateProgressBar()
-//        arcProgressShape.animationKeys()
-        
-        layer.sublayers?.forEach({
-            if $0.name == "ForeGroundArc"{
-            print("Found This fellow...");
-                if let theAnimation = $0.animation(forKey: "arcAnimation"){
-                    print("Found the Animation also...");
-                    ($0 as! CAShapeLayer).strokeEnd = 0.0
-                    //($0 as! CAShapeLayer).presentation()?
-                    $0.add(theAnimation, forKey: "arcAnimation")
-                    //($0 as! CAShapeLayer).strokeEnd = 0.0
-                }else{
-                    assertionFailure("Could not find the animation !!!")
-                }
-            }
-        })
-    }
+//    func resetAnimation() {
+//        print("Prashanth : We need to figure out how to reset this animation man......")
+////        animateProgressBar()
+////        arcProgressShape.animationKeys()
+//        
+//        layer.timeOffset = 0.0
+//        layer.beginTime = 0.0
+//        
+//        layer.sublayers?.forEach({
+//            if $0.name == "ForeGroundArc"{
+//            print("Found This fellow...");
+//                if let theAnimation = $0.animation(forKey: "arcAnimation"){
+//                    print("Found the Animation also...");
+//                    ($0 as! CAShapeLayer).strokeEnd = 0.0
+//                    //($0 as! CAShapeLayer).presentation()?
+//                    $0.add(theAnimation, forKey: "arcAnimation")
+//                    //($0 as! CAShapeLayer).strokeEnd = 0.0
+//                }else{
+//                    assertionFailure("Could not find the animation !!!")
+//                }
+//            }
+//        })
+//    }
     
     
     func animationDidStart(_ anim: CAAnimation) {

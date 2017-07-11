@@ -70,7 +70,8 @@ class VizCanvasView: UIView {
         for (eachIndex,eachDataPoint) in chartData.chartDataPoints.enumerated(){
             
             let colContainerFrame = CGRect(x: CGFloat(eachIndex) * eachColumnContainerWidth, y: 0, width: eachColumnContainerWidth, height: bounds.height)
-            let height = maxColHeight/CGFloat((metaData?.maxDataPoint.measure)!) * CGFloat(eachDataPoint.measure)
+            let theCalcHeight = maxColHeight/CGFloat((metaData?.maxDataPoint.measure)!) * CGFloat(eachDataPoint.measure)
+            let height = theCalcHeight.isNaN ? 0 : theCalcHeight
             
             let eachColContainer = buildColumnContainer(dataPoint: eachDataPoint, colContainerFrame: colContainerFrame, colWidth: 10.0, colHeight: height)
             //eachColContainer.backgroundColor = UIColor.yellow.cgColor

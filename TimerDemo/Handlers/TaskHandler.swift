@@ -12,6 +12,8 @@ import FirebaseDatabase
 protocol TaskHandlerDelegate {
     func timerDidChangeValue(seconds : CFTimeInterval)
     func currentDidPause()
+    func currentTaskDidFreeze()
+    func currentTaskDidUnFreeze(timeRemaining : TimeInterval)
     func currentTaskDidResume()
     func currentTaskDidAbandon()
     func currentTaskDidComplete()
@@ -67,6 +69,10 @@ class TaskHandler : TaskEventHanlder {
         currentTask?.taskStatus = .running
     }
     
+    func freezeCurrentTask() {
+        currentTask?.freeze()
+    }
+    
     func timerDidChangeValue(seconds: CFTimeInterval){
         delegate?.timerDidChangeValue(seconds: seconds)
     }
@@ -79,6 +85,14 @@ class TaskHandler : TaskEventHanlder {
         delegate?.currentDidPause()
     }
     
+    func taskDidFreeze() {
+        delegate?.currentTaskDidFreeze()
+    }
+    
+    func taskDidUnFreeze(timeRemaining : TimeInterval) {
+        delegate?.currentTaskDidUnFreeze(timeRemaining : timeRemaining)
+    }
+    
     func taskDidAbandon() {
         delegate?.currentTaskDidAbandon()
         archiveCurrentTask()
@@ -86,9 +100,6 @@ class TaskHandler : TaskEventHanlder {
     
     func abandonCurrentTask(){
         currentTask?.abandon()
-        
-    // Save the abandoned task to the task collection.
-        
     }
     
     func taskDidComplete() {

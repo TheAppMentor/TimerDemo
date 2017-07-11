@@ -207,7 +207,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func startCurrentTask() {
         taskBoy.startCurrentTask()
         showCancelButton()
-        timerDisplayView.theArcProgressView.animateProgressBar()
+        //timerDisplayView.theArcProgressView.animateProgressBar()
+        timerDisplayView.theArcProgressView.resumeAnimationFromStart()
         view.setNeedsDisplay()
         timerControlButton.setPaused(false, animated: true)
         cancelButton.isEnabled = true
@@ -285,6 +286,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func timerDidChangeValue(seconds: CFTimeInterval) {
         if seconds > 0 {
             timerDisplayView.theArcProgressView.timerLabel.text = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: seconds)
+            print("Time Remaining : \(Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: (25 - seconds)))")
         }else{
             timerDisplayView.theArcProgressView.timerLabel.text = "Done"
         }
@@ -296,6 +298,15 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
     }
     
+    func currentTaskDidUnFreeze(timeRemaining : TimeInterval) {
+        timerDisplayView.theArcProgressView.resumeAnimationWithTimeRemaining(timeRemaining: timeRemaining)
+        //timerDisplayView.theArcProgressView.resumeAnimation()
+    }
+    
+    func currentTaskDidFreeze() {
+        timerDisplayView.theArcProgressView.pauseAnimation()
+    }
+    
     func currentTaskDidResume(){
         timerDisplayView.theArcProgressView.resumeAnimation()
     }
@@ -303,6 +314,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func currentTaskDidAbandon() {
         // Short Break seems to work..
         timerDisplayView.theArcProgressView.resetLayerToFullPosition()
+        //timerDisplayView.theArcProgressView.resumeAnimationFromStart()
         
         createADeepWorkTask()
         setupUIForTaskBegin()
