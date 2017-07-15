@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 import Firebase
 import KeychainSwift
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,9 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey:Any]?) -> Bool {
+
+        
+        // Initialize the Google Mobile Ads SDK.
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-5666511173297473~7405055349")
         
         // Override point for customization.. after application launch.
-        
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             if granted {
@@ -56,7 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if currTask.taskStatus == .running{
                 currTask.freeze()
                 dateCurrentRunningTaskEnds = Date(timeInterval: currTask.timeRemaining, since: Date())
-                print("Now : \(Date())   timeCurrentRunningTaskEnds : \(dateCurrentRunningTaskEnds!)  => Notify me after \(Int((dateCurrentRunningTaskEnds?.timeIntervalSinceNow)!))")
                 currTask.taskStatus = .pausedBecauseAppResignedActive
                 
                 // Schedule a local Notification.
@@ -67,13 +71,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     content.title = "Timer Finished"
                     content.body = "\(currTask.taskName) Finished."
                     content.categoryIdentifier = "alarm"
-                    //content.userInfo = ["customData": "fizzbuzz"]
                     content.sound = UNNotificationSound.default()
                     
                     // Swift
                     let date = Date(timeIntervalSinceNow: currTask.timeRemaining)
                     let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-                    print(" !!!!!!!!!!!!!! Will Notify After => \(currTask.timeRemaining) : \(triggerDate.second) Seconds !!!!!!!!!!!!!! ")
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
                     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -88,16 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-    
     func applicationDidBecomeActive(_ application: UIApplication) {
         
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -105,13 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if currTask.taskStatus == .pausedBecauseAppResignedActive{
                 if let dateTaskEnds = dateCurrentRunningTaskEnds{
                     if dateTaskEnds.timeIntervalSince(Date()) > 0{
-                        print("Timer Active Again : Remaining Time  : \(dateTaskEnds.timeIntervalSince(Date()))")
+                        //We came back from background & App still had an active running timer.
                         currTask.timeRemaining = dateTaskEnds.timeIntervalSince(Date())
                         currTask.Unfreeze(estimatedEndTime : dateCurrentRunningTaskEnds!)
-                        print("We are Restarting the timer : With Time Remanining : \(currTask.timeRemaining)")
                     }else{
-                        print("Timer has expired when we were paused")
-                        TaskHandler.shared.abandonCurrentTask()
+                        //Timer has expired when were in the background
+                        currTask.timerDidComplete()
                     }
                 }
             }
@@ -121,7 +112,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
     
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+
     
 }
 

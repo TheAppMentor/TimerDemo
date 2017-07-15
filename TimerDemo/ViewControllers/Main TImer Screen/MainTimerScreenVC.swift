@@ -12,8 +12,12 @@ import AudioToolbox
 import RSPlayPauseButton
 import SCLAlertView
 import AKPickerView_Swift
+import GoogleMobileAds
 
 class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler,TaskPickerTVCEventHandlerDelegate {
+    
+    @IBOutlet weak var adBannerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     //MARK: GLobal Variables
     let taskBoy = TaskHandler.shared
@@ -47,6 +51,15 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         UIApplication.shared.statusBarStyle = .lightContent
         
          navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.white]
+
+        //Setup Ad Banner.
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //=> Test APp ID I think.
+        //bannerView.adUnitID = "ca-app-pub-5666511173297473/2835254941"  //Prashanths Real ID
+        bannerView.rootViewController = self
+
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        bannerView.delegate = self
+        adBannerHeightConstraint.constant = 0
         
         createADeepWorkTask()
         setupUIForTaskBegin()
@@ -205,6 +218,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func startCurrentTask() {
+        bannerView.load(GADRequest())
+        
         taskBoy.startCurrentTask()
         showCancelButton()
         //timerDisplayView.theArcProgressView.animateProgressBar()
@@ -380,7 +395,58 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
 
 
 
+// ========================================================= //
+//            MARK: Google Ads Processing.
+// ========================================================= //
 
+extension MainTimerScreenVC : GADBannerViewDelegate{
+
+    func showADBanner() {
+        adBannerHeightConstraint.constant = 50
+        bannerView.layoutIfNeeded()
+    }
+    
+    func hideADBanner() {
+        adBannerHeightConstraint.constant = 0
+        bannerView.layoutIfNeeded()
+    }
+
+/// Tells the delegate an ad request loaded an ad.
+func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+    print("adViewDidReceiveAd")
+    showADBanner()
+    }
+
+/// Tells the delegate an ad request failed.
+func adView(_ bannerView: GADBannerView,
+            didFailToReceiveAdWithError error: GADRequestError) {
+    print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    hideADBanner()
+}
+
+/// Tells the delegate that a full screen view will be presented in response
+/// to the user clicking on an ad.
+func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+    print("adViewWillPresentScreen")
+    taskBoy.currentTask?.pause()
+}
+
+/// Tells the delegate that the full screen view will be dismissed.
+func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+    print("adViewWillDismissScreen")
+}
+
+/// Tells the delegate that the full screen view has been dismissed.
+func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+    print("adViewDidDismissScreen")
+}
+
+/// Tells the delegate that a user click will open another app (such as
+/// the App Store), backgrounding the current app.
+func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+    print("adViewWillLeaveApplication")
+}
+}
 
 
 // ========================================================= //

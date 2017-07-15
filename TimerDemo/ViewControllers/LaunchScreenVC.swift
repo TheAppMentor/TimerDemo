@@ -33,10 +33,5 @@ class LaunchScreenVC: UIViewController {
                 assertionFailure("Login with both Credetinals and Anonymous has failed.")
             }
         })
-        
-        
     }
-    
-    
-    
 }

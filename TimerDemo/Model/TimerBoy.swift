@@ -35,6 +35,27 @@ class TimerBoy {
         return currentTimerValue
     }
     
+    var taskStartDateString : String{
+        let dateString = startTime?.toString(dateFormat: "MMM d")
+        return dateString ?? ""
+    }
+    
+    var taskStartTimeString : String{
+        let dateString = startTime?.toString(dateFormat: "h:mm a")
+        return dateString ?? ""
+    }
+
+
+    var taskEndDateString : String{
+        let dateString = endTime?.toString(dateFormat: "MMM d")
+        return dateString ?? ""
+    }
+
+    var taskEndTimeString : String{
+        let dateString = endTime?.toString(dateFormat: "h:mm a")
+        return dateString ?? ""
+    }
+
     var dictFormat : [String : Any]{
         var tempDict = [String : Any]()
         

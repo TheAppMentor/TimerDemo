@@ -25,6 +25,7 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
+  - Google-Mobile-Ads-SDK (7.21.0)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Google-Mobile-Ads-SDK
   - KeychainSwift (~> 8.0)
   - RSPlayPauseButton (~> 1.0)
   - SCLAlertView (~> 0.7)
@@ -58,12 +60,13 @@ SPEC CHECKSUMS:
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  Google-Mobile-Ads-SDK: 4a6f1b43c8cc0e1e95a3b59d9f52a01671c6f9f3
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   RSPlayPauseButton: 9def027a1259ded3a6ecfeb0e57df1775ff22fb0
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
 
-PODFILE CHECKSUM: 1d28692498296402c048e90dde604874ec74a577
+PODFILE CHECKSUM: 3f550282ec5090caedb6dca1145c6afedd3bc52e
 
 COCOAPODS: 1.2.1.beta.1

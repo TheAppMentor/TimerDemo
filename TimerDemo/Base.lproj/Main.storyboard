@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVV-DQ-dqT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVV-DQ-dqT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -252,17 +252,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launching Application" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfX-hU-XxM">
-                                <rect key="frame" x="103" y="323.5" width="169.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Focus Swamy White" translatesAutoresizingMaskIntoConstraints="NO" id="PrV-6F-dVg">
+                                <rect key="frame" x="79.5" y="225.5" width="216" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PrV-6F-dVg" secondAttribute="height" multiplier="1:1" id="aPg-i1-Ofa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Loading...." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfX-hU-XxM">
+                                <rect key="frame" x="122" y="474" width="130" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.33333333329999998" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="cfX-hU-XxM" firstAttribute="centerY" secondItem="6rk-uL-M4a" secondAttribute="centerY" id="ksj-Hb-eeE"/>
-                            <constraint firstItem="cfX-hU-XxM" firstAttribute="centerX" secondItem="6rk-uL-M4a" secondAttribute="centerX" id="mJI-7s-u03"/>
+                            <constraint firstItem="cfX-hU-XxM" firstAttribute="top" secondItem="PrV-6F-dVg" secondAttribute="bottom" constant="32.5" id="deL-8b-oqh"/>
+                            <constraint firstItem="cfX-hU-XxM" firstAttribute="centerX" secondItem="6rk-uL-M4a" secondAttribute="centerX" id="juU-Hz-Yc7"/>
+                            <constraint firstItem="PrV-6F-dVg" firstAttribute="centerY" secondItem="6rk-uL-M4a" secondAttribute="centerY" id="rGC-BW-4qt"/>
+                            <constraint firstItem="PrV-6F-dVg" firstAttribute="centerX" secondItem="6rk-uL-M4a" secondAttribute="centerX" id="vzs-4m-Obv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G0B-BT-Lsd"/>
@@ -272,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rm2-hD-d2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="350"/>
+            <point key="canvasLocation" x="128.80000000000001" y="349.47526236881561"/>
         </scene>
         <!--Main Timer ScreenVC-->
         <scene sceneID="tne-QT-ifu">
@@ -290,27 +298,22 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="gkv-Vm-qny"/>
-                                    <barButtonItem image="Analyze" id="DUA-7W-gKs">
-                                        <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vLN-4E-3Ud"/>
                                     <barButtonItem image="Settings" style="plain" id="3Ne-PR-Tgf">
                                         <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="mgj-U6-Pd2" kind="presentation" id="kbh-mS-P4Q"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wET-uK-CVZ"/>
-                                    <barButtonItem systemItem="organize" id="IFM-27-vbO" userLabel="TaskList">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vLN-4E-3Ud"/>
+                                    <barButtonItem image="List" id="IFM-27-vbO" userLabel="TaskList">
+                                        <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="showTaskList:" destination="BYZ-38-t0r" id="ZXY-SI-4xX"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="axB-Ii-c9I"/>
-                                    <barButtonItem title="Login" style="plain" id="uWh-Tp-E6a">
-                                        <connections>
-                                            <action selector="userWantsToLogin:" destination="BYZ-38-t0r" id="YWW-aX-Mf4"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wET-uK-CVZ"/>
+                                    <barButtonItem image="Analyze" id="DUA-7W-gKs">
+                                        <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="6NH-hV-BFV"/>
                                 </items>
@@ -349,6 +352,13 @@
                                     <segue destination="E7R-fs-OTD" kind="embed" identifier="showMiniVC" id="6T4-0V-gkD"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-dL-A4A" userLabel="Ad Banner View" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Pum-hk-hKc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -364,7 +374,10 @@
                             <constraint firstItem="Dt8-Sg-mJU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JJJ-8l-eqe"/>
                             <constraint firstItem="n8F-bM-6XF" firstAttribute="top" secondItem="yNY-lR-D7c" secondAttribute="bottom" constant="20" id="L1F-Rj-3Dx"/>
                             <constraint firstItem="Ybb-Yu-FYN" firstAttribute="centerX" secondItem="Dt8-Sg-mJU" secondAttribute="centerX" id="OfX-8I-lmP"/>
+                            <constraint firstAttribute="trailing" secondItem="Ufp-dL-A4A" secondAttribute="trailing" id="PlK-rX-zJn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="co4-QV-cym" secondAttribute="bottom" id="T1s-WK-syw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ufp-dL-A4A" secondAttribute="bottom" id="cJG-lv-KdU"/>
+                            <constraint firstItem="Ufp-dL-A4A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d0A-CE-Ada"/>
                             <constraint firstItem="Dt8-Sg-mJU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="dCt-BJ-Y00"/>
                             <constraint firstItem="n8F-bM-6XF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fTi-rR-6zV"/>
                             <constraint firstAttribute="trailing" secondItem="Dt8-Sg-mJU" secondAttribute="trailing" id="n32-kV-TRf"/>
@@ -381,6 +394,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="adBannerHeightConstraint" destination="Pum-hk-hKc" id="LdS-nK-0jr"/>
                         <outlet property="cancelButton" destination="yNY-lR-D7c" id="tAu-yY-MaG"/>
                         <outlet property="miniVizContainerView" destination="LvM-3M-vRY" id="OBS-xV-LyJ"/>
                         <outlet property="timerContainerView" destination="Dt8-Sg-mJU" id="6mS-QR-nG8"/>
@@ -714,7 +728,8 @@
                                         <constraint firstItem="Cd5-2Z-3nU" firstAttribute="top" secondItem="AIK-e4-H6N" secondAttribute="top" constant="100" id="sRV-Go-xeY"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="extraLight"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.50476241438356162" colorSpace="calibratedRGB"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <constraints>
@@ -929,6 +944,8 @@
     <resources>
         <image name="Analyze" width="25" height="25"/>
         <image name="CancelButton" width="24" height="24"/>
+        <image name="Focus Swamy White" width="207" height="216"/>
+        <image name="List" width="23" height="19"/>
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
