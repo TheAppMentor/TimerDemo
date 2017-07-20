@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+enum TimePeriod : String{
+    case today
+    case week
+    case month
+    case allTime
+}

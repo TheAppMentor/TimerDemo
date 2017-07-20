@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol PreferenceEventHandlerDelegate {
+    func userChangePerference(newPreference : Preference)
+}
+
 class SettingsTVC: UITableViewController, PickerSelectionDelegate {
     
     var bluvaryer = CALayer()
     var settingsPickerView : SettingsPickerView?
+    
+    var preferenceChangeEventHandler : PreferenceEventHandlerDelegate?
     
     var selectedPref : Preference?
     var selectedIndexPath : IndexPath?
@@ -54,13 +60,16 @@ class SettingsTVC: UITableViewController, PickerSelectionDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Selected Setting
-        //selectedSetting = SettingsHandler.shared.fetchSettingForIndex(section: indexPath.section, row: indexPath.row)
         selectedPref = OnlinePreferenceHandler.shared.fetchPreferenceForIndex(section: indexPath.section, row: indexPath.row)
         selectedIndexPath = indexPath
+
+        if selectedPref?.name == "isVibrateOn"{
+            let selectedIndex = (selectedPref?.currentValue as! Bool) == true ? 1 : 0
+            userSelectedValue(index: selectedIndex)
+            return
+        }
         performSegue(withIdentifier: "showPickerView", sender: self)
     }
-    
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,6 +109,7 @@ class SettingsTVC: UITableViewController, PickerSelectionDelegate {
         // Update value of the cell in OnlinePerf Handler.
         OnlinePreferenceHandler.shared.updatePreference(prefType: OnlinePreferenceHandler.shared.fetchPreferenceTypeForSection(section: selectedIndexPath.section), updatedValue: theUpdatedPref){
             self.tableView.reloadData()
+            self.preferenceChangeEventHandler?.userChangePerference(newPreference: theUpdatedPref)
         }
         
 //        let updatedSetting = Setting(displayName: selectedPref!.displayName, currentValue: selectedPref!.listOfValues[index] as! String, listOfValues: selectedPref!.listOfValues as! [String])

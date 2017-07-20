@@ -12,6 +12,8 @@ import UIKit
 class VizDisplayVC: UIViewController {
     
     var typeOfViz : TypeOfViz?
+    var shouldDisplayChartTitle : Bool = true
+
     @IBOutlet weak var vizTitleLabel: UILabel!
     @IBOutlet weak var vizChartView: UIView!
     
@@ -25,9 +27,10 @@ class VizDisplayVC: UIViewController {
     }
     
     func setupChart() {
-        ChartHandler.shared.makeChart(frame: vizChartView.bounds, vizType: typeOfViz!, dataPointLimit: 3, completionH: { (theChartView, theChartTitle) in
-            self.vizTitleLabel.text = theChartTitle
+        ChartHandler.shared.makeChart(frame: vizChartView.bounds, vizType: typeOfViz!, dataPointLimit: 3, completionH: {[unowned self] (theChartView, theChartTitle) in
+            self.vizTitleLabel.text = self.shouldDisplayChartTitle ? theChartTitle : ""
             self.vizChartView.addSubview(theChartView)
+            theChartView.frame = self.view.bounds
         })
     }
     

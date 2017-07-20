@@ -10,11 +10,16 @@
  class VizDetailsPageVC: UIPageViewController,UIPageViewControllerDelegate,UIPageViewControllerDataSource{
     
 //    var miniVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent,.chartToday,.chartAlltime,.chartAlltime] // The Ideal Goal
-    var miniVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent]
+    var listOfVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent]
     
     var myContainerVC : MainTimerScreenVC!
+    var shouldDisplayChartTitle : Bool = true
     
     var allViewControllers : [UIViewController] = []
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,7 @@
     }
     
     func populateVCs() {
-        for eachVizType in miniVizToDisplay{
+        for eachVizType in listOfVizToDisplay{
             switch eachVizType{
             case .tableTaskList:
                 if let tempTableVC = storyboard?.instantiateViewController(withIdentifier: "miniTaskList") as? MiniTaskListTVC{
@@ -32,9 +37,11 @@
                     allViewControllers.append(tempTableVC)
                 }
                 
-            case .chartToday,.chartThisWeek,.chartAlltime,.recent:
+            case .chartToday,.chartThisWeek,.chartAlltime,.recent,.chartThisMonth:
                 if let tempChartVC = storyboard?.instantiateViewController(withIdentifier: "VizDisplayVC") as? VizDisplayVC{
+                    tempChartVC.view.frame = view.bounds
                     tempChartVC.typeOfViz = eachVizType
+                    tempChartVC.shouldDisplayChartTitle = self.shouldDisplayChartTitle
                     allViewControllers.append(tempChartVC)
                 }
             }
@@ -52,9 +59,7 @@
             if let currDispVC = eachVC as? MiniTaskListTVC{
                 currDispVC.fetchInfoForTableAndReload()
             }
-            
         }
-        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -80,7 +85,7 @@
     
     // The number of items reflected in the page indicator.
     func presentationCount(for pageViewController: UIPageViewController) -> Int{
-        return miniVizToDisplay.count
+        return listOfVizToDisplay.count
     }
     // The selected item reflected in the page indicator.
     func presentationIndex(for pageViewController: UIPageViewController) -> Int{

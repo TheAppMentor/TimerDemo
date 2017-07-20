@@ -12,6 +12,7 @@ enum TypeOfViz : String {
     case tableTaskList
     case chartToday
     case chartThisWeek
+    case chartThisMonth
     case chartAlltime
     case recent
     
@@ -21,6 +22,7 @@ enum TypeOfViz : String {
         case .tableTaskList:    return "Recent Tasks"
         case .chartToday:       return "Today"
         case .chartThisWeek:    return "This Week"
+        case .chartThisMonth:    return "This Month"
         case .chartAlltime:     return "All Time"
         }
     }

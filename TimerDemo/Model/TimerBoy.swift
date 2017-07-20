@@ -70,7 +70,6 @@ class TimerBoy {
     
     var timerElapsedTime : TimeInterval?{
         //TODO: This is wrong!!! the guy could have puased the tiemr ... so you can calulate this way !
-        print("Calculating time Elapsed..........")
         guard startTime != nil else {return nil}
         guard endTime != nil else {return nil}
         

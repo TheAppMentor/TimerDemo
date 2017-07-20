@@ -12,8 +12,13 @@ class MiniTaskListTVC: UITableViewController {
     
     var taskCollectionList = [TaskCollection]()
     let tableHeaderHeight : CGFloat = 30.0
+    let tableMoreRowHeight : CGFloat = 30.0
     
     var eventHandlerDelegate : TaskPickerTVCEventHandlerDelegate?
+    
+    func isLastRowInTable(theIndexPath : IndexPath) -> Bool{
+        return theIndexPath.row == taskCollectionList.count
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +44,17 @@ class MiniTaskListTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return taskCollectionList.count
+        return taskCollectionList.count + 1  // +1 for More... row.
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Are we on the last cell.
+        if isLastRowInTable(theIndexPath: indexPath){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "moreTaskListCell", for: indexPath)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "miniTaskListCell", for: indexPath)
 
         // Configure the cell...
@@ -55,11 +67,11 @@ class MiniTaskListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return calcCellHeight()
+        return isLastRowInTable(theIndexPath: indexPath) ? tableMoreRowHeight : calcCellHeight()
     }
     
     func calcCellHeight() -> CGFloat {
-        return (tableView.frame.height - tableHeaderHeight)/CGFloat(taskCollectionList.count)
+        return (tableView.frame.height - tableHeaderHeight - tableMoreRowHeight)/CGFloat(taskCollectionList.count)   // +1 for the more... row.
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -67,9 +79,9 @@ class MiniTaskListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        let headerView = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableHeaderHeight * 0.75))
         headerView.backgroundColor = UIColor.white
-        headerView.font = Utilities.shared.largeFontSize
+        headerView.font = Utilities.shared.regularFontSize
         headerView.textAlignment = .center
         headerView.textColor = Utilities.shared.darkGrayColor
         headerView.text = "Recent Tasks"
@@ -78,6 +90,12 @@ class MiniTaskListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if isLastRowInTable(theIndexPath: indexPath){
+            eventHandlerDelegate?.userWantsToViewMoretasks()
+            return
+        }
+        
         eventHandlerDelegate?.userPickedATaskWithName(name: taskCollectionList[indexPath.row].taskName)
         tableView.deselectRow(at: indexPath, animated: true)
     }

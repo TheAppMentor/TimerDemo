@@ -12,13 +12,50 @@ class TaskDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     
     var currentTaskColl : TaskCollection?
     var taskList = [String:Task]()
-
+    var taskDisplayList = [Task]()
+    
     @IBOutlet weak var sessionListTableView: UITableView!
+    @IBOutlet weak var taskPickerSegementControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        sessionListTableView.tableFooterView = UIView()
     }
+    
+//    func aggregateTaskForADay(taskArr : [Task]) -> [String : AnyObject?] {
+//
+//        let timeList = ["12 - 6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM", "3PM", "4PM", "5 PM", "6 PM", "7 PM", "8 PM", "9 PM", "10 PM", "11 PM"]
+//
+//
+//    }
+//
+    
+    @IBAction func segmentPicked(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0 : populateViewForTimePeriod(timePeriod: .today)
+        case 1 : populateViewForTimePeriod(timePeriod: .week)
+        case 2 : populateViewForTimePeriod(timePeriod: .month)
+        default: break
+        }
+        
+    }
+    
+    func populateViewForTimePeriod(timePeriod : TimePeriod) {
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(timePeriod: timePeriod) { (theTaskArr) in
+            // filter out only tasks matching current task coll name
+            //TODO : Prashanth potential optimization here.
+            
+            for eachTask in theTaskArr{
+                if eachTask.taskName == self.currentTaskColl?.taskName{
+                    self.taskDisplayList.append(eachTask)
+                }
+            }
+            self.sessionListTableView.reloadData()
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,23 +67,23 @@ class TaskDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.keys.count
+        return taskDisplayList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:
-            "taskSessionCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier:"taskSessionCell")
         
-        if let taskID = currentTaskColl?.fetchTaskIDAtIndex(row: indexPath.row){
-            let taskStartDate = taskList[taskID]?.timer.taskStartDateString ?? " "
-            let taskEndDate = taskList[taskID]?.timer.taskEndDateString ?? " "
-            let taskDateStringToDisplay = (taskStartDate == taskEndDate) ? taskStartDate : "\(taskStartDate) - \(taskEndDate)"
-            let taskStartTimeDisplayString = taskList[taskID]?.timer.taskStartTimeString ?? " "
-            let taskEndTimeDisplayString = taskList[taskID]?.timer.taskEndTimeString ?? " "
+             let theCurrTask = taskDisplayList[indexPath.row]
+        
+            let taskStartDate = theCurrTask.timer.taskStartDateString
+            let taskEndDate = theCurrTask.timer.taskEndDateString
+        
+        let taskDateStringToDisplay = (taskStartDate == taskEndDate) ? taskStartDate : "\(taskStartDate) - \(taskEndDate)"
+            let taskStartTimeDisplayString = theCurrTask.timer.taskStartTimeString
+            let taskEndTimeDisplayString = theCurrTask.timer.taskEndTimeString
 
             cell?.textLabel?.text = "\(taskDateStringToDisplay)    \(taskStartTimeDisplayString)-\(taskEndTimeDisplayString)"
-            cell?.detailTextLabel?.text = taskList[taskID]?.taskType.rawValue
-        }
+            cell?.detailTextLabel?.text = theCurrTask.taskType.rawValue
         
         return cell!
     }
@@ -68,14 +105,22 @@ class TaskDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
 
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    
+        if segue.identifier == "showVizDetailsChart"{
+            if let destVC = segue.destination as? VizDetailsPageVC{
+                destVC.listOfVizToDisplay = [.chartToday,.chartThisWeek,.chartThisMonth]
+                destVC.shouldDisplayChartTitle = false
+            }
+        }
+    
     }
-    */
+    
 
 }

@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // Swift
                     let date = Date(timeIntervalSinceNow: currTask.timeRemaining)
                     let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-                    
+
                     let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
                     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                     

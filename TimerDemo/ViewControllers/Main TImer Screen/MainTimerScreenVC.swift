@@ -14,7 +14,27 @@ import SCLAlertView
 import AKPickerView_Swift
 import GoogleMobileAds
 
-class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler,TaskPickerTVCEventHandlerDelegate {
+class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler,TaskPickerTVCEventHandlerDelegate,GADBannerViewDelegate,PreferenceEventHandlerDelegate {
+    
+    @IBAction func showSettings(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showSettingsScreen", sender: self)
+        
+    }
+    
+    func userChangePerference(newPreference: Preference) {
+        if newPreference.name == "taskDurationMinutes"{
+            createADeepWorkTask()
+            setupUIForTaskBegin()
+            setupTaskPickerView()
+//            view.setNeedsDisplay()
+        }
+    }
+    
+    @IBAction func runTestTask(_ sender: UIBarButtonItem) {
+        TestTaskGenerator.shared.saveTestTask()
+    }
+    
+    
     
     @IBOutlet weak var adBannerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bannerView: GADBannerView!
@@ -41,7 +61,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     var userSelectedTaskColl : String? {
         return UserDefaults.standard.object(forKey: "userSelectedTaskColl") as? String ?? nil
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -50,20 +70,21 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         hideBackButton()
         UIApplication.shared.statusBarStyle = .lightContent
         
-         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.white]
-
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.white]
+        
         //Setup Ad Banner.
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //=> Test APp ID I think.
         //bannerView.adUnitID = "ca-app-pub-5666511173297473/2835254941"  //Prashanths Real ID
+        GADRequest().testDevices = ["2c8b33977e2ef1dc288ec90df9f4f197"]
         bannerView.rootViewController = self
-
-        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        
+        //bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.delegate = self
         adBannerHeightConstraint.constant = 0
         
         createADeepWorkTask()
         setupUIForTaskBegin()
-        
         setupTaskPickerView()
     }
     
@@ -217,7 +238,13 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         performSegue(withIdentifier: "showSignInScreen", sender: self)
     }
     
+    
+    func userWantsToViewMoretasks() {
+        performSegue(withIdentifier: "showTaskList", sender: self)
+    }
+    
     func startCurrentTask() {
+        showADBanner()
         bannerView.load(GADRequest())
         
         taskBoy.startCurrentTask()
@@ -230,16 +257,19 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func pauseCurrentTask() {
+        hideADBanner()
         taskBoy.pauseCurrentTask()
         timerControlButton.setPaused(true, animated: true)
     }
     
     func resumeCurrentTask() {
+        showADBanner()
         taskBoy.resumeCurrentTask()
         timerControlButton.setPaused(false, animated: true)
     }
     
     func abandonCurrentTask() {
+        hideADBanner()
         taskBoy.abandonCurrentTask()
     }
     
@@ -248,7 +278,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     //MARK: Info Pop Up Window Event Handler Delegate.
     
     func userOptedToTakeShortBreak(){
-       taskBoy.createTask(name: "shortBreak", type: .shortBreak)
+        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
         timerContainerView.timerMode = .shortBreak
         // Setup View for a Short break.
         setupUIForTaskBegin()
@@ -268,19 +298,19 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     }
     
     func userOptedToAbandonTask(){
-//        createADeepWorkTask()
-//        setupUIForTaskBegin()
+        //        createADeepWorkTask()
+        //        setupUIForTaskBegin()
         abandonCurrentTask()
         
-//        taskBoy.abandonCurrentTask()
-//
-//        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
-//        timerContainerView.timerMode = .shortBreak
-//        // Setup View for a Short break.
-//        setupUIForTaskBegin()
+        //        taskBoy.abandonCurrentTask()
+        //
+        //        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
+        //        timerContainerView.timerMode = .shortBreak
+        //        // Setup View for a Short break.
+        //        setupUIForTaskBegin()
         
         
-//        taskBoy.abandonCurrentTask()
+        //        taskBoy.abandonCurrentTask()
         
     }
     
@@ -301,7 +331,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     func timerDidChangeValue(seconds: CFTimeInterval) {
         if seconds > 0 {
             timerDisplayView.theArcProgressView.timerLabel.text = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: seconds)
-            print("Time Remaining : \(Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: (25 - seconds)))")
+            //print("Time Remaining : \(Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: (25 - seconds)))")
         }else{
             timerDisplayView.theArcProgressView.timerLabel.text = "Done"
         }
@@ -352,14 +382,16 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         case .longBreak:    InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
         }
         
-//        // Reload the mini Chart view.
-//        self.miniVizContainerVC?.reloadAllViews()
+        //        // Reload the mini Chart view.
+        //        self.miniVizContainerVC?.reloadAllViews()
         
         // Vibrate the Phone. If User requested
         AudioHandler.shared.vibrate()
         
         // Play Sound
         AudioHandler.shared.playAudioForEvent(taskType: (taskBoy.currentTask?.taskType)!)
+        
+        hideADBanner()
     }
     
     @IBAction func showTaskList(_ sender: UIBarButtonItem) {
@@ -373,6 +405,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
             if let theDestVC = segue.destination as? AddTaskVC{
                 theDestVC.taskAddVCEventHandlerDelegate = self
             }
+
         case "showTaskList":
             if let theDestVC = segue.destination as? UINavigationController{
                 if let theTaskVC = theDestVC.viewControllers.first as? TaskPickerTVC{
@@ -386,6 +419,13 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
                 self.miniVizContainerVC = theDestVC
             }
             
+        case "showSettingsScreen" :
+            if let theDestVC = segue.destination as? UINavigationController{
+                if let theSettingsVC = theDestVC.viewControllers.first as? SettingsTVC{
+                    theSettingsVC.preferenceChangeEventHandler = self
+                }
+            }
+
         default:
             break
         }
@@ -399,8 +439,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
 //            MARK: Google Ads Processing.
 // ========================================================= //
 
-extension MainTimerScreenVC : GADBannerViewDelegate{
-
+extension MainTimerScreenVC {
+    
     func showADBanner() {
         adBannerHeightConstraint.constant = 50
         bannerView.layoutIfNeeded()
@@ -410,42 +450,43 @@ extension MainTimerScreenVC : GADBannerViewDelegate{
         adBannerHeightConstraint.constant = 0
         bannerView.layoutIfNeeded()
     }
-
-/// Tells the delegate an ad request loaded an ad.
-func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-    print("adViewDidReceiveAd")
-    showADBanner()
+    
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
     }
-
-/// Tells the delegate an ad request failed.
-func adView(_ bannerView: GADBannerView,
-            didFailToReceiveAdWithError error: GADRequestError) {
-    print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    hideADBanner()
-}
-
-/// Tells the delegate that a full screen view will be presented in response
-/// to the user clicking on an ad.
-func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-    print("adViewWillPresentScreen")
-    taskBoy.currentTask?.pause()
-}
-
-/// Tells the delegate that the full screen view will be dismissed.
-func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-    print("adViewWillDismissScreen")
-}
-
-/// Tells the delegate that the full screen view has been dismissed.
-func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-    print("adViewDidDismissScreen")
-}
-
-/// Tells the delegate that a user click will open another app (such as
-/// the App Store), backgrounding the current app.
-func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-    print("adViewWillLeaveApplication")
-}
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        hideADBanner()
+    }
+    
+    /// Tells the delegate that a full screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+        taskBoy.currentTask?.pause()
+    }
+    
+    /// Tells the delegate that the full screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+        showADBanner()
+    }
+    
+    /// Tells the delegate that the full screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
+        hideADBanner()
+    }
 }
 
 
@@ -462,9 +503,9 @@ extension MainTimerScreenVC : TaskAddEventHandlerDelegate{
     // Delegate Call Back.
     func newTaskAddedWithName(taskName : String){
         UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
-//        if UserDefaults.standard.synchronize() == true{
-//            userPickedATaskWithName(name: taskName)
-//        }
+        //        if UserDefaults.standard.synchronize() == true{
+        //            userPickedATaskWithName(name: taskName)
+        //        }
     }
 }
 

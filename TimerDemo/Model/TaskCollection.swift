@@ -62,9 +62,9 @@ struct TaskCollection {
         return listOfAssociatedTaskID
     }
     
-    func addTaskID(task : Task) -> TaskCollection  {
+    func addTaskID(taskID : String, task : Task) -> TaskCollection  {
         var tempColl = self
-        tempColl.listOfAssociatedTaskID.append(task.taskID.uuidString)
+        tempColl.listOfAssociatedTaskID.append(taskID)
         tempColl.numberOfSessionsAllStatus += 1
         
         tempColl.totalDurationTasksAllStatus += task.timer.duration

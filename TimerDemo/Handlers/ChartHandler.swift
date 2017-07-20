@@ -65,25 +65,32 @@ class ChartHandler {
     
     private func makeChartForToday(frame : CGRect, chartTitle : String, dataPointLimit : Int, completionH : @escaping (_ chartView : UIView, _ chartTitle : String)->()){
         var tempChartData = ChartDataConformer(chartTitle: chartTitle, chartDataPoints: [])
+
+        let timeList = ["12 - 6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM", "3PM", "4PM", "5 PM", "6 PM", "7 PM", "8 PM", "9 PM", "10 PM", "11 PM"]
+
+                var tempChartDPArr = [ChartDataPoint]()
+
+        for eachTimePeriod in timeList{
+            let tempChartDataPt = ChartDataPoint(dimension: " ", measure: 2, measureDisplayValue: nil)
+            tempChartDPArr.append(tempChartDataPt)
+        }
         
-        let taskCollList = UserInfoHandler.shared.fetchMostRecentUsedTaskColl(limit: dataPointLimit)
+//        let taskCollList = UserInfoHandler.shared.fetchMostRecentUsedTaskColl(limit: dataPointLimit)
+//
+//        var tempChartDPArr = [ChartDataPoint]()
+//
+//        PersistenceHandler.shared.fetchTaskCollectionsMatchingNames(taskCollNames: taskCollList) { (fetchedTaskCollArr) in
+//            for eachTaskColl in fetchedTaskCollArr{
+//                let tempChartDataPt = ChartDataPoint(dimension: eachTaskColl.taskName, measure: eachTaskColl.totalDurationCompletedTasks, measureDisplayValue: nil)
+//                tempChartDPArr.append(tempChartDataPt)
+//            }
         
-        var tempChartDPArr = [ChartDataPoint]()
-        
-        PersistenceHandler.shared.fetchTaskCollectionsMatchingNames(taskCollNames: taskCollList) { (fetchedTaskCollArr) in
-            for eachTaskColl in fetchedTaskCollArr{
-                let tempChartDataPt = ChartDataPoint(dimension: eachTaskColl.taskName, measure: eachTaskColl.totalDurationCompletedTasks, measureDisplayValue: nil)
-                tempChartDPArr.append(tempChartDataPt)
-            }
-            
             tempChartData.chartDataPoints = tempChartDPArr
             
             if let chartView = self.makeChartWithData(chartData: tempChartData, frame: frame){
                 completionH(chartView, chartTitle)
             }
-        }
-    }
-    
+        }    
     
     private func makeChartForThisWeek(frame : CGRect, chartTitle : String, dataPointLimit : Int, completionH : @escaping (_ chartView : UIView, _ chartTitle : String)->()){
         var tempChartData = ChartDataConformer(chartTitle: chartTitle, chartDataPoints: [])

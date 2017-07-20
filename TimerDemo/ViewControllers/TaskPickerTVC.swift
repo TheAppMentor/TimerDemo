@@ -10,6 +10,7 @@ import UIKit
     
     protocol TaskPickerTVCEventHandlerDelegate {
         func userPickedATaskWithName(name : String)
+        func userWantsToViewMoretasks()
     }
 
 class TaskPickerTVC: UITableViewController {
@@ -101,17 +102,19 @@ class TaskPickerTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: allTasks[indexPath.row]) { (fetchedTaskCollection) in
             self.selectedTaskCollToShowDetails = fetchedTaskCollection
+
+            self.performSegue(withIdentifier: "showTaskDetails", sender: self)
+
             
-            //Fetch all associated Tasks Also :  //TODO: THis is where we need the smart logic to fetch only those tasks that the tbleview actually needs. Dont fetch everything.
-            PersistenceHandler.shared.fetchTasksWithID(taskIDArray: (self.selectedTaskCollToShowDetails?.allAssociatedTaskIDs())!, completionHandler: { (theTaskArr) in
-                for eachTask in theTaskArr{
-                    self.taskListToPass[eachTask.taskID.uuidString] = eachTask
-                }
-                self.performSegue(withIdentifier: "showTaskDetails", sender: self)
-            })
-            
-            
-            
+//            //Fetch all associated Tasks Also :  //TODO: THis is where we need the smart logic to fetch only those tasks that the tbleview actually needs. Dont fetch everything.
+//            PersistenceHandler.shared.fetchAllTasksMatchingArray(taskIDArray: (self.selectedTaskCollToShowDetails?.allAssociatedTaskIDs())!, completionHandler: { (theTaskArr) in
+//                for (eachTaskIndex,eachTask) in theTaskArr.enumerated(){
+//                    if let theTaskID = self.selectedTaskCollToShowDetails?.allAssociatedTaskIDs()[eachTaskIndex]{
+//                        self.taskListToPass[theTaskID] = eachTask
+//                    }
+//                }
+//                self.performSegue(withIdentifier: "showTaskDetails", sender: self)
+//            })
         }
     }
     
@@ -141,7 +144,7 @@ class TaskPickerTVC: UITableViewController {
         case "showTaskDetails":
             if let destVC = segue.destination as?  TaskDetailsVC{
                 destVC.currentTaskColl = selectedTaskCollToShowDetails
-                destVC.taskList = taskListToPass
+                //destVC.taskList = taskListToPass
             }
             
         case "showAddTask":

@@ -27,21 +27,29 @@ class PersistenceHandler {
     // =============================================//
     
     func saveTask(task : Task) {
-        print("Will now save task \(task)")
         //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(task.taskID.uuidString).setValue(task.jsonFormat)
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(task.taskID.uuidString).setValue(["taskDetails" : task.dictFormat])
+        var taskDictToSave = task.dictFormat
+        taskDictToSave["savedDate"] = [".sv":"timestamp"]
+        //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(task.taskID.uuidString).setValue(["taskDetails" : taskDictToSave])
+        //self.ref.child("Users").child("Tasks").childByAutoId().setValue(taskDictToSave)
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave)
         
-        self.fetchTaskCollectionWithName(taskName: task.taskName) { (fetchedTaskColl) in
-            if fetchedTaskColl != nil{
-                let updatedTaskColl = fetchedTaskColl?.addTaskID(task: task)
-                self.saveTaskCollection(taskColl: updatedTaskColl!)
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryLimited(toLast: 1) .observe(.childAdded, with: { (snapshot) in
+            self.fetchTaskCollectionWithName(taskName: task.taskName) { (fetchedTaskColl) in
+                let thePostDict = snapshot.value as? [String : Any?] ?? [:]
+                if let thetempTask = Task(firebaseDict: thePostDict){
+                    if fetchedTaskColl != nil{
+                        let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: snapshot.key, task: thetempTask)
+                        self.saveTaskCollection(taskColl: updatedTaskColl!)
+                    }
+                }
             }
-        }
+        })
     }
     
     func fetchTaskWithID(taskID : String, completionHandler : @escaping (_ fetchedTask : Task)->()) {
         print("PH : Fetching Task For \(taskID)")
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(taskID).child("taskDetails").observe(DataEventType.value, with: { (snapshot) in
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(taskID).observe(DataEventType.value, with: { (snapshot) in
             let fetchedTaskDict = snapshot.value as? [String:Any?] ?? [:]
             if let theTask = Task(firebaseDict: fetchedTaskDict){
                 print("PH : I have now created a task \(theTask)")
@@ -50,29 +58,86 @@ class PersistenceHandler {
         })
     }
     
-    func fetchTasksWithID(taskIDArray : [String], completionHandler : @escaping (_ fetchedTaskArr : [Task])->()) {
+    func fetchAllTasksMatchingArray(taskIDArray : [String], completionHandler : @escaping (_ fetchedTaskArr : [Task])->()) {
         
-        print("PH : I am going to fetch values for \(taskIDArray)")
         var tempTaskArr = [Task]()
         
         for i in 0..<taskIDArray.count{
             let eachTaskID = taskIDArray[i]
-            self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).child("taskDetails").observe(DataEventType.value, with: { (snapshot) in
+            self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).observeSingleEvent(of: .value, with: { (snapshot) in
                 let fetchedTaskDict = snapshot.value as? [String:Any?] ?? [:]
                 if let theTask = Task(firebaseDict: fetchedTaskDict){
                     tempTaskArr.append(theTask)
-                    print("Duration for this task is : \(theTask.timer.timerElapsedTime)")
                     if i == taskIDArray.count - 1 {
                         completionHandler(tempTaskArr)
                     }
                 }
             })
         }
+    }
+    
+    func fetchAllTasksForTimePeriod(timePeriod : TimePeriod, completionHanlder : @escaping (_ fetchedTaskArr : [Task])->()) {
         
+        let calendar = Calendar.current
+        let today = Date()
+        var queryStartDate : TimeInterval?
+        var queryEndDate : TimeInterval?
+
+        switch timePeriod {
+        case .today:
+            queryStartDate = today.startOfToday.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
+        
+        case .week:
+            print("We need to figure out how to handle this")
+            queryStartDate = today.startOfWeek.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfWeek.timeIntervalSince1970 * 1000
+            
+        case .month:
+            print("We need to figure out how to handle this")
+            queryStartDate = today.startOfMonth().timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfMonth().timeIntervalSince1970 * 1000
+
+        case .allTime:
+            print("fetch tasks for today")
+        }
+        
+        print("Querying for ......  \(createDateFromTimeInterval(timeInterval: queryStartDate!/1000)) : \(createDateFromTimeInterval(timeInterval: queryEndDate!/1000))")
+
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryOrdered(byChild: "savedDate").queryStarting(atValue: queryStartDate).queryEnding(atValue: queryEndDate).observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let postDict = snapshot.value as? [String:Any?] ?? [:]
+            var tempTaskArr = [Task]()
+            for (_,eachTask) in postDict.enumerated(){
+                if let validTaskDict = eachTask.value as? [String : Any?]{
+                    if let tempTask = Task(firebaseDict: validTaskDict){
+                        let theTime = validTaskDict["savedDate"] as! TimeInterval
+                        print("\(tempTask.taskName) -> \(self.createDateFromTimeInterval(timeInterval: theTime/1000))")
+                        tempTaskArr.append(tempTask)
+                    }
+                }
+            }
+            completionHanlder(tempTaskArr)
+        })
     }
     
     
     
+    
+    func createDateFromTimeInterval(timeInterval : TimeInterval) -> String{
+        let dateSinceRefDate = Date(timeIntervalSinceReferenceDate: timeInterval)
+        let dateSince1970 = Date(timeIntervalSince1970: timeInterval)
+        
+        let theFormatter = DateFormatter()
+        theFormatter.dateFormat = "dd-MMM-YYYY HH:MM:SS"
+        
+        let displayFormat = theFormatter.string(from: dateSince1970)
+        
+        return displayFormat
+        
+        //print("\(displayFormat) (since 1790)     Since 1970 * 1000 ->  \(dateSince1970)   Since Ref Date * 1000 -> \(dateSinceRefDate)")
+    }
+
     
     // =============================================//
     //         MARK: User Info Processing
@@ -174,10 +239,9 @@ class PersistenceHandler {
         
         var totalTime : TimeInterval = 0
         
-            self.fetchTasksWithID(taskIDArray: taskCollection.allAssociatedTaskIDs(), completionHandler: { (theTaskArr) in
+            self.fetchAllTasksMatchingArray(taskIDArray: taskCollection.allAssociatedTaskIDs(), completionHandler: { (theTaskArr) in
                 assert(!theTaskArr.isEmpty, "We Have got back an empty task array")
                 for eachTask in theTaskArr{
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!   \(eachTask.taskID) : \(eachTask.timer.timerElapsedTime)")
                     totalTime += (eachTask.timer.timerElapsedTime ?? 0)
                 }
                 completionHanlder(totalTime)
@@ -267,19 +331,4 @@ class PersistenceHandler {
                 self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child(preferenceType.rawValue).child(eachPerf.name).setValue(eachPerf.dictFormat)
         }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-extension Timer{
-    
 }

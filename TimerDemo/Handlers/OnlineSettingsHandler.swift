@@ -130,7 +130,8 @@ class OnlinePreferenceHandler {
         //        cellWithButton
         
         let thePref = fetchPreferenceForIndex(section: section, row: row)
-        return thePref!.name == "isVibrateOn" ? "cellWithButton" : "cellWithRightLabel"
+//        return thePref!.name == "isVibrateOn" ? "cellWithButton" : "cellWithRightLabel"
+        return thePref!.name == "isVibrateOn" ? "cellWithRightLabel" : "cellWithRightLabel"  //TODO: We need to change this later. See line above
     }
     
     func titleForPerferenceAtIndexPath(section : Int, row : Int) -> String {
@@ -140,6 +141,9 @@ class OnlinePreferenceHandler {
     
     func detailLabelForPerferenceAtIndexPath(section : Int, row : Int) -> String {
         let thePref = fetchPreferenceForIndex(section: section, row: row)
+        if thePref!.name == "isVibrateOn"{
+            return (thePref?.currentValue as! Bool) == true ? "On" : "Off"
+        }
         return (String(describing: thePref?.currentValue ?? "" as AnyObject)) + " " + (thePref?.unitName  ?? "")
     }
     

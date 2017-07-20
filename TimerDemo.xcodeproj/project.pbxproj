@@ -54,7 +54,9 @@
 		2F9207B21EE6AF0A00DB3C35 /* SettingsHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */; };
 		2F9207B31EE6B40900DB3C35 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92079F1EE67A6A00DB3C35 /* SettingsHandler.swift */; };
 		2F9207B51EE7200900DB3C35 /* Project Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2F9207B41EE7200900DB3C35 /* Project Info.rtf */; };
+		2F9415141F1F807200AE76D9 /* TaskGeneratoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */; };
 		2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */; };
+		2FA0675D1F18FDA0006C63DE /* TaskTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0675C1F18FDA0006C63DE /* TaskTimePeriod.swift */; };
 		2FB26E8A1F0ABB1E00C9C46D /* TaskPickerScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */; };
 		2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */; };
 		2FB39E921EF01307005B3DF4 /* ArcProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */; };
@@ -137,7 +139,9 @@
 		2F9207AB1EE6A96400DB3C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandlerTests.swift; sourceTree = "<group>"; };
 		2F9207B41EE7200900DB3C35 /* Project Info.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Project Info.rtf"; sourceTree = "<group>"; };
+		2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGeneratoTest.swift; sourceTree = "<group>"; };
 		2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseCollection.swift; sourceTree = "<group>"; };
+		2FA0675C1F18FDA0006C63DE /* TaskTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimePeriod.swift; sourceTree = "<group>"; };
 		2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskPickerScrollView.xib; sourceTree = "<group>"; };
 		2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
 		2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArcProgressView.xib; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				2F446B6B1EE28C9E005BB176 /* TimerBoy.swift */,
+				2FA0675C1F18FDA0006C63DE /* TaskTimePeriod.swift */,
 				2F446B751EE5AD32005BB176 /* TaskStatus.swift */,
 				2F4FB5491EF109E50066BEDA /* Pause.swift */,
 				2F446B6D1EE3324C005BB176 /* Task.swift */,
@@ -306,6 +311,7 @@
 				2F5DBB7A1F05473A009E54F7 /* OnlineSettingsHandler.swift */,
 				2FBF1EB81F10D38800F63EFF /* ChartHandler.swift */,
 				2FC023CE1F129D680024229C /* AudioHandler.swift */,
+				2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -649,6 +655,7 @@
 				2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */,
 				2F8AF1E41EF8315900B8BB6B /* LoginVC.swift in Sources */,
 				2FFB385E1F0CF59A006CDF27 /* VizDisplayVC.swift in Sources */,
+				2FA0675D1F18FDA0006C63DE /* TaskTimePeriod.swift in Sources */,
 				2FFB38601F0D0076006CDF27 /* MiniTaskListTVC.swift in Sources */,
 				2FD341061F0ABD4300A36B5B /* TaskPickerScrollView.swift in Sources */,
 				2F446B6C1EE28C9E005BB176 /* TimerBoy.swift in Sources */,
@@ -663,6 +670,7 @@
 				2FC023CF1F129D680024229C /* AudioHandler.swift in Sources */,
 				2F05DE5F1F0F3A0F00BBAB30 /* DonutSegmentInfo.swift in Sources */,
 				2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */,
+				2F9415141F1F807200AE76D9 /* TaskGeneratoTest.swift in Sources */,
 				2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */,
 				2F5DBB7D1F06C27F009E54F7 /* LaunchScreenVC.swift in Sources */,
 				2F136D1F1EE8741500E710FA /* SettingsTVC.swift in Sources */,

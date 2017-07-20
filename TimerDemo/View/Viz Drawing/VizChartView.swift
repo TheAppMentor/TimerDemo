@@ -52,7 +52,6 @@ class VizChartView : UIView,ChartDataProvider  {
     
     @IBOutlet weak var vizCanvasView: VizCanvasView!{
         didSet{
-            print("VizChart View Got SET !!!!!!!!!!!!!!!")
             vizCanvasView.chartDataProvider = self
         }
     }
