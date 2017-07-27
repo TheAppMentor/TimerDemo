@@ -76,7 +76,7 @@ class PersistenceHandler {
         }
     }
     
-    func fetchAllTasksForTimePeriod(timePeriod : TimePeriod, completionHanlder : @escaping (_ fetchedTaskArr : [Task])->()) {
+    func fetchAllTasksForTimePeriod(taskname : String? = nil, timePeriod : TimePeriod, completionHanlder : @escaping (_ fetchedTaskArr : [Task])->()) {
         
         let calendar = Calendar.current
         let today = Date()
@@ -112,12 +112,67 @@ class PersistenceHandler {
                 if let validTaskDict = eachTask.value as? [String : Any?]{
                     if let tempTask = Task(firebaseDict: validTaskDict){
                         let theTime = validTaskDict["savedDate"] as! TimeInterval
-                        print("\(tempTask.taskName) -> \(self.createDateFromTimeInterval(timeInterval: theTime/1000))")
+                        print("\(tempTask.taskName) \t\t-> \(self.createDateFromTimeInterval(timeInterval: theTime/1000))")
                         tempTaskArr.append(tempTask)
                     }
                 }
             }
-            completionHanlder(tempTaskArr)
+            
+            var matchingTasks : [Task] = []
+            var sortedTempTask : [Task] = []
+            // Group the fetched tasks based on task name.
+            if let validTaskName = taskname{
+                matchingTasks = tempTaskArr.filter({ return $0.taskName == validTaskName})
+            }
+            
+            // Sort Matching tasks by Saved date.
+            sortedTempTask = matchingTasks.sorted(by: { (task1, task2) -> Bool in
+                guard let validTask1 = task1.savedDate else {return false}
+                guard let validTask2 = task2.savedDate else {return false}
+                return validTask1 > validTask2
+            })
+
+            
+            var tempTaskGroupingDict = [Int:[Task]]()
+            
+            // Group tasks by time period :
+            switch timePeriod{
+            case .month :
+                for eachTask in sortedTempTask{
+                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+                    if let ordinality = Calendar.current.ordinality(of: .weekOfMonth, in: .month, for: theTaskDate){
+                        print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
+                        
+                        var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
+                        tempArr.append(eachTask)
+                        tempTaskGroupingDict[ordinality] = tempTaskArr
+                    }
+                }
+                break
+
+            case .week :
+                for eachTask in sortedTempTask{
+                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+
+                    
+                    
+                    if let ordinality = Calendar.current.dateComponents([.weekday], from: theTaskDate).weekday{
+                        print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
+                        
+                        var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
+                        tempArr.append(eachTask)
+                        tempTaskGroupingDict[ordinality] = tempTaskArr
+                    }
+                }
+                break
+
+                
+            default :
+                break
+            }
+            
+            print("Grouped Tasks ---> : \(tempTaskGroupingDict)")
+            completionHanlder(sortedTempTask)
         })
     }
     

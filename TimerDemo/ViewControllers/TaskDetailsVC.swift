@@ -22,6 +22,11 @@ class TaskDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
 
         // Do any additional setup after loading the view.
         sessionListTableView.tableFooterView = UIView()
+        
+        title = currentTaskColl?.taskName
+        
+        taskPickerSegementControl.selectedSegmentIndex = 0
+        populateViewForTimePeriod(timePeriod: .today)
     }
     
 //    func aggregateTaskForADay(taskArr : [Task]) -> [String : AnyObject?] {
@@ -43,15 +48,25 @@ class TaskDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     }
     
     func populateViewForTimePeriod(timePeriod : TimePeriod) {
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(timePeriod: timePeriod) { (theTaskArr) in
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname : currentTaskColl?.taskName,timePeriod: timePeriod) { (theTaskArr) in
             // filter out only tasks matching current task coll name
             //TODO : Prashanth potential optimization here.
+            
+            self.taskDisplayList = []
             
             for eachTask in theTaskArr{
                 if eachTask.taskName == self.currentTaskColl?.taskName{
                     self.taskDisplayList.append(eachTask)
                 }
             }
+            
+            //Sort Task Display List :
+            self.taskDisplayList.sort(by: { (task1, task2) -> Bool in
+                guard let validTask1 = task1.savedDate else {return false}
+                guard let validTask2 = task2.savedDate else {return false}
+                return validTask1 > validTask2
+            })
+            
             self.sessionListTableView.reloadData()
         }
     }

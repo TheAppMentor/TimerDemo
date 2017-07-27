@@ -47,7 +47,12 @@ class AddTaskVC: UIViewController {
         
         //TODO : Check for duplicate task name here... 
         let valueEntered = taskTitleInputTextField.text
-        guard valueEntered?.isEmpty != true else {assertionFailure("Handle Emtpy Task Name Condition"); return}
+        
+        guard valueEntered?.isEmpty != true else {
+            dismissScreen()
+            return
+        }
+        
         let taskCollection = TaskCollection.init(taskName: valueEntered!)
         PersistenceHandler.shared.saveTaskCollection(taskColl: taskCollection)
         taskAddVCEventHandlerDelegate?.newTaskAddedWithName(taskName: valueEntered!)

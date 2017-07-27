@@ -26,7 +26,7 @@ class MiniTaskListTVC: UITableViewController {
         fetchInfoForTableAndReload()
     }
     
-    func fetchInfoForTableAndReload()  {
+    @objc func fetchInfoForTableAndReload()  {
         let recentTasks = UserInfoHandler.shared.fetchMostRecentUsedTaskColl(limit: 3)
         
         PersistenceHandler.shared.fetchTaskCollectionsMatchingNames(taskCollNames: recentTasks) { (allTaskCollections) in

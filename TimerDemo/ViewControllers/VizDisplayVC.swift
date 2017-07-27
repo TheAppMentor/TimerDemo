@@ -34,7 +34,7 @@ class VizDisplayVC: UIViewController {
         })
     }
     
-    func fetchInfoForTableAndReload() {
+    @objc func fetchInfoForTableAndReload() {
         setupChart()
     }
 }

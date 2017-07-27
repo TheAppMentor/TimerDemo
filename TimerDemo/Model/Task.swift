@@ -27,10 +27,9 @@ class Task : TimerEventHandler {
     internal var taskName: String                // We this value both in the task and in the Task colleciont, to help fire base keep a tow way reference.
     var taskType: TaskType
     internal var taskTags: [String]?             // Here we can associate hash Tags with tasks to group and categorize them.
-    
+    internal var savedDate : TimeInterval?
     var taskStatus: TaskStatus = .notStarted
     
-//    var taskDuration : CFTimeInterval = SettingsHandler.shared.taskDurationMinutes.currentValue
     var taskDuration : CFTimeInterval = 60 {
         didSet{
             timer.duration = taskDuration
@@ -74,9 +73,9 @@ class Task : TimerEventHandler {
     init?(firebaseDict : [String:Any?]) {
         guard let validTaskName = firebaseDict["taskName"] as? String else {return nil}
         guard let validTaskType = firebaseDict["taskType"] as? String else {return nil}
-        guard let validPerfectTask = firebaseDict["isPerfectTask"] as? Bool else {return nil}
-//        guard let validTimer = firebaseDict["timer"] as? String else {return nil}  //TODO: Prashanth need to code for the timer guy.. archive and unarchive.
-        guard let validTimer = firebaseDict["timer"] as? [String : Any?] else {return nil}  //TODO: Prashanth need to code for the timer guy.. archive and unarchive.
+        guard let validSavedDate = firebaseDict["savedDate"] as? TimeInterval else {return nil}
+//        guard let validPerfectTask = firebaseDict["isPerfectTask"] as? Bool else {return nil}
+        guard let validTimer = firebaseDict["timer"] as? [String : Any?] else {return nil}
         guard let tempTaskStatus = firebaseDict["taskStatus"] as? String else {return nil}
         guard let validTaskStatus = TaskStatus(rawValue: tempTaskStatus) else {return nil}
         
@@ -88,6 +87,7 @@ class Task : TimerEventHandler {
         //isPerfectTask = validPerfectTask
         timer = TimerBoy(firebaseDict: validTimer)!
         taskStatus = validTaskStatus
+        savedDate = validSavedDate
         
         for eachPauseDict in validPauseList{
             if let aPause = Pause(firebaseDict: eachPauseDict){
@@ -113,11 +113,6 @@ class Task : TimerEventHandler {
     }
     
     func Unfreeze(estimatedEndTime : Date) {
-        //currentPause?.endTime = Date()
-//        if let currentPause = currentPause{
-//            pauseList.append(currentPause)
-//        }
-//        currentPause = nil
         taskStatus = .running
         timer.UnfreezeTimer(estimatedEndTime: estimatedEndTime)
     }
