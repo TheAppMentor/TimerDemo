@@ -142,10 +142,11 @@ class PersistenceHandler {
                     let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
                     if let ordinality = Calendar.current.ordinality(of: .weekOfMonth, in: .month, for: theTaskDate){
                         print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
-                        
+
                         var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
                         tempArr.append(eachTask)
-                        tempTaskGroupingDict[ordinality] = tempTaskArr
+                        tempTaskGroupingDict[ordinality] = []
+                        tempTaskGroupingDict[ordinality] = tempArr
                     }
                 }
                 break
@@ -161,7 +162,24 @@ class PersistenceHandler {
                         
                         var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
                         tempArr.append(eachTask)
-                        tempTaskGroupingDict[ordinality] = tempTaskArr
+                        tempTaskGroupingDict[ordinality] = []
+                        tempTaskGroupingDict[ordinality] = tempArr
+                    }
+                }
+                break
+
+            case .today :
+                for eachTask in sortedTempTask{
+                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+                    
+                    if let ordinality = Calendar.current.dateComponents([.hour], from: theTaskDate).hour{
+                        print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
+                        
+                        var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
+                        tempArr.append(eachTask)
+                        tempTaskGroupingDict[ordinality] = []
+                        tempTaskGroupingDict[ordinality] = tempArr
+
                     }
                 }
                 break

@@ -36,24 +36,42 @@ class TimerBoy {
     }
     
     var taskStartDateString : String{
-        let dateString = startTime?.toString(dateFormat: "MMM d")
-        return dateString ?? ""
+        guard startTime != nil else {return ""}
+
+        let timeInterval = startTime!.timeIntervalSince1970/1000.0
+        let dateString = Date(timeIntervalSince1970: timeInterval).toString(dateFormat: "MMM d")
+        return dateString
     }
     
     var taskStartTimeString : String{
-        let dateString = startTime?.toString(dateFormat: "h:mm a")
-        return dateString ?? ""
+        guard startTime != nil else {return ""}
+
+        let timeInterval = startTime!.timeIntervalSince1970/1000.0
+        let dateString = Date(timeIntervalSince1970: timeInterval).toString(dateFormat: "h:mm a")
+
+//        let dateString = startTime?.toString(dateFormat: "h:mm a")
+        return dateString
     }
 
-
     var taskEndDateString : String{
-        let dateString = endTime?.toString(dateFormat: "MMM d")
-        return dateString ?? ""
+        guard endTime != nil else {return ""}
+
+        let timeInterval = endTime!.timeIntervalSince1970/1000.0
+        let dateString = Date(timeIntervalSince1970: timeInterval).toString(dateFormat: "MMM d")
+
+//        let dateString = endTime?.toString(dateFormat: "MMM d")
+        return dateString
     }
 
     var taskEndTimeString : String{
-        let dateString = endTime?.toString(dateFormat: "h:mm a")
-        return dateString ?? ""
+        
+        guard endTime != nil else {return ""}
+        
+        let timeInterval = endTime!.timeIntervalSince1970/1000.0
+        let dateString = Date(timeIntervalSince1970: timeInterval).toString(dateFormat: "h:mm a")
+
+//        let dateString = endTime?.toString(dateFormat: "h:mm a")
+        return dateString
     }
 
     var dictFormat : [String : Any]{

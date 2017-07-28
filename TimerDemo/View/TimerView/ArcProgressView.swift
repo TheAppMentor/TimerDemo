@@ -176,10 +176,8 @@ class ArcProgressView: UIView,CAAnimationDelegate {
     
     
     func animationDidStart(_ anim: CAAnimation) {
-        print("ANimation Started")
     }
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        print("animation ENded \(flag)")
         layer.speed = 1.0
     }
     

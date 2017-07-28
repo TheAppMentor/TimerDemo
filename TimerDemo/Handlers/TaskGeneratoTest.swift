@@ -28,79 +28,142 @@ extension PersistenceHandler{
                 }
             })
         }
-    
 }
+
+
+
+
+
+
+
+
 
 
 class TestTaskGenerator {
     
     static let shared = TestTaskGenerator()
     
+    var theArr : [[String:Any?]] = []
+    
     var timer : Timer!
+    var currentIndex = 0
     
     func saveTestTask(){
+        
+        let today = Date()
+        let dateForm = DateFormatter()
+        dateForm.dateFormat = "YYYY"
+        let yearBoy = Int(dateForm.string(from: today))!
+        
+        dateForm.dateFormat = "MM"
+        let monthBoy = Int(dateForm.string(from: today))!
+        
+        dateForm.dateFormat = "dd"
+        let dayBoy = Int(dateForm.string(from: today))!
+        
+        //=========================== //
+        //  Create Tasks for Today
+        //=========================== //
+        let numberOfTodayTasks = 10
+        
+        for _ in 0...numberOfTodayTasks{
+            let result = createDateFromComponents(year: yearBoy, month: monthBoy, day: dayBoy, hour: Int(arc4random_uniform(23)), minute: Int(arc4random_uniform(59)), second: Int(arc4random_uniform(59)))
+            theArr.append(["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": result.firebaseDate + 250, "startTime": result.firebaseDate, "duration": 5.0], "taskType": "deepFocus","savedDate" : result.firebaseDate] as [String : Any])
+            print(result.descString)
+        }
+        
+        
+        //        //=========================== //
+        //        //  Create Tasks for yesterday
+        //        //=========================== //
+        //        let numberOfYesterdayTasks = 10
+        //
+        //        for _ in 0...numberOfYesterdayTasks{
+        //            let result = createDateFromComponents(year: yearBoy, month: monthBoy, day: dayBoy - 1, hour: Int(arc4random_uniform(23)), minute: Int(arc4random_uniform(59)), second: Int(arc4random_uniform(59)))
+        //
+        //            theArr.append(["isPerfectTask": true, "taskName": "Yesterday Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": result.firebaseDate + 250, "startTime": result.firebaseDate, "duration": 5.0], "taskType": "deepFocus","savedDate" : result.firebaseDate] as [String : Any])
+        //            print(result.descString)
+        //        }
+        //
+        //
+        //        //=========================== //
+        //        //  Create Tasks for This week
+        //        //=========================== //
+        //        let numberOfWeekTasks = 10
+        //
+        //        let date = Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
+        //        let dslTimeOffset = NSTimeZone.local.daylightSavingTimeOffset(for: date)
+        //        let weekStartDate = date.addingTimeInterval(dslTimeOffset)
+        //
+        //        dateForm.dateFormat = "dd"
+        //        dateForm.string(from: weekStartDate)
+        //        let weekStart = Int(dateForm.string(from: weekStartDate))!
+        //
+        //
+        //        for _ in 0...numberOfWeekTasks{
+        //            let result = createDateFromComponents(year: yearBoy, month: monthBoy, day: Int(arc4random_uniform(UInt32(7))) + weekStart, hour: Int(arc4random_uniform(23)), minute: Int(arc4random_uniform(59)), second: Int(arc4random_uniform(59)))
+        //
+        //            theArr.append(["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": result.firebaseDate + 250, "startTime": result.firebaseDate, "duration": 5.0], "taskType": "deepFocus","savedDate" : result.firebaseDate] as [String : Any])
+        //            print(result.descString)
+        //        }
+
+        
         timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { (_) in
             self.reallySaveTestTask()
         }
-        
         timer.fire()
     }
     
-    var currentIndex = 0
+    func createDateFromComponents(year : Int, month : Int, day : Int, hour : Int, minute : Int, second : Int) -> (descString : String, firebaseDate : TimeInterval){
+        
+        var components = DateComponents()
+        
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        
+        let theFormatter = DateFormatter()
+        theFormatter.dateFormat = "dd-MMM-YYYY hh:mm:ss"
+        
+        theFormatter.string(from: Calendar.current.date(from: components)!)
+        
+        //print("Date is : \(Calendar.current.date(from: components)!)")
+        let finalDate = Calendar.current.date(from: components)!
+        //    print("\(theFormatter.string(from: finalDate))                  -> Date : \(finalDate)        -> Firebase Date  : \(finalDate.timeIntervalSince1970)         -> Since Ref Date : \(finalDate.timeIntervalSinceReferenceDate)")
+        
+//        print("\(theFormatter.string(from: finalDate))                  -> Date : \(finalDate)        -> Firebase Date : \"savedDate\" : \(finalDate.timeIntervalSince1970 * 1000)         -> Since Ref Date : \(finalDate.timeIntervalSinceReferenceDate)")
+        
+        let stringToReturn = "\(theFormatter.string(from: finalDate))                  -> Date : \(finalDate)        -> Firebase Date : \"savedDate\" : \(finalDate.timeIntervalSince1970 * 1000)         -> Since Ref Date : \(finalDate.timeIntervalSinceReferenceDate)"
+        
+        return (stringToReturn,finalDate.timeIntervalSince1970 * 1000.0)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func reallySaveTestTask(){
-   
-//        let theArr = [
-//        ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500431400000] as [String : Any],
-//
-//        ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500435000000] as [String : Any],
-//
-//        ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500445800000] as [String : Any],
-//        ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500449400000] as [String : Any],
-//
-//        ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500456540000] as [String : Any],
-//
-//        ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500474600000] as [String : Any]
-//        ]
-
         
-//        // FOR all Months of the year.
-//        let theArr = [["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1513564200000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1510889400000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1508135400000.0 ],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1505460600000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1502782200000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500345000000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1497670200000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1494916200000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1492241400000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1489483740000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1486996200000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1484231400000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1484231400000.0],
-//         ["isPerfectTask": true, "taskName": "Year Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1484231400000.0]]
-        
-        // For This week.
-        
-//        let theArr = [["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500345000000.0],
-//                      ["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500262200000.0],
-//                      ["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500186600000.0],
-//                      ["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500103800000.0],
-//                      ["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500024540000.0],
-//                      ["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1499956200000.0],
-//                      ["isPerfectTask": true, "taskName": "Week Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1499869800000.0]]
-
-        // For Evey Day of the current week.
-        
-//        let theArr = [["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500517800000.0],
-//         ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500521400000.0],
-//         ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500532200000.0],
-//         ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500535800000.0],
-//         ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500024540000.0],
-//         ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500542940000.0],
-//         ["isPerfectTask": true, "taskName": "Today Task", "pauseList": [], "taskStatus": "completed", "timer": ["currentTimerValue": 0.0, "endTime": 1500465598.8877659, "startTime": 1500465592.885612, "duration": 5.0], "taskType": "deepFocus","savedDate" : 1500561000000.0]]
-
-        let theArr : [[String:Any?]] = []
+        //let theArr : [[String:Any?]] = []
         
         // Saving Tasks for today :
         PersistenceHandler.shared.saveTestTask(taskDict: theArr[currentIndex])
@@ -108,6 +171,7 @@ class TestTaskGenerator {
         
         if currentIndex == theArr.count{
             timer.invalidate()
+            theArr = []
         }
         
         
