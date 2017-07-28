@@ -23,9 +23,12 @@
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateVCs()
         delegate = self
         dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        populateVCs()
     }
     
     func populateVCs() {
@@ -65,6 +68,9 @@
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if let currentIndex = allViewControllers.index(of: viewController){
+            
+            if currentIndex == 0 {return nil}   // Prevent pages from looping around the end.
+            
             let previousIndex = abs((currentIndex - 1) % allViewControllers.count)
             return allViewControllers[previousIndex]
         }
@@ -75,6 +81,9 @@
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let currentIndex = allViewControllers.index(of: viewController){
+            
+            if currentIndex == allViewControllers.count - 1 {return nil}  // Prevent pages from looping around the end.
+            
             let nextIndex = abs((currentIndex + 1) % allViewControllers.count)
             return allViewControllers[nextIndex]
         }

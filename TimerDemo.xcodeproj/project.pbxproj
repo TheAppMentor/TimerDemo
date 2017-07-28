@@ -10,10 +10,6 @@
 		1B2E2453D310E8ECA6BC87E6 /* Pods_TimerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92A68B5B509EAAB3A3D2AD2 /* Pods_TimerDemoTests.framework */; };
 		2F0118751EEE6B6E00D3FEE9 /* VizChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0118741EEE6B6E00D3FEE9 /* VizChartView.swift */; };
 		2F0118771EEED39100D3FEE9 /* VizChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0118761EEED39100D3FEE9 /* VizChartView.xib */; };
-		2F05DE5F1F0F3A0F00BBAB30 /* DonutSegmentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05DE5B1F0F3A0F00BBAB30 /* DonutSegmentInfo.swift */; };
-		2F05DE601F0F3A0F00BBAB30 /* DonutComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05DE5C1F0F3A0F00BBAB30 /* DonutComposer.swift */; };
-		2F05DE611F0F3A0F00BBAB30 /* DonutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05DE5D1F0F3A0F00BBAB30 /* DonutData.swift */; };
-		2F05DE621F0F3A0F00BBAB30 /* SegmentDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05DE5E1F0F3A0F00BBAB30 /* SegmentDrawer.swift */; };
 		2F0FC9501EF009700053167F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0FC94F1EF009700053167F /* TimerView.swift */; };
 		2F0FC9521EF0097F0053167F /* TimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0FC9511EF0097F0053167F /* TimerView.xib */; };
 		2F136D1F1EE8741500E710FA /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F136D1E1EE8741500E710FA /* SettingsTVC.swift */; };
@@ -91,10 +87,6 @@
 /* Begin PBXFileReference section */
 		2F0118741EEE6B6E00D3FEE9 /* VizChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VizChartView.swift; sourceTree = "<group>"; };
 		2F0118761EEED39100D3FEE9 /* VizChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VizChartView.xib; sourceTree = "<group>"; };
-		2F05DE5B1F0F3A0F00BBAB30 /* DonutSegmentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonutSegmentInfo.swift; path = ../../../DonutChartViewer/DonutChartViewer/DonutSegmentInfo.swift; sourceTree = "<group>"; };
-		2F05DE5C1F0F3A0F00BBAB30 /* DonutComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonutComposer.swift; path = ../../../DonutChartViewer/DonutChartViewer/DonutComposer.swift; sourceTree = "<group>"; };
-		2F05DE5D1F0F3A0F00BBAB30 /* DonutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonutData.swift; path = ../../../DonutChartViewer/DonutChartViewer/DonutData.swift; sourceTree = "<group>"; };
-		2F05DE5E1F0F3A0F00BBAB30 /* SegmentDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentDrawer.swift; path = ../../../DonutChartViewer/DonutChartViewer/SegmentDrawer.swift; sourceTree = "<group>"; };
 		2F0FC94F1EF009700053167F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2F0FC9511EF0097F0053167F /* TimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerView.xib; sourceTree = "<group>"; };
 		2F136D1E1EE8741500E710FA /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
@@ -187,17 +179,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F05DE631F0F3A1E00BBAB30 /* Donut Chart */ = {
-			isa = PBXGroup;
-			children = (
-				2F05DE5C1F0F3A0F00BBAB30 /* DonutComposer.swift */,
-				2F05DE5B1F0F3A0F00BBAB30 /* DonutSegmentInfo.swift */,
-				2F05DE5E1F0F3A0F00BBAB30 /* SegmentDrawer.swift */,
-				2F05DE5D1F0F3A0F00BBAB30 /* DonutData.swift */,
-			);
-			name = "Donut Chart";
-			sourceTree = "<group>";
-		};
 		2F0FC9531EF009860053167F /* TimerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,7 +296,6 @@
 		2F8AF1EA1EF840ED00B8BB6B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2F05DE631F0F3A1E00BBAB30 /* Donut Chart */,
 				2F446B621EE28BD7005BB176 /* LaunchScreen.storyboard */,
 				2F446B5D1EE28BD7005BB176 /* Main.storyboard */,
 				2FF8D9FE1EF44B600053A66B /* InfoAlertView.swift */,
@@ -623,11 +603,9 @@
 			files = (
 				2F3C68411EF989750022BE57 /* CustomNavigationBar.swift in Sources */,
 				2F0FC9501EF009700053167F /* TimerView.swift in Sources */,
-				2F05DE601F0F3A0F00BBAB30 /* DonutComposer.swift in Sources */,
 				2F8B3A7A1EE9B8C30008F439 /* SettingsPickerView.swift in Sources */,
 				2F446B721EE5AC41005BB176 /* TaskList.swift in Sources */,
 				2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */,
-				2F05DE621F0F3A0F00BBAB30 /* SegmentDrawer.swift in Sources */,
 				2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */,
 				2FFB385B1F0CF392006CDF27 /* VizDetailsPageVC.swift in Sources */,
 				2F446B6E1EE3324C005BB176 /* Task.swift in Sources */,
@@ -647,7 +625,6 @@
 				2FFB38621F0D426C006CDF27 /* UserInfoHandler.swift in Sources */,
 				2FFB38641F0D428F006CDF27 /* UserInfo.swift in Sources */,
 				2F2C9B071EEAC310000C5279 /* Constants.swift in Sources */,
-				2F05DE611F0F3A0F00BBAB30 /* DonutData.swift in Sources */,
 				2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */,
 				2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */,
 				2F8AF1E41EF8315900B8BB6B /* LoginVC.swift in Sources */,
@@ -665,7 +642,6 @@
 				2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */,
 				2F446B701EE51FB0005BB176 /* TaskCollection.swift in Sources */,
 				2FC023CF1F129D680024229C /* AudioHandler.swift in Sources */,
-				2F05DE5F1F0F3A0F00BBAB30 /* DonutSegmentInfo.swift in Sources */,
 				2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */,
 				2F9415141F1F807200AE76D9 /* TaskGeneratoTest.swift in Sources */,
 				2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */,

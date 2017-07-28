@@ -74,7 +74,6 @@ class VizCanvasView: UIView {
             let height = theCalcHeight.isNaN ? 0 : theCalcHeight
             
             let eachColContainer = buildColumnContainer(dataPoint: eachDataPoint, colContainerFrame: colContainerFrame, colWidth: 10.0, colHeight: height)
-            //eachColContainer.backgroundColor = UIColor.yellow.cgColor
             layer.addSublayer(eachColContainer)
         }
     }
@@ -110,6 +109,7 @@ class VizCanvasView: UIView {
         
         columnContainerLayer.addSublayer(theColumnLayer)
         
+        // Add Dimension Name Label.
         let labelFrame = CGRect(x: 0,
                                 y: columnContainerLayer.bounds.height - axisLabelHeight,
                                 width: colContainerFrame.width,
@@ -118,8 +118,8 @@ class VizCanvasView: UIView {
         
         columnContainerLayer.addSublayer(textLayerWith(textString: dataPoint.dimension, frame: labelFrame))
         
-        // Build Value Label.
-        
+
+        // Build Value Label. (At top of the column)
         let valueLabelFrame = CGRect(x: 0,
                                      y: theColumnLayer.frame.origin.y - dataLabelHeight,
                                      width: colContainerFrame.width,

@@ -11,7 +11,7 @@ import UIKit
 
 class VizDisplayVC: UIViewController {
     
-    var typeOfViz : TypeOfViz?
+    var typeOfViz : TypeOfViz? = .recent //TODO: This might not be good if we want to display other types of charts, check this.
     var shouldDisplayChartTitle : Bool = true
 
     @IBOutlet weak var vizTitleLabel: UILabel!
@@ -25,12 +25,14 @@ class VizDisplayVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupChart()
     }
-    
+
     func setupChart() {
+        vizChartView.subviews.forEach({$0.removeFromSuperview()})
+        
         ChartHandler.shared.makeChart(frame: vizChartView.bounds, vizType: typeOfViz!, dataPointLimit: 3, completionH: {[unowned self] (theChartView, theChartTitle) in
             self.vizTitleLabel.text = self.shouldDisplayChartTitle ? theChartTitle : ""
             self.vizChartView.addSubview(theChartView)
-            theChartView.frame = self.view.bounds
+            theChartView.frame = self.vizChartView.bounds
         })
     }
     

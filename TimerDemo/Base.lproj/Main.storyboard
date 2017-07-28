@@ -846,15 +846,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="311" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cW-0O-H9R">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRn-al-7Oa">
-                                        <rect key="frame" x="0.0" y="28.5" width="311" height="171.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="20.5" width="311" height="179.5"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -865,9 +865,10 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Zdy-hX-Xdx" firstAttribute="leading" secondItem="Ucz-j0-c4G" secondAttribute="leading" id="533-tE-qdX"/>
+                            <constraint firstItem="Zdy-hX-Xdx" firstAttribute="top" secondItem="rL3-AM-yvv" secondAttribute="bottom" id="Nai-aE-4hP"/>
                             <constraint firstItem="Zdy-hX-Xdx" firstAttribute="top" secondItem="rL3-AM-yvv" secondAttribute="bottom" id="ScF-qr-Myx"/>
                             <constraint firstAttribute="bottom" secondItem="Zdy-hX-Xdx" secondAttribute="bottom" id="anr-uB-beX"/>
                             <constraint firstAttribute="trailing" secondItem="Zdy-hX-Xdx" secondAttribute="trailing" id="sFo-Ju-pgl"/>

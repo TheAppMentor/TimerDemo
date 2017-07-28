@@ -148,46 +148,12 @@ class ArcProgressView: UIView,CAAnimationDelegate {
         layer.beginTime = 0.0
         layer.timeOffset = 0.0  //This Works Somewhat
     }
-    
-    
-//    func resetAnimation() {
-//        print("Prashanth : We need to figure out how to reset this animation man......")
-////        animateProgressBar()
-////        arcProgressShape.animationKeys()
-//        
-//        layer.timeOffset = 0.0
-//        layer.beginTime = 0.0
-//        
-//        layer.sublayers?.forEach({
-//            if $0.name == "ForeGroundArc"{
-//            print("Found This fellow...");
-//                if let theAnimation = $0.animation(forKey: "arcAnimation"){
-//                    print("Found the Animation also...");
-//                    ($0 as! CAShapeLayer).strokeEnd = 0.0
-//                    //($0 as! CAShapeLayer).presentation()?
-//                    $0.add(theAnimation, forKey: "arcAnimation")
-//                    //($0 as! CAShapeLayer).strokeEnd = 0.0
-//                }else{
-//                    assertionFailure("Could not find the animation !!!")
-//                }
-//            }
-//        })
-//    }
-    
-    
+ 
     func animationDidStart(_ anim: CAAnimation) {
     }
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         layer.speed = 1.0
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
