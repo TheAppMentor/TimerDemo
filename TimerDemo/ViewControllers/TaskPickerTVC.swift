@@ -41,8 +41,8 @@ class TaskPickerTVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-             NSAttributedStringKey.font.rawValue: Utilities.shared.regularFontSize]
+            [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white,
+             NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): Utilities.shared.regularFontSize]
         
         tableView.tableFooterView = UIView()
         tableView.reloadData()   //Incase a new task is added we need to reload. //TODO: May not be a good way if there are many tasks.. need to refine this further

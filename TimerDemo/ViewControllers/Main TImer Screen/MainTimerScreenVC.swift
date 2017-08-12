@@ -70,7 +70,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         hideBackButton()
         UIApplication.shared.statusBarStyle = .lightContent
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font.rawValue : Utilities.shared.largeFontSize, NSAttributedStringKey.foregroundColor.rawValue : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue) : Utilities.shared.largeFontSize, NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue) : UIColor.white]
         
         //Setup Ad Banner.
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //=> Test APp ID I think.

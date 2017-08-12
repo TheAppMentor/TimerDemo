@@ -34,8 +34,8 @@ class ArcProgressView: UIView,CAAnimationDelegate {
     var arcEndAngle : CGFloat = CGFloat.pi/2.0 - CGFloat.pi/4.0
     
     var arcWidth : CGFloat = 16.0
-    var arcBackgroundStrokeColor = UIColor(colorLiteralRed: (155.0/255.0), green: (155.0/255.0), blue: (155.0/255.0), alpha: 0.5).cgColor
-    var arcForegroundStrokeColor = UIColor(colorLiteralRed: (255.0/255.0), green: (255.0/255.0), blue: (255.0/255.0), alpha: 1.0).cgColor
+    var arcBackgroundStrokeColor = UIColor(red: (155.0/255.0), green: (155.0/255.0), blue: (155.0/255.0), alpha: 0.5).cgColor
+    var arcForegroundStrokeColor = UIColor(red: (255.0/255.0), green: (255.0/255.0), blue: (255.0/255.0), alpha: 1.0).cgColor
     
     var arcPathEndState : UIBezierPath{
         let tempPath = UIBezierPath(arcCenter: center, radius: arcRadius, startAngle: arcStartAngle, endAngle: arcEndAngle, clockwise: true)

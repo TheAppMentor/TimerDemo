@@ -26,8 +26,8 @@ class SettingsTVC: UITableViewController, PickerSelectionDelegate {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-             NSAttributedStringKey.font.rawValue: Utilities.shared.regularFontSize]
+            [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white,
+             NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): Utilities.shared.regularFontSize]
         
         tableView.tableFooterView = UIView()
     }
