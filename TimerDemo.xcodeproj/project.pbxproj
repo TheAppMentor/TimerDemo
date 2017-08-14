@@ -58,6 +58,8 @@
 		2FBF1EB61F10CEF800F63EFF /* MainTimerScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF1EB41F10BAA800F63EFF /* MainTimerScreenVC.swift */; };
 		2FBF1EB71F10CEFC00F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF1EB51F10BAA800F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift */; };
 		2FBF1EB91F10D38800F63EFF /* ChartHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF1EB81F10D38800F63EFF /* ChartHandler.swift */; };
+		2FBFCF5D1F3F570200046D8A /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFCF5C1F3F570200046D8A /* OnboardingVC.swift */; };
+		2FBFCF5F1F3F573600046D8A /* OnBoardingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFCF5E1F3F573600046D8A /* OnBoardingHandler.swift */; };
 		2FC023CD1F127C4D0024229C /* TypeOfViz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC023CC1F127C4D0024229C /* TypeOfViz.swift */; };
 		2FC023CF1F129D680024229C /* AudioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC023CE1F129D680024229C /* AudioHandler.swift */; };
 		2FCB9F1D1EEFE9B1000079F6 /* TimerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */; };
@@ -138,6 +140,8 @@
 		2FBF1EB41F10BAA800F63EFF /* MainTimerScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimerScreenVC.swift; sourceTree = "<group>"; };
 		2FBF1EB51F10BAA800F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_TaskPickerView_MainTimerScreenVC.swift; sourceTree = "<group>"; };
 		2FBF1EB81F10D38800F63EFF /* ChartHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHandler.swift; sourceTree = "<group>"; };
+		2FBFCF5C1F3F570200046D8A /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		2FBFCF5E1F3F573600046D8A /* OnBoardingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingHandler.swift; sourceTree = "<group>"; };
 		2FC023CC1F127C4D0024229C /* TypeOfViz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfViz.swift; sourceTree = "<group>"; };
 		2FC023CE1F129D680024229C /* AudioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHandler.swift; sourceTree = "<group>"; };
 		2FCB9F1C1EEFE9B1000079F6 /* TimerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContainerView.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 				2F26BF561F0943BF0067C9A5 /* TaskDetailsVC.swift */,
 				2FFB385F1F0D0076006CDF27 /* MiniTaskListTVC.swift */,
 				2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */,
+				2FBFCF5C1F3F570200046D8A /* OnboardingVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */,
+				2FBFCF5E1F3F573600046D8A /* OnBoardingHandler.swift */,
 				2F8AF1E51EF8394100B8BB6B /* AuthHandler.swift */,
 				2F24C1AC1EF12FD200B2CE13 /* TaskHandler.swift */,
 				2F8AF1E11EF7FF9500B8BB6B /* PersistenceHandler.swift */,
@@ -626,6 +632,7 @@
 				2FFB38641F0D428F006CDF27 /* UserInfo.swift in Sources */,
 				2F2C9B071EEAC310000C5279 /* Constants.swift in Sources */,
 				2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */,
+				2FBFCF5F1F3F573600046D8A /* OnBoardingHandler.swift in Sources */,
 				2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */,
 				2F8AF1E41EF8315900B8BB6B /* LoginVC.swift in Sources */,
 				2FFB385E1F0CF59A006CDF27 /* VizDisplayVC.swift in Sources */,
@@ -642,6 +649,7 @@
 				2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */,
 				2F446B701EE51FB0005BB176 /* TaskCollection.swift in Sources */,
 				2FC023CF1F129D680024229C /* AudioHandler.swift in Sources */,
+				2FBFCF5D1F3F570200046D8A /* OnboardingVC.swift in Sources */,
 				2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */,
 				2F9415141F1F807200AE76D9 /* TaskGeneratoTest.swift in Sources */,
 				2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */,

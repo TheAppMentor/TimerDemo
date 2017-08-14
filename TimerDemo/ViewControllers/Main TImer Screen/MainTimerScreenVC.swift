@@ -14,7 +14,7 @@ import SCLAlertView
 import AKPickerView_Swift
 import GoogleMobileAds
 
-class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHandler,TaskPickerTVCEventHandlerDelegate,GADBannerViewDelegate,PreferenceEventHandlerDelegate {
+class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHandler,TaskPickerTVCEventHandlerDelegate,GADBannerViewDelegate,PreferenceEventHandlerDelegate {
     
     @IBAction func showSettings(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showSettingsScreen", sender: self)
@@ -90,12 +90,19 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
     
     override func viewDidAppear(_ animated: Bool) {
         view.bringSubview(toFront: taskPickerView)
+
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore  {
+            performSegue(withIdentifier: "addNewTask", sender: self)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+    }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //TODO: parashat we need to remove this, we cannot reload all the task coll each tiem the view appears.
         // WE should only reload when a new task is added.. set up a delegate and do this.
         populateAllTaskCollNames()
+        
     }
     
     
@@ -404,6 +411,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate,InfoAlertEventHan
         case "addNewTask":
             if let theDestVC = segue.destination as? AddTaskVC{
                 theDestVC.taskAddVCEventHandlerDelegate = self
+                if !UserDefaults.standard.bool(forKey: "launchedBefore"){
+                    theDestVC.hideCancelButton = true
+                }
             }
 
         case "showTaskList":

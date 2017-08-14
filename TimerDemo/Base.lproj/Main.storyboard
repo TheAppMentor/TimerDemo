@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVV-DQ-dqT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVV-DQ-dqT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -365,7 +365,7 @@
                                     <segue destination="E7R-fs-OTD" kind="embed" identifier="showMiniVC" id="6T4-0V-gkD"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-dL-A4A" userLabel="Ad Banner View" customClass="GADBannerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-dL-A4A" userLabel="Ad Banner View" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -614,7 +614,7 @@
                     <toolbarItems/>
                     <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tDH-Fw-SHF" customClass="CustomNavigationBar" customModule="TimerDemo" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -632,7 +632,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mgj-U6-Pd2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zHl-M4-oW4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.33333333329999998" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.92941176469999998" green="0.33333333329999998" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -721,9 +721,16 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPC-4V-ssY">
+                                                    <rect key="frame" x="130" y="82.5" width="40" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.85490196080000003" green="0.2666666667" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="bwd-m8-tIe" firstAttribute="top" secondItem="uPC-4V-ssY" secondAttribute="bottom" constant="15" id="5kz-VS-GrX"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wey-u4-72l" secondAttribute="trailing" id="Ftk-xk-d5f"/>
                                                 <constraint firstItem="bwd-m8-tIe" firstAttribute="centerY" secondItem="Cd5-2Z-3nU" secondAttribute="centerY" id="Fz4-rb-PVV"/>
                                                 <constraint firstItem="bwd-m8-tIe" firstAttribute="centerX" secondItem="Cd5-2Z-3nU" secondAttribute="centerX" id="Pgl-5E-SvW"/>
@@ -731,6 +738,7 @@
                                                 <constraint firstItem="uog-Qg-Glo" firstAttribute="centerX" secondItem="Cd5-2Z-3nU" secondAttribute="centerX" id="b2A-kF-jXX"/>
                                                 <constraint firstItem="Wey-u4-72l" firstAttribute="leading" secondItem="Cd5-2Z-3nU" secondAttribute="leading" id="iIB-bp-nIP"/>
                                                 <constraint firstItem="Wey-u4-72l" firstAttribute="top" secondItem="Cd5-2Z-3nU" secondAttribute="top" id="jvA-xn-e3p"/>
+                                                <constraint firstItem="uPC-4V-ssY" firstAttribute="centerX" secondItem="Cd5-2Z-3nU" secondAttribute="centerX" id="n3A-o9-Da8"/>
                                                 <constraint firstAttribute="bottom" secondItem="uog-Qg-Glo" secondAttribute="bottom" constant="10" id="yTW-PB-Kb0"/>
                                                 <constraint firstItem="Wey-u4-72l" firstAttribute="height" secondItem="Cd5-2Z-3nU" secondAttribute="height" multiplier="0.2" id="zhT-wT-rSz"/>
                                             </constraints>
@@ -743,7 +751,7 @@
                                         <constraint firstItem="Cd5-2Z-3nU" firstAttribute="top" secondItem="AIK-e4-H6N" secondAttribute="top" constant="100" id="sRV-Go-xeY"/>
                                     </constraints>
                                 </view>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.50476241438356162" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.49553189212328769" colorSpace="calibratedRGB"/>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
@@ -757,6 +765,8 @@
                     <connections>
                         <outlet property="addTaskDoneButton" destination="5eR-fo-Nqc" id="HRW-yR-8WB"/>
                         <outlet property="addTaskPopUpContainerView" destination="Cd5-2Z-3nU" id="Ymp-ef-pl5"/>
+                        <outlet property="cancelButton" destination="J1D-IM-sMM" id="1BV-2a-wX0"/>
+                        <outlet property="errorLabel" destination="uPC-4V-ssY" id="1bQ-g2-zt3"/>
                         <outlet property="headerBanner" destination="Wey-u4-72l" id="xPy-6A-Gey"/>
                         <outlet property="taskTitleInputTextField" destination="bwd-m8-tIe" id="CMn-EP-eMd"/>
                     </connections>
@@ -815,7 +825,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="isz-mw-gMM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="N0X-Oq-BTG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -986,7 +996,7 @@
                         <viewControllerLayoutGuide type="top" id="VUM-J4-mvh"/>
                         <viewControllerLayoutGuide type="bottom" id="xlf-js-1SR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="n7d-hZ-wvE">
+                    <view key="view" contentMode="scaleToFill" id="n7d-hZ-wvE">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="206"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
@@ -1004,6 +1014,6 @@
         <image name="iPhone_Launch_Screen" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yci-rs-z9P"/>
+        <segue reference="IIK-oB-jtQ"/>
     </inferredMetricsTieBreakers>
 </document>

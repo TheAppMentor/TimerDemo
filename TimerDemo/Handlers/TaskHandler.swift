@@ -117,4 +117,18 @@ class TaskHandler : TaskEventHanlder {
         PersistenceHandler.shared.saveTask(task: currentTask!)
     }
     
+    func checkIfTaskNameIsValid(taskName : String, compHandler : @escaping (_ taskAlreayExists : Bool)->()){
+
+        PersistenceHandler.shared.fetchAllTaskCollections { (theTaskCollList) in
+            
+            for eachTask in theTaskCollList{
+                if eachTask.taskName == taskName{
+                    compHandler(true)
+                    return
+                }
+            }
+            compHandler(false)
+        }
+    }
+    
 }

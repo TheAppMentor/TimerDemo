@@ -31,15 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
         GADMobileAds.configure(withApplicationID: "ca-app-pub-5666511173297473~7405055349")
         
-        // Override point for customization.. after application launch.
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if granted {
-                print("Ok... We have authorization man...")
-            }
-            // Enable or disable features based on authorization.
-        }
-        
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = Utilities.shared.lightGrayColor
         pageControl.currentPageIndicatorTintColor = Utilities.shared.lightRedColor
