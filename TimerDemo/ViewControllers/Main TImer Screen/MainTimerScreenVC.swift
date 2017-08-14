@@ -34,6 +34,9 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
         TestTaskGenerator.shared.saveTestTask()
     }
     
+    @IBAction func addTaskButtonPressedFromToolBar(_ sender: UIBarButtonItem) {
+        self.addNewTaskClicked()
+    }
     
     
     @IBOutlet weak var adBannerHeightConstraint: NSLayoutConstraint!
@@ -119,8 +122,9 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     func userPickedATaskWithName(name: String) {
         setupTimerForNewTaskPicked(taskName: name)
         
-        let selectedIndex = findIndexForTaskName(taskName: name)
-        taskPickerView.selectItem(selectedIndex, animated: true)
+        if let selectedIndex = findIndexForTaskName(taskName: name){
+            taskPickerView.selectItem(selectedIndex, animated: true)
+        }
     }
     
     
@@ -202,20 +206,21 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
                 //return UserDefaults.standard.object(forKey: "userSelectedTaskColl") as? TaskCollection ?? nil
                 if let taskToSelect = UserDefaults.standard.object(forKey: "userSelectedTaskColl") as? String{
                     
-                    let taskIndex = self.findIndexForTaskName(taskName: taskToSelect)
-                    self.taskPickerView.selectItem(taskIndex, animated: true)
+                    if let taskIndex = self.findIndexForTaskName(taskName: taskToSelect){
+                        self.taskPickerView.selectItem(taskIndex, animated: true)
+                    }
                 }
             }
         }
     }
     
-    func findIndexForTaskName(taskName : String) -> Int {
+    func findIndexForTaskName(taskName : String) -> Int? {
         for eachTask in self.allTaskColl.enumerated(){
             if (eachTask.element.taskName == taskName){
                 return eachTask.offset
             }
         }
-        return 0
+        return nil
     }
     
     //MARK: StoryBoard Actions
@@ -285,10 +290,12 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     //MARK: Info Pop Up Window Event Handler Delegate.
     
     func userOptedToTakeShortBreak(){
-        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
+        taskBoy.createTask(name: "Break", type: .shortBreak)
         timerContainerView.timerMode = .shortBreak
+                
         // Setup View for a Short break.
         setupUIForTaskBegin()
+
     }
     
     func userOptedToTakeLongBreak() {
@@ -505,6 +512,8 @@ extension MainTimerScreenVC {
 // ========================================================= //
 
 extension MainTimerScreenVC : TaskAddEventHandlerDelegate{
+    
+    
     
     func addNewTaskClicked() {
         performSegue(withIdentifier: "addNewTask", sender: self)
