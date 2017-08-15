@@ -65,7 +65,6 @@ class AddTaskVC: UIViewController {
         }
 
         TaskHandler.shared.checkIfTaskNameIsValid(taskName: valueEntered ?? "") { (taskAlreadyExists) in
-            print("Task Name is : \(valueEntered) : Dup Check already Exits: \(taskAlreadyExists)")
             
             if taskAlreadyExists == false{
                 let taskCollection = TaskCollection.init(taskName: valueEntered!)

@@ -64,16 +64,19 @@ struct TaskCollection {
     
     func addTaskID(taskID : String, task : Task) -> TaskCollection  {
         var tempColl = self
-        tempColl.listOfAssociatedTaskID.append(taskID)
-        tempColl.numberOfSessionsAllStatus += 1
         
-        tempColl.totalDurationTasksAllStatus += task.timer.duration
-        
-        if task.taskStatus == .completed {
-            tempColl.totalDurationCompletedTasks += task.timer.duration
-            tempColl.numberOfSessionsCompletedStatus += 1
+        // Check for Duplicates and add.
+        if listOfAssociatedTaskID.contains(taskID) == false{
+            tempColl.listOfAssociatedTaskID.append(taskID)
+            tempColl.numberOfSessionsAllStatus += 1
+            
+            tempColl.totalDurationTasksAllStatus += task.timer.duration
+            
+            if task.taskStatus == .completed {
+                tempColl.totalDurationCompletedTasks += task.timer.duration
+                tempColl.numberOfSessionsCompletedStatus += 1
+            }
         }
-        
         return tempColl
     }
     

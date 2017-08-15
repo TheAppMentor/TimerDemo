@@ -37,7 +37,7 @@ class InfoAlertView: SCLAlertView {
         super.init()
     }
     
-    func showAlertForTaskComplete() {
+    func showAlertForTaskComplete(durationString : String = "") {
         
         var appearance = SCLAlertView.SCLAppearance(
             kTitleFont: Utilities.shared.regularFontSize,
@@ -60,11 +60,11 @@ class InfoAlertView: SCLAlertView {
         alertView.addButton("Continue Focus") {
             self.delegateActionHandler?.userOptedToContinueWorking()
         }
-        alertView.showSuccess("Task Complete", subTitle: "25:00")
+        alertView.showSuccess("Task Complete", subTitle: durationString)
     }
     
     
-    func showAlertForTaskAbandoned() {
+    func showAlertForTaskPausedAbandoned(durationString : String = "") {
         
         var appearance = SCLAlertView.SCLAppearance(
             kTitleFont: Utilities.shared.regularFontSize,
@@ -80,16 +80,45 @@ class InfoAlertView: SCLAlertView {
         let alertView = SCLAlertView(appearance: appearance)
         
         //        alertView.addButton("Short Break", target:self, selector:Selector("firstButton"))
-        alertView.addButton("Yes, Cancel it.") {
+        
+        alertView.addButton("Resume Task") {
+            self.delegateActionHandler?.userDoesNotWantToAbandonCurrentTask()
+        }
+
+        alertView.addButton("Abandon Task") {
             self.delegateActionHandler?.userOptedToAbandonTask()
         }
         
-        alertView.addButton("No, Continue working") {
+        alertView.showWarning("Task Paused", subTitle: durationString)
+    }
+    
+    func showAlertForTaskPaused() {
+        
+        var appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: Utilities.shared.regularFontSize,
+            kTextFont: Utilities.shared.largeFontSize,
+            kButtonFont: Utilities.shared.regularFontSize,
+            showCloseButton: true
+        )
+        
+        appearance.kWindowWidth = 300.0
+        appearance.kWindowHeight = 800.0
+        
+        
+        let alertView = SCLAlertView(appearance: appearance)
+        
+        //        alertView.addButton("Short Break", target:self, selector:Selector("firstButton"))
+//        alertView.addButton("Yes, Cancel it.") {
+//            self.delegateActionHandler?.userOptedToAbandonTask()
+//        }
+        
+        alertView.addButton("Resume Task") {
             self.delegateActionHandler?.userDoesNotWantToAbandonCurrentTask()
         }
         
-        alertView.showWarning("Are you sure you want to Cancel?", subTitle: "25:00")
+        alertView.showWarning("Task Paused", subTitle: "25:00")
     }
+
     
     func showAlertForLongBreakComplete() {
         
@@ -125,14 +154,13 @@ class InfoAlertView: SCLAlertView {
         appearance.kWindowWidth = 300.0
         appearance.kWindowHeight = 800.0
         
-        
         let alertView = SCLAlertView(appearance: appearance)
         
         alertView.addButton("Continue Focus") {
             self.delegateActionHandler?.userOptedToContinueWorking()
         }
         //alertView.showSuccess("Task Complete", subTitle: "25:00")
-        alertView.showCustom("Short Break Done", subTitle: "It's Time To Focus", color: UIColor.purple, icon: #imageLiteral(resourceName: "Coffee Mug White"))
+        alertView.showCustom("Short Break Done", subTitle: "It's Time To Focus", color:Utilities.shared.lightBlueColor, icon: #imageLiteral(resourceName: "Coffee Mug White"))
     }
     
     

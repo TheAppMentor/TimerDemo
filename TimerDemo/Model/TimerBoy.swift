@@ -26,7 +26,8 @@ class TimerBoy {
     fileprivate var startTime: Date?
     fileprivate var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
     
-    var duration: TimeInterval = 25.0 // Get his value from the settings Plist
+//    var duration: TimeInterval = 25.0 // Get his value from the settings Plist
+    var duration: TimeInterval = 0.0
     var currentTimerValue : TimeInterval!
     
     var taskTimer: Timer?

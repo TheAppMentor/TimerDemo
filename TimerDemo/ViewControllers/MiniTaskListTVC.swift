@@ -25,7 +25,7 @@ class MiniTaskListTVC: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(MiniTaskListTVC.fetchInfoForTableAndReload), name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
         fetchInfoForTableAndReload()
     }
-    
+        
     @objc func fetchInfoForTableAndReload()  {
         let recentTasks = UserInfoHandler.shared.fetchMostRecentUsedTaskColl(limit: 3)
         

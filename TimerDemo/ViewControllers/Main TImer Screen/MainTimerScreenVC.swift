@@ -110,11 +110,18 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     
     
     func setupTimerForNewTaskPicked(taskName : String) {
-        UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
-        if UserDefaults.standard.synchronize(){
-            //taskPickerView.reloadData()
-            createADeepWorkTask()
+        
+        if taskName == "Break"{
+            createAShortBreakTask()
+        }else{
+            UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
+
+            if UserDefaults.standard.synchronize(){
+                createADeepWorkTask()
+            }
         }
+
+        setupUIForTaskBegin()
     }
     
     // eventHandlerDelegate
@@ -156,6 +163,11 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
             UserDefaults.standard.set(taskName, forKey: "userSelectedTaskColl")
         }
     }
+
+    func createAShortBreakTask(){
+        taskBoy.createTask(name: "Break", type: .shortBreak)
+    }
+
     
     func setupUIForTaskBegin() {
         taskBoy.delegate = self
@@ -290,9 +302,14 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     //MARK: Info Pop Up Window Event Handler Delegate.
     
     func userOptedToTakeShortBreak(){
-        taskBoy.createTask(name: "Break", type: .shortBreak)
-        timerContainerView.timerMode = .shortBreak
-                
+        createAShortBreakTask()
+//        taskBoy.createTask(name: "Break", type: .shortBreak)
+//        //timerContainerView.timerMode = .shortBreak
+        
+        if let selectedIndex = findIndexForTaskName(taskName: "Break"){
+            taskPickerView.selectItem(selectedIndex, animated: true)
+        }
+        
         // Setup View for a Short break.
         setupUIForTaskBegin()
 
@@ -312,20 +329,7 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     }
     
     func userOptedToAbandonTask(){
-        //        createADeepWorkTask()
-        //        setupUIForTaskBegin()
         abandonCurrentTask()
-        
-        //        taskBoy.abandonCurrentTask()
-        //
-        //        taskBoy.createTask(name: "shortBreak", type: .shortBreak)
-        //        timerContainerView.timerMode = .shortBreak
-        //        // Setup View for a Short break.
-        //        setupUIForTaskBegin()
-        
-        
-        //        taskBoy.abandonCurrentTask()
-        
     }
     
     func userDoesNotWantToAbandonCurrentTask(){
@@ -354,12 +358,13 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     func currentDidPause() {
         timerDisplayView.theArcProgressView.pauseAnimation()
         timerControlButton.setPaused(true, animated: false)
-        InfoAlertView(actionDelegate: self).showAlertForTaskAbandoned()
+        //InfoAlertView(actionDelegate: self).showAlertForTaskPaused()
+        let timerDurationString = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: taskBoy.currentTask?.timeRemaining ?? 0)
+        InfoAlertView(actionDelegate: self).showAlertForTaskPausedAbandoned(durationString: timerDurationString)
     }
     
     func currentTaskDidUnFreeze(timeRemaining : TimeInterval) {
         timerDisplayView.theArcProgressView.resumeAnimationWithTimeRemaining(timeRemaining: timeRemaining)
-        //timerDisplayView.theArcProgressView.resumeAnimation()
     }
     
     func currentTaskDidFreeze() {
@@ -383,21 +388,17 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
         timerControlButton.setPaused(true, animated: false)  // Hack to make the timer button set properly. Need to research why it behaves this way.
         timerControlButton.setPaused(false, animated: false)
         
-        // Set screen again with same type as the task just complete. This is to handle the case, if he cancels from the Pop up.
-        createADeepWorkTask()
-        setupUIForTaskBegin()
-        
-        // Reload the mini Chart view.
-        //self.miniVizContainerVC?.reloadAllViews()
-        
         switch (taskBoy.currentTask?.taskType)! {
-        case .deepFocus:    InfoAlertView(actionDelegate: self).showAlertForTaskComplete()
+        case .deepFocus:
+            let timerDurationString = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: taskBoy.taskDuration)
+            InfoAlertView(actionDelegate: self).showAlertForTaskComplete(durationString: timerDurationString)
         case .shortBreak:   InfoAlertView(actionDelegate: self).showAlertForShortBreakComplete()
         case .longBreak:    InfoAlertView(actionDelegate: self).showAlertForLongBreakComplete()
         }
         
-        //        // Reload the mini Chart view.
-        //        self.miniVizContainerVC?.reloadAllViews()
+        // Set screen again with same type as the task just complete. This is to handle the case, if he cancels from the Pop up.
+        createADeepWorkTask()
+        setupUIForTaskBegin()
         
         // Vibrate the Phone. If User requested
         AudioHandler.shared.vibrate()

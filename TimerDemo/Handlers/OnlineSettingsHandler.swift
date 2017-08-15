@@ -13,8 +13,8 @@ class OnlinePreferenceHandler {
     // Stored Properties
     static let shared = OnlinePreferenceHandler()
     var allPreferences : [PreferenceCategory]
-    let prefOrderArray = [PreferenceType.Duration,.Intervals,.Goals,.Alerts]
-    
+//    let prefOrderArray = [PreferenceType.Duration,.Intervals,.Goals,.Alerts]
+    let prefOrderArray = [PreferenceType.Duration,.Alerts]
     
     private init() {
         allPreferences = []

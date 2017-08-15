@@ -37,6 +37,7 @@
 		2F5DBB7D1F06C27F009E54F7 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7C1F06C27F009E54F7 /* LaunchScreenVC.swift */; };
 		2F5DBB7F1F07A26A009E54F7 /* TaskPickerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7E1F07A26A009E54F7 /* TaskPickerTVC.swift */; };
 		2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60AF8E1F0417BF007674C9 /* Preferences.swift */; };
+		2F6E88691F422326008F9BB5 /* AboutPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E88681F422326008F9BB5 /* AboutPageVC.swift */; };
 		2F7CB35E1EEED4FB004272A7 /* VizCanvasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */; };
 		2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7CB35F1EEED53A004272A7 /* VizCanvasView.swift */; };
 		2F8AF1E01EF7F68000B8BB6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F8AF1DF1EF7F68000B8BB6B /* GoogleService-Info.plist */; };
@@ -117,6 +118,7 @@
 		2F5DBB7C1F06C27F009E54F7 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		2F5DBB7E1F07A26A009E54F7 /* TaskPickerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPickerTVC.swift; sourceTree = "<group>"; };
 		2F60AF8E1F0417BF007674C9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		2F6E88681F422326008F9BB5 /* AboutPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPageVC.swift; sourceTree = "<group>"; };
 		2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VizCanvasView.xib; sourceTree = "<group>"; };
 		2F7CB35F1EEED53A004272A7 /* VizCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VizCanvasView.swift; sourceTree = "<group>"; };
 		2F8AF1DF1EF7F68000B8BB6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				2FFB385F1F0D0076006CDF27 /* MiniTaskListTVC.swift */,
 				2FFAFD461EEBF3E400631DA9 /* PickerVC.swift */,
 				2FBFCF5C1F3F570200046D8A /* OnboardingVC.swift */,
+				2F6E88681F422326008F9BB5 /* AboutPageVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -447,7 +450,7 @@
 				TargetAttributes = {
 					2F446B551EE28BD7005BB176 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = D38394224C;
+						DevelopmentTeam = TLV25NDMDF;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -611,6 +614,7 @@
 				2F0FC9501EF009700053167F /* TimerView.swift in Sources */,
 				2F8B3A7A1EE9B8C30008F439 /* SettingsPickerView.swift in Sources */,
 				2F446B721EE5AC41005BB176 /* TaskList.swift in Sources */,
+				2F6E88691F422326008F9BB5 /* AboutPageVC.swift in Sources */,
 				2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */,
 				2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */,
 				2FFB385B1F0CF392006CDF27 /* VizDetailsPageVC.swift in Sources */,
@@ -810,12 +814,15 @@
 			baseConfigurationReference = B0AABFFB55482E9715E6207D /* Pods-TimerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = D38394224C;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TLV25NDMDF;
 				INFOPLIST_FILE = TimerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.prash.TimerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prash.FocusMonk1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -826,12 +833,15 @@
 			baseConfigurationReference = A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = D38394224C;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TLV25NDMDF;
 				INFOPLIST_FILE = TimerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.prash.TimerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prash.FocusMonk1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};

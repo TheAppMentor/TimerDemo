@@ -27,25 +27,74 @@ class PersistenceHandler {
     // =============================================//
     
     func saveTask(task : Task) {
-        //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(task.taskID.uuidString).setValue(task.jsonFormat)
+        
+        print("Save Task Called")
+        
         var taskDictToSave = task.dictFormat
         taskDictToSave["savedDate"] = [".sv":"timestamp"]
-        //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(task.taskID.uuidString).setValue(["taskDetails" : taskDictToSave])
-        //self.ref.child("Users").child("Tasks").childByAutoId().setValue(taskDictToSave)
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave)
         
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryLimited(toLast: 1) .observe(.childAdded, with: { (snapshot) in
-            self.fetchTaskCollectionWithName(taskName: task.taskName) { (fetchedTaskColl) in
-                let thePostDict = snapshot.value as? [String : Any?] ?? [:]
-                if let thetempTask = Task(firebaseDict: thePostDict){
-                    if fetchedTaskColl != nil{
-                        let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: snapshot.key, task: thetempTask)
-                        self.saveTaskCollection(taskColl: updatedTaskColl!)
+        //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave)
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave) { (theError, dbRef) in
+            
+            print("The Key is : \(dbRef.key)")
+            
+            self.fetchTaskWithID(taskID: dbRef.key, completionHandler: { (theTask) in
+                
+                self.fetchTaskCollectionWithName(taskName: theTask.taskName) { (fetchedTaskColl) in
+                        if fetchedTaskColl != nil{
+                            let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key, task: theTask)
+                            self.saveTaskCollection(taskColl: updatedTaskColl!)
+                        }
                     }
-                }
-            }
-        })
+                })
+        }
     }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+//            if theError == nil{
+//                self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryEqual(toValue: dbRef.key).observe(.childAdded, with: { (snapshot) in
+//                    print("SnapShot Value is : \(snapshot.value as? [String:Any?] ?? [:])")
+//                })
+//
+////                self.fetchTaskCollectionWithName(taskName: task.taskName) { (fetchedTaskColl) in
+////                    let thePostDict = dbRef.v .value as? [String : Any?] ?? [:]
+////                    if let thetempTask = Task(firebaseDict: thePostDict){
+////                        if fetchedTaskColl != nil{
+////                            let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key, task: thetempTask)
+////                            self.saveTaskCollection(taskColl: updatedTaskColl!)
+////                        }
+////                    }
+////                }
+//
+//            }
+//
+//        }
+//
+//
+////        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryLimited(toLast: 1).observe(.childAdded, with: { (snapshot) in
+////
+////            self.fetchTaskCollectionWithName(taskName: task.taskName) { (fetchedTaskColl) in
+////                let thePostDict = snapshot.value as? [String : Any?] ?? [:]
+////                if let thetempTask = Task(firebaseDict: thePostDict){
+////                    if fetchedTaskColl != nil{
+////                        let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: snapshot.key, task: thetempTask)
+////                        self.saveTaskCollection(taskColl: updatedTaskColl!)
+////                    }
+////                }
+////            }
+//        })
+//    }
     
     func fetchTaskWithID(taskID : String, completionHandler : @escaping (_ fetchedTask : Task)->()) {
         print("PH : Fetching Task For \(taskID)")
@@ -241,7 +290,7 @@ class PersistenceHandler {
     }
     
     func setInitialValueForUserInfo(completionHanlder_  : (_ theUserInfo : UserInfo) -> ()) {
-        let tempUser = UserInfo(userID: "", isAnonymous: true, userName: "", displayName: "", email: "", phone: "", recentUsedTaskColl: ["Default"], mostUsedTaskColl: ["Default"])
+        let tempUser = UserInfo(userID: "", isAnonymous: true, userName: "", displayName: "", email: "", phone: "", recentUsedTaskColl: [], mostUsedTaskColl: [])
         saveUserInfo(userInfo: tempUser)
         completionHanlder_(tempUser)
     }
@@ -254,6 +303,8 @@ class PersistenceHandler {
     // =============================================//
     
     func saveTaskCollection(taskColl : TaskCollection) {
+       
+       print("Save Task Collection Got Called")
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskColl.taskName).setValue(taskColl.dictFormat)
     }
     
@@ -327,21 +378,21 @@ class PersistenceHandler {
     
     func setInitialValueForPreferences(completionHanlder : () -> ()) {
         
-        let prefDetailsArray = ["Goals":["dailyGoal" : ["displayName" : "Daily Goal","currentValue" : 5,"listOfValues" : [1,2,3,4,5],"unitName" : "Sessions"]],
+        let prefDetailsArray = [//"Goals":["dailyGoal" : ["displayName" : "Daily Goal","currentValue" : 5,"listOfValues" : [1,2,3,4,5],"unitName" : "Sessions"]],
                                 "Alerts":[
                                     "isVibrateOn" : ["displayName" : "Vibrate","currentValue" : false,"listOfValues" : [true,false],"unitName" : ""],
                                     "taskCompletedSound":["displayName":"Task Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
-                                    "longBreakCompletedSound":["displayName":"Long Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
-                                    "shortBreakCompletedSound":["displayName":"Short Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""]
+                                    //"longBreakCompletedSound":["displayName":"Long Break Completed Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""],
+                                    "shortBreakCompletedSound":["displayName":"Short Break Done Alert","currentValue":"Alert Tune 1","listOfValues":["Alert Tune 1","Alert Tune 2","Alert Tune 3"],"unitName" : ""]
             ],
-                                "Intervals":[
-                                    "shortBreakInterval" : ["displayName" : "Short Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"],
-                                    "longBreakInterval" : ["displayName" : "Long Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"]
-            ],
+                                //"Intervals":[
+                                    //"shortBreakInterval" : ["displayName" : "Short Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"],
+                                    //"longBreakInterval" : ["displayName" : "Long Break Interval","currentValue" : 5,"listOfValues" : [1,2,3,4,5,6,7,8,9,10],"unitName" : "Sessions"]
+            //],
                                 "Duration":[
                                     "taskDurationMinutes" : ["displayName" : "Task Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
                                     "shortBreakDurationMinutes" : ["displayName" : "Short Break Duration","currentValue" : 25,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"],
-                                    "longBreakDurationMinutes" : ["displayName" : "Long Break Duration","currentValue" : 5,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"]
+                                    //"longBreakDurationMinutes" : ["displayName" : "Long Break Duration","currentValue" : 5,"listOfValues" : [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90],"unitName" : "Minutes"]
             ]]
         
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").setValue(prefDetailsArray)
