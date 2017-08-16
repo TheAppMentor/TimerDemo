@@ -33,7 +33,6 @@ class TaskPickerTVC: UITableViewController {
         
         PersistenceHandler.shared.fetchAllTaskCollections(completionHandler: { (theTaskColl) in
             theTaskColl.forEach({self.allTasks.append($0.taskName)})
-            print("Reloading the Task with : \(self.allTasks)")
             self.tableView.reloadData()
         })
         

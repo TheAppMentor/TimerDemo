@@ -73,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     center.add(request)
                     center.getPendingNotificationRequests(completionHandler: { (theNoteReq) in
-                        print("Pending Notification : \(theNoteReq)")
                     })
                 }
             }

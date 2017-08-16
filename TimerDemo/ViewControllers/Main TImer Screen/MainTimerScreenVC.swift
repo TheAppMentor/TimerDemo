@@ -349,7 +349,6 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     func timerDidChangeValue(seconds: CFTimeInterval) {
         if seconds > 0 {
             timerDisplayView.theArcProgressView.timerLabel.text = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: seconds)
-            //print("Time Remaining : \(Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: (25 - seconds)))")
         }else{
             timerDisplayView.theArcProgressView.timerLabel.text = "Done"
         }

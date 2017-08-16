@@ -336,15 +336,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ybb-Yu-FYN" customClass="TimerView" customModule="TimerDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="12.5" width="375" height="375"/>
+                                <rect key="frame" x="19" y="62.5" width="337" height="337.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ybb-Yu-FYN" secondAttribute="height" multiplier="1:1" id="q11-gW-vhX"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8F-bM-6XF" customClass="RoundedButton" customModule="TimerDemo" customModuleProvider="target">
-                                <rect key="frame" x="144.5" y="315" width="85" height="85"/>
+                                <rect key="frame" x="145" y="315.5" width="84" height="84.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="HNj-Um-KDe"/>
                                     <constraint firstAttribute="width" secondItem="n8F-bM-6XF" secondAttribute="height" multiplier="1:1" id="TaD-qB-BDl"/>
                                 </constraints>
                                 <connections>
@@ -352,7 +351,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNY-lR-D7c">
-                                <rect key="frame" x="175" y="271" width="24" height="24"/>
+                                <rect key="frame" x="175" y="276.5" width="24" height="24"/>
                                 <state key="normal" image="CancelButton"/>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RhG-1c-XLm"/>
@@ -381,11 +380,11 @@
                             <constraint firstItem="co4-QV-cym" firstAttribute="top" secondItem="LvM-3M-vRY" secondAttribute="bottom" constant="5" id="9yw-A9-o7k"/>
                             <constraint firstItem="LvM-3M-vRY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="AaZ-JJ-FBH"/>
                             <constraint firstItem="co4-QV-cym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BQA-YX-gC0"/>
+                            <constraint firstItem="Ybb-Yu-FYN" firstAttribute="bottom" secondItem="Dt8-Sg-mJU" secondAttribute="bottom" id="EaL-jp-Lac"/>
                             <constraint firstAttribute="trailing" secondItem="co4-QV-cym" secondAttribute="trailing" id="Eyg-qB-vSC"/>
-                            <constraint firstItem="Ybb-Yu-FYN" firstAttribute="centerY" secondItem="Dt8-Sg-mJU" secondAttribute="centerY" id="Fdy-Yv-aNf"/>
                             <constraint firstItem="LvM-3M-vRY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="GY6-7f-CCF"/>
                             <constraint firstItem="Dt8-Sg-mJU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JJJ-8l-eqe"/>
-                            <constraint firstItem="n8F-bM-6XF" firstAttribute="top" secondItem="yNY-lR-D7c" secondAttribute="bottom" constant="20" id="L1F-Rj-3Dx"/>
+                            <constraint firstItem="n8F-bM-6XF" firstAttribute="top" secondItem="yNY-lR-D7c" secondAttribute="bottom" constant="15" id="L1F-Rj-3Dx"/>
                             <constraint firstItem="Ybb-Yu-FYN" firstAttribute="centerX" secondItem="Dt8-Sg-mJU" secondAttribute="centerX" id="OfX-8I-lmP"/>
                             <constraint firstAttribute="trailing" secondItem="Ufp-dL-A4A" secondAttribute="trailing" id="PlK-rX-zJn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="co4-QV-cym" secondAttribute="bottom" id="T1s-WK-syw"/>
@@ -394,7 +393,8 @@
                             <constraint firstItem="Dt8-Sg-mJU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="dCt-BJ-Y00"/>
                             <constraint firstItem="n8F-bM-6XF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fTi-rR-6zV"/>
                             <constraint firstAttribute="trailing" secondItem="Dt8-Sg-mJU" secondAttribute="trailing" id="n32-kV-TRf"/>
-                            <constraint firstItem="Ybb-Yu-FYN" firstAttribute="width" secondItem="Dt8-Sg-mJU" secondAttribute="width" id="ubF-BU-lhh"/>
+                            <constraint firstItem="n8F-bM-6XF" firstAttribute="width" secondItem="Ybb-Yu-FYN" secondAttribute="width" multiplier="0.25" id="pQN-W3-dJb"/>
+                            <constraint firstItem="Ybb-Yu-FYN" firstAttribute="width" secondItem="Dt8-Sg-mJU" secondAttribute="width" multiplier="0.9" id="ubF-BU-lhh"/>
                             <constraint firstItem="n8F-bM-6XF" firstAttribute="bottom" secondItem="Dt8-Sg-mJU" secondAttribute="bottom" id="zdh-5H-mfO"/>
                         </constraints>
                     </view>
@@ -618,7 +618,7 @@
                 </tableViewSection>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SE4-WY-e7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2615" y="349"/>
+            <point key="canvasLocation" x="2614" y="368"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jlq-bS-6HB">
@@ -910,7 +910,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0W-b6-Rt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3426" y="349"/>
+            <point key="canvasLocation" x="3492" y="369"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dMZ-zw-3ee">
@@ -1126,6 +1126,6 @@
         <image name="iPhone_Launch_Screen" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IIK-oB-jtQ"/>
+        <segue reference="yci-rs-z9P"/>
     </inferredMetricsTieBreakers>
 </document>

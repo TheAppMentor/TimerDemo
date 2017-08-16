@@ -18,10 +18,10 @@ class OnBoardingHandler : AlertOnboardingDelegate {
     }
     
     func showOnBoardingScreen() {
-        let alertBoy = AlertOnboarding.init(arrayOfImage: ["Swamy","Swamy","Swamy"], arrayOfTitle: ["Focus Monk","Track your Time","Get Started"],
-                                            arrayOfDescription: ["Focus Monk helps you track the time you spend on your mostimportant tasks.",
-                                                                 "Our charts give you a overview of how your spending your time.",
-                                                                 "Its simple, choose the task you want to focus on and go."])
+        let alertBoy = AlertOnboarding.init(arrayOfImage: ["Swamy","Swamy","Swamy"], arrayOfTitle: ["Focus Monk","Gain Insights","Get Started"],
+                                            arrayOfDescription: ["Focus Monk helps you measure the time you spend on your most important tasks.",
+                                                                 "Our data gives you insights on how you are spending your time.",
+                                                                 "Its that easy. Next, Create a task you want to focus on, and get going."])
         customizeAlertView(onboardingView: alertBoy)
     
         alertBoy.delegate = self

@@ -32,7 +32,6 @@ class LoginVC: UIViewController {
     
     @IBAction func dismissLoginScreen(_ sender: UIButton) {
         dismiss(animated: true) {
-            print("Login Screen dismissed")
         }
     }
     

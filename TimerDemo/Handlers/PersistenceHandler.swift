@@ -222,7 +222,6 @@ class PersistenceHandler {
                     let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
                     
                     if let ordinality = Calendar.current.dateComponents([.hour], from: theTaskDate).hour{
-                        print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
                         
                         var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
                         tempArr.append(eachTask)
@@ -358,8 +357,6 @@ class PersistenceHandler {
     }
     
     func fetchTotalTimeForTaskCollection(taskCollection : TaskCollection, completionHanlder : @escaping (_ totalTime : TimeInterval) -> ()) {
-        
-        print("\t\t\tPH : Fetching total time .... Begin")
         
         var totalTime : TimeInterval = 0
         
