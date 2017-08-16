@@ -246,7 +246,7 @@ class PersistenceHandler {
     
     
     func createDateFromTimeInterval(timeInterval : TimeInterval) -> String{
-        let dateSinceRefDate = Date(timeIntervalSinceReferenceDate: timeInterval)
+//        let dateSinceRefDate = Date(timeIntervalSinceReferenceDate: timeInterval)
         let dateSince1970 = Date(timeIntervalSince1970: timeInterval)
         
         let theFormatter = DateFormatter()

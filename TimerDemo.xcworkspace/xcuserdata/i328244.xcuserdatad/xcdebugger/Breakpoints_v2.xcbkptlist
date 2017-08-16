@@ -318,11 +318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/ViewControllers/LoginVC.swift"
-            timestampString = "521407711.593654"
+            timestampString = "524599281.569851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71">
+            startingLineNumber = "56"
+            endingLineNumber = "56">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -332,11 +332,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/ViewControllers/LoginVC.swift"
-            timestampString = "521407711.593713"
+            timestampString = "524599281.569977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77">
+            startingLineNumber = "56"
+            endingLineNumber = "56">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -388,7 +388,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.079424"
+            timestampString = "524599281.570229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -436,7 +436,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.079843"
+            timestampString = "524599281.570338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -484,7 +484,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.079966"
+            timestampString = "524599281.570434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080073"
+            timestampString = "524599281.570528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
             landmarkType = "7">
             <Locations>
@@ -516,12 +516,12 @@
                   moduleName = "TimerDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "524516201.821874"
+                  timestampString = "524598565.938454"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "243"
-                  endingLineNumber = "243"
-                  offsetFromSymbolStart = "3656">
+                  startingLineNumber = "242"
+                  endingLineNumber = "242"
+                  offsetFromSymbolStart = "4866">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -531,12 +531,12 @@
                   moduleName = "TimerDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "524516201.823237"
+                  timestampString = "524598565.94227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "243"
-                  endingLineNumber = "243"
-                  offsetFromSymbolStart = "10468">
+                  startingLineNumber = "242"
+                  endingLineNumber = "242"
+                  offsetFromSymbolStart = "13168">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -548,11 +548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080194"
+            timestampString = "524599281.570625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -564,11 +564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080307"
+            timestampString = "524599281.570716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
             landmarkType = "7">
             <Locations>
@@ -580,12 +580,12 @@
                   moduleName = "TimerDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "524516201.828697"
+                  timestampString = "524598565.957255"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
-                  offsetFromSymbolStart = "9348">
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "11628">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -595,12 +595,12 @@
                   moduleName = "TimerDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "524516201.829915"
+                  timestampString = "524598565.960963"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -612,7 +612,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080443"
+            timestampString = "524599281.570803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -628,7 +628,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080576"
+            timestampString = "524599281.570887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -644,7 +644,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080677"
+            timestampString = "524599281.570973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -660,7 +660,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.080772"
+            timestampString = "524599281.571056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -692,11 +692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/TaskHandler.swift"
-            timestampString = "524507714.503967"
+            timestampString = "524599281.571165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "resumeCurrentTask()"
             landmarkType = "7">
          </BreakpointContent>
@@ -724,7 +724,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/OnBoardingHandler.swift"
-            timestampString = "524587420.536416"
+            timestampString = "524599281.571297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -740,7 +740,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/OnBoardingHandler.swift"
-            timestampString = "524587420.53664"
+            timestampString = "524599281.571396"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -772,11 +772,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.08156"
+            timestampString = "524599281.571539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "setInitialValueForUserInfo(completionHanlder_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -788,11 +788,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "524512916.081683"
+            timestampString = "524599281.571632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "saveTaskCollection(taskColl:)"
             landmarkType = "7">
          </BreakpointContent>
