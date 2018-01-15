@@ -18,7 +18,11 @@ protocol TaskEventHanlder {
     func taskDidComplete()
 }
 
-class Task : TimerEventHandler {
+class Task : TimerEventHandler, CustomStringConvertible {
+    
+    var description: String{
+        return "\n ---------------------------------------- \n Task Description : \n  \t name : \t\t \(taskName) \n \t savedDate : \t \(savedDate) \n"
+    }
     
     var delegate : TaskEventHanlder?
     
@@ -71,13 +75,13 @@ class Task : TimerEventHandler {
     }
     
     init?(firebaseDict : [String:Any?]) {
-        guard let validTaskName = firebaseDict["taskName"] as? String else {return nil}
-        guard let validTaskType = firebaseDict["taskType"] as? String else {return nil}
-        guard let validSavedDate = firebaseDict["savedDate"] as? TimeInterval else {return nil}
+        guard let validTaskName = firebaseDict["taskName"] as? String else {assertionFailure("\(#function) -> Invalid taskName"); return nil}
+        guard let validTaskType = firebaseDict["taskType"] as? String else {assertionFailure("\(#function) -> Invalid taskType"); return nil}
+        guard let validSavedDate = firebaseDict["savedDate"] as? TimeInterval else {assertionFailure("\(#function) -> Invalid Saved Date"); return nil}
 //        guard let validPerfectTask = firebaseDict["isPerfectTask"] as? Bool else {return nil}
-        guard let validTimer = firebaseDict["timer"] as? [String : Any?] else {return nil}
-        guard let tempTaskStatus = firebaseDict["taskStatus"] as? String else {return nil}
-        guard let validTaskStatus = TaskStatus(rawValue: tempTaskStatus) else {return nil}
+        guard let validTimer = firebaseDict["timer"] as? [String : Any?] else {assertionFailure("\(#function) -> Invalid timer"); return nil}
+        guard let tempTaskStatus = firebaseDict["taskStatus"] as? String else {assertionFailure("\(#function) -> Invalid taskStatus"); return nil}
+        guard let validTaskStatus = TaskStatus(rawValue: tempTaskStatus) else {assertionFailure("\(#function) -> Invalid taskStatus"); return nil}
         
         var validPauseList = [["":""]]
                         
