@@ -10,8 +10,19 @@ import XCTest
 
 class TaskDetailsFetchTests: XCTestCase {
     
-    let tasksFilePath = "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TimerDemoTestData_Tasks.csv"
-    let taskCollFilePath = "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TimerDemoTestData_TaskColl.csv"
+    var tasksFilePath : String{
+        
+        let theBundle = Bundle(for: type(of: self))
+        return theBundle.path(forResource: "TimerDemoTestData_Tasks", ofType: "csv")!
+      
+        //"/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TimerDemoTestData_Tasks.csv"
+    }
+
+    var taskCollFilePath : String {
+        let theBundle = Bundle(for: type(of: self))
+        return theBundle.path(forResource: "TimerDemoTestData_TaskColl", ofType: "csv")!
+
+    } //= "/Users/i328244/Desktop/XCode Projects/TimerDemo/TimerDemo/TimerDemoTestData_TaskColl.csv"
 
     override func setUp() {
         super.setUp()
@@ -54,7 +65,9 @@ class TaskDetailsFetchTests: XCTestCase {
         
         var taskHeaders = [String]()
         var allTasks = Set<String>()
-        
+
+        var pauseHeaders = [String]()
+        var allPauses = Set<String>()
         
         // First : Read the task Collection File. Create a Task Collection on Firebase.
         if let taskCollData = FileManager.default.contents(atPath: taskCollFilePath){

@@ -92,6 +92,9 @@
 		2FFB38601F0D0076006CDF27 /* MiniTaskListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB385F1F0D0076006CDF27 /* MiniTaskListTVC.swift */; };
 		2FFB38621F0D426C006CDF27 /* UserInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */; };
 		2FFB38641F0D428F006CDF27 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38631F0D428F006CDF27 /* UserInfo.swift */; };
+		88880955200D048200825BE0 /* TimerDemoTestData_Tasks.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */; };
+		88880956200D048200825BE0 /* TimerDemoTestData_Pause.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */; };
+		88880957200D048200825BE0 /* TimerDemoTestData_TaskColl.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */; };
 		F88ADD8DA3BF239D57390A2C /* Pods_TimerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +182,9 @@
 		2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHandler.swift; sourceTree = "<group>"; };
 		2FFB38631F0D428F006CDF27 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2FFCDEAE1F43FBAB0021A61D /* TimerDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerDemo.entitlements; sourceTree = "<group>"; };
+		88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Tasks.csv; sourceTree = "<group>"; };
+		88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Pause.csv; sourceTree = "<group>"; };
+		88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_TaskColl.csv; sourceTree = "<group>"; };
 		8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -372,6 +378,9 @@
 		2F9207A81EE6A96400DB3C35 /* TimerDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */,
+				88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */,
+				88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */,
 				2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */,
 				2F43C69F200CBD9800BBA350 /* TaskDetailsFetchTests.swift */,
 				2F9207AB1EE6A96400DB3C35 /* Info.plist */,
@@ -554,6 +563,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88880957200D048200825BE0 /* TimerDemoTestData_TaskColl.csv in Resources */,
+				88880956200D048200825BE0 /* TimerDemoTestData_Pause.csv in Resources */,
+				88880955200D048200825BE0 /* TimerDemoTestData_Tasks.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
