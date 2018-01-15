@@ -125,9 +125,14 @@ class PersistenceHandler {
         }
     }
     
+    /// Fetches all tasks under a collection. You can specify different time parameters specfied in the TimePeriod Enum.
+    ///
+    /// - Parameters:
+    ///   - taskname: <#taskname description#>
+    ///   - timePeriod: <#timePeriod description#>
+    ///   - completionHanlder: <#completionHanlder description#>
     func fetchAllTasksForTimePeriod(taskname : String? = nil, timePeriod : TimePeriod, completionHanlder : @escaping (_ fetchedTaskArr : [Task])->()) {
         
-        let calendar = Calendar.current
         let today = Date()
         var queryStartDate : TimeInterval?
         var queryEndDate : TimeInterval?
@@ -138,17 +143,31 @@ class PersistenceHandler {
             queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
         
         case .week:
-            print("We need to figure out how to handle this")
             queryStartDate = today.startOfWeek.timeIntervalSince1970 * 1000
             queryEndDate = today.endOfWeek.timeIntervalSince1970 * 1000
             
         case .month:
             print("We need to figure out how to handle this")
-            queryStartDate = today.startOfMonth().timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfMonth().timeIntervalSince1970 * 1000
+            queryStartDate = today.startOfMonth.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfMonth.timeIntervalSince1970 * 1000
 
         case .allTime:
             print("fetch tasks for today")
+            queryStartDate = Date.distantPast.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
+        
+        case .thisYear:
+            assertionFailure("Handle this shit.")
+            
+        case .yesterday:
+            assertionFailure("Handle this shit.")
+        
+        case .lastWeek:
+            assertionFailure("Handle this shit.")
+        
+        case .lastMonth:
+            assertionFailure("Handle this shit.")
+
         }
         
         print("Querying for ......  \(createDateFromTimeInterval(timeInterval: queryStartDate!/1000)) : \(createDateFromTimeInterval(timeInterval: queryEndDate!/1000))")
@@ -186,6 +205,7 @@ class PersistenceHandler {
             
             // Group tasks by time period :
             switch timePeriod{
+            
             case .month :
                 for eachTask in sortedTempTask{
                     let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
@@ -233,7 +253,24 @@ class PersistenceHandler {
                 break
 
                 
+            case .yesterday :
+                for eachTask in sortedTempTask{
+                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+                    
+                    if let ordinality = Calendar.current.dateComponents([.hour], from: theTaskDate).hour{
+                        
+                        var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
+                        tempArr.append(eachTask)
+                        tempTaskGroupingDict[ordinality] = []
+                        tempTaskGroupingDict[ordinality] = tempArr
+                        
+                    }
+                }
+                break
+
+                
             default :
+                assertionFailure("\(#file) \(#function) Handle this shit.")
                 break
             }
             

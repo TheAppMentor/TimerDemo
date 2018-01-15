@@ -26,7 +26,8 @@ class TaskDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         title = currentTaskColl?.taskName
         
         taskPickerSegementControl.selectedSegmentIndex = 0
-        populateViewForTimePeriod(timePeriod: .today)
+        //populateViewForTimePeriod(timePeriod: .today)
+        populateViewForTimePeriod(timePeriod: .allTime)
     }
     
 //    func aggregateTaskForADay(taskArr : [Task]) -> [String : AnyObject?] {

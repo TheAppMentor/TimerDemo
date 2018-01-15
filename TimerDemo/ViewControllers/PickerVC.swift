@@ -12,7 +12,6 @@ protocol PickerSelectionDelegate {
     func userSelectedValue(index : Int)
 }
 
-
 class PickerVC: UIViewController,SettingsPickerViewDelegate {
     
     var pickerViewData : SettingsPickerViewData?
