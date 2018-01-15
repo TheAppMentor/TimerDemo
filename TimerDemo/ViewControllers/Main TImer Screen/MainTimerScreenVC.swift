@@ -43,7 +43,7 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
     @IBOutlet weak var bannerView: GADBannerView!
     
     //MARK: GLobal Variables
-    let taskBoy = TaskHandler.shared
+    let taskBoy = TaskManager.shared
     
     var taskPickerView: AKPickerView!
     var taskPickerScrollView : TaskPickerScrollView = TaskPickerScrollView()
@@ -73,11 +73,10 @@ class MainTimerScreenVC: UIViewController,TaskHandlerDelegate,InfoAlertEventHand
         hideBackButton()
         UIApplication.shared.statusBarStyle = .lightContent
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue) : Utilities.shared.largeFontSize, NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue) : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : Utilities.shared.largeFontSize, NSForegroundColorAttributeName : UIColor.white]
         
         //Setup Ad Banner.
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //=> Test APp ID I think.
-        //bannerView.adUnitID = "ca-app-pub-5666511173297473/2835254941"  //Prashanths Real ID
+        bannerView.adUnitID = "ca-app-pub-5666511173297473/2835254941"  //Prashanths Real ID
         GADRequest().testDevices = ["2c8b33977e2ef1dc288ec90df9f4f197"]
         bannerView.rootViewController = self
         

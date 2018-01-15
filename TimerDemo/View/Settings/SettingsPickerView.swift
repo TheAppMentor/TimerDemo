@@ -105,7 +105,7 @@ extension SettingsPickerView : UIPickerViewDataSource,UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if let theString = pickerViewData?.pickerViewItems[row]{
             let attributedString = NSMutableAttributedString(string: theString)
-            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value:UIColor.white , range:(theString as NSString).range(of: theString))
+            attributedString.addAttribute(NSForegroundColorAttributeName, value:UIColor.white , range:(theString as NSString).range(of: theString))
             
             return attributedString
         }

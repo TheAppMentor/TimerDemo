@@ -40,8 +40,8 @@ class TaskPickerTVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white,
-             NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): Utilities.shared.regularFontSize]
+            [NSForegroundColorAttributeName: UIColor.white,
+             NSFontAttributeName: Utilities.shared.regularFontSize]
         
         tableView.tableFooterView = UIView()
         tableView.reloadData()   //Incase a new task is added we need to reload. //TODO: May not be a good way if there are many tasks.. need to refine this further
@@ -162,14 +162,29 @@ class TaskPickerTVC: UITableViewController {
         if segue.identifier == "showTaskDetails"{
         }
     }
+
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        UITableViewRowAction(style: .default, title: "Delete") { (theRowAction, theIndexPath) in
+        
+            print("User Opted to delete row")
+        
+            // Ask for Confirmation :
+            
+            
+            
+        }
+        
+        
+        return nil
+    }
     
     
     @IBAction func addNewTask(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showAddTask", sender: self)
         self.allTasks = []
     }
-    
-    
     
     @IBAction func dismissScreen(_ sender: UIBarButtonItem) {
         dismissScreen()

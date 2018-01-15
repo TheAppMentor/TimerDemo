@@ -64,7 +64,7 @@ class AddTaskVC: UIViewController {
             return
         }
 
-        TaskHandler.shared.checkIfTaskNameIsValid(taskName: valueEntered ?? "") { (taskAlreadyExists) in
+        TaskManager.shared.checkIfTaskNameIsValid(taskName: valueEntered ?? "") { (taskAlreadyExists) in
             
             if taskAlreadyExists == false{
                 let taskCollection = TaskCollection.init(taskName: valueEntered!)

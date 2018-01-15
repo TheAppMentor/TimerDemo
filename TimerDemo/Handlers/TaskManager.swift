@@ -7,21 +7,10 @@
 //
 
 import Foundation
-import FirebaseDatabase
 
-protocol TaskHandlerDelegate {
-    func timerDidChangeValue(seconds : CFTimeInterval)
-    func currentDidPause()
-    func currentTaskDidFreeze()
-    func currentTaskDidUnFreeze(timeRemaining : TimeInterval)
-    func currentTaskDidResume()
-    func currentTaskDidAbandon()
-    func currentTaskDidComplete()
-}
-
-class TaskHandler : TaskEventHanlder {
+class TaskManager {
     
-    static let shared = TaskHandler()
+    static let shared = TaskManager()
     
     var delegate : TaskHandlerDelegate?
     
@@ -31,27 +20,30 @@ class TaskHandler : TaskEventHanlder {
         case .shortBreak:   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "shortBreakDurationMinutes")?.currentValue as! Int) * 60)
         case .longBreak :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "longBreakDurationMinutes")?.currentValue as! Int) * 60)
         }
-    } // 1 Minute
+    }
     
     private init() {}
     
     var currentTask : Task?
     
+    // =====================================
+    // MARK: Create Task
+    // =====================================
+    
     func createTask(name : String, type : TaskType) {
         currentTask = nil
-        
         currentTask = Task(name: name, type: type)
         currentTask?.delegate = self
         currentTask?.taskDuration = taskDuration
     }
     
+    // =====================================
+    // MARK: Task State Handling
+    // =====================================
+    
     func startCurrentTask(){
         currentTask?.start()
         currentTask?.taskStatus = .running
-        
-        // Save this in Recently used tasks.
-//        UserInfoHandler.shared.addTaskCollToRecent(taskCollName: currentTask?.taskName ?? "")
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
     }
     
     func pauseCurrentTask() {
@@ -68,12 +60,49 @@ class TaskHandler : TaskEventHanlder {
         currentTask?.freeze()
     }
     
+    
+    // =====================================
+    // MARK: Task Archiving Methods
+    // =====================================
+    
+    func archiveCurrentTask() {
+        //Add Current task to appropriate Task Collection.
+        PersistenceHandler.shared.saveTask(task: currentTask!)
+    }
+    
+    
+    
+    // =====================================
+    // MARK: Task Helper Methods
+    // =====================================
+    
+    func checkIfTaskNameIsValid(taskName : String, compHandler : @escaping (_ taskAlreayExists : Bool)->()){
+        
+        PersistenceHandler.shared.fetchAllTaskCollections { (theTaskCollList) in
+            
+            for eachTask in theTaskCollList{
+                if eachTask.taskName == taskName{
+                    compHandler(true)
+                    return
+                }
+            }
+            compHandler(false)
+        }
+    }
+}
+
+extension TaskManager : TaskEventHanlder {
+    
+    // =====================================
+    // MARK: Task Event Delegate Handling
+    // =====================================
+    
     func timerDidChangeValue(seconds: CFTimeInterval){
         delegate?.timerDidChangeValue(seconds: seconds)
     }
     
     func taskDidResume() {
-     delegate?.currentTaskDidResume()
+        delegate?.currentTaskDidResume()
     }
     
     func taskDidPause(){
@@ -104,26 +133,6 @@ class TaskHandler : TaskEventHanlder {
         UserInfoHandler.shared.addTaskCollToRecent(taskCollName: currentTask?.taskName ?? "")
         
         delegate?.currentTaskDidComplete()
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newTaskAddedToRecentTasks"), object: nil)
-    }
-    
-    func archiveCurrentTask() {
-        //Add Current task to appropriate Task Collection.
-        PersistenceHandler.shared.saveTask(task: currentTask!)
-    }
-    
-    func checkIfTaskNameIsValid(taskName : String, compHandler : @escaping (_ taskAlreayExists : Bool)->()){
-
-        PersistenceHandler.shared.fetchAllTaskCollections { (theTaskCollList) in
-            
-            for eachTask in theTaskCollList{
-                if eachTask.taskName == taskName{
-                    compHandler(true)
-                    return
-                }
-            }
-            compHandler(false)
-        }
     }
     
 }
