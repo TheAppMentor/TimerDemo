@@ -38,6 +38,10 @@
 		2F43C6AD200CD83A00BBA350 /* TypeOfViz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC023CC1F127C4D0024229C /* TypeOfViz.swift */; };
 		2F43C6AE200CD85C00BBA350 /* Date_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C69C200C94E000BBA350 /* Date_Extension.swift */; };
 		2F43C6AF200CD87300BBA350 /* AuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8AF1E51EF8394100B8BB6B /* AuthHandler.swift */; };
+		2F43C6B0200E7AA700BBA350 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24C1AC1EF12FD200B2CE13 /* TaskManager.swift */; };
+		2F43C6B1200E7BBC00BBA350 /* TaskHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF106021F4E940D005E7E81 /* TaskHandlerDelegate.swift */; };
+		2F43C6B2200E7BC300BBA350 /* OnlineSettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7A1F05473A009E54F7 /* OnlineSettingsHandler.swift */; };
+		2F43C6B3200E7BCB00BBA350 /* UserInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */; };
 		2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B591EE28BD7005BB176 /* AppDelegate.swift */; };
 		2F446B5F1EE28BD7005BB176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B5D1EE28BD7005BB176 /* Main.storyboard */; };
 		2F446B611EE28BD7005BB176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B601EE28BD7005BB176 /* Assets.xcassets */; };
@@ -732,14 +736,18 @@
 				2F43C6A0200CBD9800BBA350 /* TaskDetailsFetchTests.swift in Sources */,
 				2F9207B21EE6AF0A00DB3C35 /* SettingsHandlerTests.swift in Sources */,
 				2F43C6AC200CD83A00BBA350 /* Preferences.swift in Sources */,
+				2F43C6B3200E7BCB00BBA350 /* UserInfoHandler.swift in Sources */,
 				2F43C6AB200CD83A00BBA350 /* PauseCollection.swift in Sources */,
 				2F43C6A2200CD80500BBA350 /* PersistenceHandler.swift in Sources */,
+				2F43C6B2200E7BC300BBA350 /* OnlineSettingsHandler.swift in Sources */,
 				2F43C6A1200CBEC200BBA350 /* TaskCollection.swift in Sources */,
 				2F43C6A5200CD83A00BBA350 /* TimerBoy.swift in Sources */,
 				2F43C6A3200CD80C00BBA350 /* Task.swift in Sources */,
 				2F43C6A6200CD83A00BBA350 /* TaskTimePeriod.swift in Sources */,
 				2F43C6AA200CD83A00BBA350 /* TaskList.swift in Sources */,
 				2F43C6AE200CD85C00BBA350 /* Date_Extension.swift in Sources */,
+				2F43C6B0200E7AA700BBA350 /* TaskManager.swift in Sources */,
+				2F43C6B1200E7BBC00BBA350 /* TaskHandlerDelegate.swift in Sources */,
 				2F43C6AD200CD83A00BBA350 /* TypeOfViz.swift in Sources */,
 				2F43C6A4200CD82E00BBA350 /* UserInfo.swift in Sources */,
 				2F43C6A7200CD83A00BBA350 /* TaskStatus.swift in Sources */,

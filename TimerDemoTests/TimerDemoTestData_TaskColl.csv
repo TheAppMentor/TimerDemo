@@ -1,3 +1,2 @@
-﻿taskName,listOfAssociatedTaskID,totalDurationTasksAllStatus,totalDurationCompletedTasks,numberOfSessionsAllStatus,numberOfSessionsCompletedStatus
-TestTaskA1,A1_001,,,,
-TestTaskA1,A1_002,,,,
+taskName,listOfAssociatedTaskID,totalDurationTasksAllStatus,totalDurationCompletedTasks,numberOfSessionsAllStatus,numberOfSessionsCompletedStatus
+TestTaskA1,A1_001;A1_002,,,,

@@ -17,7 +17,7 @@ class PersistenceHandler {
     var ref: DatabaseReference!
     
     private init() {
-        Database.database().isPersistenceEnabled = true
+        //Database.database().isPersistenceEnabled = true
         ref = Database.database().reference()
     }
 
