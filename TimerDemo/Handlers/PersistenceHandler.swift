@@ -114,11 +114,12 @@ class PersistenceHandler {
         for i in 0..<taskIDArray.count{
             let eachTaskID = taskIDArray[i]
             self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).observeSingleEvent(of: .value, with: { (snapshot) in
-                let fetchedTaskDict = snapshot.value as? [String:Any?] ?? [:]
-                if let theTask = Task(firebaseDict: fetchedTaskDict){
-                    tempTaskArr.append(theTask)
-                    if i == taskIDArray.count - 1 {
-                        completionHandler(tempTaskArr)
+                if let fetchedTaskDict = snapshot.value as? [String:Any?]{
+                    if let theTask = Task(firebaseDict: fetchedTaskDict){
+                        tempTaskArr.append(theTask)
+                        if i == taskIDArray.count - 1 {
+                            completionHandler(tempTaskArr)
+                        }
                     }
                 }
             })

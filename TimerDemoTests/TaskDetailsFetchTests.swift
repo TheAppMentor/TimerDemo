@@ -48,13 +48,11 @@ class TaskDetailsFetchTests: XCTestCase {
     // Setup Test Tasks
     func setupTestTasks(){
         createCreateTaskCollections()
-
     }
 
     func createCreateTasks(Collection : TaskCollection){
         
     }
-
     
     func createCreateTaskCollections(){
         
@@ -146,34 +144,37 @@ class TaskDetailsFetchTests: XCTestCase {
                     }
                     
                     // Get list of task IDs
-                    let taskList = tempDict["listOfAssociatedTaskID"] as! String
-                    let associatedTaskID = taskList.components(separatedBy: ";")
-                    tempDict["listOfAssociatedTaskID"] = associatedTaskID
                     
-                    // Calc stuff related to tasks.
-                    // totalDurationTasksAllStatus
-                    
-                    let filteredTaskList = taskArr.filter({
-                        return associatedTaskID.contains($0.taskName)
-                    })
-                    
-                    var totalDurationTasksAllStatus : CFTimeInterval = 0
-                    var totalDurationCompletedTasks : CFTimeInterval = 0
-                    
-                    filteredTaskList.forEach({totalDurationTasksAllStatus += $0.taskDuration})
-                    filteredTaskList.filter({return $0.taskStatus == .completed}).forEach({totalDurationCompletedTasks += $0.taskDuration})
-                    
-                    tempDict["totalDurationTasksAllStatus"] = totalDurationTasksAllStatus
-                    tempDict["totalDurationCompletedTasks"] = totalDurationCompletedTasks
-                    tempDict["numberOfSessionsAllStatus"] = filteredTaskList.count
-                    tempDict["numberOfSessionsCompletedStatus"] = filteredTaskList.filter({return $0.taskStatus == .completed}).count
-
-                    
-//                    let taskColl = TaskCollection.init(firebaseDict: tempDict)
                     let taskColl = TaskCollection(taskName: tempDict["taskName"] as! String)
-
                     XCTAssertNotNil(taskColl, "😈 Task Coll was not created => \(tempDict)")
                     allTaskColl.append(taskColl)
+
+
+                    
+//                    let taskList = tempDict["listOfAssociatedTaskID"] as! String
+//                    let associatedTaskID = taskList.components(separatedBy: ";")
+//                    tempDict["listOfAssociatedTaskID"] = associatedTaskID
+//                    
+//                    // Calc stuff related to tasks.
+//                    // totalDurationTasksAllStatus
+//                    
+//                    let filteredTaskList = taskArr.filter({
+//                        return associatedTaskID.contains($0.taskName)
+//                    })
+//                    
+//                    var totalDurationTasksAllStatus : CFTimeInterval = 0
+//                    var totalDurationCompletedTasks : CFTimeInterval = 0
+//                    
+//                    filteredTaskList.forEach({totalDurationTasksAllStatus += $0.taskDuration})
+//                    filteredTaskList.filter({return $0.taskStatus == .completed}).forEach({totalDurationCompletedTasks += $0.taskDuration})
+//                    
+//                    tempDict["totalDurationTasksAllStatus"] = totalDurationTasksAllStatus
+//                    tempDict["totalDurationCompletedTasks"] = totalDurationCompletedTasks
+//                    tempDict["numberOfSessionsAllStatus"] = filteredTaskList.count
+//                    tempDict["numberOfSessionsCompletedStatus"] = filteredTaskList.filter({return $0.taskStatus == .completed}).count
+//
+////                    let taskColl = TaskCollection.init(firebaseDict: tempDict)
+
                 }
             }
         }

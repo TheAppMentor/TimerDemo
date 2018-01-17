@@ -10,6 +10,10 @@ import Foundation
 
 struct TaskCollection {
     
+//    var description: String {
+//        return "\n ---------------------------------------- \n Task Collection Description : \n  \t name : \t\t \(taskName) \n \t totalDurationTasksAllStatus : \t \(totalDurationTasksAllStatus) \n \t numberOfSessionsAllStatus : \t \(numberOfSessionsAllStatus) \n \t totalDurationCompletedTasks : \t \(totalDurationCompletedTasks) \n \t numberOfSessionsCompletedStatus : \t \(numberOfSessionsCompletedStatus) \n"
+//    }
+    
     var taskName : String
     private var listOfAssociatedTaskID: [String] = []
     private var totalDuration : CFTimeInterval = 0.0
