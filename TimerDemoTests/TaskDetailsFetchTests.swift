@@ -32,6 +32,23 @@ class TaskDetailsFetchTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        // Create an expectation for a background download task.
+        let expectation = XCTestExpectation(description: "Login to Fire base")
+        
+        if AuthHandler.shared.isLoggedIn{
+            print("THe GUy is already logged in.")
+            expectation.fulfill()
+        }else{
+            AuthHandler.shared.authenticateUser { (success, userInfo) in
+                print("We have logged on :  \(success)")
+                print("User info is : \(userInfo)")
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+        
     }
     
     override func tearDown() {
@@ -49,53 +66,63 @@ class TaskDetailsFetchTests: XCTestCase {
     func setupTestTasks(){
         createCreateTaskCollections()
     }
+    
+    func testFetchAllTasksCreatedToday(){
+        
+        let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
+        
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "TestTaskA1", timePeriod: .today) { (taskList) in
+            XCTAssertNotNil(taskList, "Taslk list is nil")
+            XCTAssertTrue(!taskList.isEmpty, "Task List is ")
+            print("✅ taskList is \(taskList)")
+            expecation.fulfill()
+        }
+        
+        wait(for: [expecation], timeout: 10.0)
+    }
+    
 
     func createCreateTasks(Collection : TaskCollection){
         
     }
     
     func createCreateTaskCollections(){
-        
-        // Create an expectation for a background download task.
-        let expectation = XCTestExpectation(description: "Login to Fire base")
-        
-        if AuthHandler.shared.isLoggedIn{
-            print("THe GUy is already logged in.")
-            expectation.fulfill()
-        }else{
-            AuthHandler.shared.authenticateUser { (success, userInfo) in
-                print("We have logged on :  \(success)")
-                print("User info is : \(userInfo)")
-                
-                expectation.fulfill()
-            }
-        }
-        
-        wait(for: [expectation], timeout: 10.0)
-        
+
+        var taskCreateExpArr = [XCTestExpectation]()
         
         let taskColl = self.makeTaskCollection(fromFile: self.taskCollFilePath, taskArr: [], pauses: [])
-        taskColl.forEach({PersistenceHandler.shared.saveTaskCollection(taskColl: $0)})
         
-        let allTasks = self.makeTasks(fromFile: self.self.tasksFilePath)
-        for eachTask in allTasks{
-            TaskManager.shared.currentTask = eachTask
-            TaskManager.shared.archiveCurrentTask()
-        }
-        
-        
-        let expectation1 = XCTestExpectation(description: "Waiting to get back all taskes")
-        
-        PersistenceHandler.shared.fetchAllTasksMatchingArray(taskIDArray: allTasks.map({return $0.taskName})) { (retArr) in
-            print("We Got back \(retArr)")
+        taskColl.forEach({
+            let expectationSaveColl = XCTestExpectation(description: "Login to Fire base")
+            taskCreateExpArr.append(expectationSaveColl)
+            PersistenceHandler.shared.saveTaskCollection(taskColl: $0, completionHandler: { (theTaskCollKey) in
+            print("We Save the TaskColl with Key : \(theTaskCollKey)")
+            expectationSaveColl.fulfill()
+        })
             
-            expectation1.fulfill()
-        }
+        })
         
-        wait(for: [expectation1], timeout: 10.0)
+        wait(for: taskCreateExpArr, timeout: 10.0)
         
         let allPauses = self.makePauses(fromFile: self.self.taskPauseFilePath)
-        //let taskColl = self.makeTaskCollection(fromFile: self.taskCollFilePath, taskArr: allTasks, pauses: allPauses)
+        let allTasks = self.makeTasks(fromFile: self.self.tasksFilePath, pauses: allPauses)
+
+//        let expectation1 = XCTestExpectation(description: "Expectation 1 : Waiting to get back all taskes")
+        
+        var allExpecations = [XCTestExpectation]()
+        //allExpecations.append(expectation1)
+        
+        for eachTask in allTasks{
+            let expectationSaveTask = XCTestExpectation(description: "Expectation Save Task")
+            allExpecations.append(expectationSaveTask)
+            PersistenceHandler.shared.saveTask(task: eachTask, completionHandler: { (savedTaskID) in
+                expectationSaveTask.fulfill()
+            })
+            wait(for: [expectationSaveTask], timeout: 10.0)
+        }
+
+        
+        wait(for: allExpecations, timeout: 10.0)
     }
 
     
@@ -183,7 +210,7 @@ class TaskDetailsFetchTests: XCTestCase {
     }
     
     
-    func makeTasks(fromFile : String) -> [Task]{
+    func makeTasks(fromFile : String, pauses : [Pause]) -> [Task]{
         
         var taskHeaders = [String]()
         var allTasksStrArr = [String]()
@@ -217,6 +244,28 @@ class TaskDetailsFetchTests: XCTestCase {
                     
                     tempDict["timer"] = ["duration" : timerDuration, "startTime" : timerStartTime, "endTime" : timerEndTime, "currentTimerValue" : currTimerValue]
                     
+                    // Process the Pauses.
+                    let pauseArr = (tempDict["pauseList"] as! String).components(separatedBy: ";")
+                    var tempPauseArr : [[String:Any?]] = []
+                    
+                    for eachPause in pauseArr{
+                        let thePause = pauses.filter({return $0.reason == eachPause})
+                        
+                        // We are reversing what we did earlier..but what the heck.
+                        //i.e we created a Pause frmo a dict and noww we are recreateing the dict.. but yeah.. its just a test for now.
+                        
+                        for eachFetchedPause in thePause{
+                            var tempPauseDict = [String:Any?]()
+                            tempPauseDict["endTime"] = eachFetchedPause.endTime?.timeIntervalSince1970
+                            tempPauseDict["startTime"] = eachFetchedPause.startTime.timeIntervalSince1970
+                            tempPauseDict["reason"] = eachFetchedPause.reason
+                            tempPauseArr.append(tempPauseDict)
+                        }
+                    }
+                    
+                    
+                    tempDict["pauseList"] = tempPauseArr
+                    
                     let testTask = Task(firebaseDict: tempDict)
                     XCTAssertNotNil(testTask, "😈 Task was not created => \(String(describing: tempDict["taskName"]))")
                     allTasksArr.append(testTask!)
@@ -245,7 +294,6 @@ class TaskDetailsFetchTests: XCTestCase {
                 
                 for eachPause in allPausesStrArr{
                     let pauseDetails = eachPause.components(separatedBy: ",")
-                    
                     var tempDict = [String:Any?]()
                     for (index,value) in pauseDetails.enumerated(){
                         tempDict[pauseHeaders[index]] = value
@@ -256,7 +304,7 @@ class TaskDetailsFetchTests: XCTestCase {
                     
                     tempDict["endTime"] = pauseEndTime
                     tempDict["startTime"] = pauseStartTime
-                    tempDict["reason"] = tempDict["pauseList.Reason"]
+                    tempDict["reason"] = (tempDict["pauseList.Reason"] as! String).replacingOccurrences(of: "\r", with: "")
                     
                     print("We made a pause -- 😈😈😈😈😈😈😈😈😈😈😈😈😈")
                     print(tempDict)

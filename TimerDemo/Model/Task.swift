@@ -84,6 +84,7 @@ class Task : TimerEventHandler, CustomStringConvertible {
         guard let validTaskStatus = TaskStatus(rawValue: tempTaskStatus) else {assertionFailure("\(#function) -> Invalid taskStatus"); return nil}
         
         var validPauseList = [["":""]]
+        //guard let validPauseList = firebaseDict["pauseList"] as? [[String:Any?]] else {assertionFailure("\(#function) -> Invalid Pause list"); return nil}
                         
         //taskID = UUID(uuidString: validTaskID)!
         taskName = validTaskName

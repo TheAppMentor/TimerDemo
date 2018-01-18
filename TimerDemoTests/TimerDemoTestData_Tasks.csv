@@ -1,3 +1,11 @@
 taskID,taskName,savedDate,timer.duration,timer.startTime,timer.endTime,timer.currentTimerValue,taskType,taskStatus,isPerfectTask,pauseList
-A1_001,TestTaskA1,12/10/15 10:55:33,600,12/10/15 10:55:33,12/10/15 10:55:33,0,deepFocus,completed,YES,
+A1_001,TestTaskA1,12/10/15 10:55:33,600,12/10/15 10:55:33,12/10/15 10:55:33,0,deepFocus,completed,YES,PA1_001;PA1_002
 A1_002,TestTaskA1,12/10/15 10:55:33,600,12/10/15 11:25:33,12/10/15 11:45:33,0,deepFocus,completed,YES,
+A1_003,TestTaskA1,12/10/15 10:55:33,600,12/10/15 10:55:33,12/10/15 10:55:33,0,deepFocus,completed,YES,PA1_001;PA1_002
+A1_004,TestTaskA1,12/10/15 10:55:33,600,12/10/15 11:25:33,12/10/15 11:45:33,0,deepFocus,completed,YES,
+A1_005,TestTaskA1,12/10/15 10:55:33,600,12/10/15 10:55:33,12/10/15 10:55:33,0,deepFocus,completed,YES,PA1_001;PA1_002
+A1_006,TestTaskA1,12/10/15 10:55:33,600,12/10/15 11:25:33,12/10/15 11:45:33,0,deepFocus,completed,YES,
+A1_007,TestTaskA1,12/10/15 10:55:33,600,12/10/15 10:55:33,12/10/15 10:55:33,0,deepFocus,completed,YES,PA1_001;PA1_002
+A1_008,TestTaskA1,12/10/15 10:55:33,600,12/10/15 11:25:33,12/10/15 11:45:33,0,deepFocus,completed,YES,
+A1_009,TestTaskA1,12/10/15 10:55:33,600,12/10/15 10:55:33,12/10/15 10:55:33,0,deepFocus,completed,YES,PA1_001;PA1_002
+A1_010,TestTaskA1,12/10/15 10:55:33,600,12/10/15 11:25:33,12/10/15 11:45:33,0,deepFocus,completed,YES,

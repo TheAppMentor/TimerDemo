@@ -26,7 +26,7 @@ class PersistenceHandler {
     //         MARK: Task Processing
     // =============================================//
     
-    func saveTask(task : Task) {
+    func saveTask(task : Task, completionHandler : ((String) -> ())? = nil) {
         
         print("Save Task Called")
         
@@ -44,6 +44,7 @@ class PersistenceHandler {
                         if fetchedTaskColl != nil{
                             let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key, task: theTask)
                             self.saveTaskCollection(taskColl: updatedTaskColl!)
+                            completionHandler?(dbRef.key)
                         }
                     }
                 })
@@ -114,14 +115,14 @@ class PersistenceHandler {
         for i in 0..<taskIDArray.count{
             let eachTaskID = taskIDArray[i]
             self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").child(eachTaskID).observeSingleEvent(of: .value, with: { (snapshot) in
-                if let fetchedTaskDict = snapshot.value as? [String:Any?]{
+                let fetchedTaskDict = snapshot.value as? [String:Any?] ?? [:]
+                guard fetchedTaskDict.isEmpty == false else {completionHandler([]); return}
                     if let theTask = Task(firebaseDict: fetchedTaskDict){
                         tempTaskArr.append(theTask)
                         if i == taskIDArray.count - 1 {
                             completionHandler(tempTaskArr)
                         }
                     }
-                }
             })
         }
     }
@@ -339,10 +340,13 @@ class PersistenceHandler {
     //         MARK: Task Collection Processing
     // =============================================//
     
-    func saveTaskCollection(taskColl : TaskCollection) {
+    func saveTaskCollection(taskColl : TaskCollection, completionHandler : ((String) -> ())? = nil) {
        
        print("Save Task Collection Got Called")
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskColl.taskName).setValue(taskColl.dictFormat)
+        //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskColl.taskName).setValue(taskColl.dictFormat)
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskColl.taskName).setValue(taskColl.dictFormat) { (theError, theDBRef) in
+          completionHandler?(theDBRef.key)
+        }
     }
     
     func fetchAllTaskCollections(completionHandler : ((_ fetchedTaskColl : [TaskCollection])->())? = nil){

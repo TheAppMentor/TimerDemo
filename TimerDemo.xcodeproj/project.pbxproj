@@ -42,8 +42,6 @@
 		2F43C6B1200E7BBC00BBA350 /* TaskHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF106021F4E940D005E7E81 /* TaskHandlerDelegate.swift */; };
 		2F43C6B2200E7BC300BBA350 /* OnlineSettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DBB7A1F05473A009E54F7 /* OnlineSettingsHandler.swift */; };
 		2F43C6B3200E7BCB00BBA350 /* UserInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */; };
-		2F43C6B5200F336D00BBA350 /* GoogleService-Info (4).plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F43C6B4200F336D00BBA350 /* GoogleService-Info (4).plist */; };
-		2F43C6B7200F5C9500BBA350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F43C6B6200F5C9500BBA350 /* GoogleService-Info.plist */; };
 		2F446B5A1EE28BD7005BB176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F446B591EE28BD7005BB176 /* AppDelegate.swift */; };
 		2F446B5F1EE28BD7005BB176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B5D1EE28BD7005BB176 /* Main.storyboard */; };
 		2F446B611EE28BD7005BB176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F446B601EE28BD7005BB176 /* Assets.xcassets */; };
@@ -101,6 +99,7 @@
 		88880955200D048200825BE0 /* TimerDemoTestData_Tasks.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */; };
 		88880956200D048200825BE0 /* TimerDemoTestData_Pause.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */; };
 		88880957200D048200825BE0 /* TimerDemoTestData_TaskColl.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */; };
+		88880959200F8A2900825BE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88880958200F8A2900825BE0 /* GoogleService-Info.plist */; };
 		F88ADD8DA3BF239D57390A2C /* Pods_TimerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,8 +128,6 @@
 		2F3C68401EF989750022BE57 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		2F43C69C200C94E000BBA350 /* Date_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date_Extension.swift; sourceTree = "<group>"; };
 		2F43C69F200CBD9800BBA350 /* TaskDetailsFetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsFetchTests.swift; sourceTree = "<group>"; };
-		2F43C6B4200F336D00BBA350 /* GoogleService-Info (4).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info (4).plist"; path = "../../../../../Downloads/GoogleService-Info (4).plist"; sourceTree = "<group>"; };
-		2F43C6B6200F5C9500BBA350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F446B561EE28BD7005BB176 /* TimerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F446B591EE28BD7005BB176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F446B5E1EE28BD7005BB176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -193,6 +190,7 @@
 		88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Tasks.csv; sourceTree = "<group>"; };
 		88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Pause.csv; sourceTree = "<group>"; };
 		88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_TaskColl.csv; sourceTree = "<group>"; };
+		88880958200F8A2900825BE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB82127F70D5D2218E5D494 /* Pods-TimerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemoTests/Pods-TimerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9177F1DA1C72C69C110085EA /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A151CA76999A37116B1C6AB5 /* Pods-TimerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -379,8 +377,7 @@
 			children = (
 				2F446B771EE67723005BB176 /* Settings.plist */,
 				2F77C1891F437B38002E99BA /* GoogleService-Info_prod.plist */,
-				2F43C6B4200F336D00BBA350 /* GoogleService-Info (4).plist */,
-				2F43C6B6200F5C9500BBA350 /* GoogleService-Info.plist */,
+				88880958200F8A2900825BE0 /* GoogleService-Info.plist */,
 			);
 			path = PList;
 			sourceTree = "<group>";
@@ -555,7 +552,7 @@
 			files = (
 				2F77C18A1F437B38002E99BA /* GoogleService-Info_prod.plist in Resources */,
 				2F0FC9521EF0097F0053167F /* TimerView.xib in Resources */,
-				2F43C6B7200F5C9500BBA350 /* GoogleService-Info.plist in Resources */,
+				88880959200F8A2900825BE0 /* GoogleService-Info.plist in Resources */,
 				2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */,
 				2F446B641EE28BD7005BB176 /* LaunchScreen.storyboard in Resources */,
 				2F9207B51EE7200900DB3C35 /* Project Info.rtf in Resources */,
@@ -564,7 +561,6 @@
 				2F446B781EE67723005BB176 /* Settings.plist in Resources */,
 				2F446B611EE28BD7005BB176 /* Assets.xcassets in Resources */,
 				2F446B5F1EE28BD7005BB176 /* Main.storyboard in Resources */,
-				2F43C6B5200F336D00BBA350 /* GoogleService-Info (4).plist in Resources */,
 				2F8B3A781EE9B5EF0008F439 /* SettingsPickerView.xib in Resources */,
 				2F0118771EEED39100D3FEE9 /* VizChartView.xib in Resources */,
 				2FB39E921EF01307005B3DF4 /* ArcProgressView.xib in Resources */,
