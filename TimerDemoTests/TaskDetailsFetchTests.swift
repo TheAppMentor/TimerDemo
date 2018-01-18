@@ -10,8 +10,14 @@ import XCTest
 
 class TaskDetailsFetchTests: XCTestCase {
     
+    var timer : Timer!
+    var taskList = [Task](){
+        didSet{
+            print("Someone Set the Value of task to \(taskList.count)")
+        }
+    }
+    
     var tasksFilePath : String{
-        
         let theBundle = Bundle(for: type(of: self))
         return theBundle.path(forResource: "TimerDemoTestData_Tasks", ofType: "csv")!
     }
@@ -19,15 +25,125 @@ class TaskDetailsFetchTests: XCTestCase {
     var taskCollFilePath : String {
         let theBundle = Bundle(for: type(of: self))
         return theBundle.path(forResource: "TimerDemoTestData_TaskColl", ofType: "csv")!
-
     }
 
     var taskPauseFilePath : String {
         let theBundle = Bundle(for: type(of: self))
         return theBundle.path(forResource: "TimerDemoTestData_Pause", ofType: "csv")!
-        
     }
 
+    var expectedResultsFilePath : URL {
+        let libDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return libDir.appendingPathComponent("expectedResult.plist")
+    }
+
+    func testA000(){
+        createTasksData()
+    }
+    
+    func createTasksData()  {
+        
+        var taskName = "Task Today"
+        
+        let taskColl = createTaskColl(taskName: taskName)
+        
+        let expectationSaveColl = XCTestExpectation(description: "Login to Fire base")
+        
+        PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: taskName) { (theTaskColl) in
+            if theTaskColl == nil {
+                PersistenceHandler.shared.saveTaskCollection(taskColl: taskColl, completionHandler: { (theTaskCollKey) in
+                    print("We Save the TaskColl with Key : \(theTaskCollKey)")
+                    expectationSaveColl.fulfill()
+                })
+            }else{
+                expectationSaveColl.fulfill()
+            }
+        }
+        
+        wait(for: [expectationSaveColl], timeout: 10.0)
+
+        // Crate tasks for Today.
+        taskList.append(contentsOf: createTasks(taskName: "Task Today", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task Yesterday", timePeriod: .yesterday, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task This Week", timePeriod: .week, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task Last Week", timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .month, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .lastMonth, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+
+        var allExpecations = [XCTestExpectation]()
+        
+        var taskListDict = [[String:Any?]]()
+        
+        for eachtask in taskList{
+            var dict = eachtask.dictFormat
+            dict["savedDate"] = (eachtask.timer.endTime?.timeIntervalSince1970)! * 1000
+            taskListDict.append(dict)
+        }
+        
+
+        NSArray.init(array: taskListDict).write(to: expectedResultsFilePath, atomically: true)
+        
+        print(NSKeyedArchiver.archiveRootObject(taskListDict, toFile: "/Users/i328244/Library/Developer/CoreSimulator/Devices/D082DAD9-7F38-452D-A46B-2768A0B9A11C/data/Containers/Data/Application/855E9472-BE3A-409C-AF64-7E7DC51919F2/Documents/expectedResult.plist"))
+        print(expectedResultsFilePath)
+        
+        for eachTask in taskList{
+            let expectationSaveTask = XCTestExpectation(description: "Expectation Save Task")
+            allExpecations.append(expectationSaveTask)
+            PersistenceHandler.shared.saveTaskWithSavedDateTO_BE_USED_ONLY_FOR_TESTING(task: eachTask, completionHandler: { (savedTaskID) in
+                expectationSaveTask.fulfill()
+            })
+            wait(for: [expectationSaveTask], timeout: 10.0)
+        }
+        
+        
+        wait(for: allExpecations, timeout: 10.0)
+        
+//        for _ in taskList.enumerated(){
+//            var currentIndex = taskList.count - 1
+//
+//            timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { (_) in
+//                self.saveTaskSlowly(taskArr: taskList, indexToSave: currentIndex)
+//                currentIndex -= 1
+//            }
+//
+//            timer.fire()
+//        }
+//
+//        timer.invalidate()
+//        print("Timer is Invalidated")
+        
+//        var allExpectaitons = [XCTestExpectation]()
+//        for eachTask in taskList{
+//            let expectationSaveTask = XCTestExpectation(description: "Expectation Save Task")
+//            allExpectaitons.append(expectationSaveTask)
+//            PersistenceHandler.shared.saveTask(task: eachTask, completionHandler: { (savedTaskID) in
+//                expectationSaveTask.fulfill()
+//            })
+//        }
+//        wait(for: allExpectaitons, timeout: 10.0)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    func testTaskCreation() {
+//        createTasksData()
+//    }
 
     override func setUp() {
         super.setUp()
@@ -55,25 +171,94 @@ class TaskDetailsFetchTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        setupTestTasks()
-    }
+//    
+//    func testExample() {
+//        // This is an example of a functional test case.
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//        setupTestTasks()
+//    }
     
     // Setup Test Tasks
     func setupTestTasks(){
         createCreateTaskCollections()
     }
-    
-    func testFetchAllTasksCreatedToday(){
+
+    func testA2FetchAllTasksCreatedYesterday(){
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
         
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "TestTaskA1", timePeriod: .today) { (taskList) in
-            XCTAssertNotNil(taskList, "Taslk list is nil")
-            XCTAssertTrue(!taskList.isEmpty, "Task List is ")
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Yesterday", timePeriod: .yesterday) { (taskList) in
+            XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
+            XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
+            print("✅ taskList is \(taskList)")
+            expecation.fulfill()
+        }
+        
+        wait(for: [expecation], timeout: 10.0)
+    }
+
+    func testA3FetchAllTasksCreatedThisWeek(){
+        
+        let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
+        
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task This Week", timePeriod: .week) { (fetchedTaskList) in
+            XCTAssertNotNil(fetchedTaskList, "🐞🐞  Task list is nil")
+            XCTAssertTrue(!fetchedTaskList.isEmpty, "🐞🐞 Task List is Empty !!")
+            print("✅ taskList is \(fetchedTaskList)")
+            
+            let expecteDResultArr = NSArray.init(contentsOf: self.expectedResultsFilePath)! as! [[String:Any?]]
+            let expectedResTasks = expecteDResultArr.map({return Task.init(firebaseDict: $0)})
+            
+            let expecteDResult = expectedResTasks.filter(
+            {
+                return ((($0?.savedDate!)!  > Date().startOfWeek.timeIntervalSince1970 * 1000) && ($0?.timer.endTime?.timeIntervalSince1970)! * 1000 < Date().endOfWeek.timeIntervalSince1970 * 1000)
+            })
+
+            XCTAssertTrue(expecteDResult.count == fetchedTaskList.count, "This Week : Count of Items Fetched does not match count of Items Loaded \(expecteDResult.count) vs \(fetchedTaskList.count)")
+            
+            expecation.fulfill()
+        }
+        
+        wait(for: [expecation], timeout: 10.0)
+    }
+
+    
+    func testA4FetchAllTasksCreatedLastWeek(){
+        
+        let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
+        
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Last Week", timePeriod: .lastWeek) { (taskList) in
+            XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
+            XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
+            print("✅ taskList is \(taskList)")
+            expecation.fulfill()
+        }
+        
+        wait(for: [expecation], timeout: 10.0)
+    }
+
+    func testA5FetchAllTasksCreatedThisMonth(){
+        
+        let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
+        
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task This Month", timePeriod: .month) { (taskList) in
+            XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
+            XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
+            print("✅ taskList is \(taskList)")
+            expecation.fulfill()
+        }
+        
+        wait(for: [expecation], timeout: 10.0)
+    }
+
+    
+    func testA1FetchAllTasksCreatedToday(){
+        
+        let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
+        
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Today", timePeriod: .today) { (taskList) in
+            XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
+            XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(taskList)")
             expecation.fulfill()
         }
@@ -263,7 +448,6 @@ class TaskDetailsFetchTests: XCTestCase {
                         }
                     }
                     
-                    
                     tempDict["pauseList"] = tempPauseArr
                     
                     let testTask = Task(firebaseDict: tempDict)
@@ -276,6 +460,13 @@ class TaskDetailsFetchTests: XCTestCase {
         
         return allTasksArr
     }
+    
+    func saveTaskSlowly(taskArr : [Task], indexToSave : Int){
+        PersistenceHandler.shared.saveTask(task: taskArr[indexToSave], completionHandler: { (savedTaskID) in
+            print("Have Saved task ID : \(savedTaskID)")
+        })
+    }
+
     
     func makePauses(fromFile : String) -> [Pause]{
         
@@ -316,7 +507,87 @@ class TaskDetailsFetchTests: XCTestCase {
         }
         
         return allPausesArr
+    }
+    
+    
+    
+    
+    func createTaskColl(taskName : String) -> TaskCollection {
         
+        let taskColl = TaskCollection.init(taskName: taskName)
+        return taskColl
+    }
+    
+    func createTasksForTimePeriod(taskName : String, timePeriod : TimePeriod, taskType : TaskType, duration : CFTimeInterval, numberOfTasks : Int) -> [Task] {
+        
+        var retTaskArr = [Task]()
+        
+        for _ in 0..<numberOfTasks{
+            let tempTask = Task(name: taskName, type: taskType)
+            tempTask.taskDuration = duration
+            retTaskArr.append(tempTask)
+        }
+    
+        return retTaskArr
+    }
+    
+    func createTasks(taskName : String, timePeriod : TimePeriod, taskType : TaskType, taskStatus : TaskStatus, duration : CFTimeInterval,numberOfTasks : Int = 1) -> [Task] {
+
+        var retTasksArr = [Task]()
+        
+        for _ in 0..<numberOfTasks{
+            
+        let rangeOfSeconds = UInt32(randomNumber(MIN: timePeriod.startDate.timeIntervalSince1970, MAX: timePeriod.endDate.timeIntervalSince1970))
+        
+        var totalPauseTime : TimeInterval = 0
+
+            var pauses = [Pause]()
+            let maxPauses = arc4random_uniform(3)
+            
+            if maxPauses > 0{
+                for _ in 0..<maxPauses{
+                    
+                    var tempPauseDict = [String:Any?]()
+                    tempPauseDict["endTime"] = timePeriod.startDate.timeIntervalSince1970 + randomNumber(MIN: 50, MAX: 500)
+                    tempPauseDict["startTime"] = timePeriod.startDate.timeIntervalSince1970
+                    tempPauseDict["reason"] = "Automate Reason"
+                    
+                    let tempPause = Pause.init(firebaseDict: tempPauseDict)
+                    pauses.append(tempPause!)
+                }
+            }
+            
+            pauses.forEach({totalPauseTime += $0.duration!})
+        
+        let taskStartDate = timePeriod.startDate.timeIntervalSince1970 + TimeInterval(arc4random_uniform(rangeOfSeconds))
+        let taskEndDate = timePeriod.startDate.timeIntervalSince1970 + duration + totalPauseTime
+        
+        var tempTimerDict = [String:Any?]()
+        tempTimerDict["duration"] = duration
+        tempTimerDict["currentTimerValue"] = 0.0
+        tempTimerDict["startTime"] = taskStartDate
+        tempTimerDict["endTime"] = taskEndDate
+        
+        let tempTimer = TimerBoy.init(firebaseDict: tempTimerDict)
+        
+        let tempTask = Task(name: taskName, type: taskType)
+        tempTask.timer = tempTimer
+        tempTask.pauseList = pauses
+        tempTask.taskDuration = duration
+        tempTask.taskStatus = .completed
+        
+        retTasksArr.append(tempTask)
+            
+        }
+        
+        return retTasksArr
+
+    }
+    
+    
+    
+    func randomNumber(MIN: TimeInterval, MAX: TimeInterval)-> TimeInterval{
+        return TimeInterval(arc4random_uniform(UInt32(MAX)) + UInt32(MIN));
     }
     
 }

@@ -23,8 +23,8 @@ class TimerBoy {
     
     var delegate : TimerEventHandler?
     
-    fileprivate var startTime: Date?
-    fileprivate var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
+    var startTime: Date?
+    var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
     
 //    var duration: TimeInterval = 25.0 // Get his value from the settings Plist
     var duration: TimeInterval = 0.0
@@ -152,7 +152,6 @@ class TimerBoy {
         }
     }
 }
-
 
 extension TimerBoy{
     

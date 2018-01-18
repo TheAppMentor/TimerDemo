@@ -50,8 +50,34 @@ class PersistenceHandler {
                 })
         }
     }
+    
+    
+    // ONLY FOr TEST
+    func saveTaskWithSavedDateTO_BE_USED_ONLY_FOR_TESTING(task : Task, completionHandler : ((String) -> ())? = nil) {
+        
+        print("Save Task Called")
+        
+        var taskDictToSave = task.dictFormat
+        taskDictToSave["savedDate"] = (task.timer.endTime?.timeIntervalSince1970)! * 1000
+        
+        //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave)
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave) { (theError, dbRef) in
             
+            print("The Key is : \(dbRef.key)")
             
+            self.fetchTaskWithID(taskID: dbRef.key, completionHandler: { (theTask) in
+                
+                self.fetchTaskCollectionWithName(taskName: theTask.taskName) { (fetchedTaskColl) in
+                    if fetchedTaskColl != nil{
+                        let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key, task: theTask)
+                        self.saveTaskCollection(taskColl: updatedTaskColl!)
+                        completionHandler?(dbRef.key)
+                    }
+                }
+            })
+        }
+    }
+
             
             
             
@@ -162,13 +188,16 @@ class PersistenceHandler {
             assertionFailure("Handle this shit.")
             
         case .yesterday:
-            assertionFailure("Handle this shit.")
+            queryStartDate = today.startOfYesterday.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfYesterday.timeIntervalSince1970 * 1000
         
         case .lastWeek:
-            assertionFailure("Handle this shit.")
-        
+            queryStartDate = today.startOfLastWeek .timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfLastWeek.timeIntervalSince1970 * 1000
+
         case .lastMonth:
-            assertionFailure("Handle this shit.")
+            queryStartDate = today.startOfLastMonth.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfLastMonth.timeIntervalSince1970 * 1000
 
         }
         
@@ -270,11 +299,30 @@ class PersistenceHandler {
                 }
                 break
 
+            case .lastWeek :
+                for eachTask in sortedTempTask{
+                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+                    
+                    
+                    
+                    if let ordinality = Calendar.current.dateComponents([.weekday], from: theTaskDate).weekday{
+                        print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
+                        
+                        var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
+                        tempArr.append(eachTask)
+                        tempTaskGroupingDict[ordinality] = []
+                        tempTaskGroupingDict[ordinality] = tempArr
+                    }
+                }
+                break
+
+                
                 
             default :
                 assertionFailure("\(#file) \(#function) Handle this shit.")
                 break
             }
+            
             
             print("Grouped Tasks ---> : \(tempTaskGroupingDict)")
             completionHanlder(sortedTempTask)
@@ -379,7 +427,6 @@ class PersistenceHandler {
                     }
                 }
             })
-            
         }
     }
     

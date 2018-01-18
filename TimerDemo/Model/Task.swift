@@ -28,7 +28,7 @@ class Task : TimerEventHandler, CustomStringConvertible {
     
     //var taskID: String
     internal var timer: TimerBoy! = TimerBoy()
-    internal var taskName: String                // We this value both in the task and in the Task colleciont, to help fire base keep a tow way reference.
+    internal var taskName: String                // We this value both in the task and in the Task colleciont, to help fire base keep a two way reference.
     var taskType: TaskType
     internal var taskTags: [String]?             // Here we can associate hash Tags with tasks to group and categorize them.
     internal var savedDate : TimeInterval?
@@ -56,7 +56,7 @@ class Task : TimerEventHandler, CustomStringConvertible {
         return pauseList.isEmpty
     }
     
-    private var pauseList = [Pause]()
+    var pauseList = [Pause]()
     
     var pauseListDictFormat : [[String:Any?]]{
         var tempPauseArr = [[String:Any?]]()
