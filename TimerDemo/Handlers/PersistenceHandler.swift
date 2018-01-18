@@ -316,6 +316,21 @@ class PersistenceHandler {
                 }
                 break
 
+            case .thisYear :
+                for eachTask in sortedTempTask{
+                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+
+                    if let ordinality = Calendar.current.dateComponents([.month], from: theTaskDate).month{
+                        print("Date is \(self.createDateFromTimeInterval(timeInterval: eachTask.savedDate!/1000)) : Ordinality : \(ordinality)")
+                        
+                        var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
+                        tempArr.append(eachTask)
+                        tempTaskGroupingDict[ordinality] = []
+                        tempTaskGroupingDict[ordinality] = tempArr
+                    }
+                }
+                break
+
                 
                 
             default :
