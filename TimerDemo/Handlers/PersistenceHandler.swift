@@ -175,17 +175,16 @@ class PersistenceHandler {
             queryEndDate = today.endOfWeek.timeIntervalSince1970 * 1000
             
         case .month:
-            print("We need to figure out how to handle this")
             queryStartDate = today.startOfMonth.timeIntervalSince1970 * 1000
             queryEndDate = today.endOfMonth.timeIntervalSince1970 * 1000
 
         case .allTime:
-            print("fetch tasks for today")
             queryStartDate = Date.distantPast.timeIntervalSince1970 * 1000
             queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
         
         case .thisYear:
-            assertionFailure("Handle this shit.")
+            queryStartDate = today.startOfCurrentYear.timeIntervalSince1970 * 1000
+            queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
             
         case .yesterday:
             queryStartDate = today.startOfYesterday.timeIntervalSince1970 * 1000
@@ -217,7 +216,7 @@ class PersistenceHandler {
                 }
             }
             
-            var matchingTasks : [Task] = []
+            var matchingTasks : [Task] = tempTaskArr
             var sortedTempTask : [Task] = []
             // Group the fetched tasks based on task name.
             if let validTaskName = taskname{

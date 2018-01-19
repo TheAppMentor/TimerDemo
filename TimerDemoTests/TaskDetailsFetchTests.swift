@@ -9,7 +9,13 @@
 import XCTest
 
 class TaskDetailsFetchTests: XCTestCase {
-    
+
+    func readTaskExpectedResultsFile() -> [Task]{
+        let expecteDResultArr = NSArray.init(contentsOf: self.expectedResultsFilePath)! as! [[String:Any?]]
+        let expectedResTasks = expecteDResultArr.map({return Task.init(firebaseDict: $0)})
+        return expectedResTasks
+    }
+
     var timer : Timer!
     var taskList = [Task](){
         didSet{
@@ -201,7 +207,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
         
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task This Week", timePeriod: .week) { (fetchedTaskList) in
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: nil, timePeriod: .week) { (fetchedTaskList) in
             XCTAssertNotNil(fetchedTaskList, "🐞🐞  Task list is nil")
             XCTAssertTrue(!fetchedTaskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(fetchedTaskList)")
@@ -214,7 +220,7 @@ class TaskDetailsFetchTests: XCTestCase {
                 return ((($0?.savedDate!)!  > Date().startOfWeek.timeIntervalSince1970 * 1000) && ($0?.timer.endTime?.timeIntervalSince1970)! * 1000 < Date().endOfWeek.timeIntervalSince1970 * 1000)
             })
 
-            XCTAssertTrue(expecteDResult.count == fetchedTaskList.count, "This Week : Count of Items Fetched does not match count of Items Loaded \(expecteDResult.count) vs \(fetchedTaskList.count)")
+            XCTAssertTrue(expecteDResult.count == fetchedTaskList.count, "🐞🐞  This Week : Count of Items Fetched does not match count of Items Loaded \(expecteDResult.count) vs \(fetchedTaskList.count)")
             
             expecation.fulfill()
         }
