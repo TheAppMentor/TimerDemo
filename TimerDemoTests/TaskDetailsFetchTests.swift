@@ -13,7 +13,7 @@ class TaskDetailsFetchTests: XCTestCase {
     func readTaskExpectedResultsFile() -> [Task]{
         let expecteDResultArr = NSArray.init(contentsOf: self.expectedResultsFilePath)! as! [[String:Any?]]
         let expectedResTasks = expecteDResultArr.map({return Task.init(firebaseDict: $0)})
-        return expectedResTasks
+        return expectedResTasks as! [Task]
     }
 
     var timer : Timer!

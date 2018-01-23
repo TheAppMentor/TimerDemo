@@ -15,8 +15,8 @@ class AboutPageVC: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.white,
-             NSForegroundColorAttributeName: Utilities.shared.regularFontSize]
+            [NSAttributedStringKey.foregroundColor: UIColor.white,
+             NSAttributedStringKey.foregroundColor: Utilities.shared.regularFontSize]
 
     }
 
