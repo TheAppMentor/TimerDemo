@@ -69,13 +69,13 @@ class TaskDetailsFetchTests: XCTestCase {
         wait(for: [expectationSaveColl], timeout: 10.0)
 
         // Crate tasks for Today.
-        taskList.append(contentsOf: createTasks(taskName: "Task Today", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task Yesterday", timePeriod: .yesterday, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Week", timePeriod: .week, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task Last Week", timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .month, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .lastMonth, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task Today A", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task Yesterday", timePeriod: .yesterday, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task This Week", timePeriod: .week, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task Last Week", timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .month, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .lastMonth, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
 
         var allExpecations = [XCTestExpectation]()
         
@@ -262,7 +262,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
         
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Today", timePeriod: .today) { (taskList) in
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Today A", timePeriod: .today) { (taskList) in
             XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
             XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(taskList)")
@@ -550,12 +550,14 @@ class TaskDetailsFetchTests: XCTestCase {
             var pauses = [Pause]()
             let maxPauses = arc4random_uniform(3)
             
+            let taskStartDate = timePeriod.startDate.timeIntervalSince1970 + TimeInterval(arc4random_uniform(rangeOfSeconds))
+            
             if maxPauses > 0{
                 for _ in 0..<maxPauses{
                     
                     var tempPauseDict = [String:Any?]()
                     tempPauseDict["endTime"] = timePeriod.startDate.timeIntervalSince1970 + randomNumber(MIN: 50, MAX: 500)
-                    tempPauseDict["startTime"] = timePeriod.startDate.timeIntervalSince1970
+                    tempPauseDict["startTime"] = taskStartDate
                     tempPauseDict["reason"] = "Automate Reason"
                     
                     let tempPause = Pause.init(firebaseDict: tempPauseDict)
@@ -565,8 +567,7 @@ class TaskDetailsFetchTests: XCTestCase {
             
             pauses.forEach({totalPauseTime += $0.duration!})
         
-        let taskStartDate = timePeriod.startDate.timeIntervalSince1970 + TimeInterval(arc4random_uniform(rangeOfSeconds))
-        let taskEndDate = timePeriod.startDate.timeIntervalSince1970 + duration + totalPauseTime
+        let taskEndDate = timePeriod.startDate.timeIntervalSince1970 + duration // + totalPauseTime (Pauses are messing this up) Commenting for now.
         
         var tempTimerDict = [String:Any?]()
         tempTimerDict["duration"] = duration

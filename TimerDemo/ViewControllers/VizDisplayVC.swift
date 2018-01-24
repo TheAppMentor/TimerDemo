@@ -30,11 +30,19 @@ class VizDisplayVC: UIViewController {
     func setupChart() {
         vizChartView.subviews.forEach({$0.removeFromSuperview()})
         
-        ChartHandler.shared.makeBarChart(frame: vizChartView.bounds, vizType: typeOfViz!, dataPointLimit: 3) { (theChartView, theChartTitle) in
+        
+        ChartHandler.shared.makeBarChartForToday(frame: vizChartView.bounds, chartTitle: "Hello",taskName : "Task Today A", dataPointLimit: 3) { (theChartView, theChartTitle) in
             self.vizTitleLabel.text = self.shouldDisplayChartTitle ? theChartTitle : ""
             self.vizChartView.addSubview(theChartView)
             theChartView.frame = self.vizChartView.bounds
+
         }
+        
+//        ChartHandler.shared.makeBarChartForToday(frame: vizChartView.bounds, chartTitle: typeOfViz!, dataPointLimit: 3) { (theChartView, theChartTitle) in
+//            self.vizTitleLabel.text = self.shouldDisplayChartTitle ? theChartTitle : ""
+//            self.vizChartView.addSubview(theChartView)
+//            theChartView.frame = self.vizChartView.bounds
+//        }
         
 //        ChartHandler.shared.makeChart(frame: vizChartView.bounds, vizType: typeOfViz!, taskName : nil, dataPointLimit: 3, completionH: {[unowned self] (theChartView, theChartTitle) in
 //            self.vizTitleLabel.text = self.shouldDisplayChartTitle ? theChartTitle : ""

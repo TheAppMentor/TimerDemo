@@ -34,7 +34,7 @@ extension Date {
         components.day = 1
         components.second = -1
         let dateAtEnd = Calendar.current.date(byAdding: components, to: startOfToday)
-        return dateAtEnd ?? Date()
+        return dateAtEnd!
     }
     
     // ====================================================== //

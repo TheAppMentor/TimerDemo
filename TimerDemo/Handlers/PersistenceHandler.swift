@@ -32,6 +32,7 @@ class PersistenceHandler {
         
         var taskDictToSave = task.dictFormat
         taskDictToSave["savedDate"] = [".sv":"timestamp"]
+        // Time since Unix Epoch in MILISECONDS
         
         //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave)
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").childByAutoId().setValue(taskDictToSave) { (theError, dbRef) in
@@ -162,50 +163,51 @@ class PersistenceHandler {
     func fetchAllTasksForTimePeriod(taskname : String? = nil, timePeriod : TimePeriod, completionHanlder : @escaping (_ fetchedTaskArr : [Task])->()) {
         
         let today = Date()
-        var queryStartDate : TimeInterval?
-        var queryEndDate : TimeInterval?
+        var queryStartTimeInterval : TimeInterval?
+        var queryEndTimeInterval : TimeInterval?
 
         switch timePeriod {
         case .today:
-            queryStartDate = today.startOfToday.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfToday.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
         
         case .week:
-            queryStartDate = today.startOfWeek.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfWeek.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfWeek.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfWeek.timeIntervalSince1970 * 1000
             
         case .month:
-            queryStartDate = today.startOfMonth.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfMonth.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfMonth.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfMonth.timeIntervalSince1970 * 1000
 
         case .allTime:
-            queryStartDate = Date.distantPast.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
         
         case .thisYear:
-            queryStartDate = today.startOfCurrentYear.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfToday.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfCurrentYear.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
             
         case .yesterday:
-            queryStartDate = today.startOfYesterday.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfYesterday.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfYesterday.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfYesterday.timeIntervalSince1970 * 1000
         
         case .lastWeek:
-            queryStartDate = today.startOfLastWeek .timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfLastWeek.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfLastWeek .timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfLastWeek.timeIntervalSince1970 * 1000
 
         case .lastMonth:
-            queryStartDate = today.startOfLastMonth.timeIntervalSince1970 * 1000
-            queryEndDate = today.endOfLastMonth.timeIntervalSince1970 * 1000
+            queryStartTimeInterval = today.startOfLastMonth.timeIntervalSince1970 * 1000
+            queryEndTimeInterval = today.endOfLastMonth.timeIntervalSince1970 * 1000
 
         }
         
-        print("Querying for ......  \(createDateFromTimeInterval(timeInterval: queryStartDate!/1000)) : \(createDateFromTimeInterval(timeInterval: queryEndDate!/1000))")
+        print("Querying for ......  \(createDateFromTimeInterval(timeInterval: queryStartTimeInterval!/1000)) : \(createDateFromTimeInterval(timeInterval: queryEndTimeInterval!/1000))")
 
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryOrdered(byChild: "savedDate").queryStarting(atValue: queryStartDate).queryEnding(atValue: queryEndDate).observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryOrdered(byChild: "savedDate").queryStarting(atValue: queryStartTimeInterval).queryEnding(atValue: queryEndTimeInterval).observeSingleEvent(of: .value, with: { (snapshot) in
 
             let postDict = snapshot.value as? [String:Any?] ?? [:]
             var tempTaskArr = [Task]()
+            print("The Query Returned... \(postDict)")
             for (_,eachTask) in postDict.enumerated(){
                 if let validTaskDict = eachTask.value as? [String : Any?]{
                     if let tempTask = Task(firebaseDict: validTaskDict){
@@ -269,9 +271,13 @@ class PersistenceHandler {
 
             case .today :
                 for eachTask in sortedTempTask{
-                    let theTaskDate = Date(timeIntervalSince1970: eachTask.savedDate!/1000)
+                    let theTaskStartDate = eachTask.timer.startTime!
+                    let theTaskEndDate = eachTask.timer.endTime!
                     
-                    if let ordinality = Calendar.current.dateComponents([.hour], from: theTaskDate).hour{
+                    Calendar.current.dateComponents(in: TimeZone.autoupdatingCurrent, from: theTaskStartDate).hour
+                    
+
+                    if let ordinality = Calendar.current.dateComponents([.hour], from: theTaskStartDate).hour{
                         
                         var tempArr = tempTaskGroupingDict[ordinality] ?? [Task]()
                         tempArr.append(eachTask)
@@ -330,13 +336,10 @@ class PersistenceHandler {
                 }
                 break
 
-                
-                
             default :
                 assertionFailure("\(#file) \(#function) Handle this shit.")
                 break
             }
-            
             
             print("Grouped Tasks ---> : \(tempTaskGroupingDict)")
             completionHanlder(sortedTempTask)
