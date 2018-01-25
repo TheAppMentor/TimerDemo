@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import UIKit
+import SwiftDate
 
 class PersistenceHandler {
     
@@ -163,45 +164,50 @@ class PersistenceHandler {
     func fetchAllTasksForTimePeriod(taskname : String? = nil, timePeriod : TimePeriod, completionHanlder : @escaping (_ fetchedTaskArr : [Task])->()) {
         
         let today = Date()
-        var queryStartTimeInterval : TimeInterval?
-        var queryEndTimeInterval : TimeInterval?
+        var queryStartTimeInterval = timePeriod.startDate.timeIntervalSince1970 * 1000
+        var queryEndTimeInterval =  timePeriod.endDate.timeIntervalSince1970 * 1000
 
-        switch timePeriod {
-        case .today:
-            queryStartTimeInterval = today.startOfToday.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
+//        switch timePeriod {
+//        case .today:
+//            queryStartTimeInterval = today.startOfDay.timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfDay.timeIntervalSince1970 * 1000
+//
+//            //queryStartTimeInterval = today.startOfToday.timeIntervalSince1970 * 1000
+////            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
+//        
+//        case .week:
+//            
+//            queryStartTimeInterval = today.startWeek.timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endWeek.timeIntervalSince1970 * 1000
+//            
+//        case .month:
+//            today.startOf(component: .month)
+//            queryStartTimeInterval =  timePeriod.startDate today. .timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfMonth.timeIntervalSince1970 * 1000
+//
+//        case .allTime:
+//            queryStartTimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
+//        
+//        case .thisYear:
+//            queryStartTimeInterval = today.startOfCurrentYear.timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
+//            
+//        case .yesterday:
+//            queryStartTimeInterval = today.startOfYesterday.timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfYesterday.timeIntervalSince1970 * 1000
+//        
+//        case .lastWeek:
+//            queryStartTimeInterval = today.startOfLastWeek .timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfLastWeek.timeIntervalSince1970 * 1000
+//
+//        case .lastMonth:
+//            queryStartTimeInterval = today.startOfLastMonth.timeIntervalSince1970 * 1000
+//            queryEndTimeInterval = today.endOfLastMonth.timeIntervalSince1970 * 1000
+//
+//        }
         
-        case .week:
-            queryStartTimeInterval = today.startOfWeek.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfWeek.timeIntervalSince1970 * 1000
-            
-        case .month:
-            queryStartTimeInterval = today.startOfMonth.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfMonth.timeIntervalSince1970 * 1000
-
-        case .allTime:
-            queryStartTimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
-        
-        case .thisYear:
-            queryStartTimeInterval = today.startOfCurrentYear.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfToday.timeIntervalSince1970 * 1000
-            
-        case .yesterday:
-            queryStartTimeInterval = today.startOfYesterday.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfYesterday.timeIntervalSince1970 * 1000
-        
-        case .lastWeek:
-            queryStartTimeInterval = today.startOfLastWeek .timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfLastWeek.timeIntervalSince1970 * 1000
-
-        case .lastMonth:
-            queryStartTimeInterval = today.startOfLastMonth.timeIntervalSince1970 * 1000
-            queryEndTimeInterval = today.endOfLastMonth.timeIntervalSince1970 * 1000
-
-        }
-        
-        print("Querying for ......  \(createDateFromTimeInterval(timeInterval: queryStartTimeInterval!/1000)) : \(createDateFromTimeInterval(timeInterval: queryEndTimeInterval!/1000))")
+        print("Querying for ......  \(createDateFromTimeInterval(timeInterval: queryStartTimeInterval/1000)) : \(createDateFromTimeInterval(timeInterval: queryEndTimeInterval/1000))")
 
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Tasks").queryOrdered(byChild: "savedDate").queryStarting(atValue: queryStartTimeInterval).queryEnding(atValue: queryEndTimeInterval).observeSingleEvent(of: .value, with: { (snapshot) in
 

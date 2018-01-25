@@ -1,7 +1,6 @@
 PODS:
   - AKPickerView-Swift (1.0.1)
   - AlertOnboarding (1.9)
-  - Bars (1.0.1)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
@@ -51,12 +50,12 @@ PODS:
   - nanopb/encode (0.3.8)
   - RSPlayPauseButton (1.0.1)
   - SCLAlertView (0.7.0)
+  - SwiftDate (4.5.1)
   - Willow (5.0.1)
 
 DEPENDENCIES:
   - AKPickerView-Swift (~> 1.0)
   - AlertOnboarding (~> 1.9)
-  - Bars (~> 1.0)
   - Charts
   - Firebase
   - Firebase/Auth
@@ -66,12 +65,12 @@ DEPENDENCIES:
   - KeychainSwift (~> 8.0)
   - RSPlayPauseButton (~> 1.0)
   - SCLAlertView (~> 0.7)
+  - SwiftDate (~> 4.5.1)
   - Willow
 
 SPEC CHECKSUMS:
   AKPickerView-Swift: 8509d472bb257649383c276506334a7373d3cb33
   AlertOnboarding: 0c97f5c4feac0a4e914bae5d530f66b4dbc6b771
-  Bars: 2ba836194bf0678066a3ccd4cd2de77146902cd4
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
@@ -86,8 +85,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   RSPlayPauseButton: 9def027a1259ded3a6ecfeb0e57df1775ff22fb0
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   Willow: 2973dd5558b2133d542746bc2ac2249ad54aa119
 
-PODFILE CHECKSUM: 0cf6db45093fac1e040ec69783eab3b9ad310f8f
+PODFILE CHECKSUM: 3f5e4a56756d77b20fd2012f5da582c5338bd4fb
 
 COCOAPODS: 1.4.0

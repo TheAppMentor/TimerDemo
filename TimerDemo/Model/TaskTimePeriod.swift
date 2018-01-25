@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SwiftDate
+
 
 enum TimePeriod : String{
     case today
@@ -22,23 +24,24 @@ enum TimePeriod : String{
 }
 
 extension TimePeriod{
-
+    
     var startDate : Date {
+        
         switch self {
         case .today:
-            return Date().startOfToday
+            return Date().startOf(component: .day)
         case .week:
-            return Date().startOfWeek
+            return Date().startWeek
         case .month:
-            return Date().startOfMonth
+            return Date().startOf(component: .month)
         case .thisYear:
-            return Date().startOfCurrentYear
+            return Date().startOf(component: .year)
         case .yesterday:
-            return Date().startOfYesterday
+            return Date().startOf(component: .day) - 1.day
         case .lastWeek:
-            return Date().startOfLastWeek
+            return Date().startWeek - 1.week
         case .lastMonth:
-            return Date().startOfLastMonth
+            return Date().startOf(component: .month) - 1.month
         case .allTime:
             return Date.distantPast
         }
@@ -47,21 +50,21 @@ extension TimePeriod{
     var endDate : Date{
         switch self {
         case .today:
-            return Date().endOfToday
+            return Date().endOfDay
         case .week:
-            return Date().endOfWeek
+            return Date().endWeek
         case .month:
-            return Date().endOfMonth
+            return Date().endOf(component: .month)
         case .thisYear:
-            return Date().endOfCurrentYear
+            return Date().endOf(component: .year)
         case .allTime:
-            return Date().endOfToday
+            return Date().endOf(component: .year)
         case .yesterday:
-            return Date().endOfYesterday
+            return Date().endOf(component: .day) - 1.day
         case .lastWeek:
-            return Date().endOfLastWeek
+            return Date().endWeek - 1.week
         case .lastMonth:
-            return Date().endOfLastMonth
+            return Date().endOf(component: .month) - 1.month
         }
     }    
 }

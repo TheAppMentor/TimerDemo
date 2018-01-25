@@ -16,9 +16,9 @@ target 'TimerDemo' do
   pod 'AKPickerView-Swift', '~> 1.0'
   pod 'Google-Mobile-Ads-SDK'
   pod 'AlertOnboarding', '~> 1.9'
-  pod 'Bars', '~> 1.0'
   pod 'Charts'
   pod 'Willow'
+  pod 'SwiftDate',  '~> 4.5.1'
 
   target 'TimerDemoTests' do
     inherit! :search_paths
@@ -30,6 +30,8 @@ target 'TimerDemo' do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'KeychainSwift', '~> 8.0'
+    pod 'Willow'
+    pod 'SwiftDate',  '~> 4.5.1'
   end
 
 end

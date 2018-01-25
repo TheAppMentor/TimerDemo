@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Bars
 import Charts
 
 class ChartHandler : NSObject {
@@ -145,22 +144,13 @@ class ChartHandler : NSObject {
 
 
 
-extension ChartHandler : BARViewDataSource, IAxisValueFormatter {
+extension ChartHandler : IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let values = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
         //return values[Int(value)]
         return "12 AM"
     }
-    
-    func numberOfBars(in barView: BARView!) -> UInt {
-        return 24
-    }
-    
-    func barView(_ barView: BARView!, valueForBarAt index: UInt) -> CGFloat {
-        let arr : [CGFloat] = [1.0,2.0,3.0,4.0,5.0,1.0,2.0,3.0,4.0,5.0,1.0,2.0,3.0,4.0,5.0,1.0,2.0,3.0,4.0,5.0,1.0,2.0,3.0,4.0]
-        return arr[Int(index)]
-    }
-    
+        
     func makeBarChartForToday(frame : CGRect, chartTitle : String, taskName : String? = nil, dataPointLimit : Int, completionH : @escaping (_ chartView : UIView, _ chartTitle : String)->()){
         
         if let taskName = taskName{

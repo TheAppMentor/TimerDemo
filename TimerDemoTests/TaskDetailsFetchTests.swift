@@ -217,7 +217,7 @@ class TaskDetailsFetchTests: XCTestCase {
             
             let expecteDResult = expectedResTasks.filter(
             {
-                return ((($0?.savedDate!)!  > Date().startOfWeek.timeIntervalSince1970 * 1000) && ($0?.timer.endTime?.timeIntervalSince1970)! * 1000 < Date().endOfWeek.timeIntervalSince1970 * 1000)
+                return ((($0?.savedDate!)!  > Date().startWeek.timeIntervalSince1970 * 1000) && ($0?.timer.endTime?.timeIntervalSince1970)! * 1000 < Date().endWeek.timeIntervalSince1970 * 1000)
             })
 
             XCTAssertTrue(expecteDResult.count == fetchedTaskList.count, "🐞🐞  This Week : Count of Items Fetched does not match count of Items Loaded \(expecteDResult.count) vs \(fetchedTaskList.count)")
