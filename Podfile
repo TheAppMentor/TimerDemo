@@ -19,6 +19,7 @@ target 'TimerDemo' do
   pod 'Charts'
   pod 'Willow'
   pod 'SwiftDate',  '~> 4.5.1'
+  pod 'DotsLoading', '~> 1.0'
 
   target 'TimerDemoTests' do
     inherit! :search_paths

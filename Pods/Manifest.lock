@@ -4,6 +4,7 @@ PODS:
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
+  - DotsLoading (1.0.0)
   - Firebase (4.0.4):
     - Firebase/Core (= 4.0.4)
   - Firebase/Auth (4.0.4):
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - AKPickerView-Swift (~> 1.0)
   - AlertOnboarding (~> 1.9)
   - Charts
+  - DotsLoading (~> 1.0)
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -72,6 +74,7 @@ SPEC CHECKSUMS:
   AKPickerView-Swift: 8509d472bb257649383c276506334a7373d3cb33
   AlertOnboarding: 0c97f5c4feac0a4e914bae5d530f66b4dbc6b771
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  DotsLoading: 1721e46a85d2424e5febbe705fb9e8b23cfea2db
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -88,6 +91,6 @@ SPEC CHECKSUMS:
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   Willow: 2973dd5558b2133d542746bc2ac2249ad54aa119
 
-PODFILE CHECKSUM: 3f5e4a56756d77b20fd2012f5da582c5338bd4fb
+PODFILE CHECKSUM: 6ea8d39bec5dbb71fb53e34b77845517f8458261
 
 COCOAPODS: 1.4.0
