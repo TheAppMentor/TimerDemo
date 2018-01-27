@@ -9,10 +9,9 @@
 import UIKit
 
 class TestViewVC: UIViewController {
-    
-    
+
     @IBOutlet weak var progressView: ArcProgressView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,11 +22,10 @@ class TestViewVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         //progressView.animateProgressBarForwards()
     }
-    
 
     /*
     // MARK: - Navigation

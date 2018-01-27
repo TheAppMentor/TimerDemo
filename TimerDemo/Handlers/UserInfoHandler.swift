@@ -10,30 +10,30 @@ import Foundation
 
 class UserInfoHandler {
     static let shared = UserInfoHandler()
-    
-    private var _currentUserInfo : UserInfo?
-    
+
+    private var _currentUserInfo: UserInfo?
+
     private init() {
     }
-    
-    func populateUserInfo(completionHanlder : @escaping ()->()) {
+
+    func populateUserInfo(completionHanlder : @escaping ()->Void) {
         PersistenceHandler.shared.fetchUserInfo(completionHandler: { (theUserInfo) in
             self._currentUserInfo = theUserInfo
             completionHanlder()
         })
     }
-    
-    var currentUserInfo : UserInfo{
+
+    var currentUserInfo: UserInfo {
         return _currentUserInfo!
     }
-    
-    func addTaskCollToRecent(taskCollName : String) {
+
+    func addTaskCollToRecent(taskCollName: String) {
         _currentUserInfo = _currentUserInfo?.addTaskCollToRecent(taskCollName: taskCollName)
         PersistenceHandler.shared.saveUserInfo(userInfo: _currentUserInfo!)
     }
-    
-    func fetchMostRecentUsedTaskColl(limit : Int = 3) -> [String] {
+
+    func fetchMostRecentUsedTaskColl(limit: Int = 3) -> [String] {
         return _currentUserInfo?.fetchMostRecentUsedTaskColl(limit: limit) ?? []
     }
-    
+
 }

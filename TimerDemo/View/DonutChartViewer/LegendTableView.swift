@@ -12,13 +12,13 @@ import UIKit
 
 class LegendTableView: UITableView {
 
-    @IBInspectable var cornerRadius : CGFloat = 10.0
-    
+    @IBInspectable var cornerRadius: CGFloat = 10.0
+
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
         layer.cornerRadius = cornerRadius
-        
+
     }
 }

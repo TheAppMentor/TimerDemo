@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct SettingsPickerViewDataProvider : SettingsPickerViewData {
+struct SettingsPickerViewDataProvider: SettingsPickerViewData {
     var pickerViewIndexOfSelectedItem: Int
-    let pickerViewItems : [String]
-    let pickerViewTitle : String
+    let pickerViewItems: [String]
+    let pickerViewTitle: String
     let isAlert: Bool
 }

@@ -20,8 +20,8 @@ let col8 = UIColor(red: (77.0/255.0), green: (208.0/255.0), blue: (255.0/255.0),
 let col9 = UIColor(red: (229.0/255.0), green: (115.0/255.0), blue: (115.0/255.0), alpha: 1.0)
 
 struct DonutData {
-    
-    var dataPoints : [Double]
-    let colorPalette = [col1,col2,col3,col4,col5,col6,col7,col8,col9]
-    
+
+    var dataPoints: [Double]
+    let colorPalette = [col1, col2, col3, col4, col5, col6, col7, col8, col9]
+
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TaskStatus : String {
+enum TaskStatus: String {
     case notStarted
     case running
     case paused

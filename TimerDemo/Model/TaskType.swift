@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TaskType : String {
+enum TaskType: String {
     case deepFocus
     case shortBreak
     case longBreak

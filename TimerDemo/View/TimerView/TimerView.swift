@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 @IBDesignable
 
 class TimerView: UIView {
@@ -21,24 +20,23 @@ class TimerView: UIView {
     }
     */
     @IBOutlet weak var theArcProgressView: ArcProgressView!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
-        
+
     }
-    
+
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setupView()
     }
-    
+
     func setupView() {
         let bundle = Bundle.init(for: type(of: self))
         let ourNib = UINib(nibName: "TimerView", bundle: bundle)
@@ -46,6 +44,5 @@ class TimerView: UIView {
         theView.frame = self.bounds
         self.addSubview(theView)
     }
-
 
 }

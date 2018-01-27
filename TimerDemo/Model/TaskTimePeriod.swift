@@ -9,8 +9,7 @@
 import Foundation
 import SwiftDate
 
-
-enum TimePeriod : String{
+enum TimePeriod: String {
     case today
     case week
     case month
@@ -22,31 +21,30 @@ enum TimePeriod : String{
 
     case allTime
 }
-extension TimePeriod{
-    
-    var groupingDimValues : [String]{
+extension TimePeriod {
+
+    var groupingDimValues: [String] {
         switch self {
         case .today :
             return ["Today"]
         case .yesterday :
             return ["Yesterday"]
         case .week, .lastWeek :
-            return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+            return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         case .month, .lastMonth :
-            return ["Week 1","Week2","Week 3","Week 4"]
+            return ["Week 1", "Week2", "Week 3", "Week 4"]
         case .thisYear :
-            return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+            return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         default :
             return [""]
         }
     }
-    
-    
+
 }
-extension TimePeriod{
-    
-    var startDate : Date {
-        
+extension TimePeriod {
+
+    var startDate: Date {
+
         switch self {
         case .today:
             return Date().startOf(component: .day)
@@ -66,8 +64,8 @@ extension TimePeriod{
             return Date.distantPast
         }
     }
-    
-    var endDate : Date{
+
+    var endDate: Date {
         switch self {
         case .today:
             return Date().endOfDay
@@ -86,5 +84,5 @@ extension TimePeriod{
         case .lastMonth:
             return Date().endOf(component: .month) - 1.month
         }
-    }    
+    }
 }

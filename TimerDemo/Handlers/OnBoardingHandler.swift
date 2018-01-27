@@ -9,28 +9,27 @@
 import Foundation
 import AlertOnboarding
 
-class OnBoardingHandler : AlertOnboardingDelegate {
-    
-    var actionOnSkipOrComplete : () -> ()
-    
-    init(actionOnSkipOrComplete : @escaping ()->()) {
+class OnBoardingHandler: AlertOnboardingDelegate {
+
+    var actionOnSkipOrComplete : () -> Void
+
+    init(actionOnSkipOrComplete : @escaping ()->Void) {
         self.actionOnSkipOrComplete = actionOnSkipOrComplete
     }
-    
+
     func showOnBoardingScreen() {
-        let alertBoy = AlertOnboarding.init(arrayOfImage: ["Swamy","Swamy","Swamy"], arrayOfTitle: ["Focus Monk","Gain Insights","Get Started"],
+        let alertBoy = AlertOnboarding.init(arrayOfImage: ["Swamy", "Swamy", "Swamy"], arrayOfTitle: ["Focus Monk", "Gain Insights", "Get Started"],
                                             arrayOfDescription: ["Focus Monk helps you measure the time you spend on your most important tasks.",
                                                                  "Our data gives you insights on how you are spending your time.",
                                                                  "Its that easy. Next, Create a task you want to focus on, and get going."])
         customizeAlertView(onboardingView: alertBoy)
-    
+
         alertBoy.delegate = self
         alertBoy.show()
     }
-    
 
-    func customizeAlertView(onboardingView : AlertOnboarding) {
-        
+    func customizeAlertView(onboardingView: AlertOnboarding) {
+
 //        //Modify background color of AlertOnboarding
 //        self.alertView.colorForAlertViewBackground = UIColor(red: 173/255, green: 206/255, blue: 183/255, alpha: 1.0)
 //
@@ -57,16 +56,15 @@ class OnBoardingHandler : AlertOnboardingDelegate {
         onboardingView.titleGotItButton = "Got it"
     }
 
-    
-    func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int){
+    func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int) {
         actionOnSkipOrComplete()
     }
-    
-    func alertOnboardingCompleted(){
+
+    func alertOnboardingCompleted() {
         actionOnSkipOrComplete()
     }
-    
-    func alertOnboardingNext(_ nextStep: Int){
+
+    func alertOnboardingNext(_ nextStep: Int) {
     }
-    
+
 }

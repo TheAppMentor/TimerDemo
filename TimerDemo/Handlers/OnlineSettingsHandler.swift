@@ -9,29 +9,29 @@
 import Foundation
 
 class OnlinePreferenceHandler {
-    
+
     // Stored Properties
     static let shared = OnlinePreferenceHandler()
-    var allPreferences : [PreferenceCategory]
+    var allPreferences: [PreferenceCategory]
 //    let prefOrderArray = [PreferenceType.Duration,.Intervals,.Goals,.Alerts]
-    let prefOrderArray = [PreferenceType.Duration,.Alerts]
-    
+    let prefOrderArray = [PreferenceType.Duration, .Alerts]
+
     private init() {
         allPreferences = []
         //populateAllPreferences()
     }
-    
-    func populateAllPreferences(completionHandler : (()->())? = nil) {
-        
+
+    func populateAllPreferences(completionHandler : (()->Void)? = nil) {
+
         var prefCatArray = [PreferenceCategory]()
-        
-        PersistenceHandler.shared.fetchAllPreferences{ (fetchedPrefDict) in
-            
-                for eachPrefGroup in fetchedPrefDict.enumerated(){
+
+        PersistenceHandler.shared.fetchAllPreferences { (fetchedPrefDict) in
+
+                for eachPrefGroup in fetchedPrefDict.enumerated() {
                     var tempPerfArr = [Preference]()
-                    
-                    if let eachPrefCategoryDict = eachPrefGroup.element.value as? [String : AnyObject]{
-                        for eachPref in eachPrefCategoryDict.enumerated(){
+
+                    if let eachPrefCategoryDict = eachPrefGroup.element.value as? [String: AnyObject] {
+                        for eachPref in eachPrefCategoryDict.enumerated() {
                             let tempPref = Preference(name: eachPref.element.key ,
                                                       displayName:eachPref.element.value["displayName"] as! String,
                                                       listOfValues: eachPref.element.value["listOfValues"] as! [AnyObject],
@@ -40,15 +40,15 @@ class OnlinePreferenceHandler {
                             tempPerfArr.append(tempPref)
                         }
                     }
-                    
+
                     prefCatArray.append(PreferenceCategory(categoryName: PreferenceType(rawValue: eachPrefGroup.element.key)!, preferences: tempPerfArr))
-                    
+
                 }
                 self.allPreferences = prefCatArray
                 completionHandler?()
         }
     }
-    
+
 //    func loadInitialPerferenceValues(completionHanlder : @escaping () -> ()) {
 //
 //        var prefCatArray = [PreferenceCategory]()
@@ -78,94 +78,89 @@ class OnlinePreferenceHandler {
 //
 //        }
 //    }
-    
-    
-    func updatePreference(prefType : PreferenceType, updatedValue : Preference, completionHandler : @escaping ()->()) {
-        
+
+    func updatePreference(prefType: PreferenceType, updatedValue: Preference, completionHandler : @escaping ()->Void) {
+
         var tempPrefCategory = PreferenceCategory(categoryName: prefType, preferences: [])
-        
-        for eachCategory in allPreferences.filter({$0.category == prefType}){
-            for eachPref in eachCategory.allPerferences{
+
+        for eachCategory in allPreferences.filter({$0.category == prefType}) {
+            for eachPref in eachCategory.allPerferences {
                 eachPref.name == updatedValue.name ? tempPrefCategory.allPerferences.append(updatedValue) : tempPrefCategory.allPerferences.append(eachPref)
             }
         }
         PersistenceHandler.shared.updatePreferenceCategory(preferenceType: prefType, withPreference: tempPrefCategory)
-        
+
         populateAllPreferences {
             completionHandler()
         }
     }
-    
-    
-    
-    func numberOfSections() -> Int{
+
+    func numberOfSections() -> Int {
         return prefOrderArray.count
     }
-    
-    func numberOfRowsForSection(section: Int) -> Int{
+
+    func numberOfRowsForSection(section: Int) -> Int {
         let prefType = prefOrderArray[section]
-        
-        if let prefCategory = allPreferences.filter({$0.category == prefType}).first{
+
+        if let prefCategory = allPreferences.filter({$0.category == prefType}).first {
             return prefCategory.allPerferences.count
         }
-        
+
         return 0
     }
 //    func fetchSettingForIndex(section: Int, row: Int) -> Preference? {
-    func fetchPreferenceForIndex(section : Int, row : Int) -> Preference?{
-        
+    func fetchPreferenceForIndex(section: Int, row: Int) -> Preference? {
+
         let prefType = prefOrderArray[section]
-        
-        if let prefCategory = allPreferences.filter({$0.category == prefType}).first{
+
+        if let prefCategory = allPreferences.filter({$0.category == prefType}).first {
             return prefCategory.allPerferences[row]
         }
-        
+
         return nil
     }
-    
-    
-    func cellTypeForPerferenceAtIndexPathIndexPath(section : Int, row : Int) -> String {
+
+    func cellTypeForPerferenceAtIndexPathIndexPath(section: Int, row: Int) -> String {
         //        cellWithRightLabel
         //        plainCell
         //        cellWithButton
-        
+
         let thePref = fetchPreferenceForIndex(section: section, row: row)
 //        return thePref!.name == "isVibrateOn" ? "cellWithButton" : "cellWithRightLabel"
         return thePref!.name == "isVibrateOn" ? "cellWithRightLabel" : "cellWithRightLabel"  //TODO: We need to change this later. See line above
     }
-    
-    func titleForPerferenceAtIndexPath(section : Int, row : Int) -> String {
+
+    func titleForPerferenceAtIndexPath(section: Int, row: Int) -> String {
         let thePref = fetchPreferenceForIndex(section: section, row: row)
         return thePref?.displayName ?? ""
     }
-    
-    func detailLabelForPerferenceAtIndexPath(section : Int, row : Int) -> String {
+
+    func detailLabelForPerferenceAtIndexPath(section: Int, row: Int) -> String {
         let thePref = fetchPreferenceForIndex(section: section, row: row)
         if thePref!.name == "isVibrateOn"{
             return (thePref?.currentValue as! Bool) == true ? "On" : "Off"
         }
         return (String(describing: thePref?.currentValue ?? "" as AnyObject)) + " " + (thePref?.unitName  ?? "")
     }
-    
-    func fetchPrefereceAtIndexPath(section : Int, row : Int) -> Preference {
+
+    func fetchPrefereceAtIndexPath(section: Int, row: Int) -> Preference {
         let prefCategory = allPreferences[section]
         return prefCategory.allPerferences[row]
     }
-    
-    func fetchPreferenceTypeForSection(section : Int) -> PreferenceType {
+
+    func fetchPreferenceTypeForSection(section: Int) -> PreferenceType {
         return prefOrderArray[section]
     }
-    
-    func fetchPreferenceFor(prefType : PreferenceType, prefName : String) -> Preference? {
+
+    func fetchPreferenceFor(prefType: PreferenceType, prefName: String) -> Preference? {
         let prefCategory = allPreferences.filter({$0.category == prefType})
-        
+
         guard prefCategory.count > 0 else {return nil}
-        
+
         let matchingPrefs = prefCategory.first?.allPerferences.filter({$0.name == prefName})
-        
+
         guard matchingPrefs != nil, matchingPrefs!.count > 0 else {return nil}
         return matchingPrefs?.first ?? nil
     }
-    
-    
+
 }

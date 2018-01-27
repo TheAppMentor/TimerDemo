@@ -24,12 +24,10 @@ class AboutPageVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     @IBAction func dismissAboutPage(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
 
     /*
     // MARK: - Navigation

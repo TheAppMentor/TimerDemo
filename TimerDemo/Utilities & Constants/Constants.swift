@@ -10,15 +10,13 @@ import Foundation
 import UIKit
 
 struct Constants {
-    
+
     private init() {}
-    
+
     static let shared = Constants()
-    
-    let tableViewCellHeight : CGFloat = 44.0
-    let sectionHeaderHeight : CGFloat = 30.0
-    let sectionFooterHeight : CGFloat = 30.0
-        
+
+    let tableViewCellHeight: CGFloat = 44.0
+    let sectionHeaderHeight: CGFloat = 30.0
+    let sectionFooterHeight: CGFloat = 30.0
+
 }
-
-

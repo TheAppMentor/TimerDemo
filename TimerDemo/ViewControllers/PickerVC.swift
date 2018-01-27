@@ -9,36 +9,35 @@
 import UIKit
 
 protocol PickerSelectionDelegate {
-    func userSelectedValue(index : Int)
+    func userSelectedValue(index: Int)
 }
 
-class PickerVC: UIViewController,SettingsPickerViewDelegate {
-    
-    var pickerViewData : SettingsPickerViewData?
-    var pickerSelectionDelegate : PickerSelectionDelegate?
+class PickerVC: UIViewController, SettingsPickerViewDelegate {
+
+    var pickerViewData: SettingsPickerViewData?
+    var pickerSelectionDelegate: PickerSelectionDelegate?
 
     @IBOutlet weak var thePickerView: SettingsPickerView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         thePickerView.pickerViewData = pickerViewData
         thePickerView.delegate = self
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         thePickerView.scrollToSelectedRow()
     }
-    
-    func settingsPickerViewCancelPressed(){
+
+    func settingsPickerViewCancelPressed() {
         dismiss(animated: true, completion: nil)
     }
-    
-    func settingsPickerViewDonePressed(index : Int){
+
+    func settingsPickerViewDonePressed(index: Int) {
         // Ask Setting Handler to update data and refresh the table view.
         pickerSelectionDelegate?.userSelectedValue(index: index)
         dismiss(animated: true, completion: nil)
     }
-    
-    
+
 }

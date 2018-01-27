@@ -9,12 +9,10 @@
 import UIKit
 import AKPickerView_Swift
 
-
 protocol TaskPickerScrollViewDelegate {
-    func taskPicked(index : Int)
+    func taskPicked(index: Int)
     func addNewTaskClicked()
 }
-
 
 @IBDesignable
 
@@ -28,26 +26,25 @@ class TaskPickerScrollView: UIView {
      }
      */
     @IBOutlet weak var thePickerView: AKPickerView!
-    
-    var delegate : TaskPickerScrollViewDelegate?
-    
+
+    var delegate: TaskPickerScrollViewDelegate?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
-        
+
     }
-    
+
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setupView()
     }
-    
+
     func setupView() {
         let bundle = Bundle.init(for: type(of: self))
         let ourNib = UINib(nibName: "TaskPickerScrollView", bundle: bundle)
@@ -55,9 +52,9 @@ class TaskPickerScrollView: UIView {
         theView.frame = self.bounds
         self.addSubview(theView)
     }
-    
+
     @IBAction func addTaskButtonClicked(_ sender: UIButton) {
         delegate?.addNewTaskClicked()
     }
-    
+
 }

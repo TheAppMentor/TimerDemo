@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct DonutSegmentInfo {
-    var segmentColor : UIColor
-    var segmentStartAngle : CGFloat
-    var segmentEndAngle : CGFloat
+    var segmentColor: UIColor
+    var segmentStartAngle: CGFloat
+    var segmentEndAngle: CGFloat
 }

@@ -11,18 +11,17 @@ import RSPlayPauseButton
 
 class RoundedButton: RSPlayPauseButton {
 
-    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
-        
+
         layer.shadowOffset = CGSize(width: 1, height: 4)
         layer.shadowRadius = 3.0
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowOpacity = 0.5
         layer.masksToBounds = false
-        
+
 //        let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
 //        
 ////        let shadowShapeLayer = CAShapeLayer()
@@ -47,8 +46,7 @@ class RoundedButton: RSPlayPauseButton {
 //        layer.addSublayer(circleShape)
 //        
 //        //clipsToBounds = true
-        
+
     }
-    
 
 }

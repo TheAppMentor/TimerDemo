@@ -8,12 +8,12 @@
 
 import Foundation
 
-func ==(lhs : Setting, rhs : Setting) -> Bool {
+func ==(lhs: Setting, rhs: Setting) -> Bool {
     return lhs.displayName == rhs.displayName && lhs.currentValue == rhs.currentValue
 }
 
-struct Setting : Equatable {
-    let displayName : String
-    let currentValue : String
-    let listOfValues : [String]?
+struct Setting: Equatable {
+    let displayName: String
+    let currentValue: String
+    let listOfValues: [String]?
 }

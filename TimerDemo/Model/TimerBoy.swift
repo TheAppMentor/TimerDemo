@@ -9,42 +9,41 @@
 import Foundation
 
 protocol TimerEventHandler {
-    func timerDidChangeValue(seconds : CFTimeInterval)
+    func timerDidChangeValue(seconds: CFTimeInterval)
     func timerDIdPause()
     func timerDidFreeze()
-    func timerDidUnfreeze(timeRemaining : TimeInterval)
+    func timerDidUnfreeze(timeRemaining: TimeInterval)
     func timerDidResume()
     func timerDidAbandon()
     func timerDidComplete()
 }
 
-
 class TimerBoy {
-    
-    var delegate : TimerEventHandler?
-    
+
+    var delegate: TimerEventHandler?
+
     var startTime: Date?
-    var endTime : Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
-    
+    var endTime: Date?    // Notes : This need not be equal to the timer duration, it could be anytime, coz the guy can pause the task etc.
+
 //    var duration: TimeInterval = 25.0 // Get his value from the settings Plist
     var duration: TimeInterval = 0.0
-    var currentTimerValue : TimeInterval!
-    
+    var currentTimerValue: TimeInterval!
+
     var taskTimer: Timer?
-    
+
     var timeRemaining: TimeInterval? {
         return currentTimerValue
     }
-    
-    var taskStartDateString : String{
+
+    var taskStartDateString: String {
         guard startTime != nil else {return ""}
 
         let timeInterval = startTime!.timeIntervalSince1970/1000.0
         let dateString = Date(timeIntervalSince1970: timeInterval).toString(dateFormat: "MMM d")
         return dateString
     }
-    
-    var taskStartTimeString : String{
+
+    var taskStartTimeString: String {
         guard startTime != nil else {return ""}
 
         let timeInterval = startTime!.timeIntervalSince1970/1000.0
@@ -54,7 +53,7 @@ class TimerBoy {
         return dateString
     }
 
-    var taskEndDateString : String{
+    var taskEndDateString: String {
         guard endTime != nil else {return ""}
 
         let timeInterval = endTime!.timeIntervalSince1970/1000.0
@@ -64,10 +63,10 @@ class TimerBoy {
         return dateString
     }
 
-    var taskEndTimeString : String{
-        
+    var taskEndTimeString: String {
+
         guard endTime != nil else {return ""}
-        
+
         let timeInterval = endTime!.timeIntervalSince1970/1000.0
         let dateString = Date(timeIntervalSince1970: timeInterval).toString(dateFormat: "h:mm a")
 
@@ -75,23 +74,22 @@ class TimerBoy {
         return dateString
     }
 
-    var dictFormat : [String : Any]{
-        var tempDict = [String : Any]()
-        
+    var dictFormat: [String: Any] {
+        var tempDict = [String: Any]()
+
         tempDict["startTime"] = startTime?.timeIntervalSince1970 ?? 0
         tempDict["endTime"] = endTime?.timeIntervalSince1970 ?? 0
         tempDict["duration"] = duration
         tempDict["currentTimerValue"] = currentTimerValue ?? 0
-        
+
         return tempDict
     }
-    
-    
-    var timerElapsedTime : TimeInterval?{
+
+    var timerElapsedTime: TimeInterval? {
         //TODO: This is wrong!!! the guy could have puased the tiemr ... so you can calulate this way !
         guard startTime != nil else {return nil}
         guard endTime != nil else {return nil}
-        
+
         print("          Timer Talking   => StartTime : \(startTime)   End Time : \(endTime)  => \(endTime!.timeIntervalSince(startTime!))")
         return endTime!.timeIntervalSince(startTime!)
     }
@@ -102,50 +100,49 @@ class TimerBoy {
         createTaskTimer()
         taskTimer?.fire()
     }
-    
+
     func pauseTimer() {
         taskTimer?.invalidate()
         //taskTimer = nil
         delegate?.timerDIdPause()
     }
-    
+
     func freezeTimer() {
         taskTimer?.invalidate()
         delegate?.timerDidFreeze()
     }
-    
-    func UnfreezeTimer(estimatedEndTime : Date) {
+
+    func UnfreezeTimer(estimatedEndTime: Date) {
         self.currentTimerValue = estimatedEndTime.timeIntervalSince(Date())
         createTaskTimer()
         taskTimer?.fire()
         delegate?.timerDidUnfreeze(timeRemaining: self.currentTimerValue)
     }
-    
+
     func resumeTimer() {
         createTaskTimer()
         taskTimer?.fire()
         delegate?.timerDidResume()
     }
-    
+
     func resetTimer() {
         startTime = nil
     }
-    
+
     func abandonTimer() {
         endTime = Date()
         taskTimer?.invalidate()
         delegate?.timerDidAbandon()
     }
-    
-    
+
     func createTaskTimer() {
         taskTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (theTimer) in
-            if self.currentTimerValue <= 0{
+            if self.currentTimerValue <= 0 {
                 self.taskTimer?.invalidate()
                 self.endTime = Date()
                 self.delegate?.timerDidComplete()
             }
-            
+
             self.currentTimerValue = self.currentTimerValue - 1.0
             self.delegate?.timerDidChangeValue(seconds: self.currentTimerValue)
             //timerLabel.text = "\(currentTimerValue)"
@@ -153,38 +150,36 @@ class TimerBoy {
     }
 }
 
-extension TimerBoy{
-    
-    convenience init?(firebaseDict : [String : Any?]) {
-        
+extension TimerBoy {
+
+    convenience init?(firebaseDict: [String: Any?]) {
+
         self.init()
-        
+
         guard let validDuration = firebaseDict["duration"] as? TimeInterval else {return nil}
         guard let validCurrTimerVal = firebaseDict["currentTimerValue"] as? TimeInterval else {return nil}
-        
+
         //TODO : This will definlti be an issue.. fix it.. nil and zeor are all not the same thing man.
         let startTimeInterval = firebaseDict["startTime"] as? Double ?? nil
         let endTimeInterval = firebaseDict["endTime"] as? Double ?? nil
-        
+
         if startTimeInterval != nil {startTime = Date(timeIntervalSince1970: startTimeInterval!)} else {startTime = nil}
         if endTimeInterval != nil {endTime = Date(timeIntervalSince1970: endTimeInterval!)} else {endTime = nil}
-        
+
         duration = validDuration
         currentTimerValue = validCurrTimerVal
     }
-    
-    
+
     // Helper Methods
-    internal func convertTimeIntervalToDisplayFormat(seconds : CFTimeInterval) -> String {
+    internal func convertTimeIntervalToDisplayFormat(seconds: CFTimeInterval) -> String {
         return hmsFrom(seconds: Int(seconds))
     }
-    
+
     internal func hmsFrom(seconds: Int) -> String {
         return ("Hours : \(seconds / 3600)  Minutes : \((seconds % 3600) / 60)  Seconds : \((seconds % 3600) % 60)")
     }
-    
+
     internal func getStringFrom(seconds: Int) -> String {
         return seconds < 10 ? "0\(seconds)" : "\(seconds)"
     }
 }
-

@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum TypeOfViz : String {
+enum TypeOfViz: String {
     case tableTaskList
     case chartToday
     case chartThisWeek
     case chartThisMonth
     case chartAlltime
     case recent
-    
-    var vizTitle : String{
+
+    var vizTitle: String {
         switch self {
         case .recent:           return "Recent Tasks"
         case .tableTaskList:    return "Recent Tasks"

@@ -17,9 +17,9 @@ class CustomNavigationBar: UINavigationBar {
         // Drawing code
     }
     */
- 
+
         override func sizeThatFits(_ size: CGSize) -> CGSize {
-            let newSize :CGSize = CGSize(width: self.frame.size.width, height: 88)
+            let newSize: CGSize = CGSize(width: self.frame.size.width, height: 88)
             return newSize
-        }    
+        }
 }

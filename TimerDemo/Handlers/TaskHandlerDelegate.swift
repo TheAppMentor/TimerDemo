@@ -9,10 +9,10 @@
 import Foundation
 
 protocol TaskHandlerDelegate {
-    func timerDidChangeValue(seconds : CFTimeInterval)
+    func timerDidChangeValue(seconds: CFTimeInterval)
     func currentDidPause()
     func currentTaskDidFreeze()
-    func currentTaskDidUnFreeze(timeRemaining : TimeInterval)
+    func currentTaskDidUnFreeze(timeRemaining: TimeInterval)
     func currentTaskDidResume()
     func currentTaskDidAbandon()
     func currentTaskDidComplete()

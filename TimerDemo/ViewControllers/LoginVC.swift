@@ -15,7 +15,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
 //        AuthHandler.shared.authenticateUser { (success, userInfo) in
 //            if success == true{
 //                // Present the first screen
@@ -27,20 +27,18 @@ class LoginVC: UIViewController {
 //                print("We Could not login the user, get him to login again....")
 //            }
 //        }
-        
+
     }
-    
+
     @IBAction func dismissLoginScreen(_ sender: UIButton) {
         dismiss(animated: true) {
         }
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
