@@ -69,7 +69,8 @@ class TaskDetailsFetchTests: XCTestCase {
         wait(for: [expectationSaveColl], timeout: 10.0)
 
         // Crate tasks for Today.
-        taskList.append(contentsOf: createTasks(taskName: "Task Today A", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        taskList.append(contentsOf: createTasks(taskName: "Task Today X", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 3))
+        taskList.append(contentsOf: createTasks(taskName: "Task Today Z", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 8))
 //        taskList.append(contentsOf: createTasks(taskName: "Task Yesterday", timePeriod: .yesterday, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
 //        taskList.append(contentsOf: createTasks(taskName: "Task This Week", timePeriod: .week, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
 //        taskList.append(contentsOf: createTasks(taskName: "Task Last Week", timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
@@ -193,7 +194,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
         
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Yesterday", timePeriod: .yesterday) { (taskList) in
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: nil, timePeriod: .yesterday) { (taskList) in
             XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
             XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(taskList)")
@@ -235,7 +236,6 @@ class TaskDetailsFetchTests: XCTestCase {
         
         PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Last Week", timePeriod: .lastWeek) { (taskList) in
             XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
-            XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(taskList)")
             expecation.fulfill()
         }
@@ -247,9 +247,8 @@ class TaskDetailsFetchTests: XCTestCase {
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
         
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task This Month", timePeriod: .month) { (taskList) in
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: nil, timePeriod: .month) { (taskList) in
             XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
-            XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(taskList)")
             expecation.fulfill()
         }
@@ -262,7 +261,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
         
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: "Task Today A", timePeriod: .today) { (taskList) in
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname: nil, timePeriod: .today) { (taskList) in
             XCTAssertNotNil(taskList, "🐞🐞  Task list is nil")
             XCTAssertTrue(!taskList.isEmpty, "🐞🐞 Task List is Empty !!")
             print("✅ taskList is \(taskList)")

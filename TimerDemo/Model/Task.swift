@@ -19,7 +19,6 @@ protocol TaskEventHanlder {
 }
 
 class Task : TimerEventHandler, CustomStringConvertible {
-    
     var description: String{
         return "\n ---------------------------------------- \n Task Description : \n  \t name : \t\t \(taskName) \n \t savedDate : \t \(savedDate) \n"
     }

@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize the Google Mobile Ads SDK.
         // Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
         GADMobileAds.configure(withApplicationID: "ca-app-pub-5666511173297473~7405055349")
+        Database.setLoggingEnabled(true)
         
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = Utilities.shared.lightGrayColor

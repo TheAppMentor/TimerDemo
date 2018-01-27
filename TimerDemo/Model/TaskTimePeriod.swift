@@ -22,7 +22,27 @@ enum TimePeriod : String{
 
     case allTime
 }
-
+extension TimePeriod{
+    
+    var groupingDimValues : [String]{
+        switch self {
+        case .today :
+            return ["Today"]
+        case .yesterday :
+            return ["Yesterday"]
+        case .week, .lastWeek :
+            return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+        case .month, .lastMonth :
+            return ["Week 1","Week2","Week 3","Week 4"]
+        case .thisYear :
+            return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+        default :
+            return [""]
+        }
+    }
+    
+    
+}
 extension TimePeriod{
     
     var startDate : Date {
