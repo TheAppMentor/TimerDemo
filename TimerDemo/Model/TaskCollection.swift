@@ -15,6 +15,7 @@ struct TaskCollection {
 //    }
 
     var taskName: String
+    
     private var listOfAssociatedTaskID: [String] = []
     private var totalDuration: CFTimeInterval = 0.0
 

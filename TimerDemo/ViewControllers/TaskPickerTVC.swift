@@ -118,15 +118,17 @@ class TaskPickerTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        var rowActionsArr : [UITableViewRowAction]? = []
 
-        UITableViewRowAction(style: .default, title: "Delete") { (theRowAction, theIndexPath) in
-
+       let deleteAction = UITableViewRowAction(style: .default, title: "Archive") { (theRowAction, theIndexPath) in
             print("User Opted to delete row")
-
             // Ask for Confirmation :
-
         }
-        return nil
+        
+        rowActionsArr?.append(deleteAction)
+
+        return rowActionsArr
     }
 
     @IBAction func addNewTask(_ sender: UIBarButtonItem) {

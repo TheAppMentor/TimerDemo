@@ -17,11 +17,7 @@ class TaskDetailsFetchTests: XCTestCase {
     }
 
     var timer : Timer!
-    var taskList = [Task](){
-        didSet{
-            print("Someone Set the Value of task to \(taskList.count)")
-        }
-    }
+    var taskList = [Task]()
     
     var tasksFilePath : String{
         let theBundle = Bundle(for: type(of: self))
