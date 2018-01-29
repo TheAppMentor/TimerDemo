@@ -96,6 +96,10 @@
 		2FFB38601F0D0076006CDF27 /* MiniTaskListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB385F1F0D0076006CDF27 /* MiniTaskListTVC.swift */; };
 		2FFB38621F0D426C006CDF27 /* UserInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */; };
 		2FFB38641F0D428F006CDF27 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB38631F0D428F006CDF27 /* UserInfo.swift */; };
+		88800A3F201CF9A300CDE007 /* TaskCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88800A3E201CF9A300CDE007 /* TaskCollectionTests.swift */; };
+		88800A41201CFBA800CDE007 /* AppUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88800A40201CFBA800CDE007 /* AppUpdateHandler.swift */; };
+		88800A43201CFBD100CDE007 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88800A42201CFBD100CDE007 /* UIColor_Extension.swift */; };
+		88800A46201D02DA00CDE007 /* LoggingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88800A45201D02DA00CDE007 /* LoggingHandler.swift */; };
 		88880955200D048200825BE0 /* TimerDemoTestData_Tasks.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */; };
 		88880956200D048200825BE0 /* TimerDemoTestData_Pause.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */; };
 		88880957200D048200825BE0 /* TimerDemoTestData_TaskColl.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */; };
@@ -187,6 +191,10 @@
 		2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHandler.swift; sourceTree = "<group>"; };
 		2FFB38631F0D428F006CDF27 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2FFCDEAE1F43FBAB0021A61D /* TimerDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerDemo.entitlements; sourceTree = "<group>"; };
+		88800A3E201CF9A300CDE007 /* TaskCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionTests.swift; sourceTree = "<group>"; };
+		88800A40201CFBA800CDE007 /* AppUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateHandler.swift; sourceTree = "<group>"; };
+		88800A42201CFBD100CDE007 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		88800A45201D02DA00CDE007 /* LoggingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHandler.swift; sourceTree = "<group>"; };
 		88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Tasks.csv; sourceTree = "<group>"; };
 		88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Pause.csv; sourceTree = "<group>"; };
 		88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_TaskColl.csv; sourceTree = "<group>"; };
@@ -278,6 +286,7 @@
 				2F446B591EE28BD7005BB176 /* AppDelegate.swift */,
 				2F8AF1E71EF8407B00B8BB6B /* ViewControllers */,
 				2F8AF1E91EF840CC00B8BB6B /* Handlers */,
+				88800A44201CFBD800CDE007 /* Extensions */,
 				2F8AF1E81EF840A100B8BB6B /* Model */,
 				2F8AF1EA1EF840ED00B8BB6B /* View */,
 				2F8AF1EB1EF8412900B8BB6B /* Utilities & Constants */,
@@ -333,6 +342,7 @@
 		2F8AF1E91EF840CC00B8BB6B /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				88800A40201CFBA800CDE007 /* AppUpdateHandler.swift */,
 				2FFB38611F0D426C006CDF27 /* UserInfoHandler.swift */,
 				2FBFCF5E1F3F573600046D8A /* OnBoardingHandler.swift */,
 				2F8AF1E51EF8394100B8BB6B /* AuthHandler.swift */,
@@ -342,6 +352,7 @@
 				2FBF1EB81F10D38800F63EFF /* ChartHandler.swift */,
 				2FC023CE1F129D680024229C /* AudioHandler.swift */,
 				2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */,
+				88800A45201D02DA00CDE007 /* LoggingHandler.swift */,
 				2FF106041F4E942D005E7E81 /* Protocols */,
 			);
 			path = Handlers;
@@ -390,6 +401,7 @@
 				88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */,
 				2F9207B11EE6AF0A00DB3C35 /* SettingsHandlerTests.swift */,
 				2F43C69F200CBD9800BBA350 /* TaskDetailsFetchTests.swift */,
+				88800A3E201CF9A300CDE007 /* TaskCollectionTests.swift */,
 				2F9207AB1EE6A96400DB3C35 /* Info.plist */,
 			);
 			path = TimerDemoTests;
@@ -430,6 +442,15 @@
 				2FBF1EB51F10BAA800F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift */,
 			);
 			path = "Main TImer Screen";
+			sourceTree = "<group>";
+		};
+		88800A44201CFBD800CDE007 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88800A42201CFBD100CDE007 /* UIColor_Extension.swift */,
+			);
+			name = Extensions;
+			path = "Utilities & Constants/Extensions";
 			sourceTree = "<group>";
 		};
 		C17CA6339253EE5E280AB3BA /* Frameworks */ = {
@@ -749,9 +770,11 @@
 				2FBF1EB61F10CEF800F63EFF /* MainTimerScreenVC.swift in Sources */,
 				2FC023CD1F127C4D0024229C /* TypeOfViz.swift in Sources */,
 				2FFB38621F0D426C006CDF27 /* UserInfoHandler.swift in Sources */,
+				88800A43201CFBD100CDE007 /* UIColor_Extension.swift in Sources */,
 				2FFB38641F0D428F006CDF27 /* UserInfo.swift in Sources */,
 				2FF106031F4E940D005E7E81 /* TaskHandlerDelegate.swift in Sources */,
 				2F2C9B071EEAC310000C5279 /* Constants.swift in Sources */,
+				88800A46201D02DA00CDE007 /* LoggingHandler.swift in Sources */,
 				2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */,
 				2FBFCF5F1F3F573600046D8A /* OnBoardingHandler.swift in Sources */,
 				2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */,
@@ -764,6 +787,7 @@
 				2F446B741EE5ACFE005BB176 /* TaskType.swift in Sources */,
 				2FFAFD471EEBF3E400631DA9 /* PickerVC.swift in Sources */,
 				2F8B3A7C1EE9C9D30008F439 /* SettingsPickerViewDataProvider.swift in Sources */,
+				88800A41201CFBA800CDE007 /* AppUpdateHandler.swift in Sources */,
 				2F24C1AD1EF12FD200B2CE13 /* TaskManager.swift in Sources */,
 				2F0118751EEE6B6E00D3FEE9 /* VizChartView.swift in Sources */,
 				2FBDC4251EF05B9D0022C10D /* RoundedButton.swift in Sources */,
@@ -802,6 +826,7 @@
 				2F43C6B1200E7BBC00BBA350 /* TaskHandlerDelegate.swift in Sources */,
 				2F43C6AD200CD83A00BBA350 /* TypeOfViz.swift in Sources */,
 				2F43C6A4200CD82E00BBA350 /* UserInfo.swift in Sources */,
+				88800A3F201CF9A300CDE007 /* TaskCollectionTests.swift in Sources */,
 				2F43C6A7200CD83A00BBA350 /* TaskStatus.swift in Sources */,
 				2F43C6AF200CD87300BBA350 /* AuthHandler.swift in Sources */,
 				2F43C6A8200CD83A00BBA350 /* Pause.swift in Sources */,

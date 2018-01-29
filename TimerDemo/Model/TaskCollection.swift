@@ -16,6 +16,8 @@ struct TaskCollection {
 
     var taskName: String
     
+    private var isArchived : Bool = false
+    
     private var listOfAssociatedTaskID: [String] = []
     private var totalDuration: CFTimeInterval = 0.0
 
@@ -36,7 +38,9 @@ struct TaskCollection {
         guard let validTotalDurationCompletedTasks = firebaseDict["totalDurationCompletedTasks"] as? TimeInterval else {return nil}
         guard let validNumberOfSessionsAllStatus = firebaseDict["numberOfSessionsAllStatus"] as? Int else {return nil}
         guard let validNumberOfSessionsCompletedStatus = firebaseDict["numberOfSessionsCompletedStatus"] as? Int else {return nil}
-
+        guard let validIsArchived = firebaseDict["isArchived"] as? Int else {return nil}
+        
+        
         taskName = validTaskName
         listOfAssociatedTaskID = validListOfAssociatedTaskID
         totalDurationTasksAllStatus = validTotalDurationTasksAllStatus
@@ -46,18 +50,10 @@ struct TaskCollection {
     }
 
     func calcTotalDuration(completionH : @escaping (_ timeInterval: TimeInterval) -> Void) {
-        print("\t\tTask Collection : Requesting for total time")
         PersistenceHandler.shared.fetchTotalTimeForTaskCollection(taskCollection: self) { (theTimeInterval) in
-            print("\t\tTask Collection : Got back Response")
             completionH(theTimeInterval)
         }
     }
-
-//    func getTotalDuration(completionHandler : (_ totalTime : TimeInterval) -> ()) {
-//        PersistenceHandler.shared.fetchTotalTimeForTaskCollection(taskCollection: self) { (theTimeInterval) in
-//            completionHandler()
-//        }
-//    }
 
     func numberOfSessions() -> Int {
        return listOfAssociatedTaskID.count
@@ -106,6 +102,7 @@ struct TaskCollection {
         tempDict["totalDurationCompletedTasks"] = totalDurationCompletedTasks
         tempDict["numberOfSessionsAllStatus"] = numberOfSessionsAllStatus
         tempDict["numberOfSessionsCompletedStatus"] = numberOfSessionsCompletedStatus
+        tempDict["isArchived"] = numberOfSessionsCompletedStatus
 
         return tempDict
     }

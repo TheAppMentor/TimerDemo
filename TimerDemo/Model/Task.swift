@@ -19,8 +19,13 @@ protocol TaskEventHanlder {
 }
 
 class Task: TimerEventHandler, CustomStringConvertible {
+
+    var logr : LoggingHandler {
+        return LoggingHandler.shared
+    }
+    
     var description: String {
-        return "\n ---------------------------------------- \n Task Description : \n  \t name : \t\t \(taskName) \n \t savedDate : \t \(savedDate) \n"
+        return "\n ---------------------------------------- \n Task Description : \n  \t name : \t\t \(taskName) \n \t savedDate : \t \(String(describing: savedDate)) \n"
     }
 
     var delegate: TaskEventHanlder?
@@ -102,6 +107,7 @@ class Task: TimerEventHandler, CustomStringConvertible {
 
      func start() {
         timer.startTimer()
+        logr.logAnalyticsEvent(analyticsEvent: .task_Started(taskName: taskName))
     }
 
      func pause() {
@@ -177,6 +183,7 @@ class Task: TimerEventHandler, CustomStringConvertible {
 
     func timerDidComplete() {
         delegate?.taskDidComplete()
+        logr.logAnalyticsEvent(analyticsEvent: .task_Ended(taskName: taskName))
     }
 
 }

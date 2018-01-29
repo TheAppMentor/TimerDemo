@@ -15,10 +15,14 @@ import AKPickerView_Swift
 import GoogleMobileAds
 
 class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHandler, TaskPickerTVCEventHandlerDelegate, GADBannerViewDelegate, PreferenceEventHandlerDelegate {
+    
+    var logr : LoggingHandler{
+        return LoggingHandler.shared
+    }
 
     @IBAction func showSettings(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showSettingsScreen", sender: self)
-
+        logr.logAnalyticsEvent(analyticsEvent: .navigatedToSettingsScreen)
     }
 
     func userChangePerference(newPreference: Preference) {

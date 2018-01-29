@@ -14,7 +14,11 @@ import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    var logr : LoggingHandler{
+        return LoggingHandler.shared
+    }
+    
     var window: UIWindow?
 
     var dateCurrentRunningTaskEnds: Date?
@@ -35,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageControl.pageIndicatorTintColor = Utilities.shared.lightGrayColor
         pageControl.currentPageIndicatorTintColor = Utilities.shared.lightRedColor
         pageControl.backgroundColor = UIColor.clear
+        
+        //LoggingHandler.shared.log(message: "Application_Launched", attributes: [:])
+        logr.logAnalyticsEvent(analyticsEvent: .app_launched(userID: "Unknown"))
 
         return true
     }
@@ -48,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create an Date , when the timer should fire.
         // Schedule a local notification.
 
+        logr.logAnalyticsEvent(analyticsEvent: .app_did_resignActive)
+        
         if let currTask = TaskManager.shared.currentTask {
             if currTask.taskStatus == .running {
                 currTask.freeze()
@@ -81,6 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        logr.logAnalyticsEvent(analyticsEvent: .app_did_becomeActive)
 
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if let currTask = TaskManager.shared.currentTask {
@@ -92,7 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         currTask.Unfreeze(estimatedEndTime : dateCurrentRunningTaskEnds!)
                     } else {
                         //Timer has expired when were in the background
-                        currTask.timerDidComplete()
+                        currTask.timeRemaining = 0
+                        currTask.Unfreeze(estimatedEndTime : Date())
+//                        currTask.timeRemaining = 0
+//                        currTask.timerDidComplete()
                     }
                 }
             }

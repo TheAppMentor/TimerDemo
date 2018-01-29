@@ -14,6 +14,10 @@ protocol TaskPickerTVCEventHandlerDelegate {
 }
 
 class TaskPickerTVC: UITableViewController {
+    
+    var logr : LoggingHandler{
+        return LoggingHandler.shared
+    }
 
     var allTaskColl: [TaskCollection] = []
     var selectedTaskCollToShowDetails: TaskCollection?
@@ -23,6 +27,7 @@ class TaskPickerTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logr.logAnalyticsEvent(analyticsEvent: .navigatedToTaskListScreen)
     }
 
     func reloadTableViewWithNewTasks() {
