@@ -10,6 +10,7 @@ import Foundation
 import FirebaseDatabase
 import UIKit
 import SwiftDate
+import Firebase
 
 class PersistenceHandler {
 

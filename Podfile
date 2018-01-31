@@ -20,7 +20,9 @@ target 'TimerDemo' do
   pod 'Willow'
   pod 'SwiftDate',  '~> 4.5.1'
   pod 'DotsLoading', '~> 1.0'
-
+  pod 'ILLoginKit'
+  pod 'GoogleSignIn'
+  
   target 'TimerDemoTests' do
     inherit! :search_paths
     # Pods for testing

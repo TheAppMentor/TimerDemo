@@ -111,7 +111,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AkG-jC-MST" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2614" y="1136"/>
+            <point key="canvasLocation" x="2920.289855072464" y="1135.5978260869565"/>
         </scene>
         <!--Task DetailsVC-->
         <scene sceneID="WZO-Wb-HMB">
@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8az-Ov-746" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3424.8000000000002" y="1135.6821589205399"/>
+            <point key="canvasLocation" x="3731.884057971015" y="1135.5978260869565"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="DeT-Tz-PEG">
@@ -239,20 +239,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In Screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egb-Nw-lS9">
-                                <rect key="frame" x="108" y="28" width="159" height="38"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SH-BX-VfG">
+                                <rect key="frame" x="199" y="540" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-Cs-enD">
-                                <rect key="frame" x="113" y="111" width="148" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissLoginScreen:" destination="Yjm-uW-c7T" eventType="touchUpInside" id="6jE-SH-InY"/>
-                                </connections>
+                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -261,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpz-ZZ-4kD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="1163"/>
+            <point key="canvasLocation" x="-417.39130434782612" y="1162.5"/>
         </scene>
         <!--Launch ScreenVC-->
         <scene sceneID="fvU-Y1-9JT">
@@ -320,6 +310,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vLN-4E-3Ud"/>
+                                    <barButtonItem title="Login" id="db9-IG-L8z">
+                                        <connections>
+                                            <action selector="userWantsToLogin:" destination="BYZ-38-t0r" id="uMb-V5-7fn"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Item" image="AddTask" id="ucG-4H-L11" userLabel="Add Task Bar Button">
                                         <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -418,7 +413,7 @@
                         <outlet property="timerContainerView" destination="Dt8-Sg-mJU" id="6mS-QR-nG8"/>
                         <outlet property="timerControlButton" destination="n8F-bM-6XF" id="V2h-zr-W56"/>
                         <outlet property="timerDisplayView" destination="Ybb-Yu-FYN" id="UgE-lD-QLZ"/>
-                        <segue destination="Yjm-uW-c7T" kind="presentation" identifier="showSignInScreen" id="OiP-h0-dtR"/>
+                        <segue destination="HjB-Kr-Pzy" kind="presentation" identifier="showSignInScreen" id="OiP-h0-dtR"/>
                         <segue destination="isz-mw-gMM" kind="presentation" identifier="showTaskList" id="Eta-OK-cH8"/>
                         <segue destination="Qkt-D7-oey" kind="presentation" identifier="addNewTask" id="yci-rs-z9P"/>
                         <segue destination="mgj-U6-Pd2" kind="presentation" identifier="showSettingsScreen" id="Jle-On-B3Z"/>
@@ -436,7 +431,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jfX-YT-Smk">
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jfX-YT-Smk">
                             <rect key="frame" x="0.0" y="160" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="About">
@@ -934,7 +929,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOb-bk-SgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="1136"/>
+            <point key="canvasLocation" x="2110.144927536232" y="1135.5978260869565"/>
         </scene>
         <!--Viz DisplayVC-->
         <scene sceneID="iEk-Pt-s7U">
@@ -1064,25 +1059,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTn-8G-xBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="1279"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="o52-Gm-Nwp">
-            <objects>
-                <viewController id="2kV-1M-keA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cRU-wx-Q9f"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Jt-aP-ubP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uLp-n7-OW3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i0Z-Fq-Kr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-249" y="-282"/>
+            <point key="canvasLocation" x="297.10144927536237" y="1278.6684782608697"/>
         </scene>
         <!--Viz Details PageVC-->
         <scene sceneID="m34-5l-xcd">
@@ -1100,7 +1077,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH9-YA-mUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4262" y="1135"/>
+            <point key="canvasLocation" x="4568.115942028986" y="1134.7826086956522"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="prb-QS-R6u">
@@ -1121,6 +1098,24 @@
             </objects>
             <point key="canvasLocation" x="3424" y="-349.02548725637183"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vc1-da-Row">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HjB-Kr-Pzy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vl9-c2-zks">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yjm-uW-c7T" kind="relationship" relationship="rootViewController" id="ZD8-ab-IdI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ik1-tj-LrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1241" y="1163"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AddTask" width="20" height="20"/>
@@ -1130,6 +1125,6 @@
         <image name="iPhone_Launch_Screen" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IIK-oB-jtQ"/>
+        <segue reference="yci-rs-z9P"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -37,7 +37,6 @@ class AuthHandler {
     }
 
     private func loginUserWithCredentials(userName: String, password: String) {
-
         Auth.auth().signIn(withEmail: userName, password: password) { (user, error) in
             if error != nil {
                 print("We failed to login the user with credentials")
