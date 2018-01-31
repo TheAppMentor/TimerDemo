@@ -8,26 +8,72 @@
 
 import UIKit
 import FirebaseAuth
-import ILLoginKit
 import GoogleSignIn
 
-class LoginVC: UIViewController,GIDSignInUIDelegate {
+class LoginVC: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
     
-    lazy var loginCoordinator: LoginCoordinator = {
-        return LoginCoordinator(rootViewController: self)
-    }()
-    
-    func showLogin() {
-        loginCoordinator.start()
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            AuthHandler.shared.loginUserGoogleSignin(credential: credential, completionHandler: { (isLoginSuccessful, userInfo) in
+                if isLoginSuccessful == true {
+                    // The login in can be Anonymous or With Valid credentials.
+                    OnlinePreferenceHandler.shared.populateAllPreferences {
+                        UserInfoHandler.shared.populateUserInfo {
+                            // For Very first launch, show the onboarding screen
+                            let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+                            if launchedBefore {
+                                // User has already launched the app Go Directly to Home Screen.
+                                // Go to Main screen along with login
+                                self.dismiss(animated: true, completion: nil)
+                                
+                            } else {
+                                //                            print("First launch, setting UserDefault.")
+                                //                            UserDefaults.standard.set(true, forKey: "launchedBefore")
+                                OnBoardingHandler(actionOnSkipOrComplete: {
+                                    self.dismiss(animated: true, completion: nil)
+                                }).showOnBoardingScreen()
+                            }
+                        }
+                    }
+                } else {
+                    // Login in both anoynymous and WIth Credentials has failed.
+                    assertionFailure("Login with both Credetinals and Anonymous has failed.")
+                }
+            })
+        } else {
+            print("\(error.localizedDescription)")
+        }
     }
+    
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        showLogin()
-        
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().delegate = self
+        
+        // Uncomment to automatically sign in the user.
+        GIDSignIn.sharedInstance().signInSilently()
+        //GIDSignIn.sharedInstance().signIn()
         
         // TODO(developer) Configure the sign-in button look/feel
         // ...
@@ -50,15 +96,28 @@ class LoginVC: UIViewController,GIDSignInUIDelegate {
 //        }
 
     }
-
-    @IBAction func dismissLoginScreen(_ sender: UIButton) {
-        dismiss(animated: true) {
-        }
+    
+    var googleSignInButton : GIDSignInButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        googleSignInButton = GIDSignInButton.init(frame: CGRect(x: 150, y: 150, width: 250, height: 100))
+        view.addSubview(googleSignInButton)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+        } else {
+            print("\(error.localizedDescription)")
+        }
     }
 
     /*
@@ -71,70 +130,4 @@ class LoginVC: UIViewController,GIDSignInUIDelegate {
     }
     */
 
-}
-
-
-import Foundation
-import ILLoginKit
-
-class LoginCoordinator: ILLoginKit.LoginCoordinator {
-    
-    // MARK: - LoginCoordinator
-    
-    override func start() {
-        super.start()
-        configureAppearance()
-    }
-    
-    override func finish() {
-        super.finish()
-    }
-    
-    // MARK: - Setup
-    
-    // Customize LoginKit. All properties have defaults, only set the ones you want.
-    func configureAppearance() {
-        // Customize the look with background & logo images
-        //backgroundImage = #imageLiteral(resourceName: "Background")
-        // mainLogoImage =
-        // secondaryLogoImage =
-        
-        // Change colors
-        tintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1)
-        errorTintColor = UIColor(red: 253.0/255.0, green: 227.0/255.0, blue: 167.0/255.0, alpha: 1)
-        
-        // Change placeholder & button texts, useful for different marketing style or language.
-        loginButtonText = "Sign In"
-        signupButtonText = "Create Account"
-        facebookButtonText = "Login with Facebook"
-        forgotPasswordButtonText = "Forgot password?"
-        recoverPasswordButtonText = "Recover"
-        namePlaceholder = "Name"
-        emailPlaceholder = "E-Mail"
-        passwordPlaceholder = "Password!"
-        repeatPasswordPlaceholder = "Confirm password!"
-    }
-    
-    // MARK: - Completion Callbacks
-    
-    // Handle login via your API
-    override func login(email: String, password: String) {
-        print("Login with: email =\(email) password = \(password)")
-    }
-    
-    // Handle signup via your API
-    override func signup(name: String, email: String, password: String) {
-        print("Signup with: name = \(name) email =\(email) password = \(password)")
-    }
-    
-    // Handle Facebook login/signup via your API
-    override func enterWithFacebook(profile: FacebookProfile) {
-        print("Login/Signup via Facebook with: FB profile =\(profile)")
-    }
-    
-    // Handle password recovery via your API
-    override func recoverPassword(email: String) {
-        print("Recover password with: email =\(email)")
-    }
-    
 }

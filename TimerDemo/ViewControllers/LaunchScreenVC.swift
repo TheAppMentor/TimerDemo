@@ -37,7 +37,6 @@ class LaunchScreenVC: UIViewController {
         AuthHandler.shared.authenticateUser(completionHandler: { (isLoginSuccessful, theLoggedInUserInfo) in
             if isLoginSuccessful == true {
                 // The login in can be Anonymous or With Valid credentials.
-
                 OnlinePreferenceHandler.shared.populateAllPreferences {
                     UserInfoHandler.shared.populateUserInfo {
                         // For Very first launch, show the onboarding screen
