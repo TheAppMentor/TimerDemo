@@ -27,7 +27,7 @@ class SettingsTVC: UITableViewController, PickerSelectionDelegate {
 
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: Utilities.shared.regularFontSize]
+             NSAttributedStringKey.font: Utilities.shared.fontWithRegularSize]
 
         tableView.tableFooterView = UIView()
     }
@@ -37,7 +37,7 @@ class SettingsTVC: UITableViewController, PickerSelectionDelegate {
             tableView.deselectRow(at:selectedRow, animated: true)
         }
     }
-
+    
     @IBAction func dismissSettingsScreen(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         //self.navigationController?.popViewController(animated: true)

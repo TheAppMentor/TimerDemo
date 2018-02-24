@@ -1,21 +1,21 @@
 //
-//  TaskDetailsFetchTests.swift
+//  TaskGeneratorSetup.swift
 //  TimerDemoTests
 //
-//  Created by Moorthy, Prashanth on 1/15/18.
+//  Created by Moorthy, Prashanth on 2/16/18.
 //  Copyright © 2018 Moorthy, Prashanth. All rights reserved.
 //
 
 import XCTest
 
-class TaskDetailsFetchTests: XCTestCase {
-
+class TaskGeneratorSetup: XCTestCase {
+    
     func readTaskExpectedResultsFile() -> [Task]{
         let expecteDResultArr = NSArray.init(contentsOf: self.expectedResultsFilePath)! as! [[String:Any?]]
         let expectedResTasks = expecteDResultArr.map({return Task.init(firebaseDict: $0)})
         return expectedResTasks as! [Task]
     }
-
+    
     var timer : Timer!
     var taskList = [Task]()
     
@@ -23,34 +23,138 @@ class TaskDetailsFetchTests: XCTestCase {
         let theBundle = Bundle(for: type(of: self))
         return theBundle.path(forResource: "TimerDemoTestData_Tasks", ofType: "csv")!
     }
-
+    
     var taskCollFilePath : String {
         let theBundle = Bundle(for: type(of: self))
         return theBundle.path(forResource: "TimerDemoTestData_TaskColl", ofType: "csv")!
     }
-
+    
     var taskPauseFilePath : String {
         let theBundle = Bundle(for: type(of: self))
         return theBundle.path(forResource: "TimerDemoTestData_Pause", ofType: "csv")!
     }
-
+    
     var expectedResultsFilePath : URL {
         let libDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return libDir.appendingPathComponent("expectedResult.plist")
     }
-
-    func testA000(){
-        createTasksData()
+    
+    func testTempTestGenTaskForToday(){
+        createTaskForToday()
+        sleep(3)
+        createTaskForLastWeek()
+        sleep(3)
+        createTaskForThisMonth()
+        sleep(3)
     }
+    
+    func createTaskForToday(){
+        
+        let taskColl1 = createTaskColl(taskName: "Task Today 1")
+        let taskColl2 = createTaskColl(taskName: "Task Today 2")
+
+        var tempTaskList = [Task]()
+        
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl1.taskName, timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl2.taskName, timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 8))
+
+        self.saveTaskList(taskList: tempTaskList)
+    }
+
+    
+    func createTaskForLastWeek(){
+        
+        let taskColl1 = createTaskColl(taskName: "Last Week 1")
+        let taskColl2 = createTaskColl(taskName: "Last Week 2")
+        let taskColl3 = createTaskColl(taskName: "Last Week 3")
+        let taskColl4 = createTaskColl(taskName: "Last Week 4")
+
+        var tempTaskList = [Task]()
+        
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl1.taskName, timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 1))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl2.taskName, timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 2))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl3.taskName, timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl4.taskName, timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 4))
+
+        self.saveTaskList(taskList: tempTaskList)
+    }
+
+    
+    func createTaskForYesterday(){
+        sleep(2)
+        let taskColl1 = createTaskColl(taskName: "Yesterday 1")
+        let timePeriod = TimePeriod.yesterday
+        
+        var tempTaskList = [Task]()
+        
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl1.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        
+        self.saveTaskList(taskList: tempTaskList)
+    }
+    
+    
+    func createTaskForThisWeek(){
+        
+        let taskColl1 = createTaskColl(taskName: "ThisWeek 1")
+        let taskColl2 = createTaskColl(taskName: "ThisWeek 2")
+        
+        let timePeriod = TimePeriod.week
+        
+        var tempTaskList = [Task]()
+        
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl1.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl2.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 8))
+        
+        self.saveTaskList(taskList: tempTaskList)
+    }
+
+    func createTaskForThisMonth(){
+        let taskColl1 = createTaskColl(taskName: "This Month 1")
+        let taskColl2 = createTaskColl(taskName: "This Month 2")
+        let taskColl3 = createTaskColl(taskName: "This Month 3")
+        let taskColl4 = createTaskColl(taskName: "This Month 4")
+        let taskColl5 = createTaskColl(taskName: "This Month 5")
+        let taskColl6 = createTaskColl(taskName: "This Month 6")
+        let taskColl7 = createTaskColl(taskName: "This Month 7")
+        let taskColl8 = createTaskColl(taskName: "This Month 8")
+        let taskColl9 = createTaskColl(taskName: "This Month 9")
+        let taskColl10 = createTaskColl(taskName: "This Month 10")
+        let taskColl11 = createTaskColl(taskName: "This Month 11")
+        let taskColl12 = createTaskColl(taskName: "This Month 12")
+        let taskColl13 = createTaskColl(taskName: "This Month 13")
+        let taskColl14 = createTaskColl(taskName: "This Month 14")
+
+        let timePeriod = TimePeriod.month
+        
+        var tempTaskList = [Task]()
+        
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl1.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl2.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl3.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl4.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl5.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl6.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl7.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl8.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl9.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl10.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl11.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl12.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl13.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+        tempTaskList.append(contentsOf: createTasks(taskName: taskColl14.taskName, timePeriod: timePeriod, taskType: .deepFocus, taskStatus: .completed, duration: 500, numberOfTasks: 3))
+
+        self.saveTaskList(taskList: tempTaskList)
+    }
+
     
     func createTasksData()  {
         
         var taskName = "Task Today"
-
+        
         let taskColl = createTaskColl(taskName: taskName)
-
+        
         let expectationSaveColl = XCTestExpectation(description: "Login to Fire base")
-
+        
         PersistenceHandler.shared.fetchTaskCollectionWithName(taskName: taskName) { (theTaskColl) in
             if theTaskColl == nil {
                 PersistenceHandler.shared.saveTaskCollection(taskColl: taskColl, completionHandler: { (theTaskCollKey) in
@@ -61,24 +165,26 @@ class TaskDetailsFetchTests: XCTestCase {
                 expectationSaveColl.fulfill()
             }
         }
-
+        
         wait(for: [expectationSaveColl], timeout: 10.0)
-
+        
+        var tempTaskList = [Task]()
+        
         // Crate tasks for Today.
-        taskList.append(contentsOf: createTasks(taskName: "Task Today X", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 3))
-        taskList.append(contentsOf: createTasks(taskName: "Task Today Z", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 8))
-        taskList.append(contentsOf: createTasks(taskName: "Task Yesterday", timePeriod: .yesterday, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Week", timePeriod: .week, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task Last Week", timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .month, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .lastMonth, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Bugger0", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Bugger1", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Bugger2", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Bugger3", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Bugger4", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-        taskList.append(contentsOf: createTasks(taskName: "Task This Bugger5", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
-
+//        taskList.append(contentsOf: createTasks(taskName: "Task Today X", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 3))
+//        taskList.append(contentsOf: createTasks(taskName: "Task Today Z", timePeriod: .today, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 8))
+//        taskList.append(contentsOf: createTasks(taskName: "Task Yesterday", timePeriod: .yesterday, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        //taskList.append(contentsOf: createTasks(taskName: "Task This Week", timePeriod: .week, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task Last Week", timePeriod: .lastWeek, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        tempTaskList.append(contentsOf: createTasks(taskName: "Task This Month", timePeriod: .month, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task Last Month", timePeriod: .lastMonth, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+//        taskList.append(contentsOf: createTasks(taskName: "Task This Year", timePeriod: .thisYear, taskType: .deepFocus, taskStatus: .completed, duration: 600, numberOfTasks: 5))
+        
+        saveTaskList(taskList: tempTaskList)
+    }
+    
+    
+    func saveTaskList(taskList : [Task]){
         var allExpecations = [XCTestExpectation]()
         
         var taskListDict = [[String:Any?]]()
@@ -89,7 +195,6 @@ class TaskDetailsFetchTests: XCTestCase {
             taskListDict.append(dict)
         }
         
-
         NSArray.init(array: taskListDict).write(to: expectedResultsFilePath, atomically: true)
         
         print(NSKeyedArchiver.archiveRootObject(taskListDict, toFile: "/Users/i328244/Library/Developer/CoreSimulator/Devices/D082DAD9-7F38-452D-A46B-2768A0B9A11C/data/Containers/Data/Application/855E9472-BE3A-409C-AF64-7E7DC51919F2/Documents/expectedResult.plist"))
@@ -103,33 +208,7 @@ class TaskDetailsFetchTests: XCTestCase {
             })
             wait(for: [expectationSaveTask], timeout: 10.0)
         }
-        
-        
         wait(for: allExpecations, timeout: 10.0)
-        
-//        for _ in taskList.enumerated(){
-//            var currentIndex = taskList.count - 1
-//
-//            timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { (_) in
-//                self.saveTaskSlowly(taskArr: taskList, indexToSave: currentIndex)
-//                currentIndex -= 1
-//            }
-//
-//            timer.fire()
-//        }
-//
-//        timer.invalidate()
-//        print("Timer is Invalidated")
-        
-//        var allExpectaitons = [XCTestExpectation]()
-//        for eachTask in taskList{
-//            let expectationSaveTask = XCTestExpectation(description: "Expectation Save Task")
-//            allExpectaitons.append(expectationSaveTask)
-//            PersistenceHandler.shared.saveTask(task: eachTask, completionHandler: { (savedTaskID) in
-//                expectationSaveTask.fulfill()
-//            })
-//        }
-//        wait(for: allExpectaitons, timeout: 10.0)
     }
     
     
@@ -149,10 +228,10 @@ class TaskDetailsFetchTests: XCTestCase {
     
     
     
-//    func testTaskCreation() {
-//        createTasksData()
-//    }
-
+    //    func testTaskCreation() {
+    //        createTasksData()
+    //    }
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -179,18 +258,18 @@ class TaskDetailsFetchTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-//    
-//    func testExample() {
-//        // This is an example of a functional test case.
-//        // Use XCTAssert and related functions to verify your tests produce the correct results.
-//        setupTestTasks()
-//    }
+    //
+    //    func testExample() {
+    //        // This is an example of a functional test case.
+    //        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    //        setupTestTasks()
+    //    }
     
     // Setup Test Tasks
     func setupTestTasks(){
         createCreateTaskCollections()
     }
-
+    
     func testA2FetchAllTasksCreatedYesterday(){
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
@@ -204,7 +283,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         wait(for: [expecation], timeout: 10.0)
     }
-
+    
     func testA3FetchAllTasksCreatedThisWeek(){
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
@@ -221,7 +300,7 @@ class TaskDetailsFetchTests: XCTestCase {
             {
                 return ((($0?.savedDate!)!  > Date().startWeek.timeIntervalSince1970 * 1000) && ($0?.timer.endTime?.timeIntervalSince1970)! * 1000 < Date().endWeek.timeIntervalSince1970 * 1000)
             })
-
+            
             XCTAssertTrue(expecteDResult.count == fetchedTaskList.count, "🐞🐞  This Week : Count of Items Fetched does not match count of Items Loaded \(expecteDResult.count) vs \(fetchedTaskList.count)")
             
             expecation.fulfill()
@@ -229,7 +308,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         wait(for: [expecation], timeout: 10.0)
     }
-
+    
     
     func testA4FetchAllTasksCreatedLastWeek(){
         
@@ -243,7 +322,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         wait(for: [expecation], timeout: 10.0)
     }
-
+    
     func testA5FetchAllTasksCreatedThisMonth(){
         
         let expecation = XCTestExpectation(description: "Wait for Fetch all todays tasks")
@@ -256,7 +335,7 @@ class TaskDetailsFetchTests: XCTestCase {
         
         wait(for: [expecation], timeout: 10.0)
     }
-
+    
     
     func testA1FetchAllTasksCreatedToday(){
         
@@ -272,13 +351,13 @@ class TaskDetailsFetchTests: XCTestCase {
         wait(for: [expecation], timeout: 10.0)
     }
     
-
+    
     func createCreateTasks(Collection : TaskCollection){
         
     }
     
     func createCreateTaskCollections(){
-
+        
         var taskCreateExpArr = [XCTestExpectation]()
         
         let taskColl = self.makeTaskCollection(fromFile: self.taskCollFilePath, taskArr: [], pauses: [])
@@ -287,9 +366,9 @@ class TaskDetailsFetchTests: XCTestCase {
             let expectationSaveColl = XCTestExpectation(description: "Login to Fire base")
             taskCreateExpArr.append(expectationSaveColl)
             PersistenceHandler.shared.saveTaskCollection(taskColl: $0, completionHandler: { (theTaskCollKey) in
-            print("We Save the TaskColl with Key : \(theTaskCollKey)")
-            expectationSaveColl.fulfill()
-        })
+                print("We Save the TaskColl with Key : \(theTaskCollKey)")
+                expectationSaveColl.fulfill()
+            })
             
         })
         
@@ -297,8 +376,8 @@ class TaskDetailsFetchTests: XCTestCase {
         
         let allPauses = self.makePauses(fromFile: self.self.taskPauseFilePath)
         let allTasks = self.makeTasks(fromFile: self.self.tasksFilePath, pauses: allPauses)
-
-//        let expectation1 = XCTestExpectation(description: "Expectation 1 : Waiting to get back all taskes")
+        
+        //        let expectation1 = XCTestExpectation(description: "Expectation 1 : Waiting to get back all taskes")
         
         var allExpecations = [XCTestExpectation]()
         //allExpecations.append(expectation1)
@@ -311,23 +390,10 @@ class TaskDetailsFetchTests: XCTestCase {
             })
             wait(for: [expectationSaveTask], timeout: 10.0)
         }
-
+        
         
         wait(for: allExpecations, timeout: 10.0)
     }
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     func makeDateFromString(dateString : String) -> Date?{
@@ -366,33 +432,33 @@ class TaskDetailsFetchTests: XCTestCase {
                     let taskColl = TaskCollection(taskName: tempDict["taskName"] as! String)
                     XCTAssertNotNil(taskColl, "😈 Task Coll was not created => \(tempDict)")
                     allTaskColl.append(taskColl)
-
-
                     
-//                    let taskList = tempDict["listOfAssociatedTaskID"] as! String
-//                    let associatedTaskID = taskList.components(separatedBy: ";")
-//                    tempDict["listOfAssociatedTaskID"] = associatedTaskID
-//                    
-//                    // Calc stuff related to tasks.
-//                    // totalDurationTasksAllStatus
-//                    
-//                    let filteredTaskList = taskArr.filter({
-//                        return associatedTaskID.contains($0.taskName)
-//                    })
-//                    
-//                    var totalDurationTasksAllStatus : CFTimeInterval = 0
-//                    var totalDurationCompletedTasks : CFTimeInterval = 0
-//                    
-//                    filteredTaskList.forEach({totalDurationTasksAllStatus += $0.taskDuration})
-//                    filteredTaskList.filter({return $0.taskStatus == .completed}).forEach({totalDurationCompletedTasks += $0.taskDuration})
-//                    
-//                    tempDict["totalDurationTasksAllStatus"] = totalDurationTasksAllStatus
-//                    tempDict["totalDurationCompletedTasks"] = totalDurationCompletedTasks
-//                    tempDict["numberOfSessionsAllStatus"] = filteredTaskList.count
-//                    tempDict["numberOfSessionsCompletedStatus"] = filteredTaskList.filter({return $0.taskStatus == .completed}).count
-//
-////                    let taskColl = TaskCollection.init(firebaseDict: tempDict)
-
+                    
+                    
+                    //                    let taskList = tempDict["listOfAssociatedTaskID"] as! String
+                    //                    let associatedTaskID = taskList.components(separatedBy: ";")
+                    //                    tempDict["listOfAssociatedTaskID"] = associatedTaskID
+                    //
+                    //                    // Calc stuff related to tasks.
+                    //                    // totalDurationTasksAllStatus
+                    //
+                    //                    let filteredTaskList = taskArr.filter({
+                    //                        return associatedTaskID.contains($0.taskName)
+                    //                    })
+                    //
+                    //                    var totalDurationTasksAllStatus : CFTimeInterval = 0
+                    //                    var totalDurationCompletedTasks : CFTimeInterval = 0
+                    //
+                    //                    filteredTaskList.forEach({totalDurationTasksAllStatus += $0.taskDuration})
+                    //                    filteredTaskList.filter({return $0.taskStatus == .completed}).forEach({totalDurationCompletedTasks += $0.taskDuration})
+                    //
+                    //                    tempDict["totalDurationTasksAllStatus"] = totalDurationTasksAllStatus
+                    //                    tempDict["totalDurationCompletedTasks"] = totalDurationCompletedTasks
+                    //                    tempDict["numberOfSessionsAllStatus"] = filteredTaskList.count
+                    //                    tempDict["numberOfSessionsCompletedStatus"] = filteredTaskList.filter({return $0.taskStatus == .completed}).count
+                    //
+                    ////                    let taskColl = TaskCollection.init(firebaseDict: tempDict)
+                    
                 }
             }
         }
@@ -406,7 +472,7 @@ class TaskDetailsFetchTests: XCTestCase {
         var taskHeaders = [String]()
         var allTasksStrArr = [String]()
         var allTasksArr = [Task]()
-
+        
         if let taskData = FileManager.default.contents(atPath: tasksFilePath){
             if let dataString = String.init(data: taskData, encoding: .utf8){
                 let dataArray = dataString.components(separatedBy: "\n")
@@ -472,7 +538,7 @@ class TaskDetailsFetchTests: XCTestCase {
             print("Have Saved task ID : \(savedTaskID)")
         })
     }
-
+    
     
     func makePauses(fromFile : String) -> [Pause]{
         
@@ -480,7 +546,7 @@ class TaskDetailsFetchTests: XCTestCase {
         var allPauses = Set<String>()
         var allPausesStrArr = [String]()
         var allPausesArr = [Pause]()
-
+        
         if let taskPauseData = FileManager.default.contents(atPath: taskPauseFilePath){
             if let dataString = String.init(data: taskPauseData, encoding: .utf8){
                 
@@ -532,20 +598,20 @@ class TaskDetailsFetchTests: XCTestCase {
             tempTask.taskDuration = duration
             retTaskArr.append(tempTask)
         }
-    
+        
         return retTaskArr
     }
     
     func createTasks(taskName : String, timePeriod : TimePeriod, taskType : TaskType, taskStatus : TaskStatus, duration : CFTimeInterval,numberOfTasks : Int = 1) -> [Task] {
-
+        
         var retTasksArr = [Task]()
         
         for _ in 0..<numberOfTasks{
             
-        let rangeOfSeconds = UInt32(randomNumber(MIN: timePeriod.startDate.timeIntervalSince1970, MAX: timePeriod.endDate.timeIntervalSince1970))
-        
-        var totalPauseTime : TimeInterval = 0
-
+            let rangeOfSeconds = UInt32(randomNumber(MIN: timePeriod.startDate.timeIntervalSince1970, MAX: timePeriod.endDate.timeIntervalSince1970))
+            
+            var totalPauseTime : TimeInterval = 0
+            
             var pauses = [Pause]()
             let maxPauses = arc4random_uniform(3)
             
@@ -565,29 +631,29 @@ class TaskDetailsFetchTests: XCTestCase {
             }
             
             pauses.forEach({totalPauseTime += $0.duration!})
-        
-        let taskEndDate = timePeriod.startDate.timeIntervalSince1970 + duration // + totalPauseTime (Pauses are messing this up) Commenting for now.
-        
-        var tempTimerDict = [String:Any?]()
-        tempTimerDict["duration"] = duration
-        tempTimerDict["currentTimerValue"] = 0.0
-        tempTimerDict["startTime"] = taskStartDate
-        tempTimerDict["endTime"] = taskEndDate
-        
-        let tempTimer = TimerBoy.init(firebaseDict: tempTimerDict)
-        
-        let tempTask = Task(name: taskName, type: taskType)
-        tempTask.timer = tempTimer
-        tempTask.pauseList = pauses
-        tempTask.taskDuration = duration
-        tempTask.taskStatus = .completed
-        
-        retTasksArr.append(tempTask)
+            
+            let taskEndDate = timePeriod.startDate.timeIntervalSince1970 + duration // + totalPauseTime (Pauses are messing this up) Commenting for now.
+            
+            var tempTimerDict = [String:Any?]()
+            tempTimerDict["duration"] = duration
+            tempTimerDict["currentTimerValue"] = 0.0
+            tempTimerDict["startTime"] = taskStartDate
+            tempTimerDict["endTime"] = taskEndDate
+            
+            let tempTimer = TimerBoy.init(firebaseDict: tempTimerDict)
+            
+            let tempTask = Task(name: taskName, type: taskType)
+            tempTask.timer = tempTimer
+            tempTask.pauseList = pauses
+            tempTask.taskDuration = duration
+            tempTask.taskStatus = .completed
+            
+            retTasksArr.append(tempTask)
             
         }
         
         return retTasksArr
-
+        
     }
     
     

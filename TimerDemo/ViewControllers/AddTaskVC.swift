@@ -24,6 +24,23 @@ class AddTaskVC: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
 
+    fileprivate func customizeAddTaskDoneButton() {
+        addTaskDoneButton.layer.cornerRadius = 5.0
+        addTaskDoneButton.layer.shadowColor = UIColor.gray.cgColor
+        addTaskDoneButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        addTaskDoneButton.layer.masksToBounds = false
+        addTaskDoneButton.layer.shadowRadius = 2.0
+        addTaskDoneButton.layer.shadowOpacity = 0.5
+    }
+    
+    fileprivate func customizeHeaderbanner() {
+        headerBanner.layer.shadowOffset = CGSize(width: 0, height: 1)
+        headerBanner.layer.masksToBounds = false
+        headerBanner.layer.shadowRadius = 1.0
+        headerBanner.layer.shadowOpacity = 0.5
+        headerBanner.layer.shadowColor = UIColor.gray.cgColor
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,18 +50,8 @@ class AddTaskVC: UIViewController {
         addTaskPopUpContainerView.layer.cornerRadius = 10.0
         addTaskPopUpContainerView.clipsToBounds = true
 
-        headerBanner.layer.shadowOffset = CGSize(width: 0, height: 1)
-        headerBanner.layer.masksToBounds = false
-        headerBanner.layer.shadowRadius = 1.0
-        headerBanner.layer.shadowOpacity = 0.5
-        headerBanner.layer.shadowColor = UIColor.gray.cgColor
-
-        addTaskDoneButton.layer.cornerRadius = 5.0
-        addTaskDoneButton.layer.shadowColor = UIColor.gray.cgColor
-        addTaskDoneButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        addTaskDoneButton.layer.masksToBounds = false
-        addTaskDoneButton.layer.shadowRadius = 2.0
-        addTaskDoneButton.layer.shadowOpacity = 0.5
+        customizeHeaderbanner()
+        customizeAddTaskDoneButton()
 
         if hideCancelButton {
             cancelButton.isHidden = true
@@ -77,7 +84,6 @@ class AddTaskVC: UIViewController {
                 return
             }
         }
-
     }
 
     @IBAction func cancelPressed(_ sender: UIButton) {

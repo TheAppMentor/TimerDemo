@@ -24,11 +24,11 @@ extension MainTimerScreenVC: AKPickerViewDelegate, AKPickerViewDataSource, TaskP
 
         // Setup the Horizontal Scroll Task Picker View
         self.taskPickerView.textColor = UIColor.lightGray
-        self.taskPickerView.font = Utilities.shared.veryLargeFontSize
+        self.taskPickerView.font = Utilities.shared.fontWithVeryLargeSize
         self.taskPickerView.pickerViewStyle = .wheel
         self.taskPickerView.interitemSpacing = self.taskPickerView.frame.width/6.0
         self.taskPickerView.highlightedTextColor = UIColor.white
-        self.taskPickerView.highlightedFont = Utilities.shared.veryLargeFontSize
+        self.taskPickerView.highlightedFont = Utilities.shared.fontWithVeryLargeSize
     }
 
     // MARK: TaskPickerScrollViewDelegate

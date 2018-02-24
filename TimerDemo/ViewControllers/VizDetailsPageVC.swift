@@ -8,7 +8,7 @@
  import UIKit
 
  class VizDetailsPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-
+    
 //    var miniVizToDisplay : [TypeOfViz] = [.tableTaskList,.recent,.chartToday,.chartAlltime,.chartAlltime] // The Ideal Goal
     var listOfVizToDisplay: [TypeOfViz] = [.tableTaskList, .recent]
 
@@ -28,6 +28,10 @@
     }
 
     override func viewWillAppear(_ animated: Bool) {
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.translatesAutoresizingMaskIntoConstraints = false
         populateVCs()
     }
 
@@ -41,7 +45,7 @@
                 }
 
             case .chartToday, .chartThisWeek, .chartAlltime, .recent, .chartThisMonth:
-                if let tempChartVC = storyboard?.instantiateViewController(withIdentifier: "VizDisplayVC") as? VizDisplayVC {
+                if let tempChartVC = storyboard?.instantiateViewController(withIdentifier: "chartDisplayVC") as? VizDisplayVC {
                     tempChartVC.view.frame = view.bounds
                     tempChartVC.typeOfViz = eachVizType
                     tempChartVC.shouldDisplayChartTitle = self.shouldDisplayChartTitle

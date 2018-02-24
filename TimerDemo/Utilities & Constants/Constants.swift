@@ -18,5 +18,7 @@ struct Constants {
     let tableViewCellHeight: CGFloat = 44.0
     let sectionHeaderHeight: CGFloat = 30.0
     let sectionFooterHeight: CGFloat = 30.0
+    
+    let numberOfBarsPerScreen : CGFloat = 5.0
 
 }

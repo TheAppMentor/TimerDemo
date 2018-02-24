@@ -38,9 +38,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForTaskComplete(durationString: String = "") {
 
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize,
-            kTextFont: Utilities.shared.largeFontSize,
-            kButtonFont: Utilities.shared.regularFontSize,
+            kTitleFont: Utilities.shared.fontWithRegularSize,
+            kTextFont: Utilities.shared.fontWithLargeSize,
+            kButtonFont: Utilities.shared.fontWithRegularSize,
             showCloseButton: true
         )
 
@@ -63,9 +63,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForTaskPausedAbandoned(durationString: String = "") {
 
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize,
-            kTextFont: Utilities.shared.largeFontSize,
-            kButtonFont: Utilities.shared.regularFontSize,
+            kTitleFont: Utilities.shared.fontWithRegularSize,
+            kTextFont: Utilities.shared.fontWithLargeSize,
+            kButtonFont: Utilities.shared.fontWithRegularSize,
             showCloseButton: false
         )
 
@@ -90,9 +90,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForTaskPaused() {
 
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize,
-            kTextFont: Utilities.shared.largeFontSize,
-            kButtonFont: Utilities.shared.regularFontSize,
+            kTitleFont: Utilities.shared.fontWithRegularSize,
+            kTextFont: Utilities.shared.fontWithLargeSize,
+            kButtonFont: Utilities.shared.fontWithRegularSize,
             showCloseButton: true
         )
 
@@ -116,9 +116,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForLongBreakComplete() {
 
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize,
-            kTextFont: Utilities.shared.largeFontSize,
-            kButtonFont: Utilities.shared.regularFontSize,
+            kTitleFont: Utilities.shared.fontWithRegularSize,
+            kTextFont: Utilities.shared.fontWithLargeSize,
+            kButtonFont: Utilities.shared.fontWithRegularSize,
             showCloseButton: true
         )
 
@@ -136,9 +136,9 @@ class InfoAlertView: SCLAlertView {
     func showAlertForShortBreakComplete() {
 
         var appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: Utilities.shared.regularFontSize,
-            kTextFont: Utilities.shared.largeFontSize,
-            kButtonFont: Utilities.shared.regularFontSize,
+            kTitleFont: Utilities.shared.fontWithRegularSize,
+            kTextFont: Utilities.shared.fontWithLargeSize,
+            kButtonFont: Utilities.shared.fontWithRegularSize,
             showCloseButton: true
         )
 

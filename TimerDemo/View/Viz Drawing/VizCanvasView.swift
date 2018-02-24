@@ -150,7 +150,7 @@ class VizCanvasView: UIView {
     func textLayerWith(textString: String, frame: CGRect) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.string = textString
-        textLayer.font = Utilities.shared.minuteFontSize
+        textLayer.font = Utilities.shared.fontWithMinuteSize
         textLayer.fontSize = 10.0
         textLayer.foregroundColor = UIColor.darkGray.cgColor
         textLayer.frame = frame

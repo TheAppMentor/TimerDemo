@@ -322,7 +322,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
-            endingLineNumber = "56">
+            endingLineNumber = "56"
+            landmarkName = "sign(_:didSignInFor:withError:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -336,7 +338,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
-            endingLineNumber = "56">
+            endingLineNumber = "56"
+            landmarkName = "sign(_:didSignInFor:withError:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,11 +350,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/AuthHandler.swift"
-            timestampString = "537977444.8600841"
+            timestampString = "540409835.688344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
-            endingLineNumber = "79">
+            endingLineNumber = "79"
+            landmarkName = "loginUserGoogleSignin(credential:completionHandler:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -360,11 +366,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/AuthHandler.swift"
-            timestampString = "537977444.860625"
+            timestampString = "540409835.688766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
-            endingLineNumber = "79">
+            endingLineNumber = "79"
+            landmarkName = "loginUserGoogleSignin(credential:completionHandler:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -374,138 +382,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/AuthHandler.swift"
-            timestampString = "537977444.860863"
+            timestampString = "540409835.689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
-            endingLineNumber = "79">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "537977444.861177"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in TimerDemo.PersistenceHandler.fetchAllTasksForTimePeriod(taskname: Swift.Optional&lt;Swift.String&gt;, timePeriod: TimerDemo.TimePeriod, completionHanlder: (Swift.Dictionary&lt;Swift.Int, Swift.Array&lt;TimerDemo.Task&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "523007855.494577"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.Dictionary&lt;Swift.String, Swift.Optional&lt;Any&gt;&gt; in closure #1 (__ObjC.DataSnapshot) -&gt; () in TimerDemo.PersistenceHandler.fetchAllTasksForTimePeriod(taskname: Swift.Optional&lt;Swift.String&gt;, timePeriod: TimerDemo.TimePeriod, completionHanlder: (Swift.Dictionary&lt;Swift.Int, Swift.Array&lt;TimerDemo.Task&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "523007855.496006"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "537977444.861388"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in TimerDemo.PersistenceHandler.fetchAllTasksForTimePeriod(taskname: Swift.Optional&lt;Swift.String&gt;, timePeriod: TimerDemo.TimePeriod, completionHanlder: (Swift.Array&lt;TimerDemo.Task&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "522952357.45595"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125"
-                  offsetFromSymbolStart = "3556">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (TimerDemo.Task) -&gt; Swift.Bool in closure #1 (__ObjC.DataSnapshot) -&gt; () in TimerDemo.PersistenceHandler.fetchAllTasksForTimePeriod(taskname: Swift.Optional&lt;Swift.String&gt;, timePeriod: TimerDemo.TimePeriod, completionHanlder: (Swift.Array&lt;TimerDemo.Task&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Handlers/PersistenceHandler.swift"
-                  timestampString = "522952357.457348"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "537977444.861438"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
-            timestampString = "537977444.861483"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
+            endingLineNumber = "79"
+            landmarkName = "loginUserGoogleSignin(credential:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -532,45 +414,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Model/Task.swift"
-            timestampString = "537977444.861567"
+            timestampString = "540760518.855661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "Unfreeze(estimatedEndTime:)"
+            landmarkName = "freeze()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TimerDemo.Task.Unfreeze(estimatedEndTime: Foundation.Date) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Model/Task.swift"
-                  timestampString = "537977444.912483"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "43">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TimerDemoTests.Task.Unfreeze(estimatedEndTime: Foundation.Date) -&gt; ()"
-                  moduleName = "TimerDemoTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/Model/Task.swift"
-                  timestampString = "537977445.9171799"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "43">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -580,7 +430,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/OnBoardingHandler.swift"
-            timestampString = "524599281.571297"
+            timestampString = "540742033.153254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -596,28 +446,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/Handlers/OnBoardingHandler.swift"
-            timestampString = "524599281.571396"
+            timestampString = "540742033.153547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "alertOnboardingCompleted()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/View/InfoAlertView.swift"
-            timestampString = "524512916.08101"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "showAlertForShortBreakComplete()"
+            landmarkName = "alertOnboardingNext(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -637,13 +471,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TimerDemo/ViewControllers/TaskDetailsVC.swift"
-            timestampString = "537879532.36882"
+            filePath = "TimerDemo/ViewControllers/Main TImer Screen/MainTimerScreenVC.swift"
+            timestampString = "541088058.644917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -654,27 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimerDemo/ViewControllers/TaskDetailsVC.swift"
-            timestampString = "537879532.369029"
+            timestampString = "541088058.645126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/ViewControllers/TaskDetailsVC.swift"
-            timestampString = "537879532.369079"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "populateViewForTimePeriod(timePeriod:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,65 +500,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TimerDemo/ViewControllers/TaskDetailsVC.swift"
-            timestampString = "537879532.3691241"
+            filePath = "TimerDemo/Handlers/PersistenceHandler.swift"
+            timestampString = "541088058.645179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "populateViewForTimePeriod(timePeriod:)"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "fetchAllTasksForTimePeriod(taskname:timePeriod:completionHanlder:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimerDemo/ViewControllers/TaskDetailsVC.swift"
-            timestampString = "537879532.369166"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "populateViewForTimePeriod(timePeriod:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;TimerDemo.Task&gt;) -&gt; () in TimerDemo.TaskDetailsVC.populateViewForTimePeriod(timePeriod: TimerDemo.TimePeriod) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/ViewControllers/TaskDetailsVC.swift"
-                  timestampString = "537977444.94217"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "1267">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (TimerDemo.Task, TimerDemo.Task) -&gt; Swift.Bool in closure #1 (Swift.Array&lt;TimerDemo.Task&gt;) -&gt; () in TimerDemo.TaskDetailsVC.populateViewForTimePeriod(timePeriod: TimerDemo.TimePeriod) -&gt; ()"
-                  moduleName = "TimerDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/i328244/Desktop/XCode%20Projects/TimerDemo/TimerDemo/ViewControllers/TaskDetailsVC.swift"
-                  timestampString = "537977444.9447449"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "18">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

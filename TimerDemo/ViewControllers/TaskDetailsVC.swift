@@ -8,12 +8,15 @@
 
 import UIKit
 
-class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ChartDataDelegate {
 
-    var currentTaskColl: TaskCollection?
-    var taskList = [String:Task]()
-    var taskDisplayList = [Task]()
-
+    var logr : LoggingHandler{
+        return LoggingHandler.shared
+    }
+    
+    private var taskListViewModel : TaskListingViewModel?
+    private var chartDisplayVC : ChartDisplayVC?
+    
     @IBOutlet weak var sessionListTableView: UITableView!
     @IBOutlet weak var taskPickerSegementControl: UISegmentedControl!
 
@@ -23,58 +26,41 @@ class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         // Do any additional setup after loading the view.
         sessionListTableView.tableFooterView = UIView()
 
-        title = currentTaskColl?.taskName
-
         taskPickerSegementControl.selectedSegmentIndex = 0
-        //populateViewForTimePeriod(timePeriod: .today)
         populateViewForTimePeriod(timePeriod: .today)
     }
-
-//    func aggregateTaskForADay(taskArr : [Task]) -> [String : AnyObject?] {
-//
-//        let timeList = ["12 - 6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM", "3PM", "4PM", "5 PM", "6 PM", "7 PM", "8 PM", "9 PM", "10 PM", "11 PM"]
-//
-//
-//    }
-//
+    
+    @IBAction func doneButtonPressed(_ sender : UIButton){
+        self.navigationController?.dismiss(animated: true, completion: {
+            self.logr.logAnalyticsEvent(analyticsEvent: .navigatedOutAnalyzeScreen)
+        })
+    }
 
     @IBAction func segmentPicked(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0 : populateViewForTimePeriod(timePeriod: .today)
-        case 1 : populateViewForTimePeriod(timePeriod: .week)
-        case 2 : populateViewForTimePeriod(timePeriod: .month)
+        case 1 : populateViewForTimePeriod(timePeriod: .yesterday)
+        case 2 : populateViewForTimePeriod(timePeriod: .week)
+        case 3 : populateViewForTimePeriod(timePeriod: .month)
         default: break
         }
-
     }
-
+    
+    
     func populateViewForTimePeriod(timePeriod: TimePeriod) {
-        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname : currentTaskColl?.taskName, timePeriod: timePeriod) { (theTaskArr) in
-            // filter out only tasks matching current task coll name
-            //TODO : Prashanth potential optimization here.
+        
+        PersistenceHandler.shared.fetchAllTasksForTimePeriod(taskname : nil, timePeriod: timePeriod) { (theTaskArr) in
 
-            self.taskDisplayList = []
-
-            for eachTask in theTaskArr {
-                if eachTask.taskName == self.currentTaskColl?.taskName {
-                    self.taskDisplayList.append(eachTask)
-                }
-            }
-
-            //Sort Task Display List :
-            self.taskDisplayList.sort(by: { (task1, task2) -> Bool in
-                guard let validTask1 = task1.savedDate else {return false}
-                guard let validTask2 = task2.savedDate else {return false}
-                return validTask1 > validTask2
+            let allTaskNames : [String] = theTaskArr.map({return $0.taskName})
+            let uniqueTaskNames = Set.init(allTaskNames)
+            let uniqueTaskNamesArr = Array.init(uniqueTaskNames)
+            
+            PersistenceHandler.shared.fetchTaskCollectionsMatchingNames(taskCollNames: uniqueTaskNamesArr, completionHandler: { (theTaskCollection) in
+                self.taskListViewModel = TaskListingViewModel(taskList: theTaskArr, taskCollectionList: theTaskCollection)
+                self.sessionListTableView.reloadData()
+                self.chartDisplayVC?.renderChart()
             })
-
-            self.sessionListTableView.reloadData()
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,35 +68,47 @@ class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskDisplayList.count
+        return taskListViewModel?.numberOfTasks() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"taskSessionCell")
 
-             let theCurrTask = taskDisplayList[indexPath.row]
-
-            let taskStartDate = theCurrTask.timer.taskStartDateString
-            let taskEndDate = theCurrTask.timer.taskEndDateString
-
-        let taskDateStringToDisplay = (taskStartDate == taskEndDate) ? taskStartDate : "\(taskStartDate) - \(taskEndDate)"
-            let taskStartTimeDisplayString = theCurrTask.timer.taskStartTimeString
-            let taskEndTimeDisplayString = theCurrTask.timer.taskEndTimeString
-
-            cell?.textLabel?.text = "\(taskDateStringToDisplay)    \(taskStartTimeDisplayString)-\(taskEndTimeDisplayString)"
-            cell?.detailTextLabel?.text = theCurrTask.taskType.rawValue
-
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskListingCell", for: indexPath)
+        
+        // Configure the cell...
+        // tag 11 : Task name Label
+        // tag 22 : Number of sessions label
+        // tag 33 : Total time heading
+        // tag 44 : Total Time Value
+        
+        if let taskNameLabel = cell.viewWithTag(11) as? UILabel {
+            taskNameLabel.text = taskListViewModel?.nameTaskCollAtIndex(indexPath: indexPath)
+        }
+        
+        if let numSessionsLabel = cell.viewWithTag(22) as? UILabel {
+            if let sessionCount = taskListViewModel?.numberOfSessionsInTaskCollectionAtIndex(indexPath: indexPath){
+                let sessionCountText = "\(sessionCount)"
+                numSessionsLabel.text = sessionCountText + (sessionCountText == "1" ? " Session" :  " Sessions")
+            }
+        }
+        
+        if let totalTimeLabel = cell.viewWithTag(44) as? UILabel {
+            if let totalDuration = taskListViewModel?.totalDurationOfTasksInCollectionAtIndex(indexPath: indexPath, taskStatus: .completed){
+                let totalTimeText = Utilities.shared.getHHMMSSFrom(seconds: Int(totalDuration))
+                totalTimeLabel.text = totalTimeText
+            }
+        }
+        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return Constants.shared.tableViewCellHeight
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         headerView.backgroundColor = UIColor.white
-        headerView.font = Utilities.shared.largeFontSize
+        headerView.font = Utilities.shared.fontWithLargeSize
         headerView.textAlignment = .center
         headerView.textColor = Utilities.shared.darkGrayColor
         headerView.text = "All Sessions"
@@ -118,20 +116,17 @@ class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return headerView
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    func getDataModelForChart() -> TaskListingViewModel? {
+        return taskListViewModel
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-
-        if segue.identifier == "showVizDetailsChart"{
-            if let destVC = segue.destination as? VizDetailsPageVC {
-                destVC.listOfVizToDisplay = [.chartToday, .chartThisWeek, .chartThisMonth]
-                destVC.shouldDisplayChartTitle = false
+        if segue.identifier == "showChartDisplayVC"{
+            if let destVC = segue.destination as? ChartDisplayVC{
+                destVC.dataDelegate = self
+                self.chartDisplayVC = destVC
             }
         }
-
     }
-
+    
 }

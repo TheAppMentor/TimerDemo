@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-
-
-
-
 struct Utilities {
     static let shared = Utilities()
     
@@ -35,12 +31,12 @@ struct Utilities {
     let darkGrayColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 0.50)
 
     // Fonts
-    let minuteFontSize   = UIFont(name: "HelveticaNeue-Light", size: 10.0)!
-    let verySmallFontSize   = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
-    let smallFontSize       = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
-    let regularFontSize     = UIFont(name: "HelveticaNeue-Light", size: 17.0)!
-    let largeFontSize       = UIFont(name: "HelveticaNeue-Light", size: 24.0)!
-    let veryLargeFontSize   = UIFont(name: "HelveticaNeue-Light", size: 28.0)!
+    let fontWithMinuteSize   = UIFont(name: "HelveticaNeue-Light", size: 10.0)!
+    let fontWithVerySmallSize   = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
+    let fontWithSmallSize       = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
+    let fontWithRegularSize     = UIFont(name: "HelveticaNeue-Light", size: 17.0)!
+    let fontWithLargeSize       = UIFont(name: "HelveticaNeue-Light", size: 24.0)!
+    let fontWithVeryLargeSize   = UIFont(name: "HelveticaNeue-Light", size: 28.0)!
 
     // Helper Methods
     internal func convertTimeIntervalToDisplayFormat(seconds: CFTimeInterval) -> String {

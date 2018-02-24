@@ -45,6 +45,8 @@ enum AnalyticsEvent{
     case task_Ended(taskName : String)
     case navigatedToSettingsScreen
     case navigatedToTaskListScreen
+    case navigatedToAnalyzeScreen
+    case navigatedOutAnalyzeScreen
     case app_did_resignActive
     case app_did_becomeActive
 
@@ -59,14 +61,17 @@ enum AnalyticsEvent{
         case .new_Task_Created(let taskName):
             return FireBaseMessage.init(name: "new_task_created", attributes: ["taskName" : taskName])
         case .navigatedToSettingsScreen:
-            return FireBaseMessage.init(name: "navigated_to_settingScreen", attributes: [:])
+            return FireBaseMessage.init(name: "nav_to_settingScreen", attributes: [:])
         case .navigatedToTaskListScreen:
-            return FireBaseMessage.init(name: "navigated_to_taskListScreen", attributes: [:])
+            return FireBaseMessage.init(name: "nav_to_taskListScreen", attributes: [:])
         case .app_did_becomeActive:
             return FireBaseMessage.init(name: "app_did_becomeActive", attributes: [:])
         case .app_did_resignActive:
             return FireBaseMessage.init(name: "app_did_resignActive", attributes: [:])
-
+        case .navigatedToAnalyzeScreen:
+            return FireBaseMessage.init(name: "nav_to_AnalyzeScreen", attributes: [:])
+        case .navigatedOutAnalyzeScreen:
+            return FireBaseMessage.init(name: "nav_out_AnalyzeScreen", attributes: [:])
         }
     }
 }
@@ -92,7 +97,6 @@ extension Logger {
     open func firebaseMessage(_ message: @escaping () -> LogMessage) {
         logMessage(message, with: LogLevel.firebase)
     }
-
 }
 
 

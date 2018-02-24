@@ -13,7 +13,7 @@ protocol TaskPickerTVCEventHandlerDelegate {
     func userWantsToViewMoretasks()
 }
 
-class TaskPickerTVC: UITableViewController {
+class TaskPickerTVC: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
     
     var logr : LoggingHandler{
         return LoggingHandler.shared
@@ -25,30 +25,82 @@ class TaskPickerTVC: UITableViewController {
 
     var eventHandlerDelegate: TaskPickerTVCEventHandlerDelegate?
 
+    var searchController = UISearchController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         logr.logAnalyticsEvent(analyticsEvent: .navigatedToTaskListScreen)
+        
+        initializeSearchBar()
+        self.refreshControl?.addTarget(self, action: #selector(userPulledToRefresh), for: .valueChanged)
+    }
+    
+    func userPulledToRefresh(){
+        fetchTasksFromServerAndReloadTable()
+    }
+    
+    public func updateSearchResults(for searchController: UISearchController){
+        print("updateSearchResults .. got called")
+        if let searchText = searchController.searchBar.text {
+            if !searchText.isEmpty{
+                allTaskColl = allTaskColl.filter { eachTaskColl in
+                    return eachTaskColl.taskName.lowercased().contains(searchText.lowercased())
+                }
+            }
+            
+            if searchText.isEmpty{
+               fetchTasksFromServerAndReloadTable()
+            }
+        }
+        
+        reloadTableView()
     }
 
-    func reloadTableViewWithNewTasks() {
+    func initializeSearchBar(){
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchController.searchBar.tintColor = UIColor.black
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        // On initial launch, hide the search bar
+        tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.size.height)
+        
+        searchController.delegate = self
+    }
+    
+    public func didDismissSearchController(_ searchController: UISearchController){
+        fetchTasksFromServerAndReloadTable()
+    }
+    
+    fileprivate func reloadTableView() {
+        self.tableView.reloadData()
+    }
+    
+    func fetchTasksFromServerAndReloadTable() {
         PersistenceHandler.shared.fetchAllTaskCollections(completionHandler: { (theTaskColl) in
             self.allTaskColl = []
             self.allTaskColl = theTaskColl
-            self.tableView.reloadData()
+            self.reloadTableView()
+            if self.refreshControl?.isRefreshing == true{
+                self.refreshControl?.endRefreshing()
+            }
         })
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: Utilities.shared.regularFontSize]
+             NSAttributedStringKey.font: Utilities.shared.fontWithRegularSize]
 
         tableView.tableFooterView = UIView()
-        reloadTableViewWithNewTasks()
+        fetchTasksFromServerAndReloadTable()
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -103,7 +155,7 @@ class TaskPickerTVC: UITableViewController {
         switch segue.identifier ?? "" {
         case "showTaskDetails":
             if let destVC = segue.destination as?  TaskDetailsVC {
-                destVC.currentTaskColl = selectedTaskCollToShowDetails
+                //destVC.currentTaskColl = selectedTaskCollToShowDetails
                 //destVC.taskList = taskListToPass
             }
 
@@ -145,6 +197,10 @@ class TaskPickerTVC: UITableViewController {
     }
 
     func dismissScreen() {
+        if searchController.isActive{
+            searchController.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+        }
         dismiss(animated: true, completion: nil)
     }
 

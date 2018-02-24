@@ -81,7 +81,7 @@ class MiniTaskListTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableHeaderHeight * 0.75))
         headerView.backgroundColor = UIColor.white
-        headerView.font = Utilities.shared.regularFontSize
+        headerView.font = Utilities.shared.fontWithRegularSize
         headerView.textAlignment = .center
         headerView.textColor = Utilities.shared.darkGrayColor
         headerView.text = "Recent Tasks"

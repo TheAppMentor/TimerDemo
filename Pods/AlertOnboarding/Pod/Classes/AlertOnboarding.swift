@@ -196,7 +196,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.alpha = 0.0
             }, completion: {
-                (finished: Bool) -> Void in
+                (_: Bool) -> Void in
                 // On main thread
                 DispatchQueue.main.async {
                     () -> Void in

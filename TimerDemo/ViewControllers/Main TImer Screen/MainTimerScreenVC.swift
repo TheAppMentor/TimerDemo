@@ -24,6 +24,11 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
         performSegue(withIdentifier: "showSettingsScreen", sender: self)
         logr.logAnalyticsEvent(analyticsEvent: .navigatedToSettingsScreen)
     }
+    
+    @IBAction func showAnalyzeScreen(_sender : UIBarButtonItem){
+        performSegue(withIdentifier: "showAnalyzeScreen", sender: self)
+        logr.logAnalyticsEvent(analyticsEvent: .navigatedToAnalyzeScreen)
+    }
 
     func userChangePerference(newPreference: Preference) {
         if newPreference.name == "taskDurationMinutes"{
@@ -76,7 +81,7 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
         hideBackButton()
         UIApplication.shared.statusBarStyle = .lightContent
 
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : Utilities.shared.largeFontSize, NSAttributedStringKey.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : Utilities.shared.fontWithLargeSize, NSAttributedStringKey.foregroundColor : UIColor.white]
 
         //Setup Ad Banner.
         bannerView.adUnitID = "ca-app-pub-5666511173297473/2835254941"  //Prashanths Real ID
@@ -427,6 +432,9 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
                 }
             }
 
+        case "showAnalyzeScreen" :
+            break
+            
         default:
             break
         }
