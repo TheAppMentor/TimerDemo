@@ -405,10 +405,12 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
 
         switch segue.identifier ?? "" {
         case "addNewTask":
-            if let theDestVC = segue.destination as? AddTaskVC {
-                theDestVC.taskAddVCEventHandlerDelegate = self
-                if !UserDefaults.standard.bool(forKey: "launchedBefore") {
-                    theDestVC.hideCancelButton = true
+            if let theDestNavVC = segue.destination as? UINavigationController {
+                if let theDestVC = theDestNavVC.viewControllers.first as? AddTaskVC{
+                    theDestVC.taskAddVCEventHandlerDelegate = self
+                    if !UserDefaults.standard.bool(forKey: "launchedBefore") {
+                        theDestVC.hideCancelButton = true
+                    }
                 }
             }
 

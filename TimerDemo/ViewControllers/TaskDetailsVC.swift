@@ -25,6 +25,8 @@ class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
         // Do any additional setup after loading the view.
         sessionListTableView.tableFooterView = UIView()
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : Utilities.shared.fontWithRegularSize, NSAttributedStringKey.foregroundColor : UIColor.white]
 
         taskPickerSegementControl.selectedSegmentIndex = 0
         populateViewForTimePeriod(timePeriod: .today)
@@ -108,10 +110,10 @@ class TaskDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         headerView.backgroundColor = UIColor.white
-        headerView.font = Utilities.shared.fontWithLargeSize
+        headerView.font = Utilities.shared.fontWithRegularSize
         headerView.textAlignment = .center
         headerView.textColor = Utilities.shared.darkGrayColor
-        headerView.text = "All Sessions"
+        headerView.text = "Task Details"
 
         return headerView
     }

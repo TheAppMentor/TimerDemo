@@ -495,4 +495,11 @@ class PersistenceHandler {
                 self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("Preferences").child("PreferenceDetails").child(preferenceType.rawValue).child(eachPerf.name).setValue(eachPerf.dictFormat)
         }
     }
+    
+    func fetchAllInformationForCurrentUser() {
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let fetchedTaskDict = snapshot.value as? [String: Any?] ?? [:]
+            print("Fetch Data for the user is....")
+        })
+    }
 }

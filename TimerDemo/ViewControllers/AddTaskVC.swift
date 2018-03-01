@@ -17,29 +17,29 @@ class AddTaskVC: UIViewController {
     var taskAddVCEventHandlerDelegate: TaskAddEventHandlerDelegate?
     var hideCancelButton: Bool = false
 
-    @IBOutlet weak var addTaskPopUpContainerView: UIView!
+//    @IBOutlet weak var addTaskPopUpContainerView: UIView!
     @IBOutlet weak var addTaskDoneButton: UIButton!
-    @IBOutlet weak var headerBanner: UIView!
+//    @IBOutlet weak var headerBanner: UIView!
     @IBOutlet weak var taskTitleInputTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var errorLabel: UILabel!
 
-    fileprivate func customizeAddTaskDoneButton() {
-        addTaskDoneButton.layer.cornerRadius = 5.0
-        addTaskDoneButton.layer.shadowColor = UIColor.gray.cgColor
-        addTaskDoneButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        addTaskDoneButton.layer.masksToBounds = false
-        addTaskDoneButton.layer.shadowRadius = 2.0
-        addTaskDoneButton.layer.shadowOpacity = 0.5
-    }
+//    fileprivate func customizeAddTaskDoneButton() {
+//        addTaskDoneButton.layer.cornerRadius = 5.0
+//        addTaskDoneButton.layer.shadowColor = UIColor.gray.cgColor
+//        addTaskDoneButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        addTaskDoneButton.layer.masksToBounds = false
+//        addTaskDoneButton.layer.shadowRadius = 2.0
+//        addTaskDoneButton.layer.shadowOpacity = 0.5
+//    }
     
-    fileprivate func customizeHeaderbanner() {
-        headerBanner.layer.shadowOffset = CGSize(width: 0, height: 1)
-        headerBanner.layer.masksToBounds = false
-        headerBanner.layer.shadowRadius = 1.0
-        headerBanner.layer.shadowOpacity = 0.5
-        headerBanner.layer.shadowColor = UIColor.gray.cgColor
-    }
+//    fileprivate func customizeHeaderbanner() {
+//        headerBanner.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        headerBanner.layer.masksToBounds = false
+//        headerBanner.layer.shadowRadius = 1.0
+//        headerBanner.layer.shadowOpacity = 0.5
+//        headerBanner.layer.shadowColor = UIColor.gray.cgColor
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +47,20 @@ class AddTaskVC: UIViewController {
 
         taskTitleInputTextField.becomeFirstResponder()
 
-        addTaskPopUpContainerView.layer.cornerRadius = 10.0
-        addTaskPopUpContainerView.clipsToBounds = true
+//        addTaskPopUpContainerView.layer.cornerRadius = 10.0
+//        addTaskPopUpContainerView.clipsToBounds = true
 
-        customizeHeaderbanner()
-        customizeAddTaskDoneButton()
+//        customizeHeaderbanner()
+//        customizeAddTaskDoneButton()
 
         if hideCancelButton {
-            cancelButton.isHidden = true
+            cancelButton.isEnabled = false
+            cancelButton.tintColor = UIColor.clear
         }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : Utilities.shared.fontWithRegularSize, NSAttributedStringKey.foregroundColor : UIColor.white]
     }
-
-    @IBAction func doneTaskComplete(_ sender: UIButton) {
+    @IBAction func doneTaskComplete(_ sender: UIBarButtonItem) {
 
         //TODO : Check for duplicate task name here... 
         let valueEntered = taskTitleInputTextField.text
@@ -86,10 +88,10 @@ class AddTaskVC: UIViewController {
         }
     }
 
-    @IBAction func cancelPressed(_ sender: UIButton) {
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
         dismissScreen()
     }
-
+    
     func dismissScreen() {
         dismiss(animated: true, completion: nil)
     }

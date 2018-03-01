@@ -79,6 +79,8 @@
 		2F9415141F1F807200AE76D9 /* TaskGeneratoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */; };
 		2F9A728D1EF8F87100272CE7 /* PauseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */; };
 		2FA0675D1F18FDA0006C63DE /* TaskTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0675C1F18FDA0006C63DE /* TaskTimePeriod.swift */; };
+		2FB2571C2047EB33006424B9 /* AnalyticsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2571B2047EB33006424B9 /* AnalyticsHandler.swift */; };
+		2FB2571E2047EF3C006424B9 /* AnalyticsHanlderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2571D2047EF3C006424B9 /* AnalyticsHanlderTests.swift */; };
 		2FB26E8A1F0ABB1E00C9C46D /* TaskPickerScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */; };
 		2FB39E901EF012FA005B3DF4 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */; };
 		2FB39E921EF01307005B3DF4 /* ArcProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */; };
@@ -179,6 +181,8 @@
 		2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGeneratoTest.swift; sourceTree = "<group>"; };
 		2F9A728C1EF8F87100272CE7 /* PauseCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseCollection.swift; sourceTree = "<group>"; };
 		2FA0675C1F18FDA0006C63DE /* TaskTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimePeriod.swift; sourceTree = "<group>"; };
+		2FB2571B2047EB33006424B9 /* AnalyticsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHandler.swift; sourceTree = "<group>"; };
+		2FB2571D2047EF3C006424B9 /* AnalyticsHanlderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHanlderTests.swift; sourceTree = "<group>"; };
 		2FB26E891F0ABB1E00C9C46D /* TaskPickerScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskPickerScrollView.xib; sourceTree = "<group>"; };
 		2FB39E8F1EF012FA005B3DF4 /* ArcProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
 		2FB39E911EF01307005B3DF4 /* ArcProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArcProgressView.xib; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 				2FC023CE1F129D680024229C /* AudioHandler.swift */,
 				2F9415131F1F807200AE76D9 /* TaskGeneratoTest.swift */,
 				88800A45201D02DA00CDE007 /* LoggingHandler.swift */,
+				2FB2571B2047EB33006424B9 /* AnalyticsHandler.swift */,
 				2FF106041F4E942D005E7E81 /* Protocols */,
 			);
 			path = Handlers;
@@ -416,6 +421,7 @@
 				88800A3E201CF9A300CDE007 /* TaskCollectionTests.swift */,
 				2F38AF4C2036EC3C008B466F /* TaskGeneratorSetup.swift */,
 				2F509F27203B13B000CF58A1 /* PersistenceHandlerDanger.swift */,
+				2FB2571D2047EF3C006424B9 /* AnalyticsHanlderTests.swift */,
 				2F9207AB1EE6A96400DB3C35 /* Info.plist */,
 			);
 			path = TimerDemoTests;
@@ -852,6 +858,7 @@
 				88800A41201CFBA800CDE007 /* AppUpdateHandler.swift in Sources */,
 				2F24C1AD1EF12FD200B2CE13 /* TaskManager.swift in Sources */,
 				2F0118751EEE6B6E00D3FEE9 /* VizChartView.swift in Sources */,
+				2FB2571C2047EB33006424B9 /* AnalyticsHandler.swift in Sources */,
 				2FBDC4251EF05B9D0022C10D /* RoundedButton.swift in Sources */,
 				2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */,
 				2F446B701EE51FB0005BB176 /* TaskCollection.swift in Sources */,
@@ -898,6 +905,7 @@
 				2F43C6A8200CD83A00BBA350 /* Pause.swift in Sources */,
 				2F38AF4D2036EC3C008B466F /* TaskGeneratorSetup.swift in Sources */,
 				2F43C6A9200CD83A00BBA350 /* TaskType.swift in Sources */,
+				2FB2571E2047EF3C006424B9 /* AnalyticsHanlderTests.swift in Sources */,
 				2F2C9B0B1EEADD27000C5279 /* Settting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
