@@ -65,9 +65,13 @@ class TaskManager {
     // MARK: Task Archiving Methods
     // =====================================
 
-    func archiveCurrentTask() {
+    func archiveCurrentTask(completionHandler: (() -> Void)? = nil) {
         //Add Current task to appropriate Task Collection.
-        PersistenceHandler.shared.saveTask(task: currentTask!)
+//        PersistenceHandler.shared.saveTask(task: currentTask!)
+        PersistenceHandler.shared.saveTask(task: currentTask!) { (taskName) in
+            completionHandler?()
+        }
+
     }
 
     // =====================================
@@ -116,8 +120,9 @@ extension TaskManager: TaskEventHanlder {
     }
 
     func taskDidAbandon() {
-        delegate?.currentTaskDidAbandon()
-        archiveCurrentTask()
+        archiveCurrentTask {
+            self.delegate?.currentTaskDidAbandon()
+        }
     }
 
     func abandonCurrentTask() {
@@ -127,10 +132,10 @@ extension TaskManager: TaskEventHanlder {
     func taskDidComplete() {
         currentTask?.taskStatus = .completed
         // Add this task to the task collection.
-        archiveCurrentTask()
-        UserInfoHandler.shared.addTaskCollToRecent(taskCollName: currentTask?.taskName ?? "")
-
-        delegate?.currentTaskDidComplete()
+        archiveCurrentTask {
+            UserInfoHandler.shared.addTaskCollToRecent(taskCollName: self.currentTask?.taskName ?? "")
+            self.delegate?.currentTaskDidComplete()
+        }
     }
 
 }

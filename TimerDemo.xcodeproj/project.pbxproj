@@ -17,6 +17,7 @@
 		2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F18CB561EF021F4005C5902 /* TestViewVC.swift */; };
 		2F24C1AD1EF12FD200B2CE13 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24C1AC1EF12FD200B2CE13 /* TaskManager.swift */; };
 		2F26BF571F0943BF0067C9A5 /* TaskDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F26BF561F0943BF0067C9A5 /* TaskDetailsVC.swift */; };
+		2F270D9F2048673F0035045C /* AnalyticsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2571B2047EB33006424B9 /* AnalyticsHandler.swift */; };
 		2F2C9B071EEAC310000C5279 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B061EEAC30F000C5279 /* Constants.swift */; };
 		2F2C9B0A1EEAD8FA000C5279 /* Settting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B091EEAD8FA000C5279 /* Settting.swift */; };
 		2F2C9B0B1EEADD27000C5279 /* Settting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C9B091EEAD8FA000C5279 /* Settting.swift */; };
@@ -893,6 +894,7 @@
 				2F38AF492036E5AA008B466F /* TaskListingViewModel.swift in Sources */,
 				2F0F73BF2036060D006B5083 /* LoggingHandler.swift in Sources */,
 				2F43C6AE200CD85C00BBA350 /* Date_Extension.swift in Sources */,
+				2F270D9F2048673F0035045C /* AnalyticsHandler.swift in Sources */,
 				2F43C6B0200E7AA700BBA350 /* TaskManager.swift in Sources */,
 				2F43C6B1200E7BBC00BBA350 /* TaskHandlerDelegate.swift in Sources */,
 				2F43C6AD200CD83A00BBA350 /* TypeOfViz.swift in Sources */,

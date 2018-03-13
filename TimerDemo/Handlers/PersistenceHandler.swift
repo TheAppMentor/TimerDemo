@@ -470,13 +470,11 @@ class PersistenceHandler {
 
             if postDict.isEmpty {
                 self.setInitialValueForPreferences {
-                    print("____________Completion called from isempty")
                     self.fetchAllPreferences(completionHandler: { (fetchedValues) in
                         completionHandler(fetchedValues)
                     })
                 }
             } else {
-                print("____________Completion called from ELSE")
                 completionHandler(postDict)
                 }
         })
@@ -496,10 +494,11 @@ class PersistenceHandler {
         }
     }
     
-    func fetchAllInformationForCurrentUser() {
-        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).observeSingleEvent(of: .value, with: { (snapshot) in
+    func fetchAllInformationForCurrentUser(completionH : @escaping (_ allUserInfo : [String:Any?])->()) {
+        
+        self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).observe(.value) { (snapshot) in
             let fetchedTaskDict = snapshot.value as? [String: Any?] ?? [:]
-            print("Fetch Data for the user is....")
-        })
+            completionH(fetchedTaskDict)
+        }
     }
 }

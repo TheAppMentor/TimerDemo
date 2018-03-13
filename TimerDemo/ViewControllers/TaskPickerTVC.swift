@@ -83,7 +83,9 @@ class TaskPickerTVC: UITableViewController, UISearchResultsUpdating, UISearchCon
     func fetchTasksFromServerAndReloadTable() {
         PersistenceHandler.shared.fetchAllTaskCollections(completionHandler: { (theTaskColl) in
             self.allTaskColl = []
-            self.allTaskColl = theTaskColl
+            self.allTaskColl = theTaskColl.sorted(by: { (taskA, taskB) -> Bool in
+                return taskA.totalDurationCompletedTasks > taskB.totalDurationCompletedTasks
+            })
             self.reloadTableView()
             if self.refreshControl?.isRefreshing == true{
                 self.refreshControl?.endRefreshing()

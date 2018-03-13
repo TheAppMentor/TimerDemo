@@ -76,6 +76,24 @@ struct TaskListingViewModel {
             return taskCollection[indexPath.row].totalDurationAllTasks
         }
     }
+    
+    func findTopTaskBasedOnTimeSpent() -> TaskListingObj?{
+        return taskCollection.max {return $0.totalDurationCompletedTasks > $1.totalDurationCompletedTasks}
+    }
+    
+    func findTopTaskBasedOnNumberOfSessions() -> TaskListingObj?{
+        return taskCollection.max {return $0.numberOfSessions > $1.numberOfSessions}
+    }
 
+    func findTopNTasksBasedOnTimeSpent(limit : Int) -> [TaskListingObj]?{
+        let sortedArr = taskCollection.sorted {return $0.totalDurationCompletedTasks > $1.totalDurationCompletedTasks}
+        return Array(sortedArr.prefix(5))
+    }
+    
+    func findTopNTasksBasedOnNumberOfSessions(limit : Int) -> [TaskListingObj]?{
+        let sortedArr = taskCollection.sorted {return $0.numberOfSessions > $1.numberOfSessions}
+        return Array(sortedArr.prefix(5))
+    }
 
+    
 }

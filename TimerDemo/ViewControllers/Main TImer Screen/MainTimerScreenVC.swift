@@ -35,7 +35,6 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
             createADeepWorkTask()
             setupUIForTaskBegin()
             setupTaskPickerView()
-//            view.setNeedsDisplay()
         }
     }
 
@@ -375,7 +374,8 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
     func currentTaskDidComplete() {
         timerControlButton.setPaused(true, animated: false)  // Hack to make the timer button set properly. Need to research why it behaves this way.
         timerControlButton.setPaused(false, animated: false)
-
+        //Update the mini task list vc
+        self.miniVizContainerVC?.reloadAllViews()
         switch (taskBoy.currentTask?.taskType)! {
         case .deepFocus:
             let timerDurationString = Utilities.shared.convertTimeIntervalToDisplayFormat(seconds: taskBoy.taskDuration)

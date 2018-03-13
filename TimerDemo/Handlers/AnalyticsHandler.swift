@@ -11,14 +11,25 @@ import Foundation
 
 struct AnalyticsHandler {
     
-    init(firebaseData : [String:Any?]) {
+    init(taskListingViewModel : TaskListingViewModel) {
         print("Here is the data... firebaseData")
     }
     
-    func getTaskDetailsWithMaxTime(timePeriod : TimePeriod) -> (TaskName : String, TaskDuration : CFTimeInterval, Sessions : Int) {
-        
-    }
-    
-    
-    
+//    func getTaskDetailsWithMaxTime(timePeriod : TimePeriod, completionH : @escaping (_ TaskName : String, _ TaskDuration : CFTimeInterval, _ sessions : Int) -> ()) {
+//
+//        PersistenceHandler.shared.fetchTotalTimeForTaskCollection(taskCollection: <#T##TaskCollection#>, completionHanlder: <#T##(TimeInterval) -> Void#>)
+//
+//        PersistenceHandler.shared.fetchAllInformationForCurrentUser { (theUserInfo) in
+//            print("🍺🍺🍺🍺🍺🍺 -> fetchAllInformationForCurrentUser ")
+//            print(theUserInfo)
+//            completionH("Hello", 2000.0, 10)
+//        }
+//    }
+//
+//    func fetchTaskNameForMaxTime(timePeriod : TimePeriod, taskCollections : [] ) -> String {
+//
+//
+//
+//        return ""
+//    }
 }

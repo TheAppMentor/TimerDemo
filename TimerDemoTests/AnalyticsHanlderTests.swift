@@ -13,6 +13,25 @@ class AnalyticsHanlderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        print("Setup was called")
+        
+        // Create an expectation for a background download task.
+        let expectation = XCTestExpectation(description: "Login to Fire base")
+        
+        if AuthHandler.shared.isLoggedIn{
+            print("THe GUy is already logged in.")
+            expectation.fulfill()
+        }else{
+            AuthHandler.shared.authenticateUser { (success, userInfo) in
+                print("We have logged on :  \(success)")
+                print("User info is : \(userInfo)")
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+        
+        print("Login Was Successful!")
     }
     
     override func tearDown() {
@@ -20,16 +39,31 @@ class AnalyticsHanlderTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetTaskDetailsWithMaxTimeForToday(){
+        
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+
+    func testGetTaskDetailsWithMaxTimeForYesterday(){
+        
+    }
+
+    func testGetTaskDetailsWithMaxTimeForThisWeek(){
+        
+    }
+
+    func testGetTaskDetailsWithMaxTimeForThisMonth(){
+        
+        let expectation1 = XCTestExpectation(description: "Wait for Fetch all user info")
+        
+        AnalyticsHandler().getTaskDetailsWithMaxTime(timePeriod: .month) { (taskName, taskTotalDuration, taskTotalTime) in
+            expectation1.fulfill()
         }
+
+        wait(for: [expectation1], timeout: 20)
+        
+//        XCTAssertEqual(taskName, "TaskName", "Mismatch    ->   Task Name")
+//        XCTAssertEqual(taskTotalDuration, "TaskName", "Mismatch    Does not Match")
+        XCTAssertEqual("taskTotalTime", "TaskName", "Mismatch      Does not Match")
+
     }
-    
 }
