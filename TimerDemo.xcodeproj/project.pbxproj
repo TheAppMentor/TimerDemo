@@ -65,7 +65,7 @@
 		2F60AF8F1F0417BF007674C9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60AF8E1F0417BF007674C9 /* Preferences.swift */; };
 		2F67AF932036DCFF005F05C0 /* TaskListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67AF922036DCFF005F05C0 /* TaskListingViewModel.swift */; };
 		2F6E88691F422326008F9BB5 /* AboutPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E88681F422326008F9BB5 /* AboutPageVC.swift */; };
-		2F77C18A1F437B38002E99BA /* GoogleService-Info_prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C1891F437B38002E99BA /* GoogleService-Info_prod.plist */; };
+		2F77C18A1F437B38002E99BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C1891F437B38002E99BA /* GoogleService-Info.plist */; };
 		2F7CB35E1EEED4FB004272A7 /* VizCanvasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */; };
 		2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7CB35F1EEED53A004272A7 /* VizCanvasView.swift */; };
 		2F8AF1E21EF7FF9500B8BB6B /* PersistenceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8AF1E11EF7FF9500B8BB6B /* PersistenceHandler.swift */; };
@@ -113,7 +113,7 @@
 		88880955200D048200825BE0 /* TimerDemoTestData_Tasks.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */; };
 		88880956200D048200825BE0 /* TimerDemoTestData_Pause.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */; };
 		88880957200D048200825BE0 /* TimerDemoTestData_TaskColl.csv in Resources */ = {isa = PBXBuildFile; fileRef = 88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */; };
-		88880959200F8A2900825BE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88880958200F8A2900825BE0 /* GoogleService-Info.plist */; };
+		88880959200F8A2900825BE0 /* GoogleService-Info_testEnv.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88880958200F8A2900825BE0 /* GoogleService-Info_testEnv.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +165,7 @@
 		2F60AF8E1F0417BF007674C9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2F67AF922036DCFF005F05C0 /* TaskListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListingViewModel.swift; sourceTree = "<group>"; };
 		2F6E88681F422326008F9BB5 /* AboutPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPageVC.swift; sourceTree = "<group>"; };
-		2F77C1891F437B38002E99BA /* GoogleService-Info_prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_prod.plist"; sourceTree = "<group>"; };
+		2F77C1891F437B38002E99BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F7CB35D1EEED4FB004272A7 /* VizCanvasView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VizCanvasView.xib; sourceTree = "<group>"; };
 		2F7CB35F1EEED53A004272A7 /* VizCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VizCanvasView.swift; sourceTree = "<group>"; };
 		2F8AF1E11EF7FF9500B8BB6B /* PersistenceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHandler.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		88880952200D048100825BE0 /* TimerDemoTestData_Tasks.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Tasks.csv; sourceTree = "<group>"; };
 		88880953200D048100825BE0 /* TimerDemoTestData_Pause.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_Pause.csv; sourceTree = "<group>"; };
 		88880954200D048100825BE0 /* TimerDemoTestData_TaskColl.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimerDemoTestData_TaskColl.csv; sourceTree = "<group>"; };
-		88880958200F8A2900825BE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88880958200F8A2900825BE0 /* GoogleService-Info_testEnv.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_testEnv.plist"; sourceTree = "<group>"; };
 		C3E464715CA9C59A39230C76 /* Pods_TimerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5F6727F8C1C9A74D389BB3 /* Pods-TimerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimerDemo/Pods-TimerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E60252CD87954A861C0E6A8A /* Pods_TimerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,8 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				2F446B771EE67723005BB176 /* Settings.plist */,
-				2F77C1891F437B38002E99BA /* GoogleService-Info_prod.plist */,
-				88880958200F8A2900825BE0 /* GoogleService-Info.plist */,
+				2F77C1891F437B38002E99BA /* GoogleService-Info.plist */,
+				88880958200F8A2900825BE0 /* GoogleService-Info_testEnv.plist */,
 			);
 			path = PList;
 			sourceTree = "<group>";
@@ -592,9 +592,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F77C18A1F437B38002E99BA /* GoogleService-Info_prod.plist in Resources */,
+				2F77C18A1F437B38002E99BA /* GoogleService-Info.plist in Resources */,
 				2F0FC9521EF0097F0053167F /* TimerView.xib in Resources */,
-				88880959200F8A2900825BE0 /* GoogleService-Info.plist in Resources */,
+				88880959200F8A2900825BE0 /* GoogleService-Info_testEnv.plist in Resources */,
 				2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */,
 				2F446B641EE28BD7005BB176 /* LaunchScreen.storyboard in Resources */,
 				2F9207B51EE7200900DB3C35 /* Project Info.rtf in Resources */,
@@ -655,6 +655,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher.default-Core/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSPlayPauseButton/RSPlayPauseButton.framework",
@@ -684,6 +685,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSPlayPauseButton.framework",

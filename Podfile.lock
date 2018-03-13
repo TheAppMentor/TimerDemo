@@ -138,6 +138,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.13)
   - GTMSessionFetcher/Full (1.1.13):
     - GTMSessionFetcher/Core (= 1.1.13)
+  - HGPlaceholders (0.3.0)
   - KeychainSwift (8.0.3)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
@@ -169,6 +170,7 @@ DEPENDENCIES:
   - FirebaseUI
   - Google-Mobile-Ads-SDK
   - GoogleSignIn
+  - HGPlaceholders
   - KeychainSwift (~> 8.0)
   - RSPlayPauseButton (~> 1.0)
   - SCLAlertView (~> 0.7)
@@ -202,6 +204,7 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: 8e0067bfe8a054022c7a81470baace4f2f633b48
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
+  HGPlaceholders: 2df01c51b04a30acd0b8c9c7161c7cdde4541109
   KeychainSwift: be9554c0e5f4b1686c775930dc5c6bd9396992ed
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -214,6 +217,6 @@ SPEC CHECKSUMS:
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   Willow: 2973dd5558b2133d542746bc2ac2249ad54aa119
 
-PODFILE CHECKSUM: 0944372a0d94f84e8be49e35ce63db211203e4f4
+PODFILE CHECKSUM: 1c73e379e4c876250c8836a9d75e60c07647937a
 
 COCOAPODS: 1.4.0

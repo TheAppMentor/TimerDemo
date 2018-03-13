@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>101498503727-fq1pf114gdc5bj6srqc01fa0lcbbojf7.apps.googleusercontent.com</string>
+	<string>863919215097-6atl2s88mvq135o5hpnc10urjt67dts5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.101498503727-fq1pf114gdc5bj6srqc01fa0lcbbojf7</string>
+	<string>com.googleusercontent.apps.863919215097-6atl2s88mvq135o5hpnc10urjt67dts5</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCQJJhpo2srCAzLtJ_aR2Vk8m6Is5imWHo</string>
+	<string>AIzaSyA29SOcMFj9f9K9De2x-VQBAEewg73yE5A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>101498503727</string>
+	<string>863919215097</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.prash.FocusMonk1</string>
 	<key>PROJECT_ID</key>
-	<string>focus-monk-test-enviroment</string>
+	<string>freedemo-8d865</string>
 	<key>STORAGE_BUCKET</key>
-	<string>focus-monk-test-enviroment.appspot.com</string>
+	<string>freedemo-8d865.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:101498503727:ios:c4fe57b704ceec9b</string>
+	<string>1:863919215097:ios:c4fe57b704ceec9b</string>
 	<key>DATABASE_URL</key>
-	<string>https://focus-monk-test-enviroment.firebaseio.com</string>
+	<string>https://freedemo-8d865.firebaseio.com</string>
 </dict>
 </plist>

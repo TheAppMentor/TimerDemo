@@ -22,6 +22,7 @@ target 'TimerDemo' do
   pod 'DotsLoading', '~> 1.0'
   pod 'GoogleSignIn'
   pod 'FirebaseUI'
+  pod 'HGPlaceholders'
   
   target 'TimerDemoTests' do
     inherit! :search_paths
