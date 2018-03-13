@@ -110,8 +110,10 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
     override func viewWillAppear(_ animated: Bool) {
         //TODO: parashat we need to remove this, we cannot reload all the task coll each tiem the view appears.
         // WE should only reload when a new task is added.. set up a delegate and do this.
+        if taskBoy.currentTask!.taskStatus == .running {
+            return
+        }
         populateAllTaskCollNames()
-
     }
     
     
@@ -133,6 +135,15 @@ class MainTimerScreenVC: UIViewController, TaskHandlerDelegate, InfoAlertEventHa
     // eventHandlerDelegate
     
     func userPickedATaskWithName(name: String) {
+        
+        // If th user picks the same task that is currently running just ignore the selection and return.
+        if taskBoy.currentTask!.taskName == name {
+            return
+        }
+        
+        if (taskBoy.currentTask!.taskStatus == .running || taskBoy.currentTask!.taskStatus == .paused) {
+            self.userOptedToAbandonTask()
+        }
         setupTimerForNewTaskPicked(taskName: name)
         
         if let selectedIndex = findIndexForTaskName(taskName: name) {
