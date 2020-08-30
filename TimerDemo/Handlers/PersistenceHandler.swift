@@ -40,13 +40,13 @@ class PersistenceHandler {
 
             print("The Key is : \(dbRef.key)")
 
-            self.fetchTaskWithID(taskID: dbRef.key, completionHandler: { (theTask) in
+            self.fetchTaskWithID(taskID: dbRef.key!, completionHandler: { (theTask) in
 
                 self.fetchTaskCollectionWithName(taskName: theTask.taskName) { (fetchedTaskColl) in
                         if fetchedTaskColl != nil {
-                            let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key, task: theTask)
+                            let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key!, task: theTask)
                             self.saveTaskCollection(taskColl: updatedTaskColl!)
-                            completionHandler?(dbRef.key)
+                            completionHandler?(dbRef.key!)
                         }
                     }
                 })
@@ -66,13 +66,13 @@ class PersistenceHandler {
 
             print("The Key is : \(dbRef.key)")
 
-            self.fetchTaskWithID(taskID: dbRef.key, completionHandler: { (theTask) in
+            self.fetchTaskWithID(taskID: dbRef.key!, completionHandler: { (theTask) in
 
                 self.fetchTaskCollectionWithName(taskName: theTask.taskName) { (fetchedTaskColl) in
                     if fetchedTaskColl != nil {
-                        let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key, task: theTask)
+                        let updatedTaskColl = fetchedTaskColl?.addTaskID(taskID: dbRef.key!, task: theTask)
                         self.saveTaskCollection(taskColl: updatedTaskColl!)
-                        completionHandler?(dbRef.key)
+                        completionHandler?(dbRef.key!)
                     }
                 }
             })
@@ -349,7 +349,7 @@ class PersistenceHandler {
        print("Save Task Collection Got Called")
         //self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskColl.taskName).setValue(taskColl.dictFormat)
         self.ref.child("Users").child((AuthHandler.shared.userInfo?.userID)!).child("TaskCollection").child(taskColl.taskName).setValue(taskColl.dictFormat) { (theError, theDBRef) in
-          completionHandler?(theDBRef.key)
+            completionHandler?(theDBRef.key!)
         }
     }
 

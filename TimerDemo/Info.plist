@@ -59,5 +59,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-5666511173297473~7405055349</string>
 </dict>
 </plist>

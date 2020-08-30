@@ -187,7 +187,7 @@ extension ChartHandler: IAxisValueFormatter {
             barChartDataEntires.append(tempEntry)
         }
         
-        let chartDataSet = BarChartDataSet.init(values: barChartDataEntires, label: "Simple Chart")
+        let chartDataSet = BarChartDataSet.init(entries: barChartDataEntires, label: "Simple Chart")
         chartDataSet.colors = ChartColorTemplates.colorful()
         return chartDataSet
     }

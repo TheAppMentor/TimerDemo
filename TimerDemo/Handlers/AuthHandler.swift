@@ -65,7 +65,7 @@ class AuthHandler {
             
             if user != nil {
                 self.isLoggedIn = true
-                self.userInfo = UserInfo(userID: user!.uid, isAnonymous: true, userName: "", displayName: "", email: "", phone: "", recentUsedTaskColl: [], mostUsedTaskColl: [])
+                self.userInfo = UserInfo(userID: user!.user.uid, isAnonymous: true, userName: "", displayName: "", email: "", phone: "", recentUsedTaskColl: [], mostUsedTaskColl: [])
                 self.isLoggedIn = true
                 completionHandler(true, self.userInfo)
             }

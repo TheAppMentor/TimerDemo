@@ -15,8 +15,13 @@ class TaskManager {
     var delegate: TaskHandlerDelegate?
 
     var taskDuration: CFTimeInterval {
+        if let testDuration = ProcessInfo.processInfo.environment["TEST_TIMER_DURATION"] {
+            return CFTimeInterval(Int(testDuration)!)  // For test, setting timer duration from env
+        }
+        
         switch (currentTask?.taskType)! {
-        case .deepFocus :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "taskDurationMinutes")?.currentValue as! Int) * 60)
+        case .deepFocus :   return
+            CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "taskDurationMinutes")?.currentValue as! Int) * 60)
         case .shortBreak:   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "shortBreakDurationMinutes")?.currentValue as! Int) * 60)
         case .longBreak :   return CFTimeInterval((OnlinePreferenceHandler.shared.fetchPreferenceFor(prefType: .Duration, prefName: "longBreakDurationMinutes")?.currentValue as! Int) * 60)
         }

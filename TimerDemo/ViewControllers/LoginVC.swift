@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 
-class LoginVC: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginVC: UIViewController, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
@@ -68,11 +68,11 @@ class LoginVC: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
         
         // Uncomment to automatically sign in the user.
-        GIDSignIn.sharedInstance().signInSilently()
+//        GIDSignIn.sharedInstance()?.signInSilently()
         //GIDSignIn.sharedInstance().signIn()
         
         // TODO(developer) Configure the sign-in button look/feel

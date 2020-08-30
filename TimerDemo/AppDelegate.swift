@@ -12,6 +12,7 @@ import Firebase
 import KeychainSwift
 import GoogleMobileAds
 import GoogleSignIn
+import FirebaseCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -120,9 +121,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
         -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
+            (GIDSignIn.sharedInstance()?.handle(url))!
+
+//            return GIDSignIn.sharedInstance().handle(url,
+//                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+//                                                     annotation: [:])
     }
     
 //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
