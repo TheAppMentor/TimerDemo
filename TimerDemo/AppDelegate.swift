@@ -13,6 +13,7 @@ import KeychainSwift
 import GoogleMobileAds
 import GoogleSignIn
 import FirebaseCore
+import FeatureFlagsPackage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,7 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //LoggingHandler.shared.log(message: "Application_Launched", attributes: [:])
         logr.logAnalyticsEvent(analyticsEvent: .app_launched(userID: "Unknown"))
-
+        
+        try? enableFeatureFlags()
+        print(Feature.isEnabled(.exampleFeatureFlag))
         return true
     }
 
@@ -146,6 +149,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        // ...
 //    }
 
-    
+    func enableFeatureFlags() throws {
+        // Setup feature flags
+        guard let featuresURL = Bundle.main.url(forResource: "FeatureFlags", withExtension: "json") else {
+            assertionFailure("Unable to load feature flags")
+            throw(FocusMonkError.genericError)
+        }
+        FeatureFlags.configurationURL = featuresURL
+    }
     
 }

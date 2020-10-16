@@ -23,6 +23,7 @@ target 'TimerDemo' do
   pod 'GoogleSignIn'
   pod 'FirebaseUI'
   pod 'HGPlaceholders'
+  pod "WSTagsField"
   
   target 'TimerDemoTests' do
     inherit! :search_paths

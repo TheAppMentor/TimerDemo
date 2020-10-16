@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -89,6 +89,12 @@
 		2FBF1EB61F10CEF800F63EFF /* MainTimerScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF1EB41F10BAA800F63EFF /* MainTimerScreenVC.swift */; };
 		2FBF1EB71F10CEFC00F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF1EB51F10BAA800F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift */; };
 		2FBF1EB91F10D38800F63EFF /* ChartHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF1EB81F10D38800F63EFF /* ChartHandler.swift */; };
+		2FBFCAAB253A08DD00089262 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFCAAA253A08DD00089262 /* Podfile */; };
+		2FBFCAB0253A0B3A00089262 /* FeatureFlags in Frameworks */ = {isa = PBXBuildFile; productRef = 2FBFCAAF253A0B3A00089262 /* FeatureFlags */; };
+		2FBFCAB4253A0CD200089262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFCAB3253A0CD200089262 /* Error.swift */; };
+		2FBFCAB7253A0CF700089262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFCAB3253A0CD200089262 /* Error.swift */; };
+		2FBFCABF253A0F8100089262 /* FeatureFlagExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFCABE253A0F8100089262 /* FeatureFlagExtension.swift */; };
+		2FBFCAC6253A0FFA00089262 /* FeatureFlags.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFCAC5253A0FFA00089262 /* FeatureFlags.json */; };
 		2FBFCF5F1F3F573600046D8A /* OnBoardingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFCF5E1F3F573600046D8A /* OnBoardingHandler.swift */; };
 		2FC023CD1F127C4D0024229C /* TypeOfViz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC023CC1F127C4D0024229C /* TypeOfViz.swift */; };
 		2FC023CF1F129D680024229C /* AudioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC023CE1F129D680024229C /* AudioHandler.swift */; };
@@ -191,6 +197,10 @@
 		2FBF1EB41F10BAA800F63EFF /* MainTimerScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimerScreenVC.swift; sourceTree = "<group>"; };
 		2FBF1EB51F10BAA800F63EFF /* Ext_TaskPickerView_MainTimerScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_TaskPickerView_MainTimerScreenVC.swift; sourceTree = "<group>"; };
 		2FBF1EB81F10D38800F63EFF /* ChartHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHandler.swift; sourceTree = "<group>"; };
+		2FBFCAAA253A08DD00089262 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		2FBFCAB3253A0CD200089262 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		2FBFCABE253A0F8100089262 /* FeatureFlagExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagExtension.swift; sourceTree = "<group>"; };
+		2FBFCAC5253A0FFA00089262 /* FeatureFlags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeatureFlags.json; sourceTree = "<group>"; };
 		2FBFCF5E1F3F573600046D8A /* OnBoardingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingHandler.swift; sourceTree = "<group>"; };
 		2FC023CC1F127C4D0024229C /* TypeOfViz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfViz.swift; sourceTree = "<group>"; };
 		2FC023CE1F129D680024229C /* AudioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHandler.swift; sourceTree = "<group>"; };
@@ -228,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86686FD89420BE2AF2875AEC /* Pods_TimerDemo.framework in Frameworks */,
+				2FBFCAB0253A0B3A00089262 /* FeatureFlags in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +288,7 @@
 		2F446B4D1EE28BD7005BB176 = {
 			isa = PBXGroup;
 			children = (
+				2FBFCAAA253A08DD00089262 /* Podfile */,
 				2F446B581EE28BD7005BB176 /* TimerDemo */,
 				2F9207A81EE6A96400DB3C35 /* TimerDemoTests */,
 				2F446B571EE28BD7005BB176 /* Products */,
@@ -306,6 +318,8 @@
 				2F8AF1EA1EF840ED00B8BB6B /* View */,
 				2F8AF1EB1EF8412900B8BB6B /* Utilities & Constants */,
 				2F446B601EE28BD7005BB176 /* Assets.xcassets */,
+				2FBFCAB3253A0CD200089262 /* Error.swift */,
+				2FBFCAC2253A0FDC00089262 /* FeatureFlags */,
 				2F8AF1EC1EF8415B00B8BB6B /* PList */,
 				2F9207B41EE7200900DB3C35 /* Project Info.rtf */,
 				2F446B651EE28BD7005BB176 /* Info.plist */,
@@ -428,6 +442,15 @@
 			path = TimerDemoTests;
 			sourceTree = "<group>";
 		};
+		2FBFCAC2253A0FDC00089262 /* FeatureFlags */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFCABE253A0F8100089262 /* FeatureFlagExtension.swift */,
+				2FBFCAC5253A0FFA00089262 /* FeatureFlags.json */,
+			);
+			path = FeatureFlags;
+			sourceTree = "<group>";
+		};
 		2FC023CB1F10E4930024229C /* Viz Drawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +536,9 @@
 			dependencies = (
 			);
 			name = TimerDemo;
+			packageProductDependencies = (
+				2FBFCAAF253A0B3A00089262 /* FeatureFlags */,
+			);
 			productName = TimerDemo;
 			productReference = 2F446B561EE28BD7005BB176 /* TimerDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -572,10 +598,14 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = 2F446B4D1EE28BD7005BB176;
+			packageReferences = (
+				2FBFCAAE253A0B3A00089262 /* XCRemoteSwiftPackageReference "FeatureFlags" */,
+			);
 			productRefGroup = 2F446B571EE28BD7005BB176 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -591,7 +621,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBFCAAB253A08DD00089262 /* Podfile in Resources */,
 				2F77C18A1F437B38002E99BA /* GoogleService-Info.plist in Resources */,
+				2FBFCAC6253A0FFA00089262 /* FeatureFlags.json in Resources */,
 				2F0FC9521EF0097F0053167F /* TimerView.xib in Resources */,
 				88880959200F8A2900825BE0 /* GoogleService-Info_testEnv.plist in Resources */,
 				2FCB9F1F1EEFE9CB000079F6 /* TimerContainerView.xib in Resources */,
@@ -804,6 +836,7 @@
 				2F18CB571EF021F4005C5902 /* TestViewVC.swift in Sources */,
 				2F8D5309203CA1B8003482B5 /* ChartDisplayVC.swift in Sources */,
 				2F7CB3601EEED53A004272A7 /* VizCanvasView.swift in Sources */,
+				2FBFCABF253A0F8100089262 /* FeatureFlagExtension.swift in Sources */,
 				2F43C69D200C94E000BBA350 /* Date_Extension.swift in Sources */,
 				2FFB385B1F0CF392006CDF27 /* VizDetailsPageVC.swift in Sources */,
 				2F446B6E1EE3324C005BB176 /* Task.swift in Sources */,
@@ -831,6 +864,7 @@
 				2F4FB54A1EF109E50066BEDA /* Pause.swift in Sources */,
 				2F8AF1E41EF8315900B8BB6B /* LoginVC.swift in Sources */,
 				2FFB385E1F0CF59A006CDF27 /* VizDisplayVC.swift in Sources */,
+				2FBFCAB4253A0CD200089262 /* Error.swift in Sources */,
 				2FA0675D1F18FDA0006C63DE /* TaskTimePeriod.swift in Sources */,
 				2FFB38601F0D0076006CDF27 /* MiniTaskListTVC.swift in Sources */,
 				2FD341061F0ABD4300A36B5B /* TaskPickerScrollView.swift in Sources */,
@@ -873,6 +907,7 @@
 				2F43C6A3200CD80C00BBA350 /* Task.swift in Sources */,
 				2F43C6A6200CD83A00BBA350 /* TaskTimePeriod.swift in Sources */,
 				2F43C6AA200CD83A00BBA350 /* TaskList.swift in Sources */,
+				2FBFCAB7253A0CF700089262 /* Error.swift in Sources */,
 				2F38AF492036E5AA008B466F /* TaskListingViewModel.swift in Sources */,
 				2F0F73BF2036060D006B5083 /* LoggingHandler.swift in Sources */,
 				2F43C6AE200CD85C00BBA350 /* Date_Extension.swift in Sources */,
@@ -1025,7 +1060,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1041,7 +1077,10 @@
 				DEVELOPMENT_TEAM = TLV25NDMDF;
 				INFOPLIST_FILE = TimerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prash.FocusMonk1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1061,7 +1100,10 @@
 				DEVELOPMENT_TEAM = TLV25NDMDF;
 				INFOPLIST_FILE = TimerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prash.FocusMonk1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1077,7 +1119,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TLV25NDMDF;
 				INFOPLIST_FILE = TimerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prash.TimerDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -1093,7 +1139,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TLV25NDMDF;
 				INFOPLIST_FILE = TimerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prash.TimerDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -1133,6 +1183,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2FBFCAAE253A0B3A00089262 /* XCRemoteSwiftPackageReference "FeatureFlags" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rwbutler/FeatureFlags.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FBFCAAF253A0B3A00089262 /* FeatureFlags */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FBFCAAE253A0B3A00089262 /* XCRemoteSwiftPackageReference "FeatureFlags" */;
+			productName = FeatureFlags;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F446B4E1EE28BD7005BB176 /* Project object */;
 }

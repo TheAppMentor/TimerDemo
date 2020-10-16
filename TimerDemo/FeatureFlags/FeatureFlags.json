@@ -1,0 +1,6 @@
+{
+    "features": [{
+        "name": "Example Feature Flag",
+        "enabled": true
+    }]
+}
